@@ -21,7 +21,7 @@ Done by hand, this is slow and inconsistent, which pushes up **MTTR** (Mean Time
 
 ## 2. Our solution in one paragraph
 
-**ResolveIQ** is a Streamlit app. An employee or analyst fills in a short ticket form. **Machine-learning models** predict the category, subcategory and type of symptom. **Similar past tickets** act as a second opinion. If the system is unsure, an **LLM breaks the tie**. **Fixed rules** set the team and priority (P1–P4) from facts, never from tone. The system then searches **our knowledge base** for matching articles, and an **LLM writes a fix in which every step cites an article step**. Code checks each citation. Finally, **plain rules decide**: recommend it, ask a human to review it, escalate it, or ask the user for more information. Everything is logged for auditing and for measuring MTTR.
+**ResolveIQ** is a Streamlit app. Employees ask the knowledge base for self-help. Support staff fill in a short ticket form. **Machine-learning models** predict the category, subcategory and type of symptom. **Similar past tickets** act as a second opinion. If the system is unsure, an **LLM breaks the tie**. **Fixed rules** set the team and priority (P1–P4) from facts, never from tone. The system then searches **our knowledge base** for matching articles, and an **LLM writes a fix in which every step cites an article step**. Code checks each citation. Finally, **plain rules decide**: recommend it, ask a human to review it, escalate it, or ask the user for more information. Everything is logged for auditing and for measuring MTTR.
 
 ```mermaid
 flowchart LR
@@ -158,13 +158,14 @@ There is no non-LLM fallback. The system never guesses.
 
 | Part | Who | What they do |
 |---|---|---|
-| 🎫 **Support Assistant** | Analyst | **New ticket**: form → outcome, labels with confidence, priority reason, similar tickets, cited fix, step-by-step trace, feedback buttons (Useful · Incorrect · Unresolved), "mark resolved". **Past tickets**: browse and filter by service, category, subcategory, priority, team, environment |
-| 📚 **KB Assistant** | Employee | ask a question → self-help answer from **public** articles only, with citations. If nothing matches: *"Not in the knowledge base — please raise a ticket."* |
-| ⚙️ **Admin** | Admin | **Feedback** (per analyst / article, knowledge gaps) · **Evaluation** (metrics, confusion matrices) · **MTTR** (baseline vs assisted) · **Knowledge base** viewer · **API key** (masked) |
+| 📚 **KB Assistant** | 👤 Employee | ask a question → self-help answer from **public** articles only, with citations. If nothing matches: *"Not in the knowledge base — please raise a ticket."* |
+| 🎫 **Support Assistant** | 🎧 Support | **New ticket**: form → outcome, labels with confidence, priority reason, similar tickets, cited fix, step-by-step trace, feedback buttons (Useful · Incorrect · Unresolved), "mark resolved". **Past tickets**: browse and filter by service, category, subcategory, priority, team, environment |
+| ⚙️ **Admin** | ⚙️ Admin | **Feedback** (per person / article, knowledge gaps, audit records + export) · **Evaluation** (metrics, confusion matrices) · **MTTR** (baseline vs assisted) · **Knowledge base** viewer · **Settings** (API key, masked) |
 
-**Access rules:**
-- Employees see public articles and self-help steps only. Analysts also see internal articles and support steps.
-- The filter is applied **before** search, so restricted text never reaches the results or the LLM.
+**Access rules (simple):**
+- **Each role sees only its own pages.** No page is shared: the menu lists only that role's pages, and opening another role's page by URL is blocked.
+- The KB Assistant uses public articles and self-help steps only. Internal articles and support steps appear only to Support (inside a ticket result) and to Admin (Knowledge base page).
+- The article filter is applied **before** search, so restricted text never reaches the results or the LLM.
 - Personal data is hidden before search, before the LLM and in exports.
 
 ---
@@ -174,6 +175,7 @@ There is no non-LLM fallback. The system never guesses.
 | Component | File | Status | Input → Output |
 |---|---|---|---|
 | Fixed lists (services, teams, taxonomy) | `src/taxonomy.py` | ✅ exists | — |
+| Data contracts (pipeline ↔ dashboard) | `src/contracts.py` | ✅ exists | one `TypedDict` per step + `AnalysisResult` + `check_result()` |
 | Text cleaner | `src/text.py` | ✅ exists | description → clean text, hype flag, dates |
 | Features | `src/features.py` | ✅ exists | text + service → word/char TF-IDF + MiniLM vector + one-hot |
 | Priority rules | `src/rules.py` | ✅ exists | facts + predicted labels → team, impact, urgency, priority, reason |

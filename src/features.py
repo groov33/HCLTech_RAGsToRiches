@@ -50,6 +50,18 @@ class SentenceEmbedder(BaseEstimator, TransformerMixin):
         return np.vstack([self._cache[t] for t in texts])
 
 
+def encode(texts: list[str]) -> np.ndarray:
+    """Meaning vectors for search (same model as the classifier, loaded once).
+
+    Vectors are normalised, so a dot product between two of them is their
+    cosine similarity (1 = same meaning, ~0 = unrelated).
+    Unlike SentenceEmbedder.transform this does not cache, so search queries
+    don't pile up in memory in a long-running app.
+    """
+    return SentenceEmbedder()._model().encode(list(texts), batch_size=64, normalize_embeddings=True,
+                                              show_progress_bar=False)
+
+
 def build_features(kind: str, use_facts: bool) -> ColumnTransformer:
     """kind: 'tfidf' | 'embed' | 'all'. use_facts adds environment + who_affected."""
     parts = []

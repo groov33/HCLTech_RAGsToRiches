@@ -6,7 +6,7 @@
 |---|---|
 | Purpose | Analyse incoming IT tickets, find similar past cases, recommend a cited fix, cut MTTR |
 | Scope | Analyse + recommend only. No auto-closure, no system changes, no production ITSM writes |
-| Users | Employee (asks the KB) · Analyst (works tickets) · Admin (key, feedback, evaluation) |
+| Users | Employee (KB Assistant only) · Support (New ticket, Past tickets) · Admin (Feedback, Evaluation, MTTR, Knowledge base, Settings). Each role sees only its own pages |
 | Data | **Our own curated dataset**: 1,200 synthetic tickets + 55 KB articles (all labels generated, stated as such) |
 | Deployment | Single machine, Streamlit app, local files, Groq cloud LLM with local Ollama fallback |
 
@@ -27,8 +27,8 @@
 ```mermaid
 flowchart LR
     EMP(["👤 Employee"]) -->|"asks a question"| SYS
-    AN(["👤 Analyst"]) -->|"submits / reviews tickets"| SYS
-    ADM(["👤 Admin"]) -->|"API key, evaluation"| SYS
+    AN(["👤 Support"]) -->|"submits / reviews tickets"| SYS
+    ADM(["👤 Admin"]) -->|"feedback, MTTR, KB, settings"| SYS
 
     SYS["🎫 ResolveIQ"]
 
@@ -159,14 +159,16 @@ flowchart TB
 ### 5.1 Presentation
 | Part | Page | Shows | Role |
 |---|---|---|---|
-| 🎫 Support Assistant | New ticket | form → decision, labels + confidence, priority reason, similar tickets, cited fix, step trace, feedback buttons | Analyst |
-| | Past tickets | browse + filter by service, category, subcategory, priority, team, environment (FR-07) | Analyst |
-| 📚 KB Assistant | Ask | question → self-help answer from **public** articles, with citations | Employee |
-| ⚙️ Admin | Feedback | verdicts per analyst and per article, knowledge gaps | Admin |
-| | Evaluation | confusion matrices, search comparison, fallback test, failed cases | Admin |
-| | MTTR | baseline vs assisted MTTR | Admin |
-| | Knowledge base | browse articles, see which tickets cited each | Admin |
-| | API key | enter / test Groq key (masked), active LLM | Admin |
+| 📚 KB Assistant | Ask | question → self-help answer from **public** articles, with citations | Employee only |
+| 🎫 Support Assistant | New ticket | form → decision, labels + confidence, priority reason, similar tickets, cited fix, step trace, feedback buttons | Support only |
+| | Past tickets | browse + filter by service, category, subcategory, priority, team, environment (FR-07) | Support only |
+| ⚙️ Admin | Feedback | verdicts per person and per article, knowledge gaps, audit records + export (FR-08) | Admin only |
+| | Evaluation | confusion matrices, search comparison, fallback test, failed cases | Admin only |
+| | MTTR | baseline vs assisted MTTR | Admin only |
+| | Knowledge base | browse all articles (read-only), see which tickets cited each | Admin only |
+| | Settings | enter / test Groq key (masked), active LLM, system status | Admin only |
+
+**Each role sees only its own pages.** The menu lists only that role's pages, and every page checks the role again.
 
 ### 5.2 Services
 | Service | Does | Interface |
@@ -177,7 +179,7 @@ flowchart TB
 | Evaluation service | run the test set, compute metrics | `run_evaluation() → EvalReport` |
 | MTTR service | baseline vs assisted MTTR | `get_mttr(filters)` |
 | Settings & key | hold the Groq key in session / `.env` | `set_key()`, `test_connection()` |
-| Access control | role → allowed KB `access_level` and step types | `allowed_levels(role)` |
+| Access control | role → its own pages; role → allowed KB `access_level` and step types | `pages_for(role)`, `allowed_levels(role)` |
 
 ### 5.3 Engines
 | Engine | File | Technology |
@@ -208,7 +210,7 @@ flowchart TB
 ### 6.1 Analyse a ticket
 ```mermaid
 sequenceDiagram
-    actor U as Analyst
+    actor U as Support
     participant O as Orchestrator
     participant ML as Classifier + Scorer
     participant R as Retriever

@@ -94,3 +94,20 @@ def find_date(text: str) -> date | None:
         except ValueError:
             continue
     return None
+
+
+# Words that say nothing about WHAT is broken. "system not working" is all generic.
+_GENERIC = set("""a an the it its this that is are was be been not no isn't doesn't don't can't cannot won't
+working work works broken down issue issues problem problems error help please something anything
+everything system thing stuff again still any some i my me we our us you your have has had and or
+but so to of for on in at with just now today fix fixed""".split())
+
+
+def is_too_vague(text: str) -> bool:
+    """True when fewer than 2 words say what is actually affected or happening.
+
+    "System not working."          -> vague (0 specific words)
+    "My scan takes a few tries."   -> fine  (scan, takes, few, tries)
+    """
+    words = re.findall(r"[a-z0-9']+", text.lower())
+    return sum(w not in _GENERIC for w in words) < 2
