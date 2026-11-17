@@ -1,0 +1,3888 @@
+{
+ "created_at": "2026-11-17T16:05:42",
+ "runs": [
+  [
+   {
+    "id": "T01",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "RECOMMEND",
+     "category": "Network",
+     "subcategory": "VPN problem",
+     "symptom_type": "blocked",
+     "team": "Network",
+     "priority": "P3",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-01175",
+     "top_kb": "KB-020",
+     "kb_top3": [
+      "KB-020",
+      "KB-022",
+      "KB-019"
+     ],
+     "fix_from": [
+      "KB-020"
+     ],
+     "reasons": "classifier, similar tickets and KB agree (confidence 94%)",
+     "questions": [],
+     "priority_reason": "P3: impact Medium (just me, critical service) x urgency Medium (blocked, not applicable).",
+     "masked_description": "My VPN says connected but the shared drive will not open from home.",
+     "confidence": 0.939,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-120b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T02",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "RECOMMEND",
+     "category": "Network",
+     "subcategory": "VPN problem",
+     "symptom_type": "blocked",
+     "team": "Network",
+     "priority": "P3",
+     "escalate_to": null,
+     "hype_detected": true,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-01175",
+     "top_kb": "KB-020",
+     "kb_top3": [
+      "KB-020",
+      "KB-022",
+      "KB-019"
+     ],
+     "fix_from": [
+      "KB-020"
+     ],
+     "reasons": "classifier, similar tickets and KB agree (confidence 94%)",
+     "questions": [],
+     "priority_reason": "P3: impact Medium (just me, critical service) x urgency Medium (blocked, not applicable).",
+     "masked_description": "URGENT — I'm the CEO, fix this now! My VPN says connected but the shared drive will not open from home.",
+     "confidence": 0.939,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-120b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T03",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Business System",
+     "subcategory": "Error or won't open",
+     "symptom_type": "blocked",
+     "team": "Applications",
+     "priority": "P2",
+     "escalate_to": "Applications",
+     "hype_detected": true,
+     "user_agrees": false,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00552",
+     "top_kb": "KB-030",
+     "kb_top3": [
+      "KB-030",
+      "KB-028",
+      "KB-029"
+     ],
+     "fix_from": [
+      "KB-030"
+     ],
+     "reasons": "P2: a Applications engineer owns it; the cited fix is attached",
+     "questions": [],
+     "priority_reason": "P2: impact Medium (just me, critical service) x urgency High (blocked, production).",
+     "masked_description": "I'm getting heat from above. Please pick this up immediately. My workng salary application closes just after login. I can see the menu for a moment but can't open a run.",
+     "confidence": 0.747,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-120b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T04",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Device & Software",
+     "subcategory": "Printer problem",
+     "symptom_type": "blocked",
+     "team": "Desktop Support",
+     "priority": "P3",
+     "escalate_to": "Desktop Support",
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": true,
+     "possible_duplicate": false,
+     "top_similar": "INC-00410",
+     "top_kb": "KB-042",
+     "kb_top3": [
+      "KB-042",
+      "KB-041",
+      "KB-040"
+     ],
+     "fix_from": null,
+     "reasons": "knowledge gap: the LLM found no article that really fits, handing to Desktop Support",
+     "questions": [],
+     "priority_reason": "P3: impact Medium (my team, minor service) x urgency Medium (blocked, not applicable).",
+     "masked_description": "Printed handover sheets are too faint for my team on the regular printer. We're selecting the alternate device and can get the forms out.",
+     "confidence": 0.499,
+     "dropped_steps": null,
+     "llm": null
+    },
+    "fails": [],
+    "known": [
+     "symptom_type: expected 'slow', got 'blocked'"
+    ],
+    "fixed": []
+   },
+   {
+    "id": "T05",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "NEED_INFO",
+     "category": "Device & Software",
+     "subcategory": "Printer problem",
+     "symptom_type": "blocked",
+     "team": "Desktop Support",
+     "priority": "P3",
+     "escalate_to": null,
+     "hype_detected": true,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00410",
+     "top_kb": "KB-042",
+     "kb_top3": [
+      "KB-042",
+      "KB-041",
+      "KB-040"
+     ],
+     "fix_from": [],
+     "reasons": "not enough detail to act on; ask the user the questions below",
+     "questions": [
+      "What is the printer model experiencing faint prints?",
+      "Are you using the correct toner/ink cartridge and settings?"
+     ],
+     "priority_reason": "P3: impact Medium (my team, minor service) x urgency Medium (blocked, not applicable).",
+     "masked_description": "URGENT — I'm the CEO, fix this now! Printed handover sheets are too faint for my team on the regular printer. We're selecting the alternate device and can get the forms out.",
+     "confidence": 0.499,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-120b"
+    },
+    "fails": [
+     "outcome: expected 'ESCALATE', got 'NEED_INFO'",
+     "escalate_to: expected 'Desktop Support', got None",
+     "knowledge_gap: expected True, got False"
+    ],
+    "known": [
+     "symptom_type: expected 'slow', got 'blocked'"
+    ],
+    "fixed": []
+   },
+   {
+    "id": "T06",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "NEED_INFO",
+     "category": "Device & Software",
+     "subcategory": "Computer problem",
+     "symptom_type": "blocked",
+     "team": "Service Desk",
+     "priority": "P4",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00103",
+     "top_kb": "KB-037",
+     "kb_top3": [
+      "KB-037",
+      "KB-029",
+      "KB-030"
+     ],
+     "fix_from": null,
+     "reasons": "not enough detail to act on; ask the user the questions below",
+     "questions": [
+      "Which application, device or service is affected?",
+      "What exactly happens, and is there an error message?"
+     ],
+     "priority_reason": "P4: impact Low (just me, minor service) x urgency Medium (blocked, not applicable).",
+     "masked_description": "system not working",
+     "confidence": 0.398,
+     "dropped_steps": null,
+     "llm": null
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T07",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Business System",
+     "subcategory": "Wrong data",
+     "symptom_type": "slow",
+     "team": "Applications",
+     "priority": "P2",
+     "escalate_to": "Applications",
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": true,
+     "possible_duplicate": false,
+     "top_similar": "INC-00801",
+     "top_kb": "KB-035",
+     "kb_top3": [
+      "KB-035",
+      "KB-031",
+      "KB-034"
+     ],
+     "fix_from": null,
+     "reasons": "knowledge gap: no KB article covers 'Wrong data' on Company Website, handing to Applications",
+     "questions": [],
+     "priority_reason": "P2: impact High (customers, critical service) x urgency Medium (slow, production).",
+     "masked_description": "Customers see the wrong prices on the company website since this morning.",
+     "confidence": 0.461,
+     "dropped_steps": null,
+     "llm": null
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T08",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "RECOMMEND",
+     "category": "Email & Communication",
+     "subcategory": "Calendar problem",
+     "symptom_type": "request",
+     "team": "Applications",
+     "priority": "P3",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00006",
+     "top_kb": "KB-018",
+     "kb_top3": [
+      "KB-018",
+      "KB-016",
+      "KB-017"
+     ],
+     "fix_from": [
+      "KB-016"
+     ],
+     "reasons": "classifier, similar tickets and KB agree (confidence 79%)",
+     "questions": [],
+     "priority_reason": "P3: impact High (many teams, critical service) x urgency Low (request, production).",
+     "masked_description": "Could we get a single calendar for both daytime operations crews and the separate evening intake group?",
+     "confidence": 0.789,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-120b"
+    },
+    "fails": [],
+    "known": [
+     "top_kb: expected 'KB-016', got 'KB-018'"
+    ],
+    "fixed": []
+   },
+   {
+    "id": "T09",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "RECOMMEND",
+     "category": "Account & Access",
+     "subcategory": "Password reset",
+     "symptom_type": "request",
+     "team": "Service Desk",
+     "priority": "P4",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00422",
+     "top_kb": "KB-001",
+     "kb_top3": [
+      "KB-001",
+      "KB-003",
+      "KB-002"
+     ],
+     "fix_from": [
+      "KB-001"
+     ],
+     "reasons": "classifier, similar tickets and KB agree (confidence 86%)",
+     "questions": [],
+     "priority_reason": "P4: impact Low (just me, critical service) x urgency Low (request, production).",
+     "masked_description": "I'd like a password reset for the additional work login I was just given. My main sign-in can carry on as usual.",
+     "confidence": 0.864,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-120b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T10",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "RECOMMEND",
+     "category": "Account & Access",
+     "subcategory": "Account locked",
+     "symptom_type": "blocked",
+     "team": "Service Desk",
+     "priority": "P3",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00012",
+     "top_kb": "KB-004",
+     "kb_top3": [
+      "KB-004",
+      "KB-005",
+      "KB-006"
+     ],
+     "fix_from": [
+      "KB-004"
+     ],
+     "reasons": "classifier, similar tickets and KB agree (confidence 86%)",
+     "questions": [],
+     "priority_reason": "P3: impact Medium (just me, critical service) x urgency Medium (blocked, test).",
+     "masked_description": "I need an unlock on my training login. Every page I use for the exercise sends me back to the account locked notice.",
+     "confidence": 0.859,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-120b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T11",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "RECOMMEND",
+     "category": "Network",
+     "subcategory": "VPN problem",
+     "symptom_type": "slow",
+     "team": "Network",
+     "priority": "P4",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00190",
+     "top_kb": "KB-021",
+     "kb_top3": [
+      "KB-021",
+      "KB-022",
+      "KB-020"
+     ],
+     "fix_from": [
+      "KB-021"
+     ],
+     "reasons": "classifier, similar tickets and KB agree (confidence 86%)",
+     "questions": [],
+     "priority_reason": "P4: impact Low (just me, critical service) x urgency Medium (slow, production).",
+     "masked_description": "It takes a long time for the VPN to set up routes, but everything opens after that.",
+     "confidence": 0.855,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-120b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T12",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "RECOMMEND",
+     "category": "Network",
+     "subcategory": "Wi-Fi problem",
+     "symptom_type": "slow",
+     "team": "Network",
+     "priority": "P4",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00119",
+     "top_kb": "KB-025",
+     "kb_top3": [
+      "KB-025",
+      "KB-023",
+      "KB-024"
+     ],
+     "fix_from": [
+      "KB-025"
+     ],
+     "reasons": "classifier, similar tickets and KB agree (confidence 88%)",
+     "questions": [],
+     "priority_reason": "P4: impact Low (just me, important service) x urgency Medium (slow, not applicable).",
+     "masked_description": "Intermittent Wi-Fi at my desk during the late shift. I can stay connected by using the other band.",
+     "confidence": 0.881,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-120b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T13",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "RECOMMEND",
+     "category": "Device & Software",
+     "subcategory": "Computer problem",
+     "symptom_type": "slow",
+     "team": "Desktop Support",
+     "priority": "P3",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00532",
+     "top_kb": "KB-037",
+     "kb_top3": [
+      "KB-037",
+      "KB-054",
+      "KB-039"
+     ],
+     "fix_from": [
+      "KB-037"
+     ],
+     "reasons": "classifier, similar tickets and KB agree (confidence 81%)",
+     "questions": [],
+     "priority_reason": "P3: impact Medium (my team, minor service) x urgency Medium (slow, not applicable).",
+     "masked_description": "Our group can stay on the laptop screen, but the external monitors randomly go dark on their assigned desks.",
+     "confidence": 0.808,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-120b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T14",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "RECOMMEND",
+     "category": "Business System",
+     "subcategory": "Slow",
+     "symptom_type": "slow",
+     "team": "Applications",
+     "priority": "P3",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-01128",
+     "top_kb": "KB-032",
+     "kb_top3": [
+      "KB-032",
+      "KB-033",
+      "KB-034"
+     ],
+     "fix_from": [
+      "KB-032"
+     ],
+     "reasons": "classifier, similar tickets and KB agree (confidence 81%)",
+     "questions": [],
+     "priority_reason": "P3: impact Low (just me, critical service) x urgency High (slow, production, busy period).",
+     "masked_description": "I can still generate my cost report on 30 September 2026 if I use the compact layout. The usual view seems to take forever.",
+     "confidence": 0.813,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-120b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T15",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "RECOMMEND",
+     "category": "Business System",
+     "subcategory": "Wrong data",
+     "symptom_type": "slow",
+     "team": "Applications",
+     "priority": "P4",
+     "escalate_to": null,
+     "hype_detected": true,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00296",
+     "top_kb": "KB-035",
+     "kb_top3": [
+      "KB-035",
+      "KB-032",
+      "KB-029"
+     ],
+     "fix_from": [
+      "KB-035"
+     ],
+     "reasons": "classifier, similar tickets and KB agree (confidence 82%)",
+     "questions": [],
+     "priority_reason": "P4: impact Low (just me, critical service) x urgency Medium (slow, production).",
+     "masked_description": "On the 13th the production ledger shows an old cost centre for my entries. I can replace it with the right one. If this isn't fixed in five minutes I'm going to the director.",
+     "confidence": 0.819,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-120b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T16",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "NEED_INFO",
+     "category": "Device & Software",
+     "subcategory": "Install software",
+     "symptom_type": "request",
+     "team": "Service Desk",
+     "priority": "P4",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00894",
+     "top_kb": "KB-047",
+     "kb_top3": [
+      "KB-047",
+      "KB-046",
+      "KB-042"
+     ],
+     "fix_from": [],
+     "reasons": "not enough detail to act on; ask the user the questions below",
+     "questions": [
+      "Which PDF tool do you need installed?",
+      "Is this tool already listed in the company software catalog?"
+     ],
+     "priority_reason": "P4: impact Low (just me, minor service) x urgency Low (request, not applicable).",
+     "masked_description": "Need a PDF tool installed for next week.",
+     "confidence": 0.42,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-120b"
+    },
+    "fails": [
+     "outcome: expected 'RECOMMEND', got 'NEED_INFO'",
+     "fix_from: expected ['KB-046', 'KB-047'], got []"
+    ],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T17",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "REVIEW",
+     "category": "Account & Access",
+     "subcategory": "Password reset",
+     "symptom_type": "blocked",
+     "team": "Service Desk",
+     "priority": "P3",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": false,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-01070",
+     "top_kb": "KB-002",
+     "kb_top3": [
+      "KB-002",
+      "KB-001",
+      "KB-003"
+     ],
+     "fix_from": [
+      "KB-002"
+     ],
+     "reasons": "user chose 'Business System', model says 'Account & Access'",
+     "questions": [],
+     "priority_reason": "P3: impact Medium (just me, critical service) x urgency Medium (blocked, test).",
+     "masked_description": "the test self-service page won't send my password reset message. i can't get into the sandbox.",
+     "confidence": 0.72,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-120b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T18",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "REVIEW",
+     "category": "Email & Communication",
+     "subcategory": "Chat or video call problem",
+     "symptom_type": "blocked",
+     "team": "Applications",
+     "priority": "P3",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": false,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00767",
+     "top_kb": "KB-013",
+     "kb_top3": [
+      "KB-013",
+      "KB-015",
+      "KB-014"
+     ],
+     "fix_from": [
+      "KB-013"
+     ],
+     "reasons": "user chose 'Device & Software', model says 'Email & Communication'",
+     "questions": [],
+     "priority_reason": "P3: impact Low (just me, important service) x urgency High (blocked, production).",
+     "masked_description": "Every production meeting exits when I select my microphone. I'm unable to join the appointments assigned to me.",
+     "confidence": 0.801,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-120b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T19",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "REVIEW",
+     "category": "Network",
+     "subcategory": "VPN problem",
+     "symptom_type": "slow",
+     "team": "Network",
+     "priority": "P4",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-01175",
+     "top_kb": "KB-020",
+     "kb_top3": [
+      "KB-020",
+      "KB-022",
+      "KB-019"
+     ],
+     "fix_from": [
+      "KB-020"
+     ],
+     "reasons": "may be two problems in one ticket ('my vpn says connected but the shared drive will not open from home' -> VPN problem / 'the printer asks for a3 paper every time i print a normal letter.' -> Printer problem): one fix may miss the other",
+     "questions": [],
+     "priority_reason": "P4: impact Low (just me, critical service) x urgency Medium (slow, not applicable).",
+     "masked_description": "My VPN says connected but the shared drive will not open from home. Separately, the printer asks for A3 paper every time I print a normal letter.",
+     "confidence": 0.879,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-120b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T20",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Account & Access",
+     "subcategory": "Account locked",
+     "symptom_type": "blocked",
+     "team": "Service Desk",
+     "priority": "P2",
+     "escalate_to": "Service Desk",
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00429",
+     "top_kb": "KB-004",
+     "kb_top3": [
+      "KB-004",
+      "KB-005",
+      "KB-006"
+     ],
+     "fix_from": [
+      "KB-004"
+     ],
+     "reasons": "P2: a Service Desk engineer owns it; the cited fix is attached",
+     "questions": [],
+     "priority_reason": "P2: impact Medium (just me, critical service) x urgency High (blocked, production).",
+     "masked_description": "I entered the code from the previous prompt and locked my company user. I'm stuck at sign-in for all my tools.",
+     "confidence": 0.853,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-120b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T21",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Email & Communication",
+     "subcategory": "Email problem",
+     "symptom_type": "outage",
+     "team": "Applications",
+     "priority": "P1",
+     "escalate_to": "Applications",
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-01048",
+     "top_kb": "KB-012",
+     "kb_top3": [
+      "KB-012",
+      "KB-011",
+      "KB-010"
+     ],
+     "fix_from": [
+      "KB-012"
+     ],
+     "reasons": "P1: a Applications engineer owns it; the cited fix is attached",
+     "questions": [],
+     "priority_reason": "P1: impact High (many teams, critical service) x urgency High (outage, production).",
+     "masked_description": "Mail is down for the entire tenant, including support, sales and our service accounts. Nothing is leaving the queue.",
+     "confidence": 0.875,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-20b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T22",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Device & Software",
+     "subcategory": "Printer problem",
+     "symptom_type": "blocked",
+     "team": "Desktop Support",
+     "priority": "P2",
+     "escalate_to": "Desktop Support",
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00171",
+     "top_kb": "KB-040",
+     "kb_top3": [
+      "KB-040",
+      "KB-041",
+      "KB-042"
+     ],
+     "fix_from": [
+      "KB-040"
+     ],
+     "reasons": "P2: a Desktop Support engineer owns it; the cited fix is attached",
+     "questions": [],
+     "priority_reason": "P2: impact High (many teams, minor service) x urgency Medium (blocked, not applicable).",
+     "masked_description": "Multiple teams are queuing at the one dispatch label printer and it rejects every job. None of the waiting loads can be processed.",
+     "confidence": 0.872,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-20b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T23",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Security",
+     "subcategory": "Suspicious email",
+     "symptom_type": "question",
+     "team": "Security",
+     "priority": "P1",
+     "escalate_to": "Security",
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00346",
+     "top_kb": "KB-049",
+     "kb_top3": [
+      "KB-049",
+      "KB-050",
+      "KB-002"
+     ],
+     "fix_from": [
+      "KB-049"
+     ],
+     "reasons": "P1: a Security engineer owns it; the cited fix is attached",
+     "questions": [],
+     "priority_reason": "P1: impact High (just me, minor service) x urgency High (question, not applicable).",
+     "masked_description": "Weird email with a login button. Real?",
+     "confidence": 0.883,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-20b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T24",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Security",
+     "subcategory": "Virus",
+     "symptom_type": "blocked",
+     "team": "Security",
+     "priority": "P1",
+     "escalate_to": "Security",
+     "hype_detected": false,
+     "user_agrees": false,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00718",
+     "top_kb": "KB-051",
+     "kb_top3": [
+      "KB-051",
+      "KB-026",
+      "KB-024"
+     ],
+     "fix_from": [
+      "KB-051"
+     ],
+     "reasons": "P1: a Security engineer owns it; the cited fix is attached",
+     "questions": [],
+     "priority_reason": "P1: impact High (just me, minor service) x urgency High (blocked, production).",
+     "masked_description": "My laptop got very slow after I opened an invoice attachment, and now a window says my files are encrypted and asks for payment.",
+     "confidence": 0.712,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-20b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T25",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Network",
+     "subcategory": "VPN problem",
+     "symptom_type": "outage",
+     "team": "Network",
+     "priority": "P1",
+     "escalate_to": "Network",
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": true,
+     "top_similar": "INC-00408",
+     "top_kb": "KB-022",
+     "kb_top3": [
+      "KB-022",
+      "KB-019",
+      "KB-021"
+     ],
+     "fix_from": [
+      "KB-022"
+     ],
+     "reasons": "P1: a Network engineer owns it; the cited fix is attached",
+     "questions": [],
+     "priority_reason": "P1: impact High (many teams, critical service) x urgency High (outage, production).",
+     "masked_description": "The live VPN stopped accepting connections from everyone. The gateways both time out from several home ISPs.",
+     "confidence": 0.897,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-20b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T26",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Business System",
+     "subcategory": "Wrong data",
+     "symptom_type": "slow",
+     "team": "Applications",
+     "priority": "P4",
+     "escalate_to": "Applications",
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": true,
+     "possible_duplicate": false,
+     "top_similar": "INC-00176",
+     "top_kb": "KB-036",
+     "kb_top3": [
+      "KB-036",
+      "KB-035",
+      "KB-009"
+     ],
+     "fix_from": null,
+     "reasons": "knowledge gap: no KB article covers 'Wrong data' on Payroll System, handing to Applications",
+     "questions": [],
+     "priority_reason": "P4: impact Low (just me, critical service) x urgency Medium (slow, production).",
+     "masked_description": "the payroll summary on the 10th shows the wrong division for the staff i check. i can use the actual pay register for my review instead.",
+     "confidence": 0.389,
+     "dropped_steps": null,
+     "llm": null
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T27",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Business System",
+     "subcategory": "Slow",
+     "symptom_type": "slow",
+     "team": "Applications",
+     "priority": "P4",
+     "escalate_to": "Applications",
+     "hype_detected": true,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": true,
+     "possible_duplicate": false,
+     "top_similar": "INC-00676",
+     "top_kb": "KB-036",
+     "kb_top3": [
+      "KB-036",
+      "KB-032",
+      "KB-020"
+     ],
+     "fix_from": null,
+     "reasons": "knowledge gap: no KB article covers 'Slow' on Shared Files, handing to Applications",
+     "questions": [],
+     "priority_reason": "P4: impact Low (just me, important service) x urgency Medium (slow, production).",
+     "masked_description": "My shared folder displays recent versions after a long wait, though the download works immediately.",
+     "confidence": 0.536,
+     "dropped_steps": null,
+     "llm": null
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T28",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "REVIEW",
+     "category": "Email & Communication",
+     "subcategory": "Email problem",
+     "symptom_type": "slow",
+     "team": "Applications",
+     "priority": "P4",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": true,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00622",
+     "top_kb": "KB-010",
+     "kb_top3": [
+      "KB-010",
+      "KB-012",
+      "KB-049"
+     ],
+     "fix_from": [
+      "KB-010"
+     ],
+     "reasons": "possible security issue: check with Security team",
+     "questions": [],
+     "priority_reason": "P4: impact Low (just me, critical service) x urgency Medium (slow, production).",
+     "masked_description": "The email app on my laptop keeps asking for my password. Webmail still works, so I can read mail there. Reach me at [email] or [phone].",
+     "confidence": 0.834,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-20b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "K01",
+    "kind": "kb",
+    "actual": {
+     "answered": true,
+     "top_source": "KB-001",
+     "answer_from": [
+      "KB-001"
+     ],
+     "source_ids": [
+      "KB-001",
+      "KB-004",
+      "KB-002"
+     ],
+     "cites_only_self_help": true,
+     "only_public_sources": true,
+     "steps": 3,
+     "llm": "groq"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "K02",
+    "kind": "kb",
+    "actual": {
+     "answered": true,
+     "top_source": "KB-020",
+     "answer_from": [
+      "KB-020"
+     ],
+     "source_ids": [
+      "KB-020",
+      "KB-019",
+      "KB-007"
+     ],
+     "cites_only_self_help": true,
+     "only_public_sources": true,
+     "steps": 3,
+     "llm": "groq"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "K03",
+    "kind": "kb",
+    "actual": {
+     "answered": true,
+     "top_source": "KB-016",
+     "answer_from": [
+      "KB-016"
+     ],
+     "source_ids": [
+      "KB-016",
+      "KB-018",
+      "KB-007"
+     ],
+     "cites_only_self_help": true,
+     "only_public_sources": true,
+     "steps": 4,
+     "llm": "groq"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "K04",
+    "kind": "kb",
+    "actual": {
+     "answered": true,
+     "top_source": "KB-010",
+     "answer_from": [
+      "KB-010"
+     ],
+     "source_ids": [
+      "KB-010",
+      "KB-004",
+      "KB-005"
+     ],
+     "cites_only_self_help": true,
+     "only_public_sources": true,
+     "steps": 3,
+     "llm": "groq"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "K05",
+    "kind": "kb",
+    "actual": {
+     "answered": true,
+     "top_source": "KB-043",
+     "answer_from": [
+      "KB-043"
+     ],
+     "source_ids": [
+      "KB-043",
+      "KB-039",
+      "KB-053"
+     ],
+     "cites_only_self_help": true,
+     "only_public_sources": true,
+     "steps": 3,
+     "llm": "groq"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "K06",
+    "kind": "kb",
+    "actual": {
+     "answered": true,
+     "top_source": "KB-049",
+     "answer_from": [
+      "KB-049"
+     ],
+     "source_ids": [
+      "KB-049",
+      "KB-002",
+      "KB-010"
+     ],
+     "cites_only_self_help": true,
+     "only_public_sources": true,
+     "steps": 3,
+     "llm": "groq"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "K07",
+    "kind": "kb",
+    "actual": {
+     "answered": false,
+     "top_source": "KB-001",
+     "answer_from": null,
+     "source_ids": [
+      "KB-001",
+      "KB-028",
+      "KB-011"
+     ],
+     "cites_only_self_help": true,
+     "only_public_sources": true,
+     "steps": 0,
+     "llm": "groq"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "K08",
+    "kind": "kb",
+    "actual": {
+     "answered": false,
+     "top_source": "KB-035",
+     "answer_from": null,
+     "source_ids": [
+      "KB-035",
+      "KB-018",
+      "KB-043"
+     ],
+     "cites_only_self_help": true,
+     "only_public_sources": true,
+     "steps": 0,
+     "llm": "groq"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "K09",
+    "kind": "kb",
+    "actual": {
+     "answered": false,
+     "top_source": "KB-035",
+     "answer_from": null,
+     "source_ids": [
+      "KB-035",
+      "KB-053",
+      "KB-018"
+     ],
+     "cites_only_self_help": true,
+     "only_public_sources": true,
+     "steps": 0,
+     "llm": "groq"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "K10",
+    "kind": "kb",
+    "actual": {
+     "answered": false,
+     "top_source": "KB-002",
+     "answer_from": null,
+     "source_ids": [
+      "KB-002",
+      "KB-014",
+      "KB-004"
+     ],
+     "cites_only_self_help": true,
+     "only_public_sources": true,
+     "steps": 0,
+     "llm": null
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   }
+  ],
+  [
+   {
+    "id": "T01",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "RECOMMEND",
+     "category": "Network",
+     "subcategory": "VPN problem",
+     "symptom_type": "blocked",
+     "team": "Network",
+     "priority": "P3",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-01175",
+     "top_kb": "KB-020",
+     "kb_top3": [
+      "KB-020",
+      "KB-022",
+      "KB-019"
+     ],
+     "fix_from": [
+      "KB-020"
+     ],
+     "reasons": "classifier, similar tickets and KB agree (confidence 94%)",
+     "questions": [],
+     "priority_reason": "P3: impact Medium (just me, critical service) x urgency Medium (blocked, not applicable).",
+     "masked_description": "My VPN says connected but the shared drive will not open from home.",
+     "confidence": 0.939,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-20b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T02",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "RECOMMEND",
+     "category": "Network",
+     "subcategory": "VPN problem",
+     "symptom_type": "blocked",
+     "team": "Network",
+     "priority": "P3",
+     "escalate_to": null,
+     "hype_detected": true,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-01175",
+     "top_kb": "KB-020",
+     "kb_top3": [
+      "KB-020",
+      "KB-022",
+      "KB-019"
+     ],
+     "fix_from": [
+      "KB-020"
+     ],
+     "reasons": "classifier, similar tickets and KB agree (confidence 94%)",
+     "questions": [],
+     "priority_reason": "P3: impact Medium (just me, critical service) x urgency Medium (blocked, not applicable).",
+     "masked_description": "URGENT — I'm the CEO, fix this now! My VPN says connected but the shared drive will not open from home.",
+     "confidence": 0.939,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-20b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T03",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Business System",
+     "subcategory": "Error or won't open",
+     "symptom_type": "blocked",
+     "team": "Applications",
+     "priority": "P2",
+     "escalate_to": "Applications",
+     "hype_detected": true,
+     "user_agrees": false,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00552",
+     "top_kb": "KB-030",
+     "kb_top3": [
+      "KB-030",
+      "KB-028",
+      "KB-029"
+     ],
+     "fix_from": [
+      "KB-030"
+     ],
+     "reasons": "P2: a Applications engineer owns it; the cited fix is attached",
+     "questions": [],
+     "priority_reason": "P2: impact Medium (just me, critical service) x urgency High (blocked, production).",
+     "masked_description": "I'm getting heat from above. Please pick this up immediately. My workng salary application closes just after login. I can see the menu for a moment but can't open a run.",
+     "confidence": 0.747,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-120b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T04",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Device & Software",
+     "subcategory": "Printer problem",
+     "symptom_type": "blocked",
+     "team": "Desktop Support",
+     "priority": "P3",
+     "escalate_to": "Desktop Support",
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": true,
+     "possible_duplicate": false,
+     "top_similar": "INC-00410",
+     "top_kb": "KB-042",
+     "kb_top3": [
+      "KB-042",
+      "KB-041",
+      "KB-040"
+     ],
+     "fix_from": null,
+     "reasons": "knowledge gap: the LLM found no article that really fits, handing to Desktop Support",
+     "questions": [],
+     "priority_reason": "P3: impact Medium (my team, minor service) x urgency Medium (blocked, not applicable).",
+     "masked_description": "Printed handover sheets are too faint for my team on the regular printer. We're selecting the alternate device and can get the forms out.",
+     "confidence": 0.499,
+     "dropped_steps": null,
+     "llm": null
+    },
+    "fails": [],
+    "known": [
+     "symptom_type: expected 'slow', got 'blocked'"
+    ],
+    "fixed": []
+   },
+   {
+    "id": "T05",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Device & Software",
+     "subcategory": "Printer problem",
+     "symptom_type": "blocked",
+     "team": "Desktop Support",
+     "priority": "P3",
+     "escalate_to": "Desktop Support",
+     "hype_detected": true,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": true,
+     "possible_duplicate": false,
+     "top_similar": "INC-00410",
+     "top_kb": "KB-042",
+     "kb_top3": [
+      "KB-042",
+      "KB-041",
+      "KB-040"
+     ],
+     "fix_from": null,
+     "reasons": "knowledge gap: the LLM found no article that really fits, handing to Desktop Support",
+     "questions": [],
+     "priority_reason": "P3: impact Medium (my team, minor service) x urgency Medium (blocked, not applicable).",
+     "masked_description": "URGENT — I'm the CEO, fix this now! Printed handover sheets are too faint for my team on the regular printer. We're selecting the alternate device and can get the forms out.",
+     "confidence": 0.499,
+     "dropped_steps": null,
+     "llm": null
+    },
+    "fails": [],
+    "known": [
+     "symptom_type: expected 'slow', got 'blocked'"
+    ],
+    "fixed": []
+   },
+   {
+    "id": "T06",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "NEED_INFO",
+     "category": "Device & Software",
+     "subcategory": "Computer problem",
+     "symptom_type": "blocked",
+     "team": "Service Desk",
+     "priority": "P4",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00103",
+     "top_kb": "KB-037",
+     "kb_top3": [
+      "KB-037",
+      "KB-029",
+      "KB-030"
+     ],
+     "fix_from": null,
+     "reasons": "not enough detail to act on; ask the user the questions below",
+     "questions": [
+      "Which application, device or service is affected?",
+      "What exactly happens, and is there an error message?"
+     ],
+     "priority_reason": "P4: impact Low (just me, minor service) x urgency Medium (blocked, not applicable).",
+     "masked_description": "system not working",
+     "confidence": 0.398,
+     "dropped_steps": null,
+     "llm": null
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T07",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Business System",
+     "subcategory": "Wrong data",
+     "symptom_type": "slow",
+     "team": "Applications",
+     "priority": "P2",
+     "escalate_to": "Applications",
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": true,
+     "possible_duplicate": false,
+     "top_similar": "INC-00801",
+     "top_kb": "KB-035",
+     "kb_top3": [
+      "KB-035",
+      "KB-031",
+      "KB-034"
+     ],
+     "fix_from": null,
+     "reasons": "knowledge gap: no KB article covers 'Wrong data' on Company Website, handing to Applications",
+     "questions": [],
+     "priority_reason": "P2: impact High (customers, critical service) x urgency Medium (slow, production).",
+     "masked_description": "Customers see the wrong prices on the company website since this morning.",
+     "confidence": 0.461,
+     "dropped_steps": null,
+     "llm": null
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T08",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "RECOMMEND",
+     "category": "Email & Communication",
+     "subcategory": "Calendar problem",
+     "symptom_type": "request",
+     "team": "Applications",
+     "priority": "P3",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00006",
+     "top_kb": "KB-018",
+     "kb_top3": [
+      "KB-018",
+      "KB-016",
+      "KB-017"
+     ],
+     "fix_from": [
+      "KB-016"
+     ],
+     "reasons": "classifier, similar tickets and KB agree (confidence 79%)",
+     "questions": [],
+     "priority_reason": "P3: impact High (many teams, critical service) x urgency Low (request, production).",
+     "masked_description": "Could we get a single calendar for both daytime operations crews and the separate evening intake group?",
+     "confidence": 0.789,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-20b"
+    },
+    "fails": [],
+    "known": [
+     "top_kb: expected 'KB-016', got 'KB-018'"
+    ],
+    "fixed": []
+   },
+   {
+    "id": "T09",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "RECOMMEND",
+     "category": "Account & Access",
+     "subcategory": "Password reset",
+     "symptom_type": "request",
+     "team": "Service Desk",
+     "priority": "P4",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00422",
+     "top_kb": "KB-001",
+     "kb_top3": [
+      "KB-001",
+      "KB-003",
+      "KB-002"
+     ],
+     "fix_from": [
+      "KB-001"
+     ],
+     "reasons": "classifier, similar tickets and KB agree (confidence 86%)",
+     "questions": [],
+     "priority_reason": "P4: impact Low (just me, critical service) x urgency Low (request, production).",
+     "masked_description": "I'd like a password reset for the additional work login I was just given. My main sign-in can carry on as usual.",
+     "confidence": 0.864,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-120b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T10",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "RECOMMEND",
+     "category": "Account & Access",
+     "subcategory": "Account locked",
+     "symptom_type": "blocked",
+     "team": "Service Desk",
+     "priority": "P3",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00012",
+     "top_kb": "KB-004",
+     "kb_top3": [
+      "KB-004",
+      "KB-005",
+      "KB-006"
+     ],
+     "fix_from": [
+      "KB-004"
+     ],
+     "reasons": "classifier, similar tickets and KB agree (confidence 86%)",
+     "questions": [],
+     "priority_reason": "P3: impact Medium (just me, critical service) x urgency Medium (blocked, test).",
+     "masked_description": "I need an unlock on my training login. Every page I use for the exercise sends me back to the account locked notice.",
+     "confidence": 0.859,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-120b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T11",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "NEED_INFO",
+     "category": "Network",
+     "subcategory": "VPN problem",
+     "symptom_type": "slow",
+     "team": "Network",
+     "priority": "P4",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00190",
+     "top_kb": "KB-021",
+     "kb_top3": [
+      "KB-021",
+      "KB-022",
+      "KB-020"
+     ],
+     "fix_from": [],
+     "reasons": "not enough detail to act on; ask the user the questions below",
+     "questions": [
+      "Is the long route‑setup delay observed on all VPN clients or only specific ones?",
+      "Does the delay occur with all gateways or only a particular gateway?"
+     ],
+     "priority_reason": "P4: impact Low (just me, critical service) x urgency Medium (slow, production).",
+     "masked_description": "It takes a long time for the VPN to set up routes, but everything opens after that.",
+     "confidence": 0.522,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-20b"
+    },
+    "fails": [
+     "outcome: expected 'RECOMMEND', got 'NEED_INFO'",
+     "fix_from: expected 'KB-021', got []"
+    ],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T12",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "RECOMMEND",
+     "category": "Network",
+     "subcategory": "Wi-Fi problem",
+     "symptom_type": "slow",
+     "team": "Network",
+     "priority": "P4",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00119",
+     "top_kb": "KB-025",
+     "kb_top3": [
+      "KB-025",
+      "KB-023",
+      "KB-024"
+     ],
+     "fix_from": [
+      "KB-025"
+     ],
+     "reasons": "classifier, similar tickets and KB agree (confidence 88%)",
+     "questions": [],
+     "priority_reason": "P4: impact Low (just me, important service) x urgency Medium (slow, not applicable).",
+     "masked_description": "Intermittent Wi-Fi at my desk during the late shift. I can stay connected by using the other band.",
+     "confidence": 0.881,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-20b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T13",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "RECOMMEND",
+     "category": "Device & Software",
+     "subcategory": "Computer problem",
+     "symptom_type": "slow",
+     "team": "Desktop Support",
+     "priority": "P3",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00532",
+     "top_kb": "KB-037",
+     "kb_top3": [
+      "KB-037",
+      "KB-054",
+      "KB-039"
+     ],
+     "fix_from": [
+      "KB-037"
+     ],
+     "reasons": "classifier, similar tickets and KB agree (confidence 81%)",
+     "questions": [],
+     "priority_reason": "P3: impact Medium (my team, minor service) x urgency Medium (slow, not applicable).",
+     "masked_description": "Our group can stay on the laptop screen, but the external monitors randomly go dark on their assigned desks.",
+     "confidence": 0.808,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-20b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T14",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "RECOMMEND",
+     "category": "Business System",
+     "subcategory": "Slow",
+     "symptom_type": "slow",
+     "team": "Applications",
+     "priority": "P3",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-01128",
+     "top_kb": "KB-032",
+     "kb_top3": [
+      "KB-032",
+      "KB-033",
+      "KB-034"
+     ],
+     "fix_from": [
+      "KB-032"
+     ],
+     "reasons": "classifier, similar tickets and KB agree (confidence 81%)",
+     "questions": [],
+     "priority_reason": "P3: impact Low (just me, critical service) x urgency High (slow, production, busy period).",
+     "masked_description": "I can still generate my cost report on 30 September 2026 if I use the compact layout. The usual view seems to take forever.",
+     "confidence": 0.813,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-120b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T15",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Business System",
+     "subcategory": "Wrong data",
+     "symptom_type": "slow",
+     "team": "Applications",
+     "priority": "P4",
+     "escalate_to": "Applications",
+     "hype_detected": true,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": true,
+     "possible_duplicate": false,
+     "top_similar": "INC-00296",
+     "top_kb": "KB-035",
+     "kb_top3": [
+      "KB-035",
+      "KB-032",
+      "KB-029"
+     ],
+     "fix_from": null,
+     "reasons": "knowledge gap: the LLM found no article that really fits, handing to Applications",
+     "questions": [],
+     "priority_reason": "P4: impact Low (just me, critical service) x urgency Medium (slow, production).",
+     "masked_description": "On the 13th the production ledger shows an old cost centre for my entries. I can replace it with the right one. If this isn't fixed in five minutes I'm going to the director.",
+     "confidence": 0.486,
+     "dropped_steps": null,
+     "llm": null
+    },
+    "fails": [
+     "outcome: expected 'RECOMMEND', got 'ESCALATE'",
+     "knowledge_gap: expected False, got True",
+     "fix_from: expected 'KB-035', got None"
+    ],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T16",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "RECOMMEND",
+     "category": "Device & Software",
+     "subcategory": "Install software",
+     "symptom_type": "request",
+     "team": "Service Desk",
+     "priority": "P4",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00894",
+     "top_kb": "KB-047",
+     "kb_top3": [
+      "KB-047",
+      "KB-046",
+      "KB-042"
+     ],
+     "fix_from": [
+      "KB-046"
+     ],
+     "reasons": "classifier, similar tickets and KB agree (confidence 75%)",
+     "questions": [],
+     "priority_reason": "P4: impact Low (just me, minor service) x urgency Low (request, not applicable).",
+     "masked_description": "Need a PDF tool installed for next week.",
+     "confidence": 0.753,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-20b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T17",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "REVIEW",
+     "category": "Account & Access",
+     "subcategory": "Password reset",
+     "symptom_type": "blocked",
+     "team": "Service Desk",
+     "priority": "P3",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": false,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-01070",
+     "top_kb": "KB-002",
+     "kb_top3": [
+      "KB-002",
+      "KB-001",
+      "KB-003"
+     ],
+     "fix_from": [
+      "KB-001"
+     ],
+     "reasons": "user chose 'Business System', model says 'Account & Access'",
+     "questions": [],
+     "priority_reason": "P3: impact Medium (just me, critical service) x urgency Medium (blocked, test).",
+     "masked_description": "the test self-service page won't send my password reset message. i can't get into the sandbox.",
+     "confidence": 0.72,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-20b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T18",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "NEED_INFO",
+     "category": "Email & Communication",
+     "subcategory": "Chat or video call problem",
+     "symptom_type": "blocked",
+     "team": "Applications",
+     "priority": "P3",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": false,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00767",
+     "top_kb": "KB-013",
+     "kb_top3": [
+      "KB-013",
+      "KB-015",
+      "KB-014"
+     ],
+     "fix_from": [],
+     "reasons": "not enough detail to act on; ask the user the questions below",
+     "questions": [
+      "Could you confirm which meeting client you are using?",
+      "Does the meeting client crash or simply exit when you click the microphone button?"
+     ],
+     "priority_reason": "P3: impact Low (just me, important service) x urgency High (blocked, production).",
+     "masked_description": "Every production meeting exits when I select my microphone. I'm unable to join the appointments assigned to me.",
+     "confidence": 0.468,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-20b"
+    },
+    "fails": [
+     "outcome: expected 'REVIEW', got 'NEED_INFO'",
+     "reasons should contain [\"user chose 'Device & Software'\"]; got 'not enough detail to act on; ask the user the questions below'"
+    ],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T19",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "REVIEW",
+     "category": "Network",
+     "subcategory": "VPN problem",
+     "symptom_type": "slow",
+     "team": "Network",
+     "priority": "P4",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-01175",
+     "top_kb": "KB-020",
+     "kb_top3": [
+      "KB-020",
+      "KB-022",
+      "KB-019"
+     ],
+     "fix_from": [
+      "KB-020"
+     ],
+     "reasons": "may be two problems in one ticket ('my vpn says connected but the shared drive will not open from home' -> VPN problem / 'the printer asks for a3 paper every time i print a normal letter.' -> Printer problem): one fix may miss the other",
+     "questions": [],
+     "priority_reason": "P4: impact Low (just me, critical service) x urgency Medium (slow, not applicable).",
+     "masked_description": "My VPN says connected but the shared drive will not open from home. Separately, the printer asks for A3 paper every time I print a normal letter.",
+     "confidence": 0.879,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-20b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T20",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Account & Access",
+     "subcategory": "Account locked",
+     "symptom_type": "blocked",
+     "team": "Service Desk",
+     "priority": "P2",
+     "escalate_to": "Service Desk",
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00429",
+     "top_kb": "KB-004",
+     "kb_top3": [
+      "KB-004",
+      "KB-005",
+      "KB-006"
+     ],
+     "fix_from": [
+      "KB-004"
+     ],
+     "reasons": "P2: a Service Desk engineer owns it; the cited fix is attached",
+     "questions": [],
+     "priority_reason": "P2: impact Medium (just me, critical service) x urgency High (blocked, production).",
+     "masked_description": "I entered the code from the previous prompt and locked my company user. I'm stuck at sign-in for all my tools.",
+     "confidence": 0.853,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-120b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T21",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Email & Communication",
+     "subcategory": "Email problem",
+     "symptom_type": "outage",
+     "team": "Applications",
+     "priority": "P1",
+     "escalate_to": "Applications",
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-01048",
+     "top_kb": "KB-012",
+     "kb_top3": [
+      "KB-012",
+      "KB-011",
+      "KB-010"
+     ],
+     "fix_from": [
+      "KB-012"
+     ],
+     "reasons": "P1: a Applications engineer owns it; the cited fix is attached",
+     "questions": [],
+     "priority_reason": "P1: impact High (many teams, critical service) x urgency High (outage, production).",
+     "masked_description": "Mail is down for the entire tenant, including support, sales and our service accounts. Nothing is leaving the queue.",
+     "confidence": 0.875,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-120b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T22",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Device & Software",
+     "subcategory": "Printer problem",
+     "symptom_type": "blocked",
+     "team": "Desktop Support",
+     "priority": "P2",
+     "escalate_to": "Desktop Support",
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00171",
+     "top_kb": "KB-040",
+     "kb_top3": [
+      "KB-040",
+      "KB-041",
+      "KB-042"
+     ],
+     "fix_from": [
+      "KB-040"
+     ],
+     "reasons": "P2: a Desktop Support engineer owns it; the cited fix is attached",
+     "questions": [],
+     "priority_reason": "P2: impact High (many teams, minor service) x urgency Medium (blocked, not applicable).",
+     "masked_description": "Multiple teams are queuing at the one dispatch label printer and it rejects every job. None of the waiting loads can be processed.",
+     "confidence": 0.872,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-20b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T23",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Security",
+     "subcategory": "Suspicious email",
+     "symptom_type": "question",
+     "team": "Security",
+     "priority": "P1",
+     "escalate_to": "Security",
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00346",
+     "top_kb": "KB-049",
+     "kb_top3": [
+      "KB-049",
+      "KB-050",
+      "KB-002"
+     ],
+     "fix_from": [
+      "KB-049"
+     ],
+     "reasons": "P1: a Security engineer owns it; the cited fix is attached",
+     "questions": [],
+     "priority_reason": "P1: impact High (just me, minor service) x urgency High (question, not applicable).",
+     "masked_description": "Weird email with a login button. Real?",
+     "confidence": 0.883,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-20b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T24",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Security",
+     "subcategory": "Virus",
+     "symptom_type": "blocked",
+     "team": "Security",
+     "priority": "P1",
+     "escalate_to": "Security",
+     "hype_detected": false,
+     "user_agrees": false,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00718",
+     "top_kb": "KB-051",
+     "kb_top3": [
+      "KB-051",
+      "KB-026",
+      "KB-024"
+     ],
+     "fix_from": [
+      "KB-051"
+     ],
+     "reasons": "P1: a Security engineer owns it; the cited fix is attached",
+     "questions": [],
+     "priority_reason": "P1: impact High (just me, minor service) x urgency High (blocked, production).",
+     "masked_description": "My laptop got very slow after I opened an invoice attachment, and now a window says my files are encrypted and asks for payment.",
+     "confidence": 0.712,
+     "dropped_steps": 0,
+     "llm": "gemini:gemini-3.1-flash-lite"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T25",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Network",
+     "subcategory": "VPN problem",
+     "symptom_type": "outage",
+     "team": "Network",
+     "priority": "P1",
+     "escalate_to": "Network",
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": true,
+     "top_similar": "INC-00408",
+     "top_kb": "KB-022",
+     "kb_top3": [
+      "KB-022",
+      "KB-019",
+      "KB-021"
+     ],
+     "fix_from": [
+      "KB-022"
+     ],
+     "reasons": "P1: a Network engineer owns it; the cited fix is attached",
+     "questions": [],
+     "priority_reason": "P1: impact High (many teams, critical service) x urgency High (outage, production).",
+     "masked_description": "The live VPN stopped accepting connections from everyone. The gateways both time out from several home ISPs.",
+     "confidence": 0.897,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-120b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T26",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Business System",
+     "subcategory": "Wrong data",
+     "symptom_type": "slow",
+     "team": "Applications",
+     "priority": "P4",
+     "escalate_to": "Applications",
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": true,
+     "possible_duplicate": false,
+     "top_similar": "INC-00176",
+     "top_kb": "KB-036",
+     "kb_top3": [
+      "KB-036",
+      "KB-035",
+      "KB-009"
+     ],
+     "fix_from": null,
+     "reasons": "knowledge gap: no KB article covers 'Wrong data' on Payroll System, handing to Applications",
+     "questions": [],
+     "priority_reason": "P4: impact Low (just me, critical service) x urgency Medium (slow, production).",
+     "masked_description": "the payroll summary on the 10th shows the wrong division for the staff i check. i can use the actual pay register for my review instead.",
+     "confidence": 0.389,
+     "dropped_steps": null,
+     "llm": null
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T27",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Business System",
+     "subcategory": "Slow",
+     "symptom_type": "slow",
+     "team": "Applications",
+     "priority": "P4",
+     "escalate_to": "Applications",
+     "hype_detected": true,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": true,
+     "possible_duplicate": false,
+     "top_similar": "INC-00676",
+     "top_kb": "KB-036",
+     "kb_top3": [
+      "KB-036",
+      "KB-032",
+      "KB-020"
+     ],
+     "fix_from": null,
+     "reasons": "knowledge gap: no KB article covers 'Slow' on Shared Files, handing to Applications",
+     "questions": [],
+     "priority_reason": "P4: impact Low (just me, important service) x urgency Medium (slow, production).",
+     "masked_description": "My shared folder displays recent versions after a long wait, though the download works immediately.",
+     "confidence": 0.536,
+     "dropped_steps": null,
+     "llm": null
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T28",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "REVIEW",
+     "category": "Email & Communication",
+     "subcategory": "Email problem",
+     "symptom_type": "slow",
+     "team": "Applications",
+     "priority": "P4",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": true,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00622",
+     "top_kb": "KB-010",
+     "kb_top3": [
+      "KB-010",
+      "KB-012",
+      "KB-049"
+     ],
+     "fix_from": [
+      "KB-010"
+     ],
+     "reasons": "possible security issue: check with Security team",
+     "questions": [],
+     "priority_reason": "P4: impact Low (just me, critical service) x urgency Medium (slow, production).",
+     "masked_description": "The email app on my laptop keeps asking for my password. Webmail still works, so I can read mail there. Reach me at [email] or [phone].",
+     "confidence": 0.834,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-120b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "K01",
+    "kind": "kb",
+    "actual": {
+     "answered": true,
+     "top_source": "KB-001",
+     "answer_from": [
+      "KB-001"
+     ],
+     "source_ids": [
+      "KB-001",
+      "KB-004",
+      "KB-002"
+     ],
+     "cites_only_self_help": true,
+     "only_public_sources": true,
+     "steps": 3,
+     "llm": "groq"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "K02",
+    "kind": "kb",
+    "actual": {
+     "answered": true,
+     "top_source": "KB-020",
+     "answer_from": [
+      "KB-020"
+     ],
+     "source_ids": [
+      "KB-020",
+      "KB-019",
+      "KB-007"
+     ],
+     "cites_only_self_help": true,
+     "only_public_sources": true,
+     "steps": 3,
+     "llm": "groq"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "K03",
+    "kind": "kb",
+    "actual": {
+     "answered": true,
+     "top_source": "KB-016",
+     "answer_from": [
+      "KB-016"
+     ],
+     "source_ids": [
+      "KB-016",
+      "KB-018",
+      "KB-007"
+     ],
+     "cites_only_self_help": true,
+     "only_public_sources": true,
+     "steps": 4,
+     "llm": "groq"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "K04",
+    "kind": "kb",
+    "actual": {
+     "answered": true,
+     "top_source": "KB-010",
+     "answer_from": [
+      "KB-010"
+     ],
+     "source_ids": [
+      "KB-010",
+      "KB-004",
+      "KB-005"
+     ],
+     "cites_only_self_help": true,
+     "only_public_sources": true,
+     "steps": 3,
+     "llm": "groq"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "K05",
+    "kind": "kb",
+    "actual": {
+     "answered": true,
+     "top_source": "KB-043",
+     "answer_from": [
+      "KB-043"
+     ],
+     "source_ids": [
+      "KB-043",
+      "KB-039",
+      "KB-053"
+     ],
+     "cites_only_self_help": true,
+     "only_public_sources": true,
+     "steps": 3,
+     "llm": "groq"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "K06",
+    "kind": "kb",
+    "actual": {
+     "answered": true,
+     "top_source": "KB-049",
+     "answer_from": [
+      "KB-049"
+     ],
+     "source_ids": [
+      "KB-049",
+      "KB-002",
+      "KB-010"
+     ],
+     "cites_only_self_help": true,
+     "only_public_sources": true,
+     "steps": 3,
+     "llm": "groq"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "K07",
+    "kind": "kb",
+    "actual": {
+     "answered": false,
+     "top_source": "KB-001",
+     "answer_from": null,
+     "source_ids": [
+      "KB-001",
+      "KB-028",
+      "KB-011"
+     ],
+     "cites_only_self_help": true,
+     "only_public_sources": true,
+     "steps": 0,
+     "llm": "groq"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "K08",
+    "kind": "kb",
+    "actual": {
+     "answered": false,
+     "top_source": "KB-035",
+     "answer_from": null,
+     "source_ids": [
+      "KB-035",
+      "KB-018",
+      "KB-043"
+     ],
+     "cites_only_self_help": true,
+     "only_public_sources": true,
+     "steps": 0,
+     "llm": "groq"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "K09",
+    "kind": "kb",
+    "actual": {
+     "answered": false,
+     "top_source": "KB-035",
+     "answer_from": null,
+     "source_ids": [
+      "KB-035",
+      "KB-053",
+      "KB-018"
+     ],
+     "cites_only_self_help": true,
+     "only_public_sources": true,
+     "steps": 0,
+     "llm": "groq"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "K10",
+    "kind": "kb",
+    "actual": {
+     "answered": false,
+     "top_source": "KB-002",
+     "answer_from": null,
+     "source_ids": [
+      "KB-002",
+      "KB-014",
+      "KB-004"
+     ],
+     "cites_only_self_help": true,
+     "only_public_sources": true,
+     "steps": 0,
+     "llm": null
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   }
+  ],
+  [
+   {
+    "id": "T01",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "RECOMMEND",
+     "category": "Network",
+     "subcategory": "VPN problem",
+     "symptom_type": "blocked",
+     "team": "Network",
+     "priority": "P3",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-01175",
+     "top_kb": "KB-020",
+     "kb_top3": [
+      "KB-020",
+      "KB-022",
+      "KB-019"
+     ],
+     "fix_from": [
+      "KB-020"
+     ],
+     "reasons": "classifier, similar tickets and KB agree (confidence 94%)",
+     "questions": [],
+     "priority_reason": "P3: impact Medium (just me, critical service) x urgency Medium (blocked, not applicable).",
+     "masked_description": "My VPN says connected but the shared drive will not open from home.",
+     "confidence": 0.939,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-20b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T02",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "RECOMMEND",
+     "category": "Network",
+     "subcategory": "VPN problem",
+     "symptom_type": "blocked",
+     "team": "Network",
+     "priority": "P3",
+     "escalate_to": null,
+     "hype_detected": true,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-01175",
+     "top_kb": "KB-020",
+     "kb_top3": [
+      "KB-020",
+      "KB-022",
+      "KB-019"
+     ],
+     "fix_from": [
+      "KB-020"
+     ],
+     "reasons": "classifier, similar tickets and KB agree (confidence 94%)",
+     "questions": [],
+     "priority_reason": "P3: impact Medium (just me, critical service) x urgency Medium (blocked, not applicable).",
+     "masked_description": "URGENT — I'm the CEO, fix this now! My VPN says connected but the shared drive will not open from home.",
+     "confidence": 0.939,
+     "dropped_steps": 0,
+     "llm": "gemini:gemini-3.1-flash-lite"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T03",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Business System",
+     "subcategory": "Error or won't open",
+     "symptom_type": "blocked",
+     "team": "Applications",
+     "priority": "P2",
+     "escalate_to": "Applications",
+     "hype_detected": true,
+     "user_agrees": false,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00552",
+     "top_kb": "KB-030",
+     "kb_top3": [
+      "KB-030",
+      "KB-028",
+      "KB-029"
+     ],
+     "fix_from": [
+      "KB-030"
+     ],
+     "reasons": "P2: a Applications engineer owns it; the cited fix is attached",
+     "questions": [],
+     "priority_reason": "P2: impact Medium (just me, critical service) x urgency High (blocked, production).",
+     "masked_description": "I'm getting heat from above. Please pick this up immediately. My workng salary application closes just after login. I can see the menu for a moment but can't open a run.",
+     "confidence": 0.747,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-120b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T04",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Device & Software",
+     "subcategory": "Printer problem",
+     "symptom_type": "blocked",
+     "team": "Desktop Support",
+     "priority": "P3",
+     "escalate_to": "Desktop Support",
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": true,
+     "possible_duplicate": false,
+     "top_similar": "INC-00410",
+     "top_kb": "KB-042",
+     "kb_top3": [
+      "KB-042",
+      "KB-041",
+      "KB-040"
+     ],
+     "fix_from": null,
+     "reasons": "knowledge gap: the LLM found no article that really fits, handing to Desktop Support",
+     "questions": [],
+     "priority_reason": "P3: impact Medium (my team, minor service) x urgency Medium (blocked, not applicable).",
+     "masked_description": "Printed handover sheets are too faint for my team on the regular printer. We're selecting the alternate device and can get the forms out.",
+     "confidence": 0.499,
+     "dropped_steps": null,
+     "llm": null
+    },
+    "fails": [],
+    "known": [
+     "symptom_type: expected 'slow', got 'blocked'"
+    ],
+    "fixed": []
+   },
+   {
+    "id": "T05",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Device & Software",
+     "subcategory": "Printer problem",
+     "symptom_type": "blocked",
+     "team": "Desktop Support",
+     "priority": "P3",
+     "escalate_to": "Desktop Support",
+     "hype_detected": true,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": true,
+     "possible_duplicate": false,
+     "top_similar": "INC-00410",
+     "top_kb": "KB-042",
+     "kb_top3": [
+      "KB-042",
+      "KB-041",
+      "KB-040"
+     ],
+     "fix_from": null,
+     "reasons": "knowledge gap: the LLM found no article that really fits, handing to Desktop Support",
+     "questions": [],
+     "priority_reason": "P3: impact Medium (my team, minor service) x urgency Medium (blocked, not applicable).",
+     "masked_description": "URGENT — I'm the CEO, fix this now! Printed handover sheets are too faint for my team on the regular printer. We're selecting the alternate device and can get the forms out.",
+     "confidence": 0.499,
+     "dropped_steps": null,
+     "llm": null
+    },
+    "fails": [],
+    "known": [
+     "symptom_type: expected 'slow', got 'blocked'"
+    ],
+    "fixed": []
+   },
+   {
+    "id": "T06",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "NEED_INFO",
+     "category": "Device & Software",
+     "subcategory": "Computer problem",
+     "symptom_type": "blocked",
+     "team": "Service Desk",
+     "priority": "P4",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00103",
+     "top_kb": "KB-037",
+     "kb_top3": [
+      "KB-037",
+      "KB-029",
+      "KB-030"
+     ],
+     "fix_from": null,
+     "reasons": "not enough detail to act on; ask the user the questions below",
+     "questions": [
+      "Which application, device or service is affected?",
+      "What exactly happens, and is there an error message?"
+     ],
+     "priority_reason": "P4: impact Low (just me, minor service) x urgency Medium (blocked, not applicable).",
+     "masked_description": "system not working",
+     "confidence": 0.398,
+     "dropped_steps": null,
+     "llm": null
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T07",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Business System",
+     "subcategory": "Wrong data",
+     "symptom_type": "slow",
+     "team": "Applications",
+     "priority": "P2",
+     "escalate_to": "Applications",
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": true,
+     "possible_duplicate": false,
+     "top_similar": "INC-00801",
+     "top_kb": "KB-035",
+     "kb_top3": [
+      "KB-035",
+      "KB-031",
+      "KB-034"
+     ],
+     "fix_from": null,
+     "reasons": "knowledge gap: no KB article covers 'Wrong data' on Company Website, handing to Applications",
+     "questions": [],
+     "priority_reason": "P2: impact High (customers, critical service) x urgency Medium (slow, production).",
+     "masked_description": "Customers see the wrong prices on the company website since this morning.",
+     "confidence": 0.461,
+     "dropped_steps": null,
+     "llm": null
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T08",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "RECOMMEND",
+     "category": "Email & Communication",
+     "subcategory": "Calendar problem",
+     "symptom_type": "request",
+     "team": "Applications",
+     "priority": "P3",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00006",
+     "top_kb": "KB-018",
+     "kb_top3": [
+      "KB-018",
+      "KB-016",
+      "KB-017"
+     ],
+     "fix_from": [
+      "KB-016"
+     ],
+     "reasons": "classifier, similar tickets and KB agree (confidence 79%)",
+     "questions": [],
+     "priority_reason": "P3: impact High (many teams, critical service) x urgency Low (request, production).",
+     "masked_description": "Could we get a single calendar for both daytime operations crews and the separate evening intake group?",
+     "confidence": 0.789,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-20b"
+    },
+    "fails": [],
+    "known": [
+     "top_kb: expected 'KB-016', got 'KB-018'"
+    ],
+    "fixed": []
+   },
+   {
+    "id": "T09",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "RECOMMEND",
+     "category": "Account & Access",
+     "subcategory": "Password reset",
+     "symptom_type": "request",
+     "team": "Service Desk",
+     "priority": "P4",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00422",
+     "top_kb": "KB-001",
+     "kb_top3": [
+      "KB-001",
+      "KB-003",
+      "KB-002"
+     ],
+     "fix_from": [
+      "KB-001"
+     ],
+     "reasons": "classifier, similar tickets and KB agree (confidence 86%)",
+     "questions": [],
+     "priority_reason": "P4: impact Low (just me, critical service) x urgency Low (request, production).",
+     "masked_description": "I'd like a password reset for the additional work login I was just given. My main sign-in can carry on as usual.",
+     "confidence": 0.864,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-20b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T10",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "RECOMMEND",
+     "category": "Account & Access",
+     "subcategory": "Account locked",
+     "symptom_type": "blocked",
+     "team": "Service Desk",
+     "priority": "P3",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00012",
+     "top_kb": "KB-004",
+     "kb_top3": [
+      "KB-004",
+      "KB-005",
+      "KB-006"
+     ],
+     "fix_from": [
+      "KB-004"
+     ],
+     "reasons": "classifier, similar tickets and KB agree (confidence 86%)",
+     "questions": [],
+     "priority_reason": "P3: impact Medium (just me, critical service) x urgency Medium (blocked, test).",
+     "masked_description": "I need an unlock on my training login. Every page I use for the exercise sends me back to the account locked notice.",
+     "confidence": 0.859,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-20b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T11",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "RECOMMEND",
+     "category": "Network",
+     "subcategory": "VPN problem",
+     "symptom_type": "slow",
+     "team": "Network",
+     "priority": "P4",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00190",
+     "top_kb": "KB-021",
+     "kb_top3": [
+      "KB-021",
+      "KB-022",
+      "KB-020"
+     ],
+     "fix_from": [
+      "KB-021"
+     ],
+     "reasons": "classifier, similar tickets and KB agree (confidence 86%)",
+     "questions": [],
+     "priority_reason": "P4: impact Low (just me, critical service) x urgency Medium (slow, production).",
+     "masked_description": "It takes a long time for the VPN to set up routes, but everything opens after that.",
+     "confidence": 0.855,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-20b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T12",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "RECOMMEND",
+     "category": "Network",
+     "subcategory": "Wi-Fi problem",
+     "symptom_type": "slow",
+     "team": "Network",
+     "priority": "P4",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00119",
+     "top_kb": "KB-025",
+     "kb_top3": [
+      "KB-025",
+      "KB-023",
+      "KB-024"
+     ],
+     "fix_from": [
+      "KB-025"
+     ],
+     "reasons": "classifier, similar tickets and KB agree (confidence 88%)",
+     "questions": [],
+     "priority_reason": "P4: impact Low (just me, important service) x urgency Medium (slow, not applicable).",
+     "masked_description": "Intermittent Wi-Fi at my desk during the late shift. I can stay connected by using the other band.",
+     "confidence": 0.881,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-20b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T13",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "RECOMMEND",
+     "category": "Device & Software",
+     "subcategory": "Computer problem",
+     "symptom_type": "slow",
+     "team": "Desktop Support",
+     "priority": "P3",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00532",
+     "top_kb": "KB-037",
+     "kb_top3": [
+      "KB-037",
+      "KB-054",
+      "KB-039"
+     ],
+     "fix_from": [
+      "KB-037"
+     ],
+     "reasons": "classifier, similar tickets and KB agree (confidence 81%)",
+     "questions": [],
+     "priority_reason": "P3: impact Medium (my team, minor service) x urgency Medium (slow, not applicable).",
+     "masked_description": "Our group can stay on the laptop screen, but the external monitors randomly go dark on their assigned desks.",
+     "confidence": 0.808,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-120b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T14",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "RECOMMEND",
+     "category": "Business System",
+     "subcategory": "Slow",
+     "symptom_type": "slow",
+     "team": "Applications",
+     "priority": "P3",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-01128",
+     "top_kb": "KB-032",
+     "kb_top3": [
+      "KB-032",
+      "KB-033",
+      "KB-034"
+     ],
+     "fix_from": [
+      "KB-032"
+     ],
+     "reasons": "classifier, similar tickets and KB agree (confidence 81%)",
+     "questions": [],
+     "priority_reason": "P3: impact Low (just me, critical service) x urgency High (slow, production, busy period).",
+     "masked_description": "I can still generate my cost report on 30 September 2026 if I use the compact layout. The usual view seems to take forever.",
+     "confidence": 0.813,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-120b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T15",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Business System",
+     "subcategory": "Wrong data",
+     "symptom_type": "slow",
+     "team": "Applications",
+     "priority": "P4",
+     "escalate_to": "Applications",
+     "hype_detected": true,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": true,
+     "possible_duplicate": false,
+     "top_similar": "INC-00296",
+     "top_kb": "KB-035",
+     "kb_top3": [
+      "KB-035",
+      "KB-032",
+      "KB-029"
+     ],
+     "fix_from": null,
+     "reasons": "knowledge gap: the LLM found no article that really fits, handing to Applications",
+     "questions": [],
+     "priority_reason": "P4: impact Low (just me, critical service) x urgency Medium (slow, production).",
+     "masked_description": "On the 13th the production ledger shows an old cost centre for my entries. I can replace it with the right one. If this isn't fixed in five minutes I'm going to the director.",
+     "confidence": 0.486,
+     "dropped_steps": null,
+     "llm": null
+    },
+    "fails": [
+     "outcome: expected 'RECOMMEND', got 'ESCALATE'",
+     "knowledge_gap: expected False, got True",
+     "fix_from: expected 'KB-035', got None"
+    ],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T16",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "RECOMMEND",
+     "category": "Device & Software",
+     "subcategory": "Install software",
+     "symptom_type": "request",
+     "team": "Service Desk",
+     "priority": "P4",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00894",
+     "top_kb": "KB-047",
+     "kb_top3": [
+      "KB-047",
+      "KB-046",
+      "KB-042"
+     ],
+     "fix_from": [
+      "KB-046",
+      "KB-047"
+     ],
+     "reasons": "classifier, similar tickets and KB agree (confidence 75%)",
+     "questions": [],
+     "priority_reason": "P4: impact Low (just me, minor service) x urgency Low (request, not applicable).",
+     "masked_description": "Need a PDF tool installed for next week.",
+     "confidence": 0.753,
+     "dropped_steps": 0,
+     "llm": "gemini:gemini-3.1-flash-lite"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T17",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "REVIEW",
+     "category": "Account & Access",
+     "subcategory": "Password reset",
+     "symptom_type": "blocked",
+     "team": "Service Desk",
+     "priority": "P3",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": false,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-01070",
+     "top_kb": "KB-002",
+     "kb_top3": [
+      "KB-002",
+      "KB-001",
+      "KB-003"
+     ],
+     "fix_from": [
+      "KB-001"
+     ],
+     "reasons": "user chose 'Business System', model says 'Account & Access'",
+     "questions": [],
+     "priority_reason": "P3: impact Medium (just me, critical service) x urgency Medium (blocked, test).",
+     "masked_description": "the test self-service page won't send my password reset message. i can't get into the sandbox.",
+     "confidence": 0.72,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-20b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T18",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "NEED_INFO",
+     "category": "Email & Communication",
+     "subcategory": "Chat or video call problem",
+     "symptom_type": "blocked",
+     "team": "Applications",
+     "priority": "P3",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": false,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00767",
+     "top_kb": "KB-013",
+     "kb_top3": [
+      "KB-013",
+      "KB-015",
+      "KB-014"
+     ],
+     "fix_from": [],
+     "reasons": "not enough detail to act on; ask the user the questions below",
+     "questions": [
+      "What device and operating system are you using for the production meetings?",
+      "Does the meeting application close completely or just exit the meeting when you select the microphone?"
+     ],
+     "priority_reason": "P3: impact Low (just me, important service) x urgency High (blocked, production).",
+     "masked_description": "Every production meeting exits when I select my microphone. I'm unable to join the appointments assigned to me.",
+     "confidence": 0.468,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-20b"
+    },
+    "fails": [
+     "outcome: expected 'REVIEW', got 'NEED_INFO'",
+     "reasons should contain [\"user chose 'Device & Software'\"]; got 'not enough detail to act on; ask the user the questions below'"
+    ],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T19",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "REVIEW",
+     "category": "Network",
+     "subcategory": "VPN problem",
+     "symptom_type": "slow",
+     "team": "Network",
+     "priority": "P4",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-01175",
+     "top_kb": "KB-020",
+     "kb_top3": [
+      "KB-020",
+      "KB-022",
+      "KB-019"
+     ],
+     "fix_from": [
+      "KB-020"
+     ],
+     "reasons": "may be two problems in one ticket ('my vpn says connected but the shared drive will not open from home' -> VPN problem / 'the printer asks for a3 paper every time i print a normal letter.' -> Printer problem): one fix may miss the other",
+     "questions": [],
+     "priority_reason": "P4: impact Low (just me, critical service) x urgency Medium (slow, not applicable).",
+     "masked_description": "My VPN says connected but the shared drive will not open from home. Separately, the printer asks for A3 paper every time I print a normal letter.",
+     "confidence": 0.879,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-120b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T20",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Account & Access",
+     "subcategory": "Account locked",
+     "symptom_type": "blocked",
+     "team": "Service Desk",
+     "priority": "P2",
+     "escalate_to": "Service Desk",
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00429",
+     "top_kb": "KB-004",
+     "kb_top3": [
+      "KB-004",
+      "KB-005",
+      "KB-006"
+     ],
+     "fix_from": [
+      "KB-004"
+     ],
+     "reasons": "P2: a Service Desk engineer owns it; the cited fix is attached",
+     "questions": [],
+     "priority_reason": "P2: impact Medium (just me, critical service) x urgency High (blocked, production).",
+     "masked_description": "I entered the code from the previous prompt and locked my company user. I'm stuck at sign-in for all my tools.",
+     "confidence": 0.853,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-120b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T21",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Email & Communication",
+     "subcategory": "Email problem",
+     "symptom_type": "outage",
+     "team": "Applications",
+     "priority": "P1",
+     "escalate_to": "Applications",
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-01048",
+     "top_kb": "KB-012",
+     "kb_top3": [
+      "KB-012",
+      "KB-011",
+      "KB-010"
+     ],
+     "fix_from": [
+      "KB-012"
+     ],
+     "reasons": "P1: a Applications engineer owns it; the cited fix is attached",
+     "questions": [],
+     "priority_reason": "P1: impact High (many teams, critical service) x urgency High (outage, production).",
+     "masked_description": "Mail is down for the entire tenant, including support, sales and our service accounts. Nothing is leaving the queue.",
+     "confidence": 0.875,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-20b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T22",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Device & Software",
+     "subcategory": "Printer problem",
+     "symptom_type": "blocked",
+     "team": "Desktop Support",
+     "priority": "P2",
+     "escalate_to": "Desktop Support",
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00171",
+     "top_kb": "KB-040",
+     "kb_top3": [
+      "KB-040",
+      "KB-041",
+      "KB-042"
+     ],
+     "fix_from": [
+      "KB-040"
+     ],
+     "reasons": "P2: a Desktop Support engineer owns it; the cited fix is attached",
+     "questions": [],
+     "priority_reason": "P2: impact High (many teams, minor service) x urgency Medium (blocked, not applicable).",
+     "masked_description": "Multiple teams are queuing at the one dispatch label printer and it rejects every job. None of the waiting loads can be processed.",
+     "confidence": 0.872,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-20b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T23",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Security",
+     "subcategory": "Suspicious email",
+     "symptom_type": "question",
+     "team": "Security",
+     "priority": "P1",
+     "escalate_to": "Security",
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00346",
+     "top_kb": "KB-049",
+     "kb_top3": [
+      "KB-049",
+      "KB-050",
+      "KB-002"
+     ],
+     "fix_from": [
+      "KB-049"
+     ],
+     "reasons": "P1: a Security engineer owns it; the cited fix is attached",
+     "questions": [],
+     "priority_reason": "P1: impact High (just me, minor service) x urgency High (question, not applicable).",
+     "masked_description": "Weird email with a login button. Real?",
+     "confidence": 0.883,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-20b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T24",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Security",
+     "subcategory": "Virus",
+     "symptom_type": "blocked",
+     "team": "Security",
+     "priority": "P1",
+     "escalate_to": "Security",
+     "hype_detected": false,
+     "user_agrees": false,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00718",
+     "top_kb": "KB-051",
+     "kb_top3": [
+      "KB-051",
+      "KB-026",
+      "KB-024"
+     ],
+     "fix_from": [
+      "KB-051"
+     ],
+     "reasons": "P1: a Security engineer owns it; the cited fix is attached",
+     "questions": [],
+     "priority_reason": "P1: impact High (just me, minor service) x urgency High (blocked, production).",
+     "masked_description": "My laptop got very slow after I opened an invoice attachment, and now a window says my files are encrypted and asks for payment.",
+     "confidence": 0.712,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-120b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T25",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Network",
+     "subcategory": "VPN problem",
+     "symptom_type": "outage",
+     "team": "Network",
+     "priority": "P1",
+     "escalate_to": "Network",
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": false,
+     "possible_duplicate": true,
+     "top_similar": "INC-00408",
+     "top_kb": "KB-022",
+     "kb_top3": [
+      "KB-022",
+      "KB-019",
+      "KB-021"
+     ],
+     "fix_from": [
+      "KB-022"
+     ],
+     "reasons": "P1: a Network engineer owns it; the cited fix is attached",
+     "questions": [],
+     "priority_reason": "P1: impact High (many teams, critical service) x urgency High (outage, production).",
+     "masked_description": "The live VPN stopped accepting connections from everyone. The gateways both time out from several home ISPs.",
+     "confidence": 0.897,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-120b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T26",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Business System",
+     "subcategory": "Wrong data",
+     "symptom_type": "slow",
+     "team": "Applications",
+     "priority": "P4",
+     "escalate_to": "Applications",
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": true,
+     "possible_duplicate": false,
+     "top_similar": "INC-00176",
+     "top_kb": "KB-036",
+     "kb_top3": [
+      "KB-036",
+      "KB-035",
+      "KB-009"
+     ],
+     "fix_from": null,
+     "reasons": "knowledge gap: no KB article covers 'Wrong data' on Payroll System, handing to Applications",
+     "questions": [],
+     "priority_reason": "P4: impact Low (just me, critical service) x urgency Medium (slow, production).",
+     "masked_description": "the payroll summary on the 10th shows the wrong division for the staff i check. i can use the actual pay register for my review instead.",
+     "confidence": 0.389,
+     "dropped_steps": null,
+     "llm": null
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T27",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "ESCALATE",
+     "category": "Business System",
+     "subcategory": "Slow",
+     "symptom_type": "slow",
+     "team": "Applications",
+     "priority": "P4",
+     "escalate_to": "Applications",
+     "hype_detected": true,
+     "user_agrees": true,
+     "possible_security": false,
+     "knowledge_gap": true,
+     "possible_duplicate": false,
+     "top_similar": "INC-00676",
+     "top_kb": "KB-036",
+     "kb_top3": [
+      "KB-036",
+      "KB-032",
+      "KB-020"
+     ],
+     "fix_from": null,
+     "reasons": "knowledge gap: no KB article covers 'Slow' on Shared Files, handing to Applications",
+     "questions": [],
+     "priority_reason": "P4: impact Low (just me, important service) x urgency Medium (slow, production).",
+     "masked_description": "My shared folder displays recent versions after a long wait, though the download works immediately.",
+     "confidence": 0.536,
+     "dropped_steps": null,
+     "llm": null
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "T28",
+    "kind": "ticket",
+    "actual": {
+     "outcome": "REVIEW",
+     "category": "Email & Communication",
+     "subcategory": "Email problem",
+     "symptom_type": "slow",
+     "team": "Applications",
+     "priority": "P4",
+     "escalate_to": null,
+     "hype_detected": false,
+     "user_agrees": true,
+     "possible_security": true,
+     "knowledge_gap": false,
+     "possible_duplicate": false,
+     "top_similar": "INC-00622",
+     "top_kb": "KB-010",
+     "kb_top3": [
+      "KB-010",
+      "KB-012",
+      "KB-049"
+     ],
+     "fix_from": [
+      "KB-010"
+     ],
+     "reasons": "possible security issue: check with Security team",
+     "questions": [],
+     "priority_reason": "P4: impact Low (just me, critical service) x urgency Medium (slow, production).",
+     "masked_description": "The email app on my laptop keeps asking for my password. Webmail still works, so I can read mail there. Reach me at [email] or [phone].",
+     "confidence": 0.834,
+     "dropped_steps": 0,
+     "llm": "groq:openai/gpt-oss-20b"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "K01",
+    "kind": "kb",
+    "actual": {
+     "answered": true,
+     "top_source": "KB-001",
+     "answer_from": [
+      "KB-001"
+     ],
+     "source_ids": [
+      "KB-001",
+      "KB-004",
+      "KB-002"
+     ],
+     "cites_only_self_help": true,
+     "only_public_sources": true,
+     "steps": 3,
+     "llm": "groq"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "K02",
+    "kind": "kb",
+    "actual": {
+     "answered": true,
+     "top_source": "KB-020",
+     "answer_from": [
+      "KB-020"
+     ],
+     "source_ids": [
+      "KB-020",
+      "KB-019",
+      "KB-007"
+     ],
+     "cites_only_self_help": true,
+     "only_public_sources": true,
+     "steps": 3,
+     "llm": "groq"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "K03",
+    "kind": "kb",
+    "actual": {
+     "answered": true,
+     "top_source": "KB-016",
+     "answer_from": [
+      "KB-016"
+     ],
+     "source_ids": [
+      "KB-016",
+      "KB-018",
+      "KB-007"
+     ],
+     "cites_only_self_help": true,
+     "only_public_sources": true,
+     "steps": 4,
+     "llm": "gemini"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "K04",
+    "kind": "kb",
+    "actual": {
+     "answered": true,
+     "top_source": "KB-010",
+     "answer_from": [
+      "KB-010"
+     ],
+     "source_ids": [
+      "KB-010",
+      "KB-004",
+      "KB-005"
+     ],
+     "cites_only_self_help": true,
+     "only_public_sources": true,
+     "steps": 3,
+     "llm": "groq"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "K05",
+    "kind": "kb",
+    "actual": {
+     "answered": true,
+     "top_source": "KB-043",
+     "answer_from": [
+      "KB-043"
+     ],
+     "source_ids": [
+      "KB-043",
+      "KB-039",
+      "KB-053"
+     ],
+     "cites_only_self_help": true,
+     "only_public_sources": true,
+     "steps": 3,
+     "llm": "groq"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "K06",
+    "kind": "kb",
+    "actual": {
+     "answered": true,
+     "top_source": "KB-049",
+     "answer_from": [
+      "KB-049"
+     ],
+     "source_ids": [
+      "KB-049",
+      "KB-002",
+      "KB-010"
+     ],
+     "cites_only_self_help": true,
+     "only_public_sources": true,
+     "steps": 3,
+     "llm": "groq"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "K07",
+    "kind": "kb",
+    "actual": {
+     "answered": false,
+     "top_source": "KB-001",
+     "answer_from": null,
+     "source_ids": [
+      "KB-001",
+      "KB-028",
+      "KB-011"
+     ],
+     "cites_only_self_help": true,
+     "only_public_sources": true,
+     "steps": 0,
+     "llm": "groq"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "K08",
+    "kind": "kb",
+    "actual": {
+     "answered": false,
+     "top_source": "KB-035",
+     "answer_from": null,
+     "source_ids": [
+      "KB-035",
+      "KB-018",
+      "KB-043"
+     ],
+     "cites_only_self_help": true,
+     "only_public_sources": true,
+     "steps": 0,
+     "llm": "groq"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "K09",
+    "kind": "kb",
+    "actual": {
+     "answered": false,
+     "top_source": "KB-035",
+     "answer_from": null,
+     "source_ids": [
+      "KB-035",
+      "KB-053",
+      "KB-018"
+     ],
+     "cites_only_self_help": true,
+     "only_public_sources": true,
+     "steps": 0,
+     "llm": "groq"
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   },
+   {
+    "id": "K10",
+    "kind": "kb",
+    "actual": {
+     "answered": false,
+     "top_source": "KB-002",
+     "answer_from": null,
+     "source_ids": [
+      "KB-002",
+      "KB-014",
+      "KB-004"
+     ],
+     "cites_only_self_help": true,
+     "only_public_sources": true,
+     "steps": 0,
+     "llm": null
+    },
+    "fails": [],
+    "known": [],
+    "fixed": []
+   }
+  ]
+ ]
+}

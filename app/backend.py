@@ -287,8 +287,10 @@ def _test_groq(key: str) -> str:
 
 def _ollama_up() -> bool:
     try:
-        url = os.getenv("OLLAMA_URL", "http://localhost:11434")
-        return requests.get(url + "/api/tags", timeout=1.5).status_code == 200
+        # 127.0.0.1, not localhost: on Windows "localhost" tries IPv6 first, and a closed port
+        # there waits out the whole timeout before IPv4 is tried. The sidebar runs this every 30 s.
+        url = os.getenv("OLLAMA_URL", "http://127.0.0.1:11434")
+        return requests.get(url + "/api/tags", timeout=0.5).status_code == 200
     except requests.RequestException:
         return False
 

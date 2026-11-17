@@ -65,7 +65,7 @@ How roles work end to end (dropdown → menu → page guard → role-filtered se
 - **Left side:** the ticket form.
   - Every option list comes from `src/taxonomy.py`.
   - The subcategory list only shows the chosen category's subcategories.
-  - **Try an example** buttons cover the 4 demo cases from `Docs/PROJECT_OVERVIEW.md` §14: INC-00347 + hype (held-out), calm vs hype, vague, and wrong website prices.
+  - **Test cases** buttons fill the form with the 6 demo tickets from [`Docs/DEMO_SCRIPT.md`](../Docs/DEMO_SCRIPT.md), in script order: VPN outage (P1), VPN + shared drive (RECOMMEND, also used for the hype toggle), INC-00347 + hype (held-out), wrong website prices (knowledge gap), vague, and ransomware (Security P1). Hover over a button to see its expected result. The KB Assistant has its own 4 test-case questions.
 - **Right side**, top to bottom:
   1. **Outcome banner:** RECOMMEND green, REVIEW amber, ESCALATE red, NEED INFO blue. Shows the confidence, the reasons, who to escalate to, and the clarifying questions.
   2. **Chips:** hype ignored · "you chose X, model says Y" · possible security issue · knowledge gap · tiebreak used.

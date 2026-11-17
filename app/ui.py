@@ -103,13 +103,20 @@ def kpi(col, label: str, value: str, help: str | None = None) -> None:
 
 
 def feedback_widget(analysis_id: str, target_type: str, target_id: str, key: str) -> None:
-    """FR-06: Useful / Incorrect / Unresolved + optional comment. Stays editable after saving."""
+    """FR-06: Useful / Incorrect / Unresolved + optional comment. Stays editable after saving.
+
+    Save is always enabled and checks the verdict when clicked. A `disabled=` button only turns
+    on after the server reruns the page, so a quick click after picking a verdict hit a dead button.
+    """
     k = f"fb_{analysis_id}_{key}"
-    c1, c2, c3 = st.columns([3, 4, 1.4], vertical_alignment="bottom")
+    c1, c2, c3 = st.columns([5, 4, 1.4], vertical_alignment="bottom")   # wide enough for "Unresolved"
     verdict = c1.segmented_control("Feedback", VERDICTS, key=f"{k}_v", label_visibility="collapsed")
     comment = c2.text_input("Comment", key=f"{k}_c", placeholder="Optional comment",
                             label_visibility="collapsed")
-    if c3.button("Save", key=f"{k}_s", disabled=verdict is None, width="stretch"):
+    if c3.button("Save", key=f"{k}_s", width="stretch"):
+        if verdict is None:
+            st.toast("Pick Useful, Incorrect or Unresolved first, then Save.", icon="⚠️")
+            return
         backend.add_feedback({"analysis_id": analysis_id, "analyst": state.analyst(),
                               "target_type": target_type, "target_id": target_id,
                               "verdict": verdict.lower(), "comment": comment})
