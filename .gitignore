@@ -1,0 +1,17 @@
+# Built by build/train_models.py and build/build_index.py — regenerate, don't commit (model file is ~28 MB)
+data/store/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Secrets (Groq API key)
+.env
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

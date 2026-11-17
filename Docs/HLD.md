@@ -4,246 +4,325 @@
 
 | Item | Value |
 |---|---|
-| Purpose | Analyse incoming IT tickets, find similar past cases, recommend an evidence-backed fix, cut MTTR |
+| Purpose | Analyse incoming IT tickets, find similar past cases, recommend a cited fix, cut MTTR |
 | Scope | Analyse + recommend only. No auto-closure, no system changes, no production ITSM writes |
-| Users | L1 Analyst · L2 Engineer · Security Analyst · Admin (sets API key) |
-| Deployment | Single machine (laptop / VM), Streamlit app, local data stores, optional cloud LLM |
+| Users | Employee (asks the KB) · Analyst (works tickets) · Admin (key, feedback, evaluation) |
+| Data | **Our own curated dataset**: 1,200 synthetic tickets + 55 KB articles (all labels generated, stated as such) |
+| Deployment | Single machine, Streamlit app, local files, Groq cloud LLM with local Ollama fallback |
+
+**Who does what**
+
+| Job | Done by | Never done by |
+|---|---|---|
+| Category, subcategory, symptom type | 🧠 ML models (logistic regression) | — |
+| Team, impact, urgency, priority | 📏 Rules + ITIL matrix | LLM |
+| Resolving an unsure classification | 🤖 LLM tiebreak, **only** when the combined score is below 0.75 | — |
+| Writing the fix | 🤖 LLM, every step cited to a KB article | — |
+| Final decision | 📏 Rules | LLM |
 
 ---
 
 ## 1. System context
 
-Who and what the system talks to.
-
 ```mermaid
 flowchart LR
-    L1(["👤 L1 Analyst"]) --> SYS
-    L2(["👤 L2 Engineer"]) --> SYS
-    SEC(["👤 Security Analyst"]) --> SYS
-    ADM(["👤 Admin"]) -->|"sets API key"| SYS
+    EMP(["👤 Employee"]) -->|"asks a question"| SYS
+    AN(["👤 Analyst"]) -->|"submits / reviews tickets"| SYS
+    ADM(["👤 Admin"]) -->|"API key, evaluation"| SYS
 
-    SYS["🎫 ResolveIQ<br/>ticket analysis & resolution assistant"]
+    SYS["🎫 ResolveIQ"]
 
-    SYS -->|"HTTPS: prompts, JSON replies"| GROQ[["☁️ Groq Cloud LLM"]]
-    SYS -->|"localhost:11434"| OLL[["💻 Ollama local LLM"]]
-    HF[("🤗 Hugging Face<br/>ticket dataset")] -->|"one-time download"| SYS
+    SYS -->|"HTTPS: tiebreak + fix prompts"| GROQ[["☁️ Groq Cloud LLM"]]
+    SYS -->|"localhost:11434, if Groq fails"| OLL[["💻 Ollama local LLM"]]
 ```
 
-| External system | Direction | Data exchanged | If unavailable |
-|---|---|---|---|
-| Groq Cloud | outbound HTTPS | redacted ticket + evidence → JSON fix | fall back to Ollama |
-| Ollama (local) | localhost | same as Groq | fall back to offline mode |
-| Hugging Face | one-time download | ticket corpus | use cached copy in `data/` |
+| External system | Data sent | If unavailable |
+|---|---|---|
+| Groq Cloud | PII-hidden ticket + evidence | use Ollama |
+| Ollama (local) | same | tiebreak skipped → REVIEW · fix not written → ESCALATE "LLM unavailable" (evidence still shown) |
 
 ---
 
-## 2. Layered architecture
+## 2. The dataset (curated by us)
+
+| File | Made with | Contents |
+|---|---|---|
+| `data/resolveiq_tickets.jsonl` | `Prompts/DATA_GENERATION_PROMPT.md` | 1,200 tickets |
+| `data/knowledge_base/articles.json` | `Prompts/KB_GENERATION_PROMPT.md` | 55 KB articles, every subcategory covered |
+
+**Ticket fields**
+
+| What the user enters (input) | What the system predicts (answer) |
+|---|---|
+| `description` (free text) | `category` (6) · `subcategory` (18) |
+| `service` (14, dropdown) | `symptom_type`: outage / blocked / slow / request / question |
+| `environment`: Production / Test / Not applicable | `team` (5) |
+| `who_affected`: Just me / My team / Many teams / Customers | `impact`, `urgency`: High / Medium / Low |
+| `user_category`, `user_subcategory` (the user's guess) | `priority`: P1–P4 |
+
+- **Trusted facts:** service, environment, who_affected. **May be wrong:** description tone, and the user's own category (wrong ~20% of the time on purpose).
+- **Built-in tests:** ~15% of tickets contain hype ("URGENT, I'm the CEO") that must **not** raise priority, and ~20% have a wrong user category that the model must correct.
+- **Labels are generated:** answer fields follow the written rules, not real ticket history. Rows that break the rules are dropped before training (`check_rules`).
+- **Split:** 70 / 15 / 15 train / validation / test, stratified by subcategory. Only train tickets go into the search index.
+
+**KB article fields:** `kb_id, title, category, subcategory, services[], symptom_types[], symptoms[], error_messages[], cause, self_help_steps[], support_steps[{n, do, expected}], verify, escalate_to, escalate_when, access_level (public | internal), keywords[], related_articles[]`
+
+---
+
+## 3. The pipeline (9 steps)
 
 ```mermaid
 flowchart TB
-    subgraph P["🖥️ Presentation layer — Streamlit"]
+    S1["1 Ticket form<br/>text + dropdowns"] --> S2["2 Clean text<br/>hide PII, drop hype"]
+    S2 --> S3["3 Classify<br/>logistic regression"]
+    S2 --> S4["4 Similar tickets vote<br/>vector + keyword search"]
+    S3 --> S5{"5 Combined score<br/>0.6 model + 0.2 vote + 0.2 user"}
+    S4 --> S5
+    S5 -->|"≥ 0.75"| S6
+    S5 -->|"< 0.75"| TB["🤖 LLM tiebreak<br/>picks from top candidates"]
+    TB --> S6["6 Priority<br/>rules + matrix + written reason"]
+    S6 --> S7["7 Find KB articles<br/>vector + keyword search"]
+    S7 --> S8["8 Write fix<br/>🤖 LLM, every step cited"]
+    S8 --> S9{"9 Decide"}
+    S9 --> R1["✅ RECOMMEND"]
+    S9 --> R2["👀 REVIEW"]
+    S9 --> R3["⬆️ ESCALATE"]
+    S9 --> R4["❓ NEED INFO"]
+```
+
+| # | Step | Input | How | Output |
+|---|---|---|---|---|
+| 1 | Ticket form | — | Streamlit form: description + 5 dropdowns | raw ticket |
+| 2 | Clean text | description | regex: hide emails / phones / IDs · drop hype sentences (`src/text.py`) · completeness check | clean text, `too_vague` flag |
+| 3 | Classify | clean text + service | TF-IDF + MiniLM embedding → 3 calibrated logistic regressions (`category`, `subcategory`, `symptom_type`) | label + probability each |
+| 4 | Similar tickets vote | clean text | vector (ChromaDB) + keyword (BM25) → RRF merge → +15% if same service. **Doesn't use step 3**, so it's an independent opinion | top 5 tickets + vote = their majority category |
+| 5 | Combined score | steps 3, 4 + user's pick | category score = `0.6 × model prob + 0.2 × (vote = category) + 0.2 × (user picked it)`. Subcategory is then chosen only from that category's subcategories | category + subcategory + score |
+| 5a | Review flags | step 5 | flag REVIEW if the user's category disagrees, the score is < 0.75, or a **security safety net** fires (Security prob ≥ 0.20, a security cue in the text, or the user picked Security) | `needs_review` + reasons |
+| 5b | LLM tiebreak | top 3 candidates + ticket + similar tickets | **only if score < 0.75**: LLM picks one candidate (it can't invent a new label) and gives a reason | label + reason (still REVIEW) |
+| 6 | Priority | facts + predicted category & symptom type | `src/rules.py`: team, impact, urgency → Impact × Urgency matrix. **No LLM, tone ignored** | P1–P4 + one-sentence reason |
+| 7 | Find KB articles | clean text + subcategory | access filter (role) → vector + keyword → RRF → boost same subcategory (× probability) and service | top 3 articles + match score |
+| 8 | Write fix | ticket, labels, top 3 articles, top 5 tickets | LLM (Groq → Ollama) returns JSON. Every step cites a step ID like `KB-020/support/1` · citation check drops steps whose ID or text doesn't match | cited steps + `citation_validity` |
+| 9 | Decide | everything above | rules, first match wins (§3.1) | outcome + reasons + confidence |
+
+### 3.1 Decision rules (step 9)
+
+**Confidence** = average of three 0–1 numbers: combined classification score, best KB match score, citation validity.
+
+| # | If | Then |
+|---|---|---|
+| 1 | description too vague | ❓ NEED INFO, ask 1–2 questions |
+| 2 | LLM unavailable, or no KB article matches well enough (**knowledge gap**, logged) | ⬆️ ESCALATE to the predicted team |
+| 3 | priority P1 or P2 | ⬆️ ESCALATE (fix still shown to speed up the engineer) |
+| 4 | any review flag from step 5a, LLM tiebreak was needed, top 2 articles disagree, or confidence < 0.6 | 👀 REVIEW |
+| 5 | otherwise | ✅ RECOMMEND |
+
+Every outcome is shown with its reasons in plain words.
+
+**Measured so far** (`reports/EVALUATION.md`, 180 held-out tickets): category 96.1% (vs 80.6% for trusting the user), priority 98.9%, 2 of 16 P1s missed (both still flagged for review), hype has no effect on priority, 29% of tickets go to REVIEW.
+
+---
+
+## 4. Layered architecture
+
+```mermaid
+flowchart TB
+    subgraph P["🖥️ Presentation — Streamlit (3 parts)"]
         direction LR
-        P1["🎫 New Ticket"] ~~~ P2["📁 Past Tickets"] ~~~ P3["📊 Evaluation"] ~~~ P4["📚 Knowledge Base"] ~~~ P5["💬 Feedback"] ~~~ P6["⏱️ MTTR"] ~~~ P7["🔑 API Key"]
+        P1["🎫 Support Assistant<br/>new ticket · past tickets"] ~~~ P2["📚 KB Assistant<br/>ask the knowledge base"] ~~~ P3["⚙️ Admin<br/>feedback · evaluation · MTTR · KB · API key"]
     end
 
-    subgraph A["⚙️ Application layer — services"]
+    subgraph A["⚙️ Services"]
         direction LR
-        A1["Pipeline orchestrator"] ~~~ A2["Search service"] ~~~ A3["Feedback service"] ~~~ A4["Evaluation service"] ~~~ A5["MTTR service"] ~~~ A6["Settings & key manager"] ~~~ A7["Access control"]
+        A1["Pipeline orchestrator"] ~~~ A2["Search service"] ~~~ A3["Feedback service"] ~~~ A4["Evaluation service"] ~~~ A5["MTTR service"] ~~~ A6["Settings & key"] ~~~ A7["Access control"]
     end
 
-    subgraph AI["🧠 AI / ML layer — engines"]
+    subgraph AI["🧠 Engines"]
         direction LR
-        E1["Text processor<br/>PII + key facts"] ~~~ E2["Embedding engine<br/>bge-small"] ~~~ E3["Classifier engine<br/>LogReg ×5"] ~~~ E4["Priority engine<br/>Impact × Urgency"] ~~~ E5["Retrieval engine<br/>vector + BM25 + RRF"] ~~~ E6["Re-ranker<br/>cross-encoder"] ~~~ E7["LLM gateway<br/>Groq → Ollama → offline"] ~~~ E8["Citation verifier"] ~~~ E9["Decision engine"]
+        E1["Text cleaner"] ~~~ E2["Classifier<br/>LogReg ×3"] ~~~ E3["Combined scorer"] ~~~ E4["Priority rules"] ~~~ E5["Retriever<br/>vector + BM25 + RRF"] ~~~ E6["LLM gateway<br/>Groq → Ollama"] ~~~ E7["Citation checker"] ~~~ E8["Decision rules"]
     end
 
-    subgraph D["💾 Data layer"]
+    subgraph D["💾 Data"]
         direction LR
-        D1[("ChromaDB<br/>tickets + KB vectors")] ~~~ D2[("Model store<br/>.joblib")] ~~~ D3[("KB JSON")] ~~~ D4[("feedback.json")] ~~~ D5[("SQLite<br/>audit + timestamps")] ~~~ D6[("Ticket corpus<br/>CSV / parquet")] ~~~ D7[("MTTR simulated data")]
+        D1[("Tickets JSONL")] ~~~ D2[("KB JSON")] ~~~ D3[("ChromaDB + BM25")] ~~~ D4[("Models .joblib")] ~~~ D5[("feedback.json")] ~~~ D6[("SQLite<br/>audit + timestamps")]
     end
 
     P --> A --> AI --> D
     A --> D
 ```
 
-**Layer rules**
-- Pages call **services only** (never models or files directly), so the UI stays thin and the same services serve the evaluation and any API.
-- Services call **engines**; engines are stateless functions with typed inputs and outputs (pydantic).
-- Only the **data layer** touches disk; only the **LLM gateway** talks to the network.
+**Layer rules:** pages call services only; services call engines; only the data layer touches disk; only the LLM gateway talks to the network.
 
 ---
 
-## 3. Components
+## 5. Components
 
-### 3.1 Presentation layer
-| Page | Responsibility | Calls |
-|---|---|---|
-| 🎫 New Ticket | input form, show decision, classification, similar tickets, cited fix, confidence, trace, feedback buttons | Pipeline orchestrator, Feedback service |
-| 📁 Past Tickets | browse and filter the corpus (app, category, priority, status, team, date) | Search service |
-| 📊 Evaluation | run the test set; show confusion matrices, retrieval comparison, failed cases | Evaluation service |
-| 📚 Knowledge Base | browse and search KB articles; see which tickets cited each one | Search service |
-| 💬 Feedback | feedback per analyst and per article; totals | Feedback service |
-| ⏱️ MTTR | baseline vs assisted MTTR by priority and category | MTTR service |
-| 🔑 API Key | enter or test Groq key, choose model, see active LLM layer | Settings & key manager |
-
-### 3.2 Application layer
-| Service | Responsibility | Key interface |
-|---|---|---|
-| Pipeline orchestrator | runs the 5 stages in order, times each, builds the result and audit record | `analyze_ticket(ticket, role) → AnalysisResult` |
-| Search service | filtered listing and search of tickets and KB | `search(query, filters, role) → list` |
-| Feedback service | read and write `feedback.json`; aggregate per analyst and per item | `add_feedback(item)`, `get_feedback(analyst?)` |
-| Evaluation service | run the pipeline on the test set and compute metrics | `run_evaluation() → EvalReport` |
-| MTTR service | compute baseline and assisted MTTR from timestamps | `get_mttr(filters) → MTTRReport` |
-| Settings & key manager | hold API key in session or `.env`, test the connection, pick the layer | `set_key(k)`, `test_connection()`, `active_layer()` |
-| Access control | map role → visible sensitivity levels; mask exports | `allowed_levels(role)`, `mask(record, role)` |
-
-### 3.3 AI / ML layer
-| Engine | What it does | Technology | Output |
+### 5.1 Presentation
+| Part | Page | Shows | Role |
 |---|---|---|---|
-| Text processor | clean text, hide PII, extract key facts, completeness check | regex + word lists | clean text, facts, completeness |
-| Embedding engine | text → 384-number vector | `bge-small-en-v1.5` (sentence-transformers) | vector |
-| Classifier engine | category, subcategory, team, impact, urgency + probabilities; LLM adjudication when unsure | scikit-learn logistic regression (calibrated) + LLM gateway | labels + confidence |
-| Priority engine | rules + ML → take higher → Impact × Urgency matrix | Python rules + matrix in YAML | P1–P4 + reason |
-| Retrieval engine | role filter → vector search + keyword search → RRF merge → metadata boost | ChromaDB + `rank-bm25` | top-20 candidates |
-| Re-ranker | re-score top 20 reading ticket + candidate together | cross-encoder `ms-marco-MiniLM-L-6-v2` | top 5 tickets, top 3 KB |
-| LLM gateway | single entry point to any LLM with failover and timeouts | Groq SDK, Ollama HTTP, offline template | JSON reply + layer used |
-| Citation verifier | drop steps citing unknown sources or misquoting them | ID check + `rapidfuzz` | verified steps + % valid |
-| Decision engine | confidence from 5 signals; ordered rules | Python | RECOMMEND / REVIEW / ESCALATE / NEED INFO |
+| 🎫 Support Assistant | New ticket | form → decision, labels + confidence, priority reason, similar tickets, cited fix, step trace, feedback buttons | Analyst |
+| | Past tickets | browse + filter by service, category, subcategory, priority, team, environment (FR-07) | Analyst |
+| 📚 KB Assistant | Ask | question → self-help answer from **public** articles, with citations | Employee |
+| ⚙️ Admin | Feedback | verdicts per analyst and per article, knowledge gaps | Admin |
+| | Evaluation | confusion matrices, search comparison, fallback test, failed cases | Admin |
+| | MTTR | baseline vs assisted MTTR | Admin |
+| | Knowledge base | browse articles, see which tickets cited each | Admin |
+| | API key | enter / test Groq key (masked), active LLM | Admin |
 
-### 3.4 Data layer
+### 5.2 Services
+| Service | Does | Interface |
+|---|---|---|
+| Pipeline orchestrator | runs the 9 steps, times each, saves the audit record | `analyze_ticket(ticket, role) → AnalysisResult` |
+| Search service | filtered listing of tickets and KB | `search(query, filters, role)` |
+| Feedback service | read / write `feedback.json` | `add_feedback(item)`, `get_feedback(analyst?)` |
+| Evaluation service | run the test set, compute metrics | `run_evaluation() → EvalReport` |
+| MTTR service | baseline vs assisted MTTR | `get_mttr(filters)` |
+| Settings & key | hold the Groq key in session / `.env` | `set_key()`, `test_connection()` |
+| Access control | role → allowed KB `access_level` and step types | `allowed_levels(role)` |
+
+### 5.3 Engines
+| Engine | File | Technology |
+|---|---|---|
+| Text cleaner | `src/text.py` | regex + hype phrase list |
+| Classifier | `src/classify.py` | TF-IDF (words + characters) + `all-MiniLM-L6-v2` + service → calibrated `LogisticRegression` ×3 |
+| Combined scorer, review flags, security safety net (+ tiebreak, to add) | `src/classify.py` | Python formula + LLM gateway |
+| Priority rules | `src/rules.py` | Python rules + ITIL matrix |
+| Retriever | `src/retrieve.py` | `all-MiniLM-L6-v2` (same model as the classifier) + ChromaDB + `rank-bm25`, RRF (k = 60) |
+| LLM gateway | `src/llm.py` | Groq (`llama-3.3-70b`) → Ollama (`qwen2.5:7b`), timeouts, one JSON retry |
+| Citation checker | `src/resolve.py` | ID check + `rapidfuzz` text match |
+| Decision rules | `src/decide.py` | Python |
+
+### 5.4 Data stores
 | Store | Contents | Written by | Read by |
 |---|---|---|---|
-| Ticket corpus (CSV / parquet) | Hugging Face tickets, split train / test | setup | setup, Past Tickets |
-| ChromaDB | vectors + metadata for tickets and KB articles | setup | Retrieval engine |
-| Model store | vectoriser + trained classifiers (`.joblib`) | setup | Classifier engine |
-| KB JSON | runbooks: id, title, symptoms, steps, category | team (curated) | Retrieval, KB page |
-| `feedback.json` | analyst, ticket / article id, verdict, comment, time | Feedback service | Feedback page, retrieval boost |
-| SQLite | audit records, created / recommended / resolved timestamps | Pipeline orchestrator | MTTR, audit export |
-| MTTR simulated data | historical resolution times (labelled simulated) | setup | MTTR service |
+| Tickets JSONL | curated tickets (§2) | us, once | build scripts, Past tickets |
+| KB JSON | 55 articles | us, once | indexer, KB pages |
+| ChromaDB + BM25 | train tickets + KB match cards | `build/build_index.py` | retriever |
+| Models `.joblib` | 3 calibrated classifiers | `build/train_models.py` | classifier |
+| `feedback.json` | analyst, item id, verdict, comment, time | feedback service | Admin pages |
+| SQLite | audit records + created / recommended / resolved times | orchestrator | MTTR, audit export |
 
 ---
 
-## 4. Key flows
+## 6. Key flows
 
-### 4.1 Analyse a ticket (main flow)
+### 6.1 Analyse a ticket
 ```mermaid
 sequenceDiagram
     actor U as Analyst
-    participant UI as New Ticket page
     participant O as Orchestrator
-    participant T as Text processor
-    participant C as Classifier + Priority
-    participant R as Retrieval + Re-ranker
-    participant G as LLM gateway
-    participant V as Verifier + Decision
+    participant ML as Classifier + Scorer
+    participant R as Retriever
+    participant L as LLM gateway
+    participant D as Rules + Decision
     participant DB as SQLite / JSON
 
-    U->>UI: Submit ticket
-    UI->>O: analyze_ticket(ticket, role)
-    O->>T: clean, hide PII, key facts
-    T-->>O: facts, completeness
-    alt not enough info
-        O-->>UI: NEED INFO + questions
-    else enough info
-        O->>C: classify + prioritise
-        C-->>O: category, team, P1–P4, confidence
-        O->>R: search tickets + KB (role-filtered)
-        R-->>O: top 5 tickets, top 3 KB
-        O->>G: write fix from evidence (JSON)
-        G-->>O: steps with citations, layer used
-        O->>V: verify citations, score, decide
-        V-->>O: decision + reasons
-        O->>DB: save audit record + timestamps
-        O-->>UI: full result (~2 s)
+    U->>O: submit ticket form
+    O->>O: 2 clean text, hide PII
+    O->>ML: 3 classify
+    O->>R: 4 search similar tickets
+    R-->>ML: top 5 + vote
+    ML->>ML: 5 combined score
+    opt score below 0.75
+        ML->>L: tiebreak between top candidates
+        L-->>ML: chosen label + reason
     end
-    U->>UI: Useful / Incorrect / Mark resolved
-    UI->>DB: feedback.json, resolved time
+    ML-->>O: labels + confidence
+    O->>D: 6 priority from facts
+    D-->>O: P1-P4 + reason
+    O->>R: 7 search KB, role-filtered
+    R-->>O: top 3 articles
+    O->>L: 8 write fix from articles
+    L-->>O: cited steps, or unavailable
+    O->>D: 9 check citations and decide
+    D-->>O: outcome + reasons
+    O->>DB: save audit record + timestamps
+    O-->>U: full result
+    U->>DB: Useful / Incorrect / Unresolved, mark resolved
 ```
 
-### 4.2 Setup (run once)
+### 6.2 Build (run once)
 ```mermaid
 flowchart LR
-    A["Download HF dataset"] --> B["Clean + hide PII"]
-    B --> C{"Split 80 / 20"}
-    C --> D["Embed tickets → ChromaDB"]
-    E["Load KB JSON"] --> F["Embed KB → ChromaDB"]
-    C --> G["Fit TF-IDF + train classifiers → model store"]
-    C --> H["Save test set for Evaluation"]
+    A["Tickets JSONL"] --> B["check rules, drop bad rows"]
+    B --> C{"split 70 / 15 / 15"}
+    C --> D["train models → .joblib"]
+    C --> E["index train tickets → ChromaDB + BM25"]
+    C --> F["save test set"]
+    K["KB JSON"] --> G["index match cards → ChromaDB + BM25"]
 ```
 
-### 4.3 Evaluation run
+### 6.3 Evaluation
 ```mermaid
 flowchart LR
-    A["Click Run evaluation"] --> B["Load held-out test set"]
-    B --> C["analyze_ticket() on each"]
-    C --> D["Compare with true labels"]
-    D --> E["Accuracy · F1 · confusion matrix"]
-    C --> F["Search quality<br/>keyword vs vector vs hybrid"]
-    E --> G["📊 Evaluation page"]
-    F --> G
-```
-
-### 4.4 Feedback loop
-```mermaid
-flowchart LR
-    A["Analyst verdict"] --> B[("feedback.json")]
-    B --> C["Feedback page"]
-    B --> D["Retrieval boost next search"]
-    B --> E["Corrections → next training run"]
+    A["Run evaluation"] --> B["test set"]
+    B --> C["analyze_ticket on each"]
+    C --> D["accuracy · macro-F1 · confusion matrix<br/>missed P1s · hype test · wrong-category test"]
+    C --> E["search: keyword vs vector vs hybrid<br/>Recall@5 · MRR"]
+    C --> F["KB Hit@3 · citation validity"]
+    P["15 probe tickets"] --> G["% sent to a human"]
+    D & E & F & G --> H["📊 Evaluation page + reports/EVALUATION.md"]
 ```
 
 ---
 
-## 5. Data model
+## 7. Data model
 
 ```mermaid
 erDiagram
     TICKET ||--o{ ANALYSIS : "analysed in"
     ANALYSIS ||--o{ EVIDENCE : cites
     ANALYSIS ||--o{ FEEDBACK : receives
-    KB_ARTICLE ||--o{ EVIDENCE : "is cited as"
-    TICKET ||--o{ EVIDENCE : "is cited as"
-    ANALYSIS ||--|| MTTR_RECORD : "timed by"
+    KB_ARTICLE ||--o{ EVIDENCE : "cited as"
+    TICKET ||--o{ EVIDENCE : "cited as similar"
 
     TICKET {
         string ticket_id PK
-        string title
         string description
+        string service
+        string environment
+        string who_affected
+        string user_category
+        string user_subcategory
         string category
         string subcategory
-        string priority
+        string symptom_type
         string team
-        string application
-        string environment
-        string status
-        string sensitivity
-        datetime created_at
-        datetime resolved_at
-        string resolution
+        string impact
+        string urgency
+        string priority
     }
     KB_ARTICLE {
         string kb_id PK
         string title
-        string category
+        string subcategory
+        string services
         string symptoms
-        string steps
+        string self_help_steps
+        string support_steps
+        string access_level
     }
     ANALYSIS {
         string analysis_id PK
         string ticket_id FK
         string role
-        string category
+        string subcategory
+        float combined_score
+        bool llm_tiebreak
         string priority
-        string team
+        string priority_reason
         float confidence
         string decision
-        string llm_layer
+        string llm_used
         datetime created_at
+        datetime recommended_at
+        datetime resolved_at
     }
     EVIDENCE {
         string analysis_id FK
         string source_id
         string source_type
         string excerpt
+        string why_matched
         float score
     }
     FEEDBACK {
@@ -255,74 +334,65 @@ erDiagram
         string comment
         datetime created_at
     }
-    MTTR_RECORD {
-        string analysis_id FK
-        datetime created_at
-        datetime recommended_at
-        datetime resolved_at
-        bool used_recommendation
-    }
 ```
 
 ---
 
-## 6. Deployment view
+## 8. Requirement coverage
 
-```mermaid
-flowchart LR
-    subgraph HOST["💻 Single host (laptop / VM)"]
-        subgraph PROC["Python process"]
-            ST["Streamlit app :8501"] --> CORE["Services + engines"]
-        end
-        CORE --> FS[("Local files<br/>ChromaDB · models · JSON · SQLite")]
-        CORE -->|"localhost:11434"| OL["Ollama (optional)"]
-    end
-    BR(["🌐 Browser"]) -->|"http://localhost:8501"| ST
-    CORE -->|"HTTPS"| GQ[["Groq Cloud"]]
-```
-
-- One process, no external database server: starts with `streamlit run app/app.py`.
-- Models load once at start-up and are cached (`st.cache_resource`).
-- Only outbound call: Groq over HTTPS (optional).
-
----
-
-## 7. Non-functional design
-
-| Quality | Target / approach |
+| Req | Where |
 |---|---|
-| **Performance** | under 2 s per ticket on Groq, under 0.5 s offline; search ~250 ms; models cached in memory |
-| **Reliability** | LLM failover Groq → Ollama → offline; timeouts on every LLM call; JSON validated with one repair retry |
-| **Security** | PII hidden before search, LLM and export; role-based filtering **before** search; API key masked, never logged, kept in session or `.env` (git-ignored) |
-| **Explainability** | every label has confidence + reason; every match has "why matched"; every step has a checked citation; pipeline trace per ticket |
-| **Safety** | low confidence or conflicting evidence → REVIEW / ESCALATE / NEED INFO; human always decides |
-| **Auditability** | one record per analysis: input, predictions, evidence, fix, decision, reviewer verdict, timestamps |
-| **Scalability path** | ChromaDB → managed vector DB; Streamlit → FastAPI + web UI; SQLite → Postgres; same service interfaces |
-| **Observability** | per-stage latency and LLM layer recorded; shown in the trace and audit log |
+| FR-01 classification + confidence | steps 3, 5, 6: labels, combined score, priority reason |
+| FR-02 similar tickets | step 4: hybrid search; search comparison in evaluation |
+| FR-03 resolution | step 8: from KB articles only |
+| FR-04 evidence | step IDs, quoted excerpt, `why_matched`, "why it fits" |
+| FR-05 confidence + fallback | tiebreak → REVIEW, decision rules, citation check |
+| FR-06 feedback | Useful / Incorrect / Unresolved buttons → `feedback.json` |
+| FR-07 filters | Past tickets page, metadata filters on search |
+| FR-08 audit | one SQLite record per analysis, exportable |
+| FR-09 MTTR | timestamps in SQLite; baseline = simulated manual times per priority (labelled) |
+| Access restrictions | KB `access_level` filter before search; employees get public, self-help only; PII hidden before search, LLM and export |
 
 ---
 
-## 8. Design decisions & trade-offs
+## 9. Non-functional design
+
+| Quality | Approach |
+|---|---|
+| Performance | ML + search < 300 ms; one LLM call normally (two when tiebreak runs); models cached (`st.cache_resource`) |
+| Reliability | Groq → Ollama; timeouts; JSON validated with one retry; if both are down → REVIEW / ESCALATE, never a guess |
+| Security | PII hidden first; role filter before search; API key masked, never logged, kept in session or git-ignored `.env` |
+| Explainability | every label has a score, priority has a sentence, every step has a checked citation, per-step trace |
+| Safety | human always decides; no auto-closure |
+| Auditability | input, labels, evidence, fix, decision, verdict, timestamps per analysis |
+
+---
+
+## 10. Design decisions & trade-offs
 
 | Decision | Chosen | Alternative | Why |
 |---|---|---|---|
-| Classification | ML models, LLM only when unsure | LLM for every ticket | fast (~10 ms), cheap, measurable, calibrated confidence |
-| Search | vector + keyword + re-rank | vector only | vectors blur exact error codes; re-rank removes look-alikes |
-| Fix source | KB articles only, cited and verified | free LLM answer | prevents made-up commands |
-| Priority | ITIL Impact × Urgency, take higher | single ML priority | explainable; never under-prioritise P1 |
-| LLM | Groq with Ollama + offline fallback | single provider | demo never fails |
-| Storage | ChromaDB + JSON + SQLite | Postgres + vector service | zero setup, enough for this data size |
-| UI | Streamlit | React | fastest to a working dashboard in Python |
+| Data | curated synthetic dataset | public dataset | we control labels, rules, hype and wrong-category cases; generated labels stated |
+| Classification | ML first, LLM only below 0.75 | LLM for every ticket | fast, cheap, measurable, calibrated; LLM used only when needed |
+| Tiebreak | LLM chooses among top candidates | LLM free choice | can't invent labels; stays explainable |
+| User's category | 20% vote in combined score | model input | as an input the model would copy users' mistakes |
+| Priority | rules + ITIL matrix | ML or LLM | explainable; tone can't change it |
+| Search | vector + keyword (RRF) | vector only | vectors blur exact words; comparison table proves it |
+| Fix source | KB articles only, cited + checked | free LLM answer | tickets have no fixes; prevents made-up steps |
+| LLM | Groq → Ollama | single provider | survives a cloud outage |
+| Storage | ChromaDB + JSON + SQLite | Postgres + vector service | zero setup, enough for this size |
+| UI | Streamlit | React | fastest working dashboard in Python |
 
 ---
 
-## 9. Risks & mitigations
+## 11. Risks & mitigations
 
 | Risk | Mitigation |
 |---|---|
-| Dataset labels are noisy | report per-class metrics; confusion matrix shows where; analyst corrections become new labels |
-| No KB article covers a ticket | decision capped at REVIEW / ESCALATE; gap shown to analyst |
-| LLM invents a step | citation verifier drops it |
-| Groq outage or rate limit | automatic fallback to Ollama, then offline |
-| Restricted data leaks | role filter applied before search; masked exports |
-| MTTR data is simulated | labelled on the page; method and assumptions stated |
+| Synthetic data is easier than real tickets | built-in hype + wrong-category cases; probe tickets; limitation stated in the report |
+| Wrong symptom type → wrong priority | symptom type has its own model + confusion matrix; "missed P1s" metric |
+| No KB article fits | ESCALATE + knowledge gap logged |
+| LLM invents a step | citation checker drops it |
+| Groq + Ollama both down | REVIEW / ESCALATE with evidence shown |
+| Restricted KB content leaks | access filter before search |
+| MTTR baseline is simulated | labelled on the page, assumption stated |

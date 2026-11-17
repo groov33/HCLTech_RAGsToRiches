@@ -1,0 +1,3275 @@
+[
+  {
+    "kb_id": "KB-001",
+    "title": "I forgot my Company Login password",
+    "category": "Account & Access",
+    "subcategory": "Password reset",
+    "services": [
+      "Company Login"
+    ],
+    "symptom_types": [
+      "blocked"
+    ],
+    "symptoms": [
+      "I can't remember the password I use for work.",
+      "I can open the sign-in page, but I don't know what to type.",
+      "My saved work password stopped filling in, and I don't know it by heart."
+    ],
+    "error_messages": [
+      "Incorrect username or password"
+    ],
+    "cause": "The employee no longer knows the current password. The sign-in service is available and the account can still use password recovery.",
+    "self_help_steps": [
+      "Open the usual Company Login page from a trusted bookmark and select Forgot password.",
+      "Use the recovery method the page offers and follow the prompts to choose a new password.",
+      "Return to the usual sign-in page and make one attempt with the new password."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Open the account record and confirm the username, status and availability of a registered recovery method.",
+        "expected": "Account is enabled and eligible for self-service recovery."
+      },
+      {
+        "n": 2,
+        "do": "Guide the employee to the known Company Login page and have them complete identity verification privately.",
+        "expected": "The recovery flow accepts the employee's registered method."
+      },
+      {
+        "n": 3,
+        "do": "When self-service is unavailable, verify identity through the approved process and initiate a one-time reset through the approved channel.",
+        "expected": "The employee completes the reset privately and the audit event shows success."
+      }
+    ],
+    "verify": "The employee signs in to Company Login with the new password and reaches the work home page.",
+    "escalate_to": "Service Desk",
+    "escalate_when": "The account is locked, no recovery method is available, or the reset succeeds but the sign-in still fails.",
+    "access_level": "public",
+    "keywords": [
+      "forgot work passwrod",
+      "forgotten credentials",
+      "recover company password",
+      "reset my login",
+      "cant remember password",
+      "work password help"
+    ],
+    "related_articles": [
+      "KB-002",
+      "KB-004"
+    ]
+  },
+  {
+    "kb_id": "KB-002",
+    "title": "Password reset link says it has expired",
+    "category": "Account & Access",
+    "subcategory": "Password reset",
+    "services": [
+      "Company Login"
+    ],
+    "symptom_types": [
+      "blocked"
+    ],
+    "symptoms": [
+      "I got the reset email, but the link says it's too old.",
+      "I asked for two reset emails and opened the first one.",
+      "The reset page loads and tells me to start over before I can pick a password."
+    ],
+    "error_messages": [
+      "This password reset link has expired.",
+      "This password reset link has already been used."
+    ],
+    "cause": "Reset links expire and may stop working when a new request is issued. A link that completed a reset also cannot be reused.",
+    "self_help_steps": [
+      "Start one new reset from the known Company Login page.",
+      "Open the newest reset message you just requested and use it promptly.",
+      "Close the older reset messages and return to the normal sign-in page after the reset."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Compare reset issuance and redemption timestamps for the employee's account without collecting the reset URL.",
+        "expected": "The failed request maps to an expired, superseded or consumed token."
+      },
+      {
+        "n": 2,
+        "do": "Initiate one reset through the verified account workflow if the employee cannot issue one.",
+        "expected": "A fresh token is associated with the correct account and sent through the approved channel."
+      },
+      {
+        "n": 3,
+        "do": "Have the employee open the newest message privately and confirm the completion event.",
+        "expected": "One token is redeemed successfully and the newer password is active."
+      }
+    ],
+    "verify": "The employee signs in from the usual page with the new password.",
+    "escalate_to": "Service Desk",
+    "escalate_when": "A freshly issued link fails immediately, the recovery message never arrives, or there are reset requests the employee did not make.",
+    "access_level": "public",
+    "keywords": [
+      "expired reset email",
+      "reset lnik invalid",
+      "newest password email",
+      "reset token already used",
+      "password link too old",
+      "reset link wont open"
+    ],
+    "related_articles": [
+      "KB-001"
+    ]
+  },
+  {
+    "kb_id": "KB-003",
+    "title": "Password reset offers a recovery phone I can no longer use",
+    "category": "Account & Access",
+    "subcategory": "Password reset",
+    "services": [
+      "Company Login"
+    ],
+    "symptom_types": [
+      "blocked"
+    ],
+    "symptoms": [
+      "It wants to send a code to my old phone.",
+      "I've lost access to the number on the reset screen.",
+      "There's no other way listed for me to prove it's me."
+    ],
+    "error_messages": [
+      "No other verification methods are available."
+    ],
+    "cause": "The account has a recovery method registered that the employee cannot use. Self-service cannot establish their identity through the remaining options.",
+    "self_help_steps": [],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Review the account's registered recovery methods and the latest recovery attempt in the identity admin console.",
+        "expected": "Recovery is blocked because no usable registered method is available."
+      },
+      {
+        "n": 2,
+        "do": "Complete the approved assisted identity verification workflow and record the outcome in the restricted ticket without storing verification secrets.",
+        "expected": "The employee is verified to the required standard or the request is held for review."
+      },
+      {
+        "n": 3,
+        "do": "After successful verification, use the authorized recovery enrollment workflow and invalidate the replaced method.",
+        "expected": "The account has a usable registered method and the old method is inactive."
+      },
+      {
+        "n": 4,
+        "do": "Have the employee run the reset flow privately and review the completion event.",
+        "expected": "Recovery and a subsequent Company Login sign-in succeed."
+      }
+    ],
+    "verify": "The employee receives the challenge through the newly registered method and successfully signs in.",
+    "escalate_to": "Service Desk",
+    "escalate_when": "Identity verification fails, the old method was changed unexpectedly, or an approved recovery method cannot be enrolled.",
+    "access_level": "internal",
+    "keywords": [
+      "old phone reset",
+      "cant get recovery code",
+      "lost authentication phone",
+      "revovery number changed",
+      "no reset options",
+      "verification phone gone"
+    ],
+    "related_articles": [
+      "KB-001",
+      "KB-002"
+    ]
+  },
+  {
+    "kb_id": "KB-004",
+    "title": "Company Login locked after too many password attempts",
+    "category": "Account & Access",
+    "subcategory": "Account locked",
+    "services": [
+      "Company Login"
+    ],
+    "symptom_types": [
+      "blocked"
+    ],
+    "symptoms": [
+      "I tried a few passwords and now it says my account is locked.",
+      "My password finally came back to me, but the lock message still comes up.",
+      "My coworker can sign in from the same office and I can't."
+    ],
+    "error_messages": [
+      "Your account is locked.",
+      "Too many sign-in attempts."
+    ],
+    "cause": "Repeated incorrect passwords triggered a temporary account lock. Attempts from the same interactive sign-in session account for the failures.",
+    "self_help_steps": [
+      "Stop retrying and follow any waiting period shown on the sign-in page.",
+      "Use the approved password recovery option if you're unsure of the password.",
+      "If the page provides no recovery option, contact the help desk with the error and its time."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Open the identity record and correlate the lock timestamp with the employee's recent interactive attempts.",
+        "expected": "One account is locked and the reported attempts explain the event."
+      },
+      {
+        "n": 2,
+        "do": "Verify the employee's identity, then use the approved unlock or reset workflow as required.",
+        "expected": "The account returns to an active state and the action is audited."
+      },
+      {
+        "n": 3,
+        "do": "Ask for one fresh sign-in and watch the per-account sign-in log.",
+        "expected": "The sign-in succeeds and no new failures follow."
+      }
+    ],
+    "verify": "The account remains active after one Company Login sign-in and a launch of a normal work app.",
+    "escalate_to": "Service Desk",
+    "escalate_when": "The account locks again, the attempt source is unfamiliar, or several employees report the lock message together.",
+    "access_level": "public",
+    "keywords": [
+      "accout locked",
+      "too many guesses",
+      "locked out of work",
+      "unlock username",
+      "password attempt limit",
+      "account lockout"
+    ],
+    "related_articles": [
+      "KB-001",
+      "KB-005"
+    ]
+  },
+  {
+    "kb_id": "KB-005",
+    "title": "Work account locks again after it was unlocked",
+    "category": "Account & Access",
+    "subcategory": "Account locked",
+    "services": [
+      "Company Login"
+    ],
+    "symptom_types": [
+      "blocked"
+    ],
+    "symptoms": [
+      "The help desk unlocked me and it locked again a minute later.",
+      "I changed my password and my other work device still keeps asking for it.",
+      "My work account locks while I'm away from the sign-in screen."
+    ],
+    "error_messages": [
+      "Your account is locked.",
+      "Sign-in blocked after repeated attempts."
+    ],
+    "cause": "A work app or device is repeatedly trying a saved old password. The account can lock even while the employee leaves the sign-in page alone.",
+    "self_help_steps": [
+      "Stop typing your password into repeated prompts.",
+      "Close the work app showing the prompt on the secondary device and note which device and app it was.",
+      "Tell support when the password changed and when the account locked again."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Correlate recurring failures with recorded client identifiers and lock times, then confirm which device belongs to the employee.",
+        "expected": "Repeated failures point to a known app or device even when the employee isn't signing in."
+      },
+      {
+        "n": 2,
+        "do": "Have the employee close the identified client and use its approved sign-out and sign-in flow when access is restored.",
+        "expected": "The stale client stops submitting attempts and can renew its sign-in."
+      },
+      {
+        "n": 3,
+        "do": "Once the retries stop, verify identity and unlock the account through the approved workflow.",
+        "expected": "The employee signs in and the failure counter stays clear during the observation window."
+      }
+    ],
+    "verify": "The employee can sign in again and the identified client syncs without triggering a new lock.",
+    "escalate_to": "Service Desk",
+    "escalate_when": "The client cannot be identified, the lock returns after reauthentication, or the source is unfamiliar.",
+    "access_level": "public",
+    "keywords": [
+      "keeps loking again",
+      "lock after unlock",
+      "saved old password",
+      "background login retries",
+      "repeated account lock",
+      "locked without typing"
+    ],
+    "related_articles": [
+      "KB-004",
+      "KB-019"
+    ]
+  },
+  {
+    "kb_id": "KB-006",
+    "title": "Company Login blocks sign-ins for everyone",
+    "category": "Account & Access",
+    "subcategory": "Account locked",
+    "services": [
+      "Company Login"
+    ],
+    "symptom_types": [
+      "outage"
+    ],
+    "symptoms": [
+      "Nobody on my team can sign in to work right now.",
+      "The same sign-in message appears at home and in the office.",
+      "We all got kicked back to the sign-in screen at about the same time."
+    ],
+    "error_messages": [
+      "Sign-in is temporarily blocked.",
+      "The sign-in service is unavailable."
+    ],
+    "cause": "The shared identity service cannot reach its account store. The common failure can look like an account lock even when individual account records are active.",
+    "self_help_steps": [],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Record reports across unrelated accounts and networks, then test with approved sign-in probes from both locations.",
+        "expected": "Probes reproduce the failure outside a single user or site."
+      },
+      {
+        "n": 2,
+        "do": "Compare account status results against identity gateway logs and account-store health at the first failure time.",
+        "expected": "Healthy account states coincide with failing requests to the shared dependency."
+      },
+      {
+        "n": 3,
+        "do": "Open a Company Login incident and hand the dependency failure and probe evidence to the team operating the identity service.",
+        "expected": "A named responder owns service recovery and tracks the first failure time."
+      },
+      {
+        "n": 4,
+        "do": "After recovery, test a new Company Login session and launch an identity-dependent app from both locations.",
+        "expected": "Fresh authentication and application launch succeed from both networks."
+      }
+    ],
+    "verify": "Sign-in probes pass from both locations and previously affected employees can open a work app in new sessions.",
+    "escalate_to": "Service Desk",
+    "escalate_when": "Escalate immediately with more than one user affected or when a synthetic probe confirms a shared sign-in failure.",
+    "access_level": "internal",
+    "keywords": [
+      "everyone locked out",
+      "company signin down",
+      "all work logins failing",
+      "identitty service outage",
+      "office and home login fail",
+      "work sign-in unavailable"
+    ],
+    "related_articles": [
+      "KB-004",
+      "KB-012",
+      "KB-022"
+    ]
+  },
+  {
+    "kb_id": "KB-007",
+    "title": "Request access to a shared folder",
+    "category": "Account & Access",
+    "subcategory": "Need access",
+    "services": [
+      "Shared Files"
+    ],
+    "symptom_types": [
+      "request"
+    ],
+    "symptoms": [
+      "My teammate sent me a folder link and it says I need permission.",
+      "I joined the project and need to read the files in its shared folder.",
+      "I can open other folders, but this one has a request access button."
+    ],
+    "error_messages": [
+      "You need permission to access this folder.",
+      "Request access"
+    ],
+    "cause": "Shared folders are restricted to approved people or groups. A link to a restricted folder does not grant access on its own.",
+    "self_help_steps": [
+      "Copy the folder link and confirm the folder name with your team.",
+      "Use Request access on the folder or submit a help desk request with the link and your work reason.",
+      "State whether you need to read or edit the files and wait for the access decision."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Verify the folder path, owner, current access groups and requested permission.",
+        "expected": "The correct resource and minimum required access are identified."
+      },
+      {
+        "n": 2,
+        "do": "Send the request to the recorded folder owner and record their decision.",
+        "expected": "The request has an auditable approval or denial."
+      },
+      {
+        "n": 3,
+        "do": "Fulfill the approved role through the folder's existing access group and validate the effective permission.",
+        "expected": "The requester has only the approved capability and no broader folder scope."
+      }
+    ],
+    "verify": "After approval, the employee opens the exact folder and successfully performs an approved read or edit check.",
+    "escalate_to": "Service Desk",
+    "escalate_when": "The folder owner cannot be identified, approval is missing, or effective permissions still deny access.",
+    "access_level": "public",
+    "keywords": [
+      "shared folder permission",
+      "request share access",
+      "project drive acces",
+      "folder link denied",
+      "need read access",
+      "shared file approval"
+    ],
+    "related_articles": [
+      "KB-008",
+      "KB-036"
+    ]
+  },
+  {
+    "kb_id": "KB-008",
+    "title": "Finance System opens but says access denied",
+    "category": "Account & Access",
+    "subcategory": "Need access",
+    "services": [
+      "Finance System"
+    ],
+    "symptom_types": [
+      "blocked",
+      "request"
+    ],
+    "symptoms": [
+      "The Finance System loads, but I get access denied after I sign in.",
+      "My teammate can open the invoices page and I can't.",
+      "I used to open this finance screen before I moved to a different job."
+    ],
+    "error_messages": [
+      "Access denied.",
+      "You do not have permission to open this page."
+    ],
+    "cause": "Company Login succeeded, but the Finance System does not have the required role for this employee or page. A job change can remove a previously granted role.",
+    "self_help_steps": [
+      "Open the Finance System from the usual work portal and note which screen says access denied.",
+      "Submit the exact page name and the task you need to complete to the help desk.",
+      "Include whether the access worked before your role changed."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Confirm the successful Company Login event and locate the Finance System denial for the reported page.",
+        "expected": "The denial identifies the missing application role and resource scope."
+      },
+      {
+        "n": 2,
+        "do": "Review current effective roles and obtain the recorded Finance System owner's approval for the least-privileged eligible role.",
+        "expected": "The approval covers the employee, role and required scope."
+      },
+      {
+        "n": 3,
+        "do": "Apply the approved assignment through the standard role workflow and recheck the effective role after synchronization.",
+        "expected": "The assigned role is active for the intended scope."
+      }
+    ],
+    "verify": "The employee opens the previously denied page in a fresh session and can perform the authorized task.",
+    "escalate_to": "Service Desk",
+    "escalate_when": "The approval is missing, the requested scope is broader than the job requires, or access is denied with the approved role active.",
+    "access_level": "public",
+    "keywords": [
+      "finance access deneid",
+      "invoice page forbidden",
+      "finance permissions",
+      "finance role missing",
+      "no access after transfer",
+      "accounts screen denied"
+    ],
+    "related_articles": [
+      "KB-007",
+      "KB-028"
+    ]
+  },
+  {
+    "kb_id": "KB-009",
+    "title": "Request a Payroll System role for a new payroll operator",
+    "category": "Account & Access",
+    "subcategory": "Need access",
+    "services": [
+      "Payroll System"
+    ],
+    "symptom_types": [
+      "request"
+    ],
+    "symptoms": [
+      "I need to open the payroll work area for my new job.",
+      "The app opens, but I can't see the payroll menu my manager mentioned.",
+      "My team lead asked me to get the payroll viewer role."
+    ],
+    "error_messages": [
+      "Payroll role required."
+    ],
+    "cause": "Payroll records are restricted to approved operator roles. Employment in a payroll team does not by itself grant access to employee records.",
+    "self_help_steps": [],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Check the request for the exact payroll function, requested scope, start date and requester identity.",
+        "expected": "The requested access is tied to an identified employee and business task."
+      },
+      {
+        "n": 2,
+        "do": "Route the role request to the Payroll System owner and check the role against the recorded access rules and incompatible roles.",
+        "expected": "Approvals and role eligibility are documented before provisioning."
+      },
+      {
+        "n": 3,
+        "do": "Provision the approved limited role with any recorded end date and confirm the entitlement in the access audit.",
+        "expected": "Only the approved payroll scope is assigned."
+      },
+      {
+        "n": 4,
+        "do": "Confirm the assigned menu with the requester using an approved test record or a permissions preview.",
+        "expected": "The requester reaches the approved screen without exposing unrelated employee records."
+      }
+    ],
+    "verify": "The approved payroll menu is visible in a fresh session and the assigned scope matches the approval.",
+    "escalate_to": "Service Desk",
+    "escalate_when": "Approval is absent, a conflicting role exists, or payroll records outside the approved scope are visible.",
+    "access_level": "internal",
+    "keywords": [
+      "payroll role request",
+      "new payroll clerk",
+      "payrol viewer",
+      "payroll menu missing",
+      "approve payroll access",
+      "payroll entitlement"
+    ],
+    "related_articles": [
+      "KB-007",
+      "KB-008"
+    ]
+  },
+  {
+    "kb_id": "KB-010",
+    "title": "Desktop email keeps asking for my password",
+    "category": "Email & Communication",
+    "subcategory": "Email problem",
+    "services": [
+      "Email"
+    ],
+    "symptom_types": [
+      "blocked",
+      "slow"
+    ],
+    "symptoms": [
+      "My email app keeps asking for my password even though I can sign in to work in the browser.",
+      "I can read new messages in webmail, but the desktop inbox stopped updating.",
+      "The sign-in box comes back every time I open the desktop email app."
+    ],
+    "error_messages": [
+      "Sign in to sync your mailbox.",
+      "We couldn't sign you in. Try again."
+    ],
+    "cause": "The desktop email profile has an expired or damaged sign-in session. The password and mailbox still work through the browser.",
+    "self_help_steps": [
+      "Open webmail from the usual work portal to see if you can reach your inbox.",
+      "Close and reopen the desktop app once.",
+      "If the prompt returns, close it, keep working in webmail and tell support when the desktop sync last worked."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Confirm Company Login and webmail work for the same mailbox and check the desktop sign-in event at the reported time.",
+        "expected": "The failure is limited to the desktop email client."
+      },
+      {
+        "n": 2,
+        "do": "Use the client's supported reauthentication flow and verify the resulting session is tied to the correct work identity.",
+        "expected": "The client obtains a valid session and starts syncing."
+      },
+      {
+        "n": 3,
+        "do": "If the prompt persists, check for local-only mail or drafts, preserve them through the approved process and repair the managed email profile.",
+        "expected": "The repaired profile syncs and preserved local items remain available."
+      }
+    ],
+    "verify": "The desktop app opens twice without repeated prompts and receives a new test email.",
+    "escalate_to": "Applications",
+    "escalate_when": "Webmail also fails, repeated prompts affect several people, or the reauthenticated client still cannot sync.",
+    "access_level": "public",
+    "keywords": [
+      "email passwrod prompt",
+      "outlook keeps asking",
+      "desktop inbox stuck",
+      "webmail works",
+      "mail login loop",
+      "email profile sign-in"
+    ],
+    "related_articles": [
+      "KB-001",
+      "KB-005",
+      "KB-011"
+    ]
+  },
+  {
+    "kb_id": "KB-011",
+    "title": "Email bounces when I attach a large file",
+    "category": "Email & Communication",
+    "subcategory": "Email problem",
+    "services": [
+      "Email",
+      "Shared Files"
+    ],
+    "symptom_types": [
+      "slow"
+    ],
+    "symptoms": [
+      "The same email goes through without the file attached.",
+      "The message with the big slide deck came back to me.",
+      "I can send small attachments to this person fine."
+    ],
+    "error_messages": [
+      "Message size exceeds the allowed limit.",
+      "552 5.3.4 Message size exceeds fixed maximum message size"
+    ],
+    "cause": "The size of the email including its encoded attachment exceeds a mail gateway limit. The limit may be enforced on either side of delivery.",
+    "self_help_steps": [
+      "Read the delivery notice and note the size error.",
+      "Share the file through the approved Shared Files workflow with access granted only to the intended recipients.",
+      "Send the file link in a new message and ask the recipient to confirm they can open it."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Look up the message ID in mail trace and identify where the size rejection occurred.",
+        "expected": "The trace identifies the rejecting gateway and size response."
+      },
+      {
+        "n": 2,
+        "do": "Compare the encoded message size with the recorded limit for that route.",
+        "expected": "The message exceeded the relevant limit and smaller mail on the route still delivers."
+      },
+      {
+        "n": 3,
+        "do": "Verify the file is eligible for approved link sharing and that the requester selected the intended recipients.",
+        "expected": "The new message is small enough to deliver and the link has the required audience."
+      }
+    ],
+    "verify": "The link email arrives and the intended recipient can open the approved file.",
+    "escalate_to": "Applications",
+    "escalate_when": "Small test messages on that route also fail, the delivery notice shows a different rejection, or company policy prevents sharing the file by link.",
+    "access_level": "public",
+    "keywords": [
+      "attaachment too large",
+      "big pdf bounced",
+      "mail size limit",
+      "552 attachment",
+      "large slide deck email",
+      "send file link"
+    ],
+    "related_articles": [
+      "KB-007",
+      "KB-010"
+    ]
+  },
+  {
+    "kb_id": "KB-012",
+    "title": "Email is down for everyone in webmail and the desktop app",
+    "category": "Email & Communication",
+    "subcategory": "Email problem",
+    "services": [
+      "Email"
+    ],
+    "symptom_types": [
+      "outage"
+    ],
+    "symptoms": [
+      "Nobody here is receiving new email, even in the browser.",
+      "Test emails between coworkers are stuck, and we're seeing it in different offices.",
+      "I can sign in to work, but both ways of opening the mailbox fail."
+    ],
+    "error_messages": [
+      "Mailbox service unavailable.",
+      "451 4.3.0 Temporary mail service failure"
+    ],
+    "cause": "A shared mailbox service dependency has failed. Both browser and desktop clients rely on that service for mailbox access and delivery.",
+    "self_help_steps": [],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Run mailbox-open and send-and-receive probes with dedicated test accounts across locations.",
+        "expected": "Independent accounts reproduce mailbox failures while Company Login succeeds."
+      },
+      {
+        "n": 2,
+        "do": "Correlate the first failing probe with mailbox service health and transport queue age.",
+        "expected": "Shared mailbox failures and deferred delivery align with the incident start."
+      },
+      {
+        "n": 3,
+        "do": "Open an Email incident with probe results, affected access methods and queue evidence.",
+        "expected": "The Applications responder has the evidence needed to restore the dependency."
+      },
+      {
+        "n": 4,
+        "do": "After service recovery, repeat the probes and inspect the oldest queued test messages.",
+        "expected": "New mail delivers and deferred messages leave the queue without manual resending."
+      }
+    ],
+    "verify": "Previously affected employees can open mailboxes in both clients and send and receive new messages.",
+    "escalate_to": "Applications",
+    "escalate_when": "Escalate immediately with more than one user affected or when both clients fail for independent test mailboxes.",
+    "access_level": "internal",
+    "keywords": [
+      "email down everyone",
+      "webmail outage",
+      "mailbox unavailable",
+      "nobody getting mail",
+      "mail queue stuck",
+      "emial service down"
+    ],
+    "related_articles": [
+      "KB-006",
+      "KB-010"
+    ]
+  },
+  {
+    "kb_id": "KB-013",
+    "title": "People can't hear me because the meeting app is muted",
+    "category": "Email & Communication",
+    "subcategory": "Chat or video call problem",
+    "services": [
+      "Chat & Video Calls"
+    ],
+    "symptom_types": [
+      "blocked",
+      "slow"
+    ],
+    "symptoms": [
+      "I can hear everybody, but they can't hear me.",
+      "There's a slash across the microphone button in the call.",
+      "My mic works in other apps, and I can hear the meeting just fine."
+    ],
+    "error_messages": [
+      "Your microphone is muted."
+    ],
+    "cause": "The meeting started with the employee muted, or the meeting app's mute button was pressed. The microphone still works when the meeting app is allowed to use it.",
+    "self_help_steps": [
+      "Look for a slash across the microphone button in the meeting.",
+      "When it's your turn to speak, select Unmute in the call.",
+      "Say a short test phrase and ask someone to confirm they heard you."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Ask the employee to describe the meeting's mute indicator and open the app's microphone test.",
+        "expected": "The test receives audio while the meeting control shows muted."
+      },
+      {
+        "n": 2,
+        "do": "Check whether the participant can unmute or whether the organizer has restricted participant audio.",
+        "expected": "The mute state and the person who can change it are identified."
+      },
+      {
+        "n": 3,
+        "do": "Have the participant unmute, or ask the organizer to allow them to speak through the meeting controls.",
+        "expected": "The meeting shows them unmuted and another participant hears the test phrase."
+      }
+    ],
+    "verify": "Another participant can hear the employee in the same meeting.",
+    "escalate_to": "Applications",
+    "escalate_when": "The mute control is available and off but audio is still missing, or the microphone test has no input.",
+    "access_level": "public",
+    "keywords": [
+      "muted mic",
+      "cant hear me",
+      "microphne slash",
+      "unmute call",
+      "meeting talking no sound",
+      "mic button crossed out"
+    ],
+    "related_articles": [
+      "KB-014"
+    ]
+  },
+  {
+    "kb_id": "KB-014",
+    "title": "Meeting camera is busy in another app",
+    "category": "Email & Communication",
+    "subcategory": "Chat or video call problem",
+    "services": [
+      "Chat & Video Calls",
+      "Laptop / Desktop"
+    ],
+    "symptom_types": [
+      "slow"
+    ],
+    "symptoms": [
+      "I can join the call, but there's no picture from my camera.",
+      "The meeting says my camera is already being used.",
+      "I left a camera preview or another call open before I joined."
+    ],
+    "error_messages": [
+      "Your camera is in use by another application."
+    ],
+    "cause": "Another app or browser tab still holds the camera. The meeting client cannot start its preview until that app releases it.",
+    "self_help_steps": [
+      "Leave any other call you have finished.",
+      "Close camera previews and meeting tabs you recognize and are done using.",
+      "Return to the meeting and select Start video once."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Check the camera status in the meeting preview and ask the employee which other camera apps are open.",
+        "expected": "The camera is detected and the client reports that it is busy."
+      },
+      {
+        "n": 2,
+        "do": "With the employee's consent, close the identified camera preview or app gracefully.",
+        "expected": "The competing process releases the camera."
+      },
+      {
+        "n": 3,
+        "do": "Open the meeting preview, then join a test call with the same camera.",
+        "expected": "The preview and live video both show a stable image."
+      }
+    ],
+    "verify": "A participant in the test call sees the camera image without a busy error.",
+    "escalate_to": "Applications",
+    "escalate_when": "The camera still reports busy with other apps closed, or it is missing from the device list.",
+    "access_level": "public",
+    "keywords": [
+      "webcam in use",
+      "camra busy",
+      "black meeting video",
+      "other app using camera",
+      "camera preview stuck",
+      "cannot start video"
+    ],
+    "related_articles": [
+      "KB-013"
+    ]
+  },
+  {
+    "kb_id": "KB-015",
+    "title": "Meeting audio breaks up on both office Wi-Fi and wired connections",
+    "category": "Email & Communication",
+    "subcategory": "Chat or video call problem",
+    "services": [
+      "Chat & Video Calls"
+    ],
+    "symptom_types": [
+      "slow"
+    ],
+    "symptoms": [
+      "Voices sound choppy in calls even after I plug in a network cable.",
+      "My browser and file downloads feel fine while the meeting sound cuts out.",
+      "People in other office areas say they hear the same missing parts of the conversation."
+    ],
+    "error_messages": [],
+    "cause": "A shared meeting media relay is dropping packets. The affected meeting traffic can use the same relay even when employees switch between wired and wireless access.",
+    "self_help_steps": [],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Collect the meeting IDs, times and client call quality stats from affected and healthy sessions.",
+        "expected": "Similar loss appears in affected calls without a common employee device."
+      },
+      {
+        "n": 2,
+        "do": "Compare the relay identifiers and packet-loss direction for wired and Wi-Fi sessions.",
+        "expected": "Affected sessions share a media relay and a loss pattern while other relays remain healthy."
+      },
+      {
+        "n": 3,
+        "do": "Attach the relay identifiers and time window to an Applications incident and request a provider investigation or approved failover.",
+        "expected": "The affected relay is investigated or sessions are moved by the service owner."
+      },
+      {
+        "n": 4,
+        "do": "Place test calls from both office connection types and compare new relay statistics with the baseline.",
+        "expected": "Packet loss and jitter return to normal for both."
+      }
+    ],
+    "verify": "A test call from each office connection type has clear two-way audio and normal call quality stats.",
+    "escalate_to": "Applications",
+    "escalate_when": "Loss reproduces on both office connection types, failover fails, or reports spread to additional sites.",
+    "access_level": "internal",
+    "keywords": [
+      "choppy teams audio",
+      "robot voice",
+      "call sounds garbled",
+      "meetting packet loss",
+      "media relay loss",
+      "calls lag on ethernet"
+    ],
+    "related_articles": [
+      "KB-021",
+      "KB-023"
+    ]
+  },
+  {
+    "kb_id": "KB-016",
+    "title": "How to share my work calendar with a coworker",
+    "category": "Email & Communication",
+    "subcategory": "Calendar problem",
+    "services": [
+      "Email"
+    ],
+    "symptom_types": [
+      "question"
+    ],
+    "symptoms": [
+      "How do I let a teammate see when I'm free?",
+      "I want my coworker to see my work calendar.",
+      "Can I share my calendar without them seeing my meeting names?"
+    ],
+    "error_messages": [],
+    "cause": "Calendar visibility comes from the permission selected for each recipient. Availability-only sharing shows when the calendar is busy while keeping event details private.",
+    "self_help_steps": [
+      "Open your work calendar in webmail and select Share on your own calendar.",
+      "Enter your coworker's company address and confirm the address shown.",
+      "Select Can view when I'm busy and send the invitation.",
+      "Ask the coworker to open your calendar and confirm they see your availability."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Confirm that the employee owns the selected calendar and the recipient is an eligible company account.",
+        "expected": "The share is for the intended calendar and coworker."
+      },
+      {
+        "n": 2,
+        "do": "Have the employee review the permission list and select availability only for that recipient.",
+        "expected": "The entry grants busy and free visibility only."
+      },
+      {
+        "n": 3,
+        "do": "Check the calendar from the recipient's side with a test event that contains no real meeting details.",
+        "expected": "The recipient sees the time block and cannot see the test event's details."
+      }
+    ],
+    "verify": "The coworker can open the shared calendar and sees availability without event titles.",
+    "escalate_to": "Applications",
+    "escalate_when": "The sharing button is unavailable, sharing fails for an eligible coworker, or the recipient can see more than the selected permission allows.",
+    "access_level": "public",
+    "keywords": [
+      "share calender",
+      "free busy view",
+      "coworker availability",
+      "calendar permissions",
+      "hide meeting details",
+      "calendar invite to share"
+    ],
+    "related_articles": [
+      "KB-007",
+      "KB-018"
+    ]
+  },
+  {
+    "kb_id": "KB-017",
+    "title": "A cancelled repeating meeting still appears for some attendees",
+    "category": "Email & Communication",
+    "subcategory": "Calendar problem",
+    "services": [
+      "Email",
+      "Chat & Video Calls"
+    ],
+    "symptom_types": [
+      "slow"
+    ],
+    "symptoms": [
+      "The organizer cancelled the weekly meeting, but it still shows up for me.",
+      "The organizer's calendar no longer has it, but I still get a reminder.",
+      "Some of us have an old copy in webmail as well as in the calendar app."
+    ],
+    "error_messages": [],
+    "cause": "A cancellation did not update an attendee's stored copy of a recurring event. An individual occurrence and its parent series can have different calendar records.",
+    "self_help_steps": [],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Verify the cancellation with the organizer and collect the event identifier, series identifier, affected date and attendee list through restricted diagnostics.",
+        "expected": "The cancelled occurrence or series is identified without relying on its title."
+      },
+      {
+        "n": 2,
+        "do": "Compare organizer and attendee copies in webmail and check delivery of the cancellation update.",
+        "expected": "The affected mailbox has a stale record or missed the update."
+      },
+      {
+        "n": 3,
+        "do": "With the organizer's approval, use the supported calendar repair workflow for the affected event ID and scope.",
+        "expected": "The stale entry is cleared without altering active occurrences or unrelated events."
+      },
+      {
+        "n": 4,
+        "do": "Ask an affected attendee and a control attendee to refresh the calendar and compare the next valid occurrence.",
+        "expected": "The cancelled entry is absent and valid meetings are still present."
+      }
+    ],
+    "verify": "The cancelled occurrence is gone from affected attendees' web calendars and valid future occurrences still appear.",
+    "escalate_to": "Applications",
+    "escalate_when": "The owner cannot confirm the scope, several unrelated series are affected, or the stale event returns after repair.",
+    "access_level": "internal",
+    "keywords": [
+      "canceled meeting still shows",
+      "ghost calendar event",
+      "recuring invite remains",
+      "old weekly reminder",
+      "stale calendar copy",
+      "cancelled occurrence"
+    ],
+    "related_articles": [
+      "KB-018"
+    ]
+  },
+  {
+    "kb_id": "KB-018",
+    "title": "A meeting appears at the wrong time after travelling",
+    "category": "Email & Communication",
+    "subcategory": "Calendar problem",
+    "services": [
+      "Email"
+    ],
+    "symptom_types": [
+      "slow",
+      "question"
+    ],
+    "symptoms": [
+      "The meeting is on the right day, but my calendar shows it an hour later than I expected.",
+      "I travelled this week and all my meetings look shifted on this device.",
+      "The organizer's invite still shows the time I agreed to."
+    ],
+    "error_messages": [],
+    "cause": "The calendar view is displaying events in a different time zone. The organizer's saved meeting time has not changed.",
+    "self_help_steps": [
+      "Open the same invitation in your work web calendar.",
+      "Compare the time zone shown in the invitation with the one displayed on the calendar view.",
+      "Confirm the start time and time zone with the organizer before proposing a new time."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Compare the start time and zone in the original invitation with the stored event and its web view.",
+        "expected": "The stored start time matches the organizer's invitation."
+      },
+      {
+        "n": 2,
+        "do": "Check the time zone label used by the affected calendar client and compare the converted time for that date.",
+        "expected": "The apparent difference matches the selected display zone."
+      },
+      {
+        "n": 3,
+        "do": "Guide the employee through the supported calendar display preference after confirming the intended zone with them.",
+        "expected": "The view displays the stored event at the intended local time without changing the invitation."
+      }
+    ],
+    "verify": "The affected calendar and the organizer's invitation agree after converting both times to the same time zone.",
+    "escalate_to": "Applications",
+    "escalate_when": "The same time zone shows different start times, or the stored event differs from the invitation.",
+    "access_level": "public",
+    "keywords": [
+      "wrong time calender",
+      "meeting shifted one hour",
+      "travel time zone",
+      "invite at wrong hour",
+      "calendar local time",
+      "daylight savings meeting"
+    ],
+    "related_articles": [
+      "KB-016"
+    ]
+  },
+  {
+    "kb_id": "KB-019",
+    "title": "VPN says password incorrect after a password change",
+    "category": "Network",
+    "subcategory": "VPN problem",
+    "services": [
+      "VPN",
+      "Company Login"
+    ],
+    "symptom_types": [
+      "blocked"
+    ],
+    "symptoms": [
+      "I changed my password this morning and now the VPN won't let me in.",
+      "The VPN says the password is wrong, but I can sign in to the work portal.",
+      "The VPN tries to sign in by itself before I get a chance to type the new password."
+    ],
+    "error_messages": [
+      "Authentication failed.",
+      "Invalid credentials."
+    ],
+    "cause": "The VPN app is attempting to use an old saved credential. The new password works with Company Login when it is entered directly.",
+    "self_help_steps": [
+      "Check that the new password works once on the known work sign-in page.",
+      "Use the VPN app's normal sign-out option if it is shown, then sign in again when it asks.",
+      "If the app still submits the password automatically, stop retrying and tell support what the prompt shows."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Check the account's password-change timestamp and correlate the next VPN attempts with the same managed device.",
+        "expected": "Rejections began after the change and are limited to the VPN client."
+      },
+      {
+        "n": 2,
+        "do": "Confirm active account status and have the employee reauthenticate using the VPN app's supported account flow.",
+        "expected": "The client uses the current credential and completes authentication."
+      },
+      {
+        "n": 3,
+        "do": "If the stale sign-in persists, refresh the single managed VPN credential through the approved client workflow and review a fresh attempt.",
+        "expected": "An authentication success is recorded for the device and the tunnel is established."
+      }
+    ],
+    "verify": "The employee reconnects to VPN and opens an authorized internal work page.",
+    "escalate_to": "Network",
+    "escalate_when": "A fresh sign-in fails while Company Login works, the account keeps locking, or several unrelated VPN accounts fail.",
+    "access_level": "public",
+    "keywords": [
+      "vpn incorrect passwrod",
+      "vpn rejected after reset",
+      "cached vpn credentials",
+      "wfh sign in failed",
+      "vpn automatic old login",
+      "vpn auth error"
+    ],
+    "related_articles": [
+      "KB-001",
+      "KB-005",
+      "KB-020"
+    ]
+  },
+  {
+    "kb_id": "KB-020",
+    "title": "VPN connects but shared drives don't open",
+    "category": "Network",
+    "subcategory": "VPN problem",
+    "services": [
+      "VPN",
+      "Shared Files"
+    ],
+    "symptom_types": [
+      "blocked"
+    ],
+    "symptoms": [
+      "The VPN shows connected, but my usual drive says it can't find the folder.",
+      "The folder works on the office network and fails at home with VPN on.",
+      "I can open the work portal over VPN, but my saved shared-drive link never loads."
+    ],
+    "error_messages": [
+      "The network path was not found."
+    ],
+    "cause": "The VPN connection is up, but the managed profile has not installed the route to the shared file network. Other internal services can still work through their own routes.",
+    "self_help_steps": [
+      "Wait for the VPN app to show Connected, then try your normal shared-drive link once.",
+      "Try an approved internal page you normally use and note whether it opens.",
+      "If your team already uses an approved web link to the same folder, open that link while support checks the drive."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Confirm the VPN session is up and compare the exact shared-drive path with an authorized known-good session.",
+        "expected": "The shared path works from the reference session and the affected device can reach other internal services."
+      },
+      {
+        "n": 2,
+        "do": "Resolve the approved file host name from the affected device and compare the route to its address with the managed VPN profile.",
+        "expected": "The name resolves, but its destination network is missing from the tunnel routes."
+      },
+      {
+        "n": 3,
+        "do": "Refresh the assigned VPN profile through approved endpoint management and reconnect the client.",
+        "expected": "The expected route is installed and the file host responds over the tunnel."
+      },
+      {
+        "n": 4,
+        "do": "Check folder access as the employee using the original drive link.",
+        "expected": "The authorized folder opens with no change to share permissions."
+      }
+    ],
+    "verify": "The original shared-drive link opens after VPN reconnects and an authorized file can be read.",
+    "escalate_to": "Network",
+    "escalate_when": "The approved route stays missing, the known-good session also fails, or the original link returns an access denial instead of a path error.",
+    "access_level": "public",
+    "keywords": [
+      "vpn conected no drive",
+      "network path not found",
+      "mapped drive remote",
+      "share unreachable over vpn",
+      "vpn missing file route",
+      "shared drive from home"
+    ],
+    "related_articles": [
+      "KB-007",
+      "KB-019",
+      "KB-021"
+    ]
+  },
+  {
+    "kb_id": "KB-021",
+    "title": "Internet is slow only while VPN is connected",
+    "category": "Network",
+    "subcategory": "VPN problem",
+    "services": [
+      "VPN"
+    ],
+    "symptom_types": [
+      "slow"
+    ],
+    "symptoms": [
+      "My usual sites load fine before I connect the VPN.",
+      "Once the VPN comes on, the same pages take ages to open.",
+      "My other devices on the same home Wi-Fi are still quick during the slowdown."
+    ],
+    "error_messages": [],
+    "cause": "An assigned VPN gateway is congested. Internet requests routed through the tunnel slow down while the local connection remains healthy.",
+    "self_help_steps": [
+      "Note when the slowdown starts and which gateway name the VPN app shows, if a name is visible.",
+      "Compare the same approved public page before and after a normal VPN connection when you're between work tasks.",
+      "Send the two results to support with your connection time."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Measure the same approved public endpoint before and after VPN connection and record the assigned gateway.",
+        "expected": "Latency rises only on VPN with comparable local conditions."
+      },
+      {
+        "n": 2,
+        "do": "Compare gateway load and packet loss with a healthy peer at the reported time.",
+        "expected": "Affected clients share a gateway that was saturated or dropping packets."
+      },
+      {
+        "n": 3,
+        "do": "Move the test session to an approved healthy gateway using the managed assignment process.",
+        "expected": "The test client reaches the same endpoint within the expected range while staying on VPN."
+      }
+    ],
+    "verify": "The employee opens an approved public page and an internal work page at normal speed while connected to VPN.",
+    "escalate_to": "Network",
+    "escalate_when": "Performance remains poor on a healthy gateway, or saturation affects several gateways at once.",
+    "access_level": "public",
+    "keywords": [
+      "vpn slo internet",
+      "slow only with tunnel",
+      "vpn throttled browsing",
+      "vpn gateway congestion",
+      "pages slow after vpn",
+      "vpn latency"
+    ],
+    "related_articles": [
+      "KB-020",
+      "KB-023",
+      "KB-027"
+    ]
+  },
+  {
+    "kb_id": "KB-022",
+    "title": "VPN won't connect for anyone",
+    "category": "Network",
+    "subcategory": "VPN problem",
+    "services": [
+      "VPN"
+    ],
+    "symptom_types": [
+      "outage"
+    ],
+    "symptoms": [
+      "Nobody on the remote team can get through the VPN connection screen.",
+      "We tried from different home networks and got the same gateway message.",
+      "The work portal still loads, but everybody's VPN stopped connecting at the same time."
+    ],
+    "error_messages": [
+      "VPN gateway unavailable.",
+      "Unable to establish a VPN connection."
+    ],
+    "cause": "The shared VPN gateway pool has lost its healthy members. Clients fail before they can establish a tunnel even while Company Login is available.",
+    "self_help_steps": [],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Test the VPN service endpoint and connect with approved probes from two independent external networks.",
+        "expected": "Both probes reproduce the common failure while the work portal remains reachable."
+      },
+      {
+        "n": 2,
+        "do": "Inspect the gateway pool's health and the most recent successful tunnel establishment.",
+        "expected": "There are no healthy members accepting VPN sessions and the onset time is identified."
+      },
+      {
+        "n": 3,
+        "do": "Open a VPN incident with gateway health evidence and have the Network responder restore the pool or use the approved failover.",
+        "expected": "At least one healthy gateway serves new VPN connections."
+      },
+      {
+        "n": 4,
+        "do": "Repeat tunnel checks from both external networks and verify an internal application.",
+        "expected": "New tunnels establish and pass authorized traffic from both locations."
+      }
+    ],
+    "verify": "Independent remote probes and affected employees can reconnect and reach an internal application.",
+    "escalate_to": "Network",
+    "escalate_when": "Escalate immediately with more than one user affected or when independent VPN probes reproduce the shared connection failure.",
+    "access_level": "internal",
+    "keywords": [
+      "vpn down everyone",
+      "gateway unavailable",
+      "remote staff cant conect",
+      "all vpn failures",
+      "tunnel outage",
+      "vpn gateway pool"
+    ],
+    "related_articles": [
+      "KB-006",
+      "KB-019",
+      "KB-021"
+    ]
+  },
+  {
+    "kb_id": "KB-023",
+    "title": "Internet is slow on busy office Wi-Fi",
+    "category": "Network",
+    "subcategory": "Wi-Fi problem",
+    "services": [
+      "Office Wi-Fi"
+    ],
+    "symptom_types": [
+      "slow"
+    ],
+    "symptoms": [
+      "Pages take ages on office Wi-Fi when this part of the office fills up.",
+      "The Wi-Fi shows a strong signal, but people near me are all waiting for pages.",
+      "Things speed up when the area empties out or I use an office network cable."
+    ],
+    "error_messages": [],
+    "cause": "Too many devices are competing to transmit on the same wireless channel. A strong signal can still have slow transfers when the channel is busy.",
+    "self_help_steps": [
+      "Note the area, time and office network name when pages slow down.",
+      "Try the same approved page from a less crowded work area if you can move.",
+      "Report whether a normal wired office connection is faster, if one is available."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Collect affected access-point associations and compare reported times with channel utilization and retries.",
+        "expected": "Slow sessions share a busy radio with high channel use even with good signal."
+      },
+      {
+        "n": 2,
+        "do": "Run an approved latency and transfer check from a test client on that access point and on a wired port.",
+        "expected": "The wireless path reproduces the slowdown while the wired path stays healthy."
+      },
+      {
+        "n": 3,
+        "do": "Apply the approved wireless capacity or channel plan with the Network owner and repeat the test during a busy period.",
+        "expected": "Channel use or retries drop and wireless performance returns to the expected range."
+      }
+    ],
+    "verify": "The same approved page loads normally on office Wi-Fi in the affected area during a busy period.",
+    "escalate_to": "Network",
+    "escalate_when": "Performance stays poor after mitigation, symptoms spread to wired connections, or several access points show saturation.",
+    "access_level": "public",
+    "keywords": [
+      "office wifi slo",
+      "busy wireless channel",
+      "full signal slow pages",
+      "crowded office internet",
+      "wifi slow at peak",
+      "office wireless congestion"
+    ],
+    "related_articles": [
+      "KB-021",
+      "KB-025",
+      "KB-026"
+    ]
+  },
+  {
+    "kb_id": "KB-024",
+    "title": "Office Wi-Fi rejects a laptop after its network certificate expired",
+    "category": "Network",
+    "subcategory": "Wi-Fi problem",
+    "services": [
+      "Office Wi-Fi",
+      "Laptop / Desktop"
+    ],
+    "symptom_types": [
+      "blocked"
+    ],
+    "symptoms": [
+      "My work laptop used to join office Wi-Fi automatically, but now it keeps asking me to reconnect.",
+      "I can't join at another desk either, and my coworker's laptop connects fine.",
+      "My laptop works on the office network cable, but the company Wi-Fi always shows the same error."
+    ],
+    "error_messages": [
+      "Can't connect to this network.",
+      "Network authentication failed."
+    ],
+    "cause": "The laptop's managed Wi-Fi certificate expired before it could renew. The office wireless authentication service rejects the expired certificate.",
+    "self_help_steps": [],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Locate the affected device's wireless authentication attempts and verify the failure reason and certificate validity.",
+        "expected": "The device is rejected for an expired client certificate."
+      },
+      {
+        "n": 2,
+        "do": "Attach the device to an approved managed wired connection and check its enrollment and certificate renewal status.",
+        "expected": "Endpoint management can reach the device and identifies any pending renewal failure."
+      },
+      {
+        "n": 3,
+        "do": "Use the managed certificate renewal workflow and verify it issued a valid credential for that device.",
+        "expected": "The office Wi-Fi profile can select the new certificate."
+      },
+      {
+        "n": 4,
+        "do": "Reconnect to the approved office network and check authentication and address assignment.",
+        "expected": "The renewed certificate is accepted and the device receives a valid network address."
+      }
+    ],
+    "verify": "The laptop reconnects to office Wi-Fi and opens an authorized work page after the cable is disconnected.",
+    "escalate_to": "Network",
+    "escalate_when": "Renewal fails, the new certificate is rejected, or certificates expire on multiple managed devices.",
+    "access_level": "internal",
+    "keywords": [
+      "wifi cert expirred",
+      "office network rejects laptop",
+      "wireless auth failed",
+      "wifi after leave",
+      "device certificate renewal",
+      "corporate wifi wont join"
+    ],
+    "related_articles": [
+      "KB-023",
+      "KB-025"
+    ]
+  },
+  {
+    "kb_id": "KB-025",
+    "title": "Office Wi-Fi drops in one part of the building",
+    "category": "Network",
+    "subcategory": "Wi-Fi problem",
+    "services": [
+      "Office Wi-Fi"
+    ],
+    "symptom_types": [
+      "slow"
+    ],
+    "symptoms": [
+      "My laptop loses Wi-Fi in the corner meeting room but reconnects in the hall.",
+      "I see the signal bars fall before the call drops.",
+      "It happens there even when I'm the only person in the room."
+    ],
+    "error_messages": [],
+    "cause": "The affected seat is outside reliable wireless coverage. Distance, walls or other obstructions can weaken the signal enough for a device to lose its connection.",
+    "self_help_steps": [
+      "Move to a nearby work area where the office Wi-Fi stays connected.",
+      "Note the room, seat or route where the signal drops and when it happened.",
+      "If you can, note whether another company device loses signal in the same spot."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Walk the reported route with an approved test device and record signal strength, signal-to-noise ratio and drops.",
+        "expected": "The loss occurs in the reported area and follows weak signal."
+      },
+      {
+        "n": 2,
+        "do": "Compare nearby access-point availability and signal in the adjacent area.",
+        "expected": "The surrounding network is healthy and the problem is localized to weak coverage."
+      },
+      {
+        "n": 3,
+        "do": "Record the survey and arrange the approved placement or coverage change with Network.",
+        "expected": "The coverage gap has a tracked remediation and a specific re-test area."
+      }
+    ],
+    "verify": "A test device stays connected in the reported spot and along the route where it previously dropped.",
+    "escalate_to": "Network",
+    "escalate_when": "The problem appears with a strong signal, a nearby access point is offline, or the coverage change needs building work.",
+    "access_level": "public",
+    "keywords": [
+      "wifi dead spot",
+      "weak wirless signal",
+      "office wifi drops room",
+      "one meeting room no wifi",
+      "coverage gap",
+      "wifi disconnects near corner"
+    ],
+    "related_articles": [
+      "KB-023",
+      "KB-026"
+    ]
+  },
+  {
+    "kb_id": "KB-026",
+    "title": "Internet is slow only when this computer uses a network cable",
+    "category": "Network",
+    "subcategory": "Internet slow or down",
+    "services": [
+      "Laptop / Desktop",
+      "Other / Not sure"
+    ],
+    "symptom_types": [
+      "slow"
+    ],
+    "symptoms": [
+      "Pages load slowly when I plug in the cable at my desk.",
+      "The same page loads quickly on this computer when I'm on office Wi-Fi.",
+      "It feels like the wired connection stops and starts when the cable moves."
+    ],
+    "error_messages": [],
+    "cause": "A damaged or poorly seated Ethernet cable can cause errors or force the link to run at a lower speed. Office Wi-Fi uses a separate connection.",
+    "self_help_steps": [
+      "Check that the accessible cable ends are seated firmly if the desk has a directly connected network cable.",
+      "Use the approved office Wi-Fi for work if it is available.",
+      "Tell support which desk and cable you were using and whether Wi-Fi worked normally."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Check the active link speed and port error counters during a transfer from the affected desk.",
+        "expected": "The wired link is below its expected speed or accumulates physical errors."
+      },
+      {
+        "n": 2,
+        "do": "Replace the suspect patch cable with a known-good approved cable on the same port and repeat the transfer.",
+        "expected": "The link negotiates the expected speed and errors stop increasing."
+      },
+      {
+        "n": 3,
+        "do": "Compare the wired transfer with a healthy reference port and record the faulty cable in the ticket.",
+        "expected": "Both wired connections perform in the expected range and the faulty cable is removed from use."
+      }
+    ],
+    "verify": "With Wi-Fi out of the test path, the desk's wired connection opens approved pages normally and link errors do not increase.",
+    "escalate_to": "Network",
+    "escalate_when": "The replacement cable shows the same errors, multiple desks are affected, or the switch port cannot establish a stable link.",
+    "access_level": "public",
+    "keywords": [
+      "ethrnet slow",
+      "network cable cuts out",
+      "wired slower than wifi",
+      "desk lan slow",
+      "low link speed",
+      "bad ethernet lead"
+    ],
+    "related_articles": [
+      "KB-023",
+      "KB-027"
+    ]
+  },
+  {
+    "kb_id": "KB-027",
+    "title": "Home internet is slow on every device before VPN starts",
+    "category": "Network",
+    "subcategory": "Internet slow or down",
+    "services": [
+      "Other / Not sure"
+    ],
+    "symptom_types": [
+      "slow"
+    ],
+    "symptoms": [
+      "My phone and laptop are both slow on my home Wi-Fi.",
+      "The same pages are slow before I even open the VPN app.",
+      "People at home have noticed that their own devices are slow too."
+    ],
+    "error_messages": [],
+    "cause": "A problem on the home internet connection slows access before traffic reaches company services. The slowdown also affects personal devices on that connection.",
+    "self_help_steps": [
+      "Compare the same ordinary public page on two devices using the home connection.",
+      "Note whether the slowdown was already happening before VPN connected.",
+      "Check your provider's service status from a working connection if available, then share the time and scope with support."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Compare a public connectivity probe on the affected home link with the same probe on an approved alternate connection.",
+        "expected": "The issue follows the home link and disappears on the alternate path."
+      },
+      {
+        "n": 2,
+        "do": "With the employee's agreement, use approved diagnostics to compare reachability of the home gateway and a public target before VPN connects.",
+        "expected": "The test narrows the loss to the home wireless link or its upstream connection."
+      },
+      {
+        "n": 3,
+        "do": "Confirm whether the same public target works from a known-good company connection, then record the affected path.",
+        "expected": "The employee has evidence to share with their provider or the home network owner."
+      }
+    ],
+    "verify": "After home connectivity is restored, the same public page loads normally on both devices and the work laptop can reach an approved page over VPN.",
+    "escalate_to": "Network",
+    "escalate_when": "The work laptop is still slow on an approved alternate connection, or employees on independent home links report the same work-only symptoms.",
+    "access_level": "public",
+    "keywords": [
+      "slow home intrnet",
+      "all home devices lag",
+      "isp slowdown",
+      "slow before vpn",
+      "home broadband packet loss",
+      "home wifi everyone"
+    ],
+    "related_articles": [
+      "KB-021",
+      "KB-026"
+    ]
+  },
+  {
+    "kb_id": "KB-028",
+    "title": "Finance System fails before I reach the home screen",
+    "category": "Business System",
+    "subcategory": "Error or won't open",
+    "services": [
+      "Finance System"
+    ],
+    "symptom_types": [
+      "blocked"
+    ],
+    "symptoms": [
+      "I sign in and get an error before the Finance System home screen opens.",
+      "My teammate opens the same system, but my usual start page crashes.",
+      "I can open a different Finance System link from the portal and my regular work screen still works there."
+    ],
+    "error_messages": [
+      "Unable to load your workspace.",
+      "We couldn't open your start page."
+    ],
+    "cause": "The Finance System is trying to load an obsolete report saved as that employee's start page. Their sign-in and page permissions are still active.",
+    "self_help_steps": [
+      "Open the Finance System from its usual link in the work portal and note the first error shown.",
+      "If the portal offers a regular link to the work screen you need, use it directly.",
+      "Tell support whether the direct link works and include the time of the failed launch."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Confirm a fresh Company Login succeeds and use application logs to trace the failed workspace launch for the affected account.",
+        "expected": "Sign-in succeeds and the launch fails while loading a personal workspace item."
+      },
+      {
+        "n": 2,
+        "do": "Compare the saved landing item with the report catalog and test the normal portal link to an authorized work screen.",
+        "expected": "The saved item is obsolete and the authorized work screen still opens."
+      },
+      {
+        "n": 3,
+        "do": "Record the previous startup selection and use the supported preference workflow to point it to an approved working landing page.",
+        "expected": "Only the affected startup preference changes and the home screen loads."
+      }
+    ],
+    "verify": "The default Finance System link opens the home screen in a fresh session and the employee's usual work screen is accessible.",
+    "escalate_to": "Applications",
+    "escalate_when": "The default link fails after the workspace preference is repaired, a valid direct link also fails, or several users cannot open the Finance System.",
+    "access_level": "public",
+    "keywords": [
+      "finance wont open",
+      "finace app startup error",
+      "workspace failed to load",
+      "broken default report",
+      "crash after finance login",
+      "finance landing screen"
+    ],
+    "related_articles": [
+      "KB-008",
+      "KB-032"
+    ]
+  },
+  {
+    "kb_id": "KB-029",
+    "title": "Finance System is down for everyone and shows service unavailable",
+    "category": "Business System",
+    "subcategory": "Error or won't open",
+    "services": [
+      "Finance System"
+    ],
+    "symptom_types": [
+      "outage"
+    ],
+    "symptoms": [
+      "Nobody in our group can open the Finance System, including people in another office.",
+      "It says service unavailable before anyone gets to the home page.",
+      "Direct links to invoices fail too, while the rest of the work portal opens."
+    ],
+    "error_messages": [
+      "503 Service Unavailable"
+    ],
+    "cause": "The Finance System gateway has no healthy application nodes to send requests to. Both the home page and direct links rely on the same backend pool.",
+    "self_help_steps": [],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Run the Finance System home and read-only invoice probes with approved test accounts from two locations.",
+        "expected": "Both paths return the same service error for unrelated accounts while other portal apps open."
+      },
+      {
+        "n": 2,
+        "do": "Compare gateway logs and backend-node health against the last successful probe.",
+        "expected": "The gateway is returning the error because the Finance System pool is unhealthy."
+      },
+      {
+        "n": 3,
+        "do": "Open a Finance System incident and send the pool state, onset and request IDs to the service owner for approved recovery.",
+        "expected": "The Applications responder owns the incident and a healthy node begins serving traffic."
+      },
+      {
+        "n": 4,
+        "do": "Repeat the probes and inspect application error rate across locations.",
+        "expected": "The home page and sample invoice load and the service error rate returns to baseline."
+      }
+    ],
+    "verify": "Approved finance probes pass and affected users can open the Finance System and view a permitted invoice.",
+    "escalate_to": "Applications",
+    "escalate_when": "Escalate immediately with more than one user affected or when independent tests show the same shared service error.",
+    "access_level": "internal",
+    "keywords": [
+      "finance system down",
+      "finanace outage",
+      "503 finance",
+      "invoice portal offline",
+      "finance app everyone affected",
+      "no healthy finance nodes"
+    ],
+    "related_articles": [
+      "KB-028",
+      "KB-032",
+      "KB-035"
+    ]
+  },
+  {
+    "kb_id": "KB-030",
+    "title": "Payroll System is down for everyone after sign-in",
+    "category": "Business System",
+    "subcategory": "Error or won't open",
+    "services": [
+      "Payroll System"
+    ],
+    "symptom_types": [
+      "outage"
+    ],
+    "symptoms": [
+      "Everyone on the payroll team sees the same unavailable screen after signing in.",
+      "Nobody can open the Payroll System home page or the payroll work list.",
+      "People in different offices can still use the work portal, but none of us can get into payroll."
+    ],
+    "error_messages": [
+      "Payroll System is temporarily unavailable.",
+      "Unable to load payroll workspace."
+    ],
+    "cause": "The application has lost its shared database connection pool. Employee sessions can authenticate but cannot read the records needed to load any payroll workspace.",
+    "self_help_steps": [],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Compare failure times across independent authorized users and run the non-mutating Payroll System health checks.",
+        "expected": "Separate users and the synthetic read probe fail after authentication."
+      },
+      {
+        "n": 2,
+        "do": "Review the Payroll System connection-pool health and dependency errors using request IDs.",
+        "expected": "Payroll requests are failing while acquiring the shared database connection."
+      },
+      {
+        "n": 3,
+        "do": "Page the Payroll System owner with the dependency state and current processing window, and have them follow the approved recovery procedure.",
+        "expected": "An owner coordinates recovery and checks the status of queued payroll work."
+      },
+      {
+        "n": 4,
+        "do": "Repeat read-only health checks and reconcile pending job identifiers with the owner before any replay.",
+        "expected": "Workspaces load and the owner can account for in-flight jobs without duplicating runs."
+      }
+    ],
+    "verify": "Authorized users in separate locations open the payroll workspace, and the Payroll System owner confirms pending jobs are accounted for.",
+    "escalate_to": "Applications",
+    "escalate_when": "Escalate immediately with more than one user affected, when the read-only probe fails, or when the payroll processing window is at risk.",
+    "access_level": "internal",
+    "keywords": [
+      "payrol down",
+      "payroll workspace unavailable",
+      "payroll app outage",
+      "all operators locked out",
+      "payroll database connection",
+      "payroll service offline"
+    ],
+    "related_articles": [
+      "KB-009",
+      "KB-033"
+    ]
+  },
+  {
+    "kb_id": "KB-031",
+    "title": "Company Website is down for customers with a certificate warning",
+    "category": "Business System",
+    "subcategory": "Error or won't open",
+    "services": [
+      "Company Website"
+    ],
+    "symptom_types": [
+      "outage"
+    ],
+    "symptoms": [
+      "Customers keep telling us our website opens to a warning instead of the home page.",
+      "I tried the public website from my phone and got the same warning.",
+      "People in different places say the warning appears on every page they try."
+    ],
+    "error_messages": [
+      "Your connection is not private.",
+      "NET::ERR_CERT_DATE_INVALID"
+    ],
+    "cause": "The public website is presenting an expired certificate at its edge. Browsers block access before any site page can load.",
+    "self_help_steps": [],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Use approved independent external probes to check the certificate served for the production hostname at multiple edge locations.",
+        "expected": "The probes see the expired certificate and identify which endpoints serve it."
+      },
+      {
+        "n": 2,
+        "do": "Compare the deployed certificate fingerprint, hostname and expiration with the managed certificate inventory.",
+        "expected": "The failed production certificate and intended valid replacement are identified."
+      },
+      {
+        "n": 3,
+        "do": "Have the Company Website owner deploy the approved replacement certificate and chain through the standard edge workflow.",
+        "expected": "The edge locations begin presenting the correct valid certificate for the hostname."
+      },
+      {
+        "n": 4,
+        "do": "Repeat HTTPS checks from independent networks and open representative public pages through a normal browser.",
+        "expected": "Trust verification passes and pages open without a certificate warning."
+      }
+    ],
+    "verify": "The public homepage and a representative secondary page open over HTTPS from separate external networks without a warning.",
+    "escalate_to": "Applications",
+    "escalate_when": "Escalate immediately with more than one user affected or when independent external probes confirm an invalid production certificate.",
+    "access_level": "internal",
+    "keywords": [
+      "company webiste offline",
+      "customer website warning",
+      "certificate expired",
+      "connection not private",
+      "public https outage",
+      "cert date invalid"
+    ],
+    "related_articles": [
+      "KB-034"
+    ]
+  },
+  {
+    "kb_id": "KB-032",
+    "title": "Finance System report is slow when I choose a large date range",
+    "category": "Business System",
+    "subcategory": "Slow",
+    "services": [
+      "Finance System"
+    ],
+    "symptom_types": [
+      "slow"
+    ],
+    "symptoms": [
+      "The Finance System opens quickly until I run this report for the whole year.",
+      "A report for one week comes back fine, but the full year takes forever.",
+      "My invoice and search screens still open normally."
+    ],
+    "error_messages": [
+      "The report is taking longer than expected."
+    ],
+    "cause": "The report reads many more records when it is run over a wide date range. The longer query takes more time even while other Finance System screens remain responsive.",
+    "self_help_steps": [
+      "Run the same report for a shorter date range that still answers part of your question.",
+      "If the short report works, note the full date range that was slow and the report name.",
+      "Send support the range, the selected filters and the time you ran it, leaving invoice details out of the ticket."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Run the same report in an approved test environment and compare execution time for the short and long date ranges.",
+        "expected": "The slowdown scales with the range and other screens stay responsive."
+      },
+      {
+        "n": 2,
+        "do": "Review the slow request trace for scanned row count and the use of date filters.",
+        "expected": "The trace shows that the broad range is increasing query work."
+      },
+      {
+        "n": 3,
+        "do": "Use the supported scheduled report path or ask the owner to optimize the approved report, preserving its filters and scope.",
+        "expected": "The required range completes within the agreed window and returns the expected result set."
+      }
+    ],
+    "verify": "The needed report completes within its expected time and a control report matches the same filters.",
+    "escalate_to": "Applications",
+    "escalate_when": "Even short ranges become slow, the required reporting window cannot be met, or the report remains slow after the owner checks the query.",
+    "access_level": "public",
+    "keywords": [
+      "finance reprot slow",
+      "large date filter",
+      "year end report timing out",
+      "long finance search",
+      "full year report",
+      "finance report takes forever"
+    ],
+    "related_articles": [
+      "KB-028",
+      "KB-035"
+    ]
+  },
+  {
+    "kb_id": "KB-033",
+    "title": "Payroll report stays queued while the Payroll System still works",
+    "category": "Business System",
+    "subcategory": "Slow",
+    "services": [
+      "Payroll System"
+    ],
+    "symptom_types": [
+      "slow"
+    ],
+    "symptoms": [
+      "I can open the Payroll System, but my report has said queued for a long time.",
+      "The payroll menus and lists load normally.",
+      "Other people can work in the app, but the report they requested last is waiting too."
+    ],
+    "error_messages": [
+      "Queued"
+    ],
+    "cause": "Scheduled reports share a background worker queue. A backlog delays new report jobs while interactive pages remain usable.",
+    "self_help_steps": [],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Locate the existing report job by its owner and request time, and record its job ID and state.",
+        "expected": "One queued job is identified without starting a duplicate."
+      },
+      {
+        "n": 2,
+        "do": "Compare queue age, worker availability and completion times with those for the same report on a healthy day.",
+        "expected": "Interactive service is healthy and the report queue is behind its usual schedule."
+      },
+      {
+        "n": 3,
+        "do": "Have the owner restore approved report worker capacity or release the documented queue pause.",
+        "expected": "Workers resume consuming jobs and the original ID advances."
+      },
+      {
+        "n": 4,
+        "do": "Track the original job through completion and verify its recorded owner and date filter.",
+        "expected": "The intended report is delivered once with the requested scope."
+      }
+    ],
+    "verify": "The original job completes once and the requester opens the correctly scoped report.",
+    "escalate_to": "Applications",
+    "escalate_when": "Workers stop making progress, the queue threatens the payroll deadline, or a job reaches an unexpected terminal state.",
+    "access_level": "internal",
+    "keywords": [
+      "payroll reprot stuck",
+      "report queued forever",
+      "payroll worker backlog",
+      "scheduled report slow",
+      "payroll batch report pending",
+      "app works report waiting"
+    ],
+    "related_articles": [
+      "KB-030"
+    ]
+  },
+  {
+    "kb_id": "KB-034",
+    "title": "Company Website opens but images load slowly for first-time visitors",
+    "category": "Business System",
+    "subcategory": "Slow",
+    "services": [
+      "Company Website"
+    ],
+    "symptom_types": [
+      "slow"
+    ],
+    "symptoms": [
+      "The website text appears, but the pictures take ages the first time I open it.",
+      "When I refresh the page, the images load much faster.",
+      "People on different internet connections can open the site and say the same pictures are slow."
+    ],
+    "error_messages": [],
+    "cause": "The website's cache is missing or bypassing these images. First-time visitors wait for images to come from the upstream server, while a repeat visit may reuse images already saved by the browser.",
+    "self_help_steps": [],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Capture cold and repeat load timings for a representative public page using approved external probes.",
+        "expected": "Delay is concentrated in image requests during cold loads while the page itself responds promptly."
+      },
+      {
+        "n": 2,
+        "do": "Inspect response headers and edge metrics for the slow image paths and compare them with an unaffected image.",
+        "expected": "Slow paths miss or bypass the shared cache and show longer upstream response times."
+      },
+      {
+        "n": 3,
+        "do": "Have the site owner review the affected image paths for public eligibility and deploy the approved cache configuration for those assets only.",
+        "expected": "Eligible public images are served by the cache after the first fill."
+      },
+      {
+        "n": 4,
+        "do": "Test from clean browser sessions and separate locations and compare image timings with baseline.",
+        "expected": "Cold page loads meet the expected timing and image content is correct."
+      }
+    ],
+    "verify": "A first-time visit from multiple external test locations loads the affected images within the site's expected time.",
+    "escalate_to": "Applications",
+    "escalate_when": "Cold loads remain slow, cache rules appear to include private assets, or the homepage starts failing outright.",
+    "access_level": "internal",
+    "keywords": [
+      "webiste images slow",
+      "pictures load after text",
+      "cold page load",
+      "cdn image miss",
+      "slow first visit",
+      "website fast on refresh"
+    ],
+    "related_articles": [
+      "KB-031"
+    ]
+  },
+  {
+    "kb_id": "KB-035",
+    "title": "Finance System dashboard is still showing yesterday's figures",
+    "category": "Business System",
+    "subcategory": "Wrong data",
+    "services": [
+      "Finance System"
+    ],
+    "symptom_types": [
+      "slow"
+    ],
+    "symptoms": [
+      "Today's entries are in the Finance System, but the summary still shows yesterday's date.",
+      "I can find the new invoices on their own pages while the dashboard totals haven't moved.",
+      "My teammate sees the same old time next to Last updated."
+    ],
+    "error_messages": [],
+    "cause": "The dashboard uses a scheduled snapshot of the source records. A delayed refresh can leave the summary on yesterday's data even when individual entries are current.",
+    "self_help_steps": [
+      "Read the dashboard's Last updated time and note which summary you were viewing.",
+      "If your normal access allows it, open the current record you expected to see and compare the dates.",
+      "Send support the summary name and refresh time, leaving sensitive amounts and record details out of the ticket."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Compare the dashboard snapshot timestamp with the source feed's latest completed period.",
+        "expected": "Current source entries exist and the dashboard snapshot is behind them."
+      },
+      {
+        "n": 2,
+        "do": "Check the latest dashboard refresh job and confirm whether the input snapshot for that period has arrived and validated.",
+        "expected": "The delayed job or missing snapshot is identified."
+      },
+      {
+        "n": 3,
+        "do": "Once the input validates, use the authorized refresh workflow for the relevant period and check the published version.",
+        "expected": "The dashboard advances to the expected period and the refresh log shows one publish for that version."
+      }
+    ],
+    "verify": "The dashboard shows the expected refresh time and agrees with a permitted sample of current source entries.",
+    "escalate_to": "Applications",
+    "escalate_when": "A refresh misses its agreed window, the input has not validated, or totals still disagree after the dashboard shows a current snapshot.",
+    "access_level": "public",
+    "keywords": [
+      "finance dashbord stale",
+      "yesterdays totals",
+      "dashboard last updated old",
+      "finance snapshot late",
+      "new invoices missing summary",
+      "finance refresh delayed"
+    ],
+    "related_articles": [
+      "KB-032"
+    ]
+  },
+  {
+    "kb_id": "KB-036",
+    "title": "Shared Files preview shows an older version than the file itself",
+    "category": "Business System",
+    "subcategory": "Wrong data",
+    "services": [
+      "Shared Files"
+    ],
+    "symptom_types": [
+      "slow"
+    ],
+    "symptoms": [
+      "The quick preview still shows the old wording after my coworker saved the file.",
+      "When I open the actual file, I see the new version.",
+      "The file's version history lists today's edit, but the little preview looks like yesterday's copy."
+    ],
+    "error_messages": [],
+    "cause": "The browser preview is made from a separate copy that can lag behind a file save. The actual file can be current while the preview still shows its earlier version.",
+    "self_help_steps": [
+      "Open the file from the same Shared Files folder and compare it with the preview.",
+      "Check the latest version time if the file shows version history.",
+      "Work from the opened file and report the folder link and version time if the preview stays old."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Confirm the same file ID and approved access in the opened file and the preview, then compare the version timestamps.",
+        "expected": "The current file is available and only the preview is stale."
+      },
+      {
+        "n": 2,
+        "do": "Inspect the preview-generation status for the affected file version.",
+        "expected": "The current rendition is pending or failed while the stored source version is healthy."
+      },
+      {
+        "n": 3,
+        "do": "Run the approved preview regeneration workflow for that version and re-open the link in a fresh browser session.",
+        "expected": "The preview is derived from the current file without saving a new source version."
+      }
+    ],
+    "verify": "The preview agrees with the opened file for the same link and the source version ID matches the pre-repair ID.",
+    "escalate_to": "Applications",
+    "escalate_when": "The opened file also shows old content, the preview reveals material the viewer cannot access in the source file, or rendition regeneration fails.",
+    "access_level": "public",
+    "keywords": [
+      "shared file prevue stale",
+      "preview old wording",
+      "wrong file thumbnail",
+      "document version mismatch",
+      "file current preview old",
+      "regenerate document preview"
+    ],
+    "related_articles": [
+      "KB-007"
+    ]
+  },
+  {
+    "kb_id": "KB-037",
+    "title": "External monitor says no signal while the laptop screen works",
+    "category": "Device & Software",
+    "subcategory": "Computer problem",
+    "services": [
+      "Laptop / Desktop"
+    ],
+    "symptom_types": [
+      "slow"
+    ],
+    "symptoms": [
+      "My laptop screen works, but the extra screen says No signal.",
+      "The monitor is on and I can see its own message, but there's no picture from the laptop.",
+      "The picture flickers when I move the cable between the laptop and the screen."
+    ],
+    "error_messages": [
+      "No signal"
+    ],
+    "cause": "The display cable is loose or has a damaged connection. The monitor has power but does not receive a stable video signal.",
+    "self_help_steps": [
+      "Make sure the monitor is on and leave your work open on the laptop screen.",
+      "If the monitor cable is easy to reach and connects directly to the laptop, gently reseat it at both ends.",
+      "Tell support whether the monitor picture returned or still flickers."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Confirm that the monitor's own display menu opens and that the laptop screen remains usable.",
+        "expected": "The symptom is limited to the external video path."
+      },
+      {
+        "n": 2,
+        "do": "Reseat the display cable, then swap in a known-good cable on the same ports if the link still drops.",
+        "expected": "The external monitor detects a stable signal on the original ports."
+      },
+      {
+        "n": 3,
+        "do": "Test the external monitor at the expected resolution and reconnect the cable once.",
+        "expected": "A normal picture returns promptly and stays stable."
+      }
+    ],
+    "verify": "The external screen displays a stable image while the laptop screen stays usable.",
+    "escalate_to": "Desktop Support",
+    "escalate_when": "A known-good cable does not restore the picture, a port is damaged, or another monitor also fails on the same laptop.",
+    "access_level": "public",
+    "keywords": [
+      "moniter no signal",
+      "second screen no picture",
+      "monitor cable loose",
+      "external display flicker",
+      "laptop only one screen",
+      "hdmi not detected"
+    ],
+    "related_articles": [
+      "KB-039"
+    ]
+  },
+  {
+    "kb_id": "KB-038",
+    "title": "Work computer has no space left to save files",
+    "category": "Device & Software",
+    "subcategory": "Computer problem",
+    "services": [
+      "Laptop / Desktop"
+    ],
+    "symptom_types": [
+      "blocked"
+    ],
+    "symptoms": [
+      "My laptop says there's no room left when I try to save.",
+      "Several apps on this computer have started failing when I save something.",
+      "I can still open the shared folder, but saving anything on the laptop gives the same space warning."
+    ],
+    "error_messages": [
+      "There is not enough space on the disk.",
+      "Disk full."
+    ],
+    "cause": "The computer's local storage is full. Several apps need local space to save files and temporary data even when shared storage is available.",
+    "self_help_steps": [],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Check free space on the affected volume and compare it with the storage requirement for the failing app.",
+        "expected": "Local free space is below the level needed to save the file."
+      },
+      {
+        "n": 2,
+        "do": "Use the approved storage inventory to identify the largest folders and why they grew without opening employee files.",
+        "expected": "The growth is attributed to managed application data or employee-owned content."
+      },
+      {
+        "n": 3,
+        "do": "With the required approval, use the managed cleanup for eligible application caches or move verified employee files using the approved storage transfer process.",
+        "expected": "Required free space is available and the disposition of any moved files is recorded."
+      },
+      {
+        "n": 4,
+        "do": "Ask the employee to save and reopen an approved test file, then recheck free space.",
+        "expected": "The save succeeds and the volume stays above the support threshold."
+      }
+    ],
+    "verify": "The employee saves and reopens a test file in the affected app and local storage remains above the approved free-space threshold.",
+    "escalate_to": "Desktop Support",
+    "escalate_when": "Storage refills quickly, eligible managed space cannot be reclaimed, or the disk reports hardware or file system errors.",
+    "access_level": "internal",
+    "keywords": [
+      "laptop disk ful",
+      "no space to save",
+      "c drive full",
+      "local storage warning",
+      "hard drive out of space",
+      "file save disk full"
+    ],
+    "related_articles": [
+      "KB-039",
+      "KB-048"
+    ]
+  },
+  {
+    "kb_id": "KB-039",
+    "title": "Keyboard and mouse stop working through the dock after sleep",
+    "category": "Device & Software",
+    "subcategory": "Computer problem",
+    "services": [
+      "Laptop / Desktop"
+    ],
+    "symptom_types": [
+      "slow"
+    ],
+    "symptoms": [
+      "The laptop's own keyboard and touchpad work, but the ones on the dock stopped after I woke it up.",
+      "Both wired accessories stopped together when I came back to my desk.",
+      "Either accessory works when I plug it into the laptop directly."
+    ],
+    "error_messages": [
+      "USB device not recognized."
+    ],
+    "cause": "The dock's USB hub did not resume properly when the laptop woke up. Accessories connected directly to the laptop use a separate USB path.",
+    "self_help_steps": [
+      "Use the laptop keyboard and touchpad to save any open work.",
+      "Plug the keyboard or mouse directly into a compatible laptop port if one is available.",
+      "Report whether the accessories work directly and whether the problem started after waking the laptop."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Confirm each accessory works directly and inspect the list of USB devices immediately after a docked wake.",
+        "expected": "Both accessories are functional and the dock's hub is missing or in an error state."
+      },
+      {
+        "n": 2,
+        "do": "Safely finish any active transfers to docked storage, then reconnect the dock using the vendor-supported sequence.",
+        "expected": "The hub appears and its attached accessories work again."
+      },
+      {
+        "n": 3,
+        "do": "If the error repeats, compare the enrolled dock's firmware with the approved version and use the managed update or dock exchange process.",
+        "expected": "The approved dock setup detects accessories after sleep."
+      }
+    ],
+    "verify": "The keyboard and mouse work through the dock after a sleep and wake cycle.",
+    "escalate_to": "Desktop Support",
+    "escalate_when": "The hub still disappears after the managed update, the issue follows a known-good dock to the same laptop, or directly attached devices fail too.",
+    "access_level": "public",
+    "keywords": [
+      "doking station usb",
+      "mouse dead after sleep",
+      "dock keyboard stops",
+      "dock ports not working",
+      "usb hub wake",
+      "peripherals work direct"
+    ],
+    "related_articles": [
+      "KB-037"
+    ]
+  },
+  {
+    "kb_id": "KB-040",
+    "title": "Jobs pile up because a shared print queue is paused",
+    "category": "Device & Software",
+    "subcategory": "Printer problem",
+    "services": [
+      "Printer"
+    ],
+    "symptom_types": [
+      "blocked"
+    ],
+    "symptoms": [
+      "My document sits in the queue and never starts printing.",
+      "Coworkers have jobs stuck on the same printer, and the printer screen looks ready.",
+      "I can print to a different printer from the same computer."
+    ],
+    "error_messages": [
+      "Printer queue paused.",
+      "Paused"
+    ],
+    "cause": "The shared print server queue is paused. It is holding jobs from several people even though the printer itself is ready.",
+    "self_help_steps": [],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Open the shared print queue and compare its state and pending job count with the printer's reported status.",
+        "expected": "The server queue is paused with multiple pending jobs while the device reports ready."
+      },
+      {
+        "n": 2,
+        "do": "Check the queue event log and maintenance record to identify why it paused and whether a maintenance hold is active.",
+        "expected": "The reason for the pause is known and any live hold is respected."
+      },
+      {
+        "n": 3,
+        "do": "After the recorded hold is released and the queue owner confirms the device is ready, resume dispatch under the approved procedure.",
+        "expected": "Existing jobs start dispatching without being submitted again."
+      },
+      {
+        "n": 4,
+        "do": "Track the original jobs and send a single approved test job once the queue drains.",
+        "expected": "Jobs complete normally and no duplicate test output is created."
+      }
+    ],
+    "verify": "The queue drains, the test page prints once, and affected employees see their original jobs complete.",
+    "escalate_to": "Desktop Support",
+    "escalate_when": "The queue pauses again, an active maintenance hold prevents release, or the printer reports a separate hardware fault.",
+    "access_level": "internal",
+    "keywords": [
+      "print que paused",
+      "jobs stuck on printer",
+      "printer ready no jobs",
+      "shared print server paused",
+      "everyone print jobs waiting",
+      "spool queue held"
+    ],
+    "related_articles": [
+      "KB-041",
+      "KB-042"
+    ]
+  },
+  {
+    "kb_id": "KB-041",
+    "title": "My print job waits until I tap my badge",
+    "category": "Device & Software",
+    "subcategory": "Printer problem",
+    "services": [
+      "Printer"
+    ],
+    "symptom_types": [
+      "question",
+      "slow"
+    ],
+    "symptoms": [
+      "My print job says held, and nothing comes out by itself.",
+      "The printer is asking me to tap my badge.",
+      "People who tap their badges can print, but I expected my document to come out when I sent it."
+    ],
+    "error_messages": [
+      "Held for release.",
+      "Tap badge to release print jobs."
+    ],
+    "cause": "The secure queue holds the employee's document until they release it at an approved printer. This keeps the pages from appearing unattended.",
+    "self_help_steps": [
+      "Go to an approved printer that supports badge release.",
+      "Tap your own badge and select your pending job on the screen.",
+      "Release the job once and collect the pages before leaving."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Verify that the job is in the secure release queue under the employee's account.",
+        "expected": "The job is held and assigned to the right owner."
+      },
+      {
+        "n": 2,
+        "do": "Have the employee authenticate at an approved device and compare the device event with the queued job owner.",
+        "expected": "The employee's own job appears in the release list."
+      },
+      {
+        "n": 3,
+        "do": "Ask the employee to release the selected job and review its completion status.",
+        "expected": "Only the selected job changes from held to completed."
+      }
+    ],
+    "verify": "The selected document prints once after the employee taps their badge and releases it.",
+    "escalate_to": "Desktop Support",
+    "escalate_when": "The badge is rejected, the job does not appear for its verified owner, or a different employee's job is visible.",
+    "access_level": "public",
+    "keywords": [
+      "badge relase print",
+      "held job",
+      "secure printing",
+      "tap card to print",
+      "print release list",
+      "follow me printer"
+    ],
+    "related_articles": [
+      "KB-042"
+    ]
+  },
+  {
+    "kb_id": "KB-042",
+    "title": "Printer asks for a paper size the document doesn't need",
+    "category": "Device & Software",
+    "subcategory": "Printer problem",
+    "services": [
+      "Printer"
+    ],
+    "symptom_types": [
+      "slow"
+    ],
+    "symptoms": [
+      "The printer stops and asks for a different paper size when I send this file.",
+      "Other files come out, but this one asks me to load Legal paper.",
+      "I only need a normal copy, and the printer already has the usual office paper."
+    ],
+    "error_messages": [
+      "Load Legal paper.",
+      "Paper size mismatch."
+    ],
+    "cause": "This job requests a paper size or tray different from the one loaded. The printer waits for matching paper even though it is available for other jobs.",
+    "self_help_steps": [
+      "Open Print Preview and check the paper size shown for your document.",
+      "If the document can be printed on the printer's supported standard paper, choose that size in the print dialog for this job and check the preview.",
+      "If the old job is still waiting, ask support about it before sending the corrected job."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Inspect the affected job's requested media and compare it with the selected device's reported tray configuration.",
+        "expected": "The job requests a size or tray that the device cannot currently supply."
+      },
+      {
+        "n": 2,
+        "do": "Confirm the required paper size with the employee and, with permission, cancel only their original waiting job.",
+        "expected": "The obsolete request is no longer holding the queue."
+      },
+      {
+        "n": 3,
+        "do": "Send a single approved test job using the correct media selection, or route a true special-size job to a printer that supports it.",
+        "expected": "The correct paper feeds without a tray prompt."
+      }
+    ],
+    "verify": "The document prints on the intended paper size without getting stuck at the printer.",
+    "escalate_to": "Desktop Support",
+    "escalate_when": "A correct job still requests the wrong tray, multiple applications send incorrect defaults, or the printer cannot detect correctly loaded paper.",
+    "access_level": "public",
+    "keywords": [
+      "papper size mismatch",
+      "load legal paper",
+      "wrong tray prompt",
+      "print job paper request",
+      "a4 letter mismatch",
+      "printer asks for paper"
+    ],
+    "related_articles": [
+      "KB-041"
+    ]
+  },
+  {
+    "kb_id": "KB-043",
+    "title": "Company phone won't charge with its usual cable",
+    "category": "Device & Software",
+    "subcategory": "Phone problem",
+    "services": [
+      "Mobile Phone"
+    ],
+    "symptom_types": [
+      "slow"
+    ],
+    "symptoms": [
+      "My work phone isn't showing the charging symbol with the cable I usually use.",
+      "It charges for a second when I move the cable and then stops.",
+      "The phone still turns on, but the battery keeps going down while it's plugged in."
+    ],
+    "error_messages": [],
+    "cause": "An unreliable charging cable can lose contact and interrupt power. The phone may still work as long as its battery has charge.",
+    "self_help_steps": [
+      "Stop using the cable if it looks damaged or feels unusually hot.",
+      "Try an intact company-approved charging cable and charger if you have them.",
+      "Check whether the charging symbol stays on and the battery percentage rises."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "With an approved known-good cable and charger, test the affected phone on an approved power source.",
+        "expected": "A reliable setup produces a steady charge indication when the phone itself is healthy."
+      },
+      {
+        "n": 2,
+        "do": "Compare the reported behavior with the original cable history and inspect its connectors without reusing a damaged cable.",
+        "expected": "Intermittent charging is isolated to the suspect cable or narrowed to the phone's port."
+      },
+      {
+        "n": 3,
+        "do": "Replace an identified faulty cable with an approved one and observe charging for several minutes.",
+        "expected": "The phone consistently gains charge on its replacement cable."
+      }
+    ],
+    "verify": "The charging icon stays on and the battery percentage rises using the replacement cable.",
+    "escalate_to": "Desktop Support",
+    "escalate_when": "The phone heats up unusually, the port or battery is damaged, or charging remains intermittent with approved known-good equipment.",
+    "access_level": "public",
+    "keywords": [
+      "phone wont chrage",
+      "charging cable loose",
+      "battery not going up",
+      "charger cuts out",
+      "work mobile not charging",
+      "charging icon keeps going away"
+    ],
+    "related_articles": []
+  },
+  {
+    "kb_id": "KB-044",
+    "title": "Replacement company phone won't finish work setup",
+    "category": "Device & Software",
+    "subcategory": "Phone problem",
+    "services": [
+      "Mobile Phone",
+      "Company Login"
+    ],
+    "symptom_types": [
+      "blocked"
+    ],
+    "symptoms": [
+      "My replacement phone gets through the sign-in part and then says it can't finish work setup.",
+      "The new phone is online, but none of the work apps appear.",
+      "I can still sign in to the work portal from my laptop."
+    ],
+    "error_messages": [
+      "Device enrollment failed.",
+      "This device could not be set up for work."
+    ],
+    "cause": "The replacement phone was not assigned the required enrollment profile in device management. It cannot receive the expected work apps after sign-in.",
+    "self_help_steps": [],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Verify the issued phone's inventory identifier, employee assignment and enrollment attempt.",
+        "expected": "The replacement asset is confirmed and its attempt is tied to the correct identity."
+      },
+      {
+        "n": 2,
+        "do": "Compare its profile assignment and enrollment event with the approved setup for that phone model.",
+        "expected": "The replacement has no valid enrollment profile or belongs to the wrong assignment group."
+      },
+      {
+        "n": 3,
+        "do": "Assign the correct approved profile to the verified asset and have the employee retry the managed setup flow.",
+        "expected": "The phone completes enrollment and reports a managed state."
+      },
+      {
+        "n": 4,
+        "do": "Check device compliance and required app deployment after the next sync.",
+        "expected": "Required work apps are delivered and the device meets the recorded access policy."
+      }
+    ],
+    "verify": "The replacement phone shows enrolled and compliant, and the employee opens an approved work app.",
+    "escalate_to": "Desktop Support",
+    "escalate_when": "The inventory identifier does not match, enrollment fails after the correct assignment, or unrelated replacements encounter the same failure.",
+    "access_level": "internal",
+    "keywords": [
+      "mobil enrollment failed",
+      "replacement phone no work apps",
+      "device setup stuck",
+      "new phone work profile",
+      "mdm enrolment",
+      "work phone provisioning"
+    ],
+    "related_articles": [
+      "KB-045"
+    ]
+  },
+  {
+    "kb_id": "KB-045",
+    "title": "New company phone has data but cannot make regular calls",
+    "category": "Device & Software",
+    "subcategory": "Phone problem",
+    "services": [
+      "Mobile Phone"
+    ],
+    "symptom_types": [
+      "blocked"
+    ],
+    "symptoms": [
+      "I can use the web on my replacement phone without Wi-Fi, but a regular phone call won't go through.",
+      "My old phone still rings when someone dials my work number.",
+      "Calling from the meeting app on the new phone works fine."
+    ],
+    "error_messages": [
+      "Call failed.",
+      "Voice service unavailable."
+    ],
+    "cause": "The replacement phone has mobile data but the company's voice line is still assigned to the old phone's SIM or eSIM. Calls to the work number continue to use the old assignment.",
+    "self_help_steps": [],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Check the assigned work number, replacement asset and line activation record in the approved carrier console.",
+        "expected": "The replacement is issuing data traffic while the old assignment still owns the work voice line."
+      },
+      {
+        "n": 2,
+        "do": "With the account owner, verify that the replacement is authorized to receive the line and that the recorded SIM identity matches the asset.",
+        "expected": "The target for the voice line transfer is confirmed."
+      },
+      {
+        "n": 3,
+        "do": "Have the authorized carrier administrator complete the approved transfer of the existing voice line.",
+        "expected": "The number shows active on the replacement and the old assignment is released."
+      },
+      {
+        "n": 4,
+        "do": "Place inbound and outbound calls using approved test numbers and recheck mobile data.",
+        "expected": "The new phone handles both call directions and keeps its data connection."
+      }
+    ],
+    "verify": "The new phone places and receives an ordinary test call using the assigned work number.",
+    "escalate_to": "Desktop Support",
+    "escalate_when": "The carrier rejects the transfer, the displayed calling number is incorrect, or the old phone keeps receiving calls after activation.",
+    "access_level": "internal",
+    "keywords": [
+      "esim activaton",
+      "new phone cant call",
+      "data works calls fail",
+      "old phone still rings",
+      "company number transfer",
+      "voice line not provisioned"
+    ],
+    "related_articles": [
+      "KB-043",
+      "KB-044"
+    ]
+  },
+  {
+    "kb_id": "KB-046",
+    "title": "How to install software that's already in the company catalog",
+    "category": "Device & Software",
+    "subcategory": "Install software",
+    "services": [
+      "Software Install",
+      "Laptop / Desktop"
+    ],
+    "symptom_types": [
+      "question"
+    ],
+    "symptoms": [
+      "Where do I find apps I'm allowed to install on my work computer?",
+      "The help desk said the app is approved, but I don't know where to get it.",
+      "Can I install a company app without asking for a download link?"
+    ],
+    "error_messages": [],
+    "cause": "Approved apps are offered in the managed company software catalog. The catalog provides the supported installer for eligible work computers.",
+    "self_help_steps": [
+      "Open the company software catalog from the work portal.",
+      "Search for the approved app name and confirm the catalog entry matches the tool you need.",
+      "Select Install in the catalog and wait for its status to show Installed.",
+      "Open the app from the normal app list."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Confirm the app appears as available for the employee's enrolled device and that any license requirement is met.",
+        "expected": "The requested app and approved version are offered to that device."
+      },
+      {
+        "n": 2,
+        "do": "Have the employee start the managed install from the catalog, then review its deployment state.",
+        "expected": "The correct package installs through endpoint management."
+      },
+      {
+        "n": 3,
+        "do": "Launch the app as the employee and check its displayed version against the approved listing.",
+        "expected": "The app opens in the ordinary account with the expected version."
+      }
+    ],
+    "verify": "The catalog says Installed and the employee can open the approved app.",
+    "escalate_to": "Desktop Support",
+    "escalate_when": "An eligible device cannot see the package, the catalog asks for elevated credentials, or the approved install fails.",
+    "access_level": "public",
+    "keywords": [
+      "instal approved software",
+      "app catalog",
+      "company software center",
+      "self service install",
+      "approved app download",
+      "catalog application"
+    ],
+    "related_articles": [
+      "KB-047"
+    ]
+  },
+  {
+    "kb_id": "KB-047",
+    "title": "Request an app that isn't in the company software catalog",
+    "category": "Device & Software",
+    "subcategory": "Install software",
+    "services": [
+      "Software Install"
+    ],
+    "symptom_types": [
+      "request"
+    ],
+    "symptoms": [
+      "I need a tool for work, but it doesn't come up in the company software list.",
+      "My manager asked me to request a new app for our team.",
+      "I found the vendor page and want to know how to get it approved."
+    ],
+    "error_messages": [],
+    "cause": "The app has no catalog entry for the employee's device. The help desk needs to determine whether it can use an existing approved package or needs a new software approval.",
+    "self_help_steps": [
+      "Search for the app's full name and note the publisher and version you need.",
+      "Submit a software request with the publisher's page, work reason and who needs the app.",
+      "Use the approved catalog entry or deployment instructions supplied after approval."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Check the approved software inventory and packaging records for the requested publisher, title and version.",
+        "expected": "The app is either approved but unassigned, or absent from the approved inventory."
+      },
+      {
+        "n": 2,
+        "do": "Route unapproved software through the recorded review and licensing workflow, and record the decision with the request.",
+        "expected": "The app has a documented approval, denial or approved equivalent."
+      },
+      {
+        "n": 3,
+        "do": "For an approved outcome, have the authorized owner assign the managed package to the eligible devices.",
+        "expected": "The right package appears for the approved audience with the required license."
+      }
+    ],
+    "verify": "The employee receives the approval decision and any approved app appears in the catalog and opens after installation.",
+    "escalate_to": "Desktop Support",
+    "escalate_when": "The software review is pending beyond the required date, the publisher or license cannot be confirmed, or an approved package cannot be assigned.",
+    "access_level": "public",
+    "keywords": [
+      "requeust new software",
+      "software not listed",
+      "new app approval",
+      "third party tool request",
+      "missing from company catalog",
+      "need application licensed"
+    ],
+    "related_articles": [
+      "KB-046"
+    ]
+  },
+  {
+    "kb_id": "KB-048",
+    "title": "Approved software install fails a package integrity check",
+    "category": "Device & Software",
+    "subcategory": "Install software",
+    "services": [
+      "Software Install"
+    ],
+    "symptom_types": [
+      "blocked"
+    ],
+    "symptoms": [
+      "The app is in the company list, but the installation stops with a message about the download.",
+      "It fails at the same point when I try the catalog entry again.",
+      "Other apps have installed on this laptop, but this one never gets to the end."
+    ],
+    "error_messages": [
+      "Package verification failed.",
+      "The downloaded package could not be verified."
+    ],
+    "cause": "The catalog payload does not match the integrity information expected by the managed installer. The installer stops before running the package.",
+    "self_help_steps": [],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Read the endpoint deployment log for the failing app and record the package revision, integrity result and distribution source.",
+        "expected": "The installation fails at signature or hash verification for a specific revision."
+      },
+      {
+        "n": 2,
+        "do": "Compare the catalog manifest with the signature and hash of the approved source package using the authorized packaging system.",
+        "expected": "The mismatch is isolated to a distribution copy or identified in the approved source."
+      },
+      {
+        "n": 3,
+        "do": "Retire the affected distribution copy through the managed workflow and publish the verified revision only after its provenance is confirmed.",
+        "expected": "The management system offers a package that passes integrity checks."
+      },
+      {
+        "n": 4,
+        "do": "Deploy to a pilot endpoint and review installation and launch results before retrying on the employee's device.",
+        "expected": "The approved package verifies, installs and opens on both devices."
+      }
+    ],
+    "verify": "The managed install records successful integrity checks and the expected app version opens on the affected device.",
+    "escalate_to": "Desktop Support",
+    "escalate_when": "Provenance cannot be confirmed, the approved source fails verification, or a verified revision still fails in distribution.",
+    "access_level": "internal",
+    "keywords": [
+      "pakage verification failed",
+      "catalog install checksum",
+      "installer signature mismatch",
+      "app download corrupt",
+      "managed install hash error",
+      "software integrity check"
+    ],
+    "related_articles": [
+      "KB-046"
+    ]
+  },
+  {
+    "kb_id": "KB-049",
+    "title": "An email asks me to open an unexpected sign-in link",
+    "category": "Security",
+    "subcategory": "Suspicious email",
+    "services": [
+      "Email"
+    ],
+    "symptom_types": [
+      "question"
+    ],
+    "symptoms": [
+      "I got a message saying my mailbox would close unless I sign in right away.",
+      "It looks like it came from the help desk, but the address seems off.",
+      "I stopped before clicking the link and want to know if the message is real."
+    ],
+    "error_messages": [],
+    "cause": "A sender is impersonating the help desk and trying to direct the recipient to a fake sign-in page. The reported employee has not interacted with the link.",
+    "self_help_steps": [
+      "Don't click anything else, and disconnect from the network if asked",
+      "Use the approved Report phishing feature or call the help desk from a known number.",
+      "Tell support when the message arrived and that you did not open its link."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Preserve the original message using the approved phishing intake and review the sender, reply-to address and link destinations in the restricted analysis view.",
+        "expected": "Evidence distinguishes the impersonated sender and suspicious destination from authorized help desk mail."
+      },
+      {
+        "n": 2,
+        "do": "Search approved mail telemetry for the same message indicators and confirm whether any recipients report interaction.",
+        "expected": "Affected mailboxes and possible clicks are identified."
+      },
+      {
+        "n": 3,
+        "do": "Have Security approve and apply the scoped quarantine or block for confirmed malicious indicators.",
+        "expected": "Confirmed copies are contained without removing unrelated legitimate mail."
+      }
+    ],
+    "verify": "Security records the message disposition, confirms that known malicious copies are contained and tells the reporting employee the result.",
+    "escalate_to": "Security",
+    "escalate_when": "Escalate on receipt. Flag urgently if anyone clicked, submitted information, opened an attachment or received copies across several mailboxes.",
+    "access_level": "public",
+    "keywords": [
+      "phising mail",
+      "fake help desk message",
+      "mailbox will close",
+      "suspicious login email",
+      "spoofed sender",
+      "unexpected password link"
+    ],
+    "related_articles": [
+      "KB-052"
+    ]
+  },
+  {
+    "kb_id": "KB-050",
+    "title": "I entered my work password on a page from a suspicious email",
+    "category": "Security",
+    "subcategory": "Suspicious email",
+    "services": [
+      "Email",
+      "Company Login"
+    ],
+    "symptom_types": [
+      "blocked"
+    ],
+    "symptoms": [
+      "I followed a link in a work-looking email and typed my password.",
+      "The page sent me back to sign-in after I entered it, and then I noticed the address was unusual.",
+      "I used that same password for the normal work portal before opening the email."
+    ],
+    "error_messages": [],
+    "cause": "The link led to a page designed to capture sign-in information. The account and any captured session may be usable by someone else until Security contains the exposure.",
+    "self_help_steps": [
+      "Don't click anything else, and disconnect from the network if asked",
+      "Call the help desk using a known number from a separate trusted device.",
+      "Tell the responder what you entered and when, without repeating your password or verification code."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Capture the original message, reported submission time and type of information entered through restricted incident intake.",
+        "expected": "Security has the indicators and exposure timeline without collecting the secret."
+      },
+      {
+        "n": 2,
+        "do": "Under the account-compromise procedure, have Security authorize containment and use the identity console to invalidate affected sessions and restrict access as required.",
+        "expected": "Known sessions are revoked and further sign-ins are controlled."
+      },
+      {
+        "n": 3,
+        "do": "Verify the employee's identity and coordinate approved password and recovery-method restoration from a trusted device.",
+        "expected": "The employee establishes new credentials and retains approved valid recovery methods."
+      },
+      {
+        "n": 4,
+        "do": "Review sign-in and mailbox audit records for unfamiliar access, forwarding or rules and remediate confirmed changes under the incident procedure.",
+        "expected": "Unauthorized activity is documented and approved reversals are recorded."
+      }
+    ],
+    "verify": "Security confirms containment, the employee signs in safely from a trusted device and the review identifies any affected account changes.",
+    "escalate_to": "Security",
+    "escalate_when": "Escalate immediately when any password, verification code or approval was submitted, or when suspicious sign-ins or mailbox changes appear.",
+    "access_level": "internal",
+    "keywords": [
+      "entered passwrod phishing",
+      "gave password to fake site",
+      "credential theft",
+      "clicked email then signed in",
+      "phishing credential capture",
+      "typed company login on bad page"
+    ],
+    "related_articles": [
+      "KB-049",
+      "KB-001"
+    ]
+  },
+  {
+    "kb_id": "KB-051",
+    "title": "The work computer quarantined a file opened from an attachment",
+    "category": "Security",
+    "subcategory": "Virus",
+    "services": [
+      "Laptop / Desktop",
+      "Email"
+    ],
+    "symptom_types": [
+      "blocked"
+    ],
+    "symptoms": [
+      "I opened a file from an email and my work computer said it put the file in quarantine.",
+      "The attachment stopped opening and the warning named the file I had just clicked.",
+      "I still see the alert away from the browser, on the work computer itself."
+    ],
+    "error_messages": [
+      "Threat quarantined.",
+      "A threat was found and blocked."
+    ],
+    "cause": "Endpoint protection detected a malicious attachment on the computer and moved the detected file into quarantine. The alert alone does not establish whether anything ran before the file was contained.",
+    "self_help_steps": [
+      "Don't click anything else, and disconnect from the network if asked",
+      "Contact the help desk from a separate trusted device and report the alert time and computer name.",
+      "Leave the file quarantined and tell support whether you opened it before the alert appeared."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Match the device and timestamp to the endpoint security event and preserve the relevant file identifier, process trail and action status.",
+        "expected": "A genuine endpoint alert and the quarantine outcome are confirmed."
+      },
+      {
+        "n": 2,
+        "do": "Review execution and connection telemetry for the time around the alert, then have Security isolate the device through the approved workflow if indicated.",
+        "expected": "The review determines likely execution and contains confirmed exposure."
+      },
+      {
+        "n": 3,
+        "do": "Search approved mail and endpoint telemetry for the same file identifier and sender indicators.",
+        "expected": "Related deliveries and endpoints are linked to the incident."
+      },
+      {
+        "n": 4,
+        "do": "Have Security direct remediation and check the endpoint again before restoring normal use.",
+        "expected": "Required remediation is recorded and no active detection remains."
+      }
+    ],
+    "verify": "Security confirms the quarantined file is contained, evaluates any execution and clears the device for normal work.",
+    "escalate_to": "Security",
+    "escalate_when": "Escalate on receipt. Flag urgently if the attachment ran, quarantine failed, or the same indicator appears on other devices.",
+    "access_level": "internal",
+    "keywords": [
+      "virus quarentine",
+      "malicious attachment blocked",
+      "endpoint alert email file",
+      "threat quarantined",
+      "antivirus found attachment",
+      "work laptop malware detection"
+    ],
+    "related_articles": [
+      "KB-049",
+      "KB-052"
+    ]
+  },
+  {
+    "kb_id": "KB-052",
+    "title": "A browser pop-up says my computer has a virus and asks me to call",
+    "category": "Security",
+    "subcategory": "Virus",
+    "services": [
+      "Laptop / Desktop"
+    ],
+    "symptom_types": [
+      "slow"
+    ],
+    "symptoms": [
+      "A page suddenly said my computer was infected and wanted me to call a number.",
+      "The warning has a phone number and asks me to let someone into my computer.",
+      "I only see it in that browser tab and haven't called or installed anything."
+    ],
+    "error_messages": [
+      "Your computer has been blocked.",
+      "Call support immediately."
+    ],
+    "cause": "A webpage can display a fake virus warning and pretend to be computer support. Its claim does not establish whether the device has a real infection.",
+    "self_help_steps": [
+      "Don't click anything else, and disconnect from the network if asked",
+      "Leave the page alone and use a separate trusted device to call the help desk on a known number.",
+      "Tell support if you called, downloaded anything or allowed someone to control the computer."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Check the device's endpoint alerts and approved browsing telemetry for the reported time without reopening the page.",
+        "expected": "The warning is traced to a webpage and any separate endpoint detection is identified."
+      },
+      {
+        "n": 2,
+        "do": "Ask whether any software was downloaded or run, credentials were entered, or remote access was granted, and confirm with telemetry where available.",
+        "expected": "Security determines whether the event is limited to a scare page or needs device or account containment."
+      },
+      {
+        "n": 3,
+        "do": "If Security confirms there was no interaction requiring containment, guide the employee to close the browser through normal window controls and decline session restore.",
+        "expected": "The page closes and does not return in a fresh session."
+      }
+    ],
+    "verify": "The warning no longer appears and Security confirms whether any device or account action is required.",
+    "escalate_to": "Security",
+    "escalate_when": "Escalate on receipt. Flag urgently if the employee called the number, installed software, entered credentials or allowed remote access.",
+    "access_level": "public",
+    "keywords": [
+      "virus popup fake",
+      "broser virus warning",
+      "call this number scam",
+      "tech support scam",
+      "browser says infected",
+      "fake computer locked"
+    ],
+    "related_articles": [
+      "KB-049"
+    ]
+  },
+  {
+    "kb_id": "KB-053",
+    "title": "Company phone was left behind and can't be found",
+    "category": "Security",
+    "subcategory": "Lost or stolen device",
+    "services": [
+      "Mobile Phone"
+    ],
+    "symptom_types": [
+      "blocked"
+    ],
+    "symptoms": [
+      "I think I left my company phone on the train and I can't find it.",
+      "The phone is still assigned to me, but I don't know who has it now.",
+      "I can't use the phone for work or receive my company sign-in prompts on it."
+    ],
+    "error_messages": [],
+    "cause": "The issued phone is no longer in the employee's possession. Someone who finds it may be able to reach work apps or a registered sign-in method.",
+    "self_help_steps": [
+      "Don't click anything else, and disconnect from the network if asked",
+      "From a trusted device, call the help desk on a known number and report when and where you last had the phone.",
+      "Tell support whether the phone was locked and whether you used it to approve sign-ins."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Verify the asset assignment and collect last known custody, lock state and sign-in method use in the restricted incident record.",
+        "expected": "The missing device is identified and its likely exposure is recorded."
+      },
+      {
+        "n": 2,
+        "do": "Check the last management contact, encryption and remote-lock state, then apply the authorized containment command if directed by Security.",
+        "expected": "Device access is restricted or Security can see that a command is pending."
+      },
+      {
+        "n": 3,
+        "do": "Coordinate suspension of the device's registered sign-in method and voice line through their authorized owners as required.",
+        "expected": "The missing device can no longer approve work sign-ins and the line status is recorded."
+      },
+      {
+        "n": 4,
+        "do": "Review device and account events from the loss window and record the replacement or verified recovery path.",
+        "expected": "Security has a disposition for the asset and the employee's access can be restored safely."
+      }
+    ],
+    "verify": "Security confirms the asset's containment status and the employee regains work access through an approved replacement or cleared recovery.",
+    "escalate_to": "Security",
+    "escalate_when": "Escalate immediately for any missing company phone. Flag an unlocked phone, sensitive data on the device or unexpected sign-in prompts.",
+    "access_level": "public",
+    "keywords": [
+      "lost company fone",
+      "work mobile left on train",
+      "missing work phone",
+      "lost phone sign in prompts",
+      "lost managed mobile",
+      "company phone misplaced"
+    ],
+    "related_articles": []
+  },
+  {
+    "kb_id": "KB-054",
+    "title": "Work laptop was stolen while a work session may still be open",
+    "category": "Security",
+    "subcategory": "Lost or stolen device",
+    "services": [
+      "Laptop / Desktop",
+      "Company Login"
+    ],
+    "symptom_types": [
+      "blocked"
+    ],
+    "symptoms": [
+      "My company laptop was taken while I stepped away from my table.",
+      "I was signed in when it disappeared and I don't remember locking the screen.",
+      "There were work apps open and I don't know whether they can still be used."
+    ],
+    "error_messages": [],
+    "cause": "A company laptop was taken while an employee session might have been active. An open session can expose work apps before a device lock takes effect.",
+    "self_help_steps": [
+      "Don't click anything else, and disconnect from the network if asked",
+      "Call the help desk using a known number from another trusted device and report the theft time.",
+      "Tell the responder which work apps were open and whether the display had locked."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Verify the asset assignment, time of theft and reported session state in the restricted incident.",
+        "expected": "Security can identify the device and the period of possible access."
+      },
+      {
+        "n": 2,
+        "do": "Review last management contact, encryption and screen-lock evidence for the identified asset.",
+        "expected": "The case records what is known about device protection and active access."
+      },
+      {
+        "n": 3,
+        "do": "Under Security direction, revoke affected sessions, restrict the device's access and issue the authorized device containment command.",
+        "expected": "Accounts and device access are contained or pending commands are tracked."
+      },
+      {
+        "n": 4,
+        "do": "Review sign-in and app audit events since the last known custody and coordinate approved replacement access.",
+        "expected": "Suspicious activity is linked to the case and the employee has a controlled recovery path."
+      }
+    ],
+    "verify": "Security records confirmed and pending containment actions, completes the initial exposure review and approves restored access on a trusted device.",
+    "escalate_to": "Security",
+    "escalate_when": "Escalate immediately for theft, particularly when an active session or access to sensitive data is possible.",
+    "access_level": "internal",
+    "keywords": [
+      "stolen company laptpo",
+      "computer stolen unlocked",
+      "laptop taken from table",
+      "active session theft",
+      "missing logged in laptop",
+      "device theft session revoke"
+    ],
+    "related_articles": [
+      "KB-053",
+      "KB-055"
+    ]
+  },
+  {
+    "kb_id": "KB-055",
+    "title": "A missing work USB drive may contain company files",
+    "category": "Security",
+    "subcategory": "Lost or stolen device",
+    "services": [
+      "Laptop / Desktop"
+    ],
+    "symptom_types": [
+      "blocked"
+    ],
+    "symptoms": [
+      "I can't find the USB drive I used to carry work files between desks.",
+      "The laptop is still here, but the little drive with the files is missing.",
+      "I don't remember it ever asking for a password when I plugged it in."
+    ],
+    "error_messages": [],
+    "cause": "A removable drive holding copies of work files is missing. If encryption cannot be confirmed, someone with the drive may be able to read those copies.",
+    "self_help_steps": [
+      "Don't click anything else, and disconnect from the network if asked",
+      "Call the help desk from a trusted device and report where you last had the drive.",
+      "Describe the types of files it may contain without copying sensitive contents into the ticket."
+    ],
+    "support_steps": [
+      {
+        "n": 1,
+        "do": "Record the drive identity and last known custody in the restricted incident, using the employee's description and inventory if available.",
+        "expected": "Security has an asset identifier or a documented description and loss window."
+      },
+      {
+        "n": 2,
+        "do": "Review approved removable-media and encryption records for that device and ask the data owner to confirm the categories of files copied.",
+        "expected": "The encryption status is verified or recorded as unknown, and likely data exposure is scoped."
+      },
+      {
+        "n": 3,
+        "do": "Have Security document the disposition and coordinate the required response with the data owner.",
+        "expected": "The case records the exposure decision and who owns follow-up actions."
+      }
+    ],
+    "verify": "Security records the drive's protection status and likely file exposure, and the data owner confirms any required follow-up.",
+    "escalate_to": "Security",
+    "escalate_when": "Escalate immediately if the missing drive held work files, encryption is unknown, or sensitive records may have been exposed.",
+    "access_level": "internal",
+    "keywords": [
+      "missing work usb drive",
+      "lost thumb drive",
+      "usb stick missing",
+      "unencryted removable media",
+      "lost pendrive work files",
+      "portable media exposure"
+    ],
+    "related_articles": [
+      "KB-053",
+      "KB-054"
+    ]
+  }
+]

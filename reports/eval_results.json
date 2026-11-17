@@ -1,0 +1,722 @@
+{
+ "n_test": 180,
+ "n_train": 1020,
+ "ml": {
+  "category": {
+   "model": {
+    "accuracy": 0.9611,
+    "macro_f1": 0.9513
+   },
+   "baseline_most_common": {
+    "accuracy": 0.2667,
+    "macro_f1": 0.0702
+   },
+   "baseline_trust_user": {
+    "accuracy": 0.8056,
+    "macro_f1": 0.8228
+   }
+  },
+  "subcategory": {
+   "model": {
+    "accuracy": 0.9444,
+    "macro_f1": 0.9379
+   },
+   "baseline_most_common": {
+    "accuracy": 0.1056,
+    "macro_f1": 0.0101
+   },
+   "baseline_trust_user": {
+    "accuracy": 0.8056,
+    "macro_f1": 0.8308
+   }
+  },
+  "symptom_type": {
+   "model": {
+    "accuracy": 0.9722,
+    "macro_f1": 0.9711
+   },
+   "baseline_most_common": {
+    "accuracy": 0.4389,
+    "macro_f1": 0.122
+   }
+  }
+ },
+ "end_to_end": {
+  "team": {
+   "accuracy": 0.9667,
+   "macro_f1": 0.9552
+  },
+  "impact": {
+   "accuracy": 0.9889,
+   "macro_f1": 0.9875
+  },
+  "urgency": {
+   "accuracy": 0.9889,
+   "macro_f1": 0.9876
+  },
+  "priority": {
+   "accuracy": 0.9889,
+   "macro_f1": 0.9772
+  }
+ },
+ "p1": {
+  "true_p1": 16,
+  "caught": 14,
+  "missed": 2,
+  "under_prioritised_any_ticket": 2,
+  "missed_but_flagged_for_review": 2
+ },
+ "security": {
+  "true_security": 9,
+  "predicted_security": 7,
+  "missed_but_flagged": 2,
+  "false_alarms": 6
+ },
+ "hype": {
+  "hype_tickets_in_test": 12,
+  "priority_acc_hype": 1.0,
+  "priority_acc_no_hype": 0.9881,
+  "injection_test_tickets": 168,
+  "priority_unchanged_pct": 100.0,
+  "category_unchanged_pct": 100.0,
+  "hype_flag_raised_pct": 100.0
+ },
+ "wrong_user_category": {
+  "tickets": 35,
+  "model_corrected": 35,
+  "flagged_for_review": 35
+ },
+ "right_user_category": {
+  "tickets": 145,
+  "model_agreed": 138
+ },
+ "review_rate_pct": 29.44,
+ "latency_ms_per_ticket": 128.9,
+ "confusion": {
+  "category": [
+   [
+    25,
+    2,
+    0,
+    0,
+    0,
+    0
+   ],
+   [
+    2,
+    45,
+    1,
+    0,
+    0,
+    0
+   ],
+   [
+    0,
+    0,
+    44,
+    0,
+    0,
+    0
+   ],
+   [
+    0,
+    0,
+    0,
+    27,
+    0,
+    0
+   ],
+   [
+    0,
+    0,
+    0,
+    0,
+    25,
+    0
+   ],
+   [
+    0,
+    0,
+    1,
+    1,
+    0,
+    7
+   ]
+  ],
+  "symptom_type": [
+   [
+    9,
+    0,
+    0,
+    0,
+    0
+   ],
+   [
+    0,
+    78,
+    1,
+    0,
+    0
+   ],
+   [
+    0,
+    1,
+    56,
+    0,
+    1
+   ],
+   [
+    0,
+    0,
+    0,
+    17,
+    0
+   ],
+   [
+    0,
+    1,
+    1,
+    0,
+    15
+   ]
+  ],
+  "priority": [
+   [
+    14,
+    1,
+    0,
+    1
+   ],
+   [
+    0,
+    35,
+    0,
+    0
+   ],
+   [
+    0,
+    0,
+    82,
+    0
+   ],
+   [
+    0,
+    0,
+    0,
+    47
+   ]
+  ]
+ },
+ "per_class": {
+  "category": {
+   "Account & Access": {
+    "precision": 0.9259259259259259,
+    "recall": 0.9259259259259259,
+    "f1-score": 0.9259259259259259,
+    "support": 27.0
+   },
+   "Business System": {
+    "precision": 0.9574468085106383,
+    "recall": 0.9375,
+    "f1-score": 0.9473684210526315,
+    "support": 48.0
+   },
+   "Device & Software": {
+    "precision": 0.9565217391304348,
+    "recall": 1.0,
+    "f1-score": 0.9777777777777777,
+    "support": 44.0
+   },
+   "Email & Communication": {
+    "precision": 0.9642857142857143,
+    "recall": 1.0,
+    "f1-score": 0.9818181818181818,
+    "support": 27.0
+   },
+   "Network": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 25.0
+   },
+   "Security": {
+    "precision": 1.0,
+    "recall": 0.7777777777777778,
+    "f1-score": 0.875,
+    "support": 9.0
+   },
+   "accuracy": 0.9611111111111111,
+   "macro avg": {
+    "precision": 0.9673633646421189,
+    "recall": 0.9402006172839505,
+    "f1-score": 0.951315051095753,
+    "support": 180.0
+   },
+   "weighted avg": {
+    "precision": 0.961556208977578,
+    "recall": 0.9611111111111111,
+    "f1-score": 0.9604444296768858,
+    "support": 180.0
+   }
+  },
+  "subcategory": {
+   "Account locked": {
+    "precision": 0.8,
+    "recall": 1.0,
+    "f1-score": 0.8888888888888888,
+    "support": 4.0
+   },
+   "Calendar problem": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 9.0
+   },
+   "Chat or video call problem": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 9.0
+   },
+   "Computer problem": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 12.0
+   },
+   "Email problem": {
+    "precision": 0.9,
+    "recall": 1.0,
+    "f1-score": 0.9473684210526315,
+    "support": 9.0
+   },
+   "Error or won't open": {
+    "precision": 0.9473684210526315,
+    "recall": 0.9473684210526315,
+    "f1-score": 0.9473684210526315,
+    "support": 19.0
+   },
+   "Install software": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 12.0
+   },
+   "Internet slow or down": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 7.0
+   },
+   "Lost or stolen device": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 3.0
+   },
+   "Need access": {
+    "precision": 0.8823529411764706,
+    "recall": 0.8333333333333334,
+    "f1-score": 0.8571428571428571,
+    "support": 18.0
+   },
+   "Password reset": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 5.0
+   },
+   "Phone problem": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 9.0
+   },
+   "Printer problem": {
+    "precision": 0.8461538461538461,
+    "recall": 1.0,
+    "f1-score": 0.9166666666666666,
+    "support": 11.0
+   },
+   "Slow": {
+    "precision": 0.8571428571428571,
+    "recall": 1.0,
+    "f1-score": 0.9230769230769231,
+    "support": 12.0
+   },
+   "Suspicious email": {
+    "precision": 1.0,
+    "recall": 0.3333333333333333,
+    "f1-score": 0.5,
+    "support": 3.0
+   },
+   "VPN problem": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 10.0
+   },
+   "Virus": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 3.0
+   },
+   "Wi-Fi problem": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 8.0
+   },
+   "Wrong data": {
+    "precision": 0.9285714285714286,
+    "recall": 0.7647058823529411,
+    "f1-score": 0.8387096774193549,
+    "support": 17.0
+   },
+   "accuracy": 0.9444444444444444,
+   "macro avg": {
+    "precision": 0.9558731312682753,
+    "recall": 0.9409863668459074,
+    "f1-score": 0.9378537818578924,
+    "support": 180.0
+   },
+   "weighted avg": {
+    "precision": 0.9475637434460964,
+    "recall": 0.9444444444444444,
+    "f1-score": 0.9412709094443673,
+    "support": 180.0
+   }
+  },
+  "symptom_type": {
+   "blocked": {
+    "precision": 0.975,
+    "recall": 0.9873417721518988,
+    "f1-score": 0.9811320754716981,
+    "support": 79.0
+   },
+   "outage": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 9.0
+   },
+   "question": {
+    "precision": 0.9375,
+    "recall": 0.8823529411764706,
+    "f1-score": 0.9090909090909091,
+    "support": 17.0
+   },
+   "request": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 17.0
+   },
+   "slow": {
+    "precision": 0.9655172413793104,
+    "recall": 0.9655172413793104,
+    "f1-score": 0.9655172413793104,
+    "support": 58.0
+   },
+   "accuracy": 0.9722222222222222,
+   "macro avg": {
+    "precision": 0.975603448275862,
+    "recall": 0.9670423909415359,
+    "f1-score": 0.9711480451883835,
+    "support": 180.0
+   },
+   "weighted avg": {
+    "precision": 0.9720138888888887,
+    "recall": 0.9722222222222222,
+    "f1-score": 0.9720221078711644,
+    "support": 180.0
+   }
+  },
+  "priority": {
+   "P1": {
+    "precision": 1.0,
+    "recall": 0.875,
+    "f1-score": 0.9333333333333333,
+    "support": 16.0
+   },
+   "P2": {
+    "precision": 0.9722222222222222,
+    "recall": 1.0,
+    "f1-score": 0.9859154929577465,
+    "support": 35.0
+   },
+   "P3": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 82.0
+   },
+   "P4": {
+    "precision": 0.9791666666666666,
+    "recall": 1.0,
+    "f1-score": 0.9894736842105263,
+    "support": 47.0
+   },
+   "accuracy": 0.9888888888888889,
+   "macro avg": {
+    "precision": 0.9878472222222222,
+    "recall": 0.96875,
+    "f1-score": 0.9771806276254015,
+    "support": 180.0
+   },
+   "weighted avg": {
+    "precision": 0.9891589506172838,
+    "recall": 0.9888888888888889,
+    "f1-score": 0.9885868819152733,
+    "support": 180.0
+   }
+  }
+ },
+ "selection": {
+  "category": {
+   "chosen": {
+    "features": "embed",
+    "use_facts": false,
+    "C": 10,
+    "cv_f1": 0.9616,
+    "val_accuracy": 0.9778,
+    "val_f1": 0.9823
+   },
+   "all_candidates": [
+    {
+     "features": "tfidf",
+     "use_facts": false,
+     "C": 30,
+     "cv_f1": 0.8821,
+     "val_accuracy": 0.9111,
+     "val_f1": 0.8733
+    },
+    {
+     "features": "embed",
+     "use_facts": false,
+     "C": 10,
+     "cv_f1": 0.9616,
+     "val_accuracy": 0.9778,
+     "val_f1": 0.9823
+    },
+    {
+     "features": "all",
+     "use_facts": false,
+     "C": 3,
+     "cv_f1": 0.9587,
+     "val_accuracy": 0.9611,
+     "val_f1": 0.945
+    },
+    {
+     "features": "all",
+     "use_facts": true,
+     "C": 10,
+     "cv_f1": 0.9581,
+     "val_accuracy": 0.9611,
+     "val_f1": 0.9528
+    }
+   ]
+  },
+  "subcategory": {
+   "chosen": {
+    "features": "all",
+    "use_facts": true,
+    "C": 30,
+    "cv_f1": 0.9315,
+    "val_accuracy": 0.9722,
+    "val_f1": 0.9543
+   },
+   "all_candidates": [
+    {
+     "features": "tfidf",
+     "use_facts": false,
+     "C": 30,
+     "cv_f1": 0.8469,
+     "val_accuracy": 0.8889,
+     "val_f1": 0.84
+    },
+    {
+     "features": "embed",
+     "use_facts": false,
+     "C": 30,
+     "cv_f1": 0.9412,
+     "val_accuracy": 0.9611,
+     "val_f1": 0.9534
+    },
+    {
+     "features": "all",
+     "use_facts": false,
+     "C": 30,
+     "cv_f1": 0.93,
+     "val_accuracy": 0.9667,
+     "val_f1": 0.9354
+    },
+    {
+     "features": "all",
+     "use_facts": true,
+     "C": 30,
+     "cv_f1": 0.9315,
+     "val_accuracy": 0.9722,
+     "val_f1": 0.9543
+    }
+   ]
+  },
+  "symptom_type": {
+   "chosen": {
+    "features": "all",
+    "use_facts": true,
+    "C": 30,
+    "cv_f1": 0.9575,
+    "val_accuracy": 0.9556,
+    "val_f1": 0.9639
+   },
+   "all_candidates": [
+    {
+     "features": "tfidf",
+     "use_facts": false,
+     "C": 10,
+     "cv_f1": 0.8775,
+     "val_accuracy": 0.9056,
+     "val_f1": 0.9042
+    },
+    {
+     "features": "embed",
+     "use_facts": false,
+     "C": 30,
+     "cv_f1": 0.906,
+     "val_accuracy": 0.9111,
+     "val_f1": 0.8883
+    },
+    {
+     "features": "all",
+     "use_facts": false,
+     "C": 30,
+     "cv_f1": 0.9414,
+     "val_accuracy": 0.9389,
+     "val_f1": 0.9306
+    },
+    {
+     "features": "all",
+     "use_facts": true,
+     "C": 30,
+     "cv_f1": 0.9575,
+     "val_accuracy": 0.9556,
+     "val_f1": 0.9639
+    }
+   ]
+  }
+ },
+ "errors": [
+  {
+   "ticket_id": "INC-00062",
+   "description": "Printed handover sheets are too faint for my team on the regular printer. We're selecting the alternate device and can get the forms out.",
+   "service": "Printer",
+   "category": "Device & Software",
+   "pred_category": "Device & Software",
+   "symptom_type": "slow",
+   "pred_symptom_type": "blocked",
+   "priority": "P3",
+   "pred_priority": "P3"
+  },
+  {
+   "ticket_id": "INC-00271",
+   "description": "My current work folder says \"access denied\" following an indexing error. Its owner checked that I have access, and I can't open any of the jobs assigned to me.",
+   "service": "Shared Files",
+   "category": "Business System",
+   "pred_category": "Account & Access",
+   "symptom_type": "blocked",
+   "pred_symptom_type": "blocked",
+   "priority": "P3",
+   "pred_priority": "P3"
+  },
+  {
+   "ticket_id": "INC-00282",
+   "description": "The laptop takes a couple of attempts to get an address on office Wi-Fi. The connection is usable once it has one. I want this in front of a manager immediately.",
+   "service": "Office Wi-Fi",
+   "category": "Network",
+   "pred_category": "Network",
+   "symptom_type": "slow",
+   "pred_symptom_type": "question",
+   "priority": "P4",
+   "pred_priority": "P4"
+  },
+  {
+   "ticket_id": "INC-00460",
+   "description": "Our group's company mobiles keep rebooting instead of making a call. None of us can do our callbacks.",
+   "service": "Mobile Phone",
+   "category": "Device & Software",
+   "pred_category": "Device & Software",
+   "symptom_type": "blocked",
+   "pred_symptom_type": "slow",
+   "priority": "P3",
+   "pred_priority": "P3"
+  },
+  {
+   "ticket_id": "INC-00536",
+   "description": "My page in the member area shows last week's room number in its summary. The reservation detail is right and I can work from that.",
+   "service": "Company Website",
+   "category": "Business System",
+   "pred_category": "Account & Access",
+   "symptom_type": "slow",
+   "pred_symptom_type": "slow",
+   "priority": "P4",
+   "pred_priority": "P4"
+  },
+  {
+   "ticket_id": "INC-00556",
+   "description": "Our team's new directory group isn't on the production drawing library. None of us can open the plans we need for today's release.",
+   "service": "Shared Files",
+   "category": "Account & Access",
+   "pred_category": "Business System",
+   "symptom_type": "blocked",
+   "pred_symptom_type": "blocked",
+   "priority": "P2",
+   "pred_priority": "P2"
+  },
+  {
+   "ticket_id": "INC-00565",
+   "description": "Every record opens with the wrong code. Cant submit anything.",
+   "service": "Other / Not sure",
+   "category": "Business System",
+   "pred_category": "Device & Software",
+   "symptom_type": "blocked",
+   "pred_symptom_type": "blocked",
+   "priority": "P3",
+   "pred_priority": "P3"
+  },
+  {
+   "ticket_id": "INC-00685",
+   "description": "Mail looks fishy, can you check it?",
+   "service": "Other / Not sure",
+   "category": "Security",
+   "pred_category": "Device & Software",
+   "symptom_type": "question",
+   "pred_symptom_type": "slow",
+   "priority": "P1",
+   "pred_priority": "P4"
+  },
+  {
+   "ticket_id": "INC-00688",
+   "description": "Could you check the message headed \"voice transcription available\"? There's a sign-in link on a different domain from the mail client.",
+   "service": "Email",
+   "category": "Security",
+   "pred_category": "Email & Communication",
+   "symptom_type": "question",
+   "pred_symptom_type": "blocked",
+   "priority": "P1",
+   "pred_priority": "P2"
+  },
+  {
+   "ticket_id": "INC-00849",
+   "description": "Which profile should the external test participants use for the trial site's location view?",
+   "service": "Company Website",
+   "category": "Account & Access",
+   "pred_category": "Business System",
+   "symptom_type": "question",
+   "pred_symptom_type": "question",
+   "priority": "P3",
+   "pred_priority": "P3"
+  }
+ ]
+}
