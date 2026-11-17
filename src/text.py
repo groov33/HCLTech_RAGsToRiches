@@ -111,3 +111,18 @@ def is_too_vague(text: str) -> bool:
     """
     words = re.findall(r"[a-z0-9']+", text.lower())
     return sum(w not in _GENERIC for w in words) < 2
+
+
+# Personal data is hidden BEFORE search, the LLM (Groq is a cloud service) and any export.
+_PII = [
+    (re.compile(r"\b[\w.+-]+@[\w-]+\.[\w.-]+\b"), "[email]"),
+    (re.compile(r"(?<!\w)\+?\d[\d\s().-]{7,}\d\b"), "[phone]"),
+    (re.compile(r"\b(?:EMP|ID|USR|E)[-_]?\d{4,}\b", re.I), "[id]"),
+]
+
+
+def mask_pii(text: str) -> str:
+    """"Call me on +44 7700 900123 or jo@corp.com" -> "Call me on [phone] or [email]"."""
+    for pattern, tag in _PII:
+        text = pattern.sub(tag, text)
+    return text

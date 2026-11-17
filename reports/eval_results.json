@@ -90,8 +90,8 @@
   "tickets": 145,
   "model_agreed": 138
  },
- "review_rate_pct": 29.44,
- "latency_ms_per_ticket": 128.9,
+ "review_rate_pct": 30.56,
+ "latency_ms_per_ticket": 106.4,
  "confusion": {
   "category": [
    [

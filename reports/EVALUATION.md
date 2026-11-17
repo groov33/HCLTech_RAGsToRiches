@@ -32,11 +32,11 @@ Held-out test set: **180 tickets** (never seen in training or model selection). 
 
 - User was wrong on 35 tickets → model corrected **35** (100.0%); 35 flagged for review.
 - User was right on 145 tickets → model agreed on 138 (95.2%).
-- Overall share of tickets sent to REVIEW: 29.44%.
+- Overall share of tickets sent to REVIEW: 30.56%.
 
 ## 5. Speed
 
-128.9 ms per ticket (classification + rules, CPU).
+106.4 ms per ticket (classification + rules, CPU).
 
 ## 6. Model selection (validation set)
 

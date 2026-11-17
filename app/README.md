@@ -42,7 +42,7 @@ streamlit run app/app.py
 | 12 | ⏱️ MTTR | `app/pages/mttr.py` | ✅ done |
 | 13 | 📚 Knowledge base viewer | `app/pages/knowledge_base.py` | ✅ done |
 
-Verified: every page renders without exceptions for its role and blocks other roles; INC-00156 gives P2 + hype chip +
+Verified: every page renders without exceptions for its role and blocks other roles; INC-00347 (+ hype) gives P2 + hype chip +
 "you chose X" chip; one real Ollama run gave RECOMMEND with 100% citation validity (≈ 5 min on CPU — use a Groq key for demos).
 
 ---
@@ -52,6 +52,7 @@ Verified: every page renders without exceptions for its role and blocks other ro
 The sidebar has a **"Viewing as"** selector (Employee / Support / Admin) and a **"Your name"** box. The caption says
 *"Demo role switch — no real sign-in"*. Pages of other roles aren't in the menu, and each page also calls
 `require_role(...)`. Switching role clears the previous role's results and chat.
+How roles work end to end (dropdown → menu → page guard → role-filtered search): [`Docs/ROLE_BASED_ACCESS.md`](../Docs/ROLE_BASED_ACCESS.md).
 
 | Role | Pages | What a judge sees |
 |---|---|---|
@@ -64,7 +65,7 @@ The sidebar has a **"Viewing as"** selector (Employee / Support / Admin) and a *
 - **Left side:** the ticket form.
   - Every option list comes from `src/taxonomy.py`.
   - The subcategory list only shows the chosen category's subcategories.
-  - **Try an example** buttons cover the 4 demo cases from `Docs/PROJECT_OVERVIEW.md` §14: INC-00156, calm vs hype, vague, and wrong website prices.
+  - **Try an example** buttons cover the 4 demo cases from `Docs/PROJECT_OVERVIEW.md` §14: INC-00347 + hype (held-out), calm vs hype, vague, and wrong website prices.
 - **Right side**, top to bottom:
   1. **Outcome banner:** RECOMMEND green, REVIEW amber, ESCALATE red, NEED INFO blue. Shows the confidence, the reasons, who to escalate to, and the clarifying questions.
   2. **Chips:** hype ignored · "you chose X, model says Y" · possible security issue · knowledge gap · tiebreak used.
@@ -172,7 +173,7 @@ In `requirements.txt` I will only add `streamlit>=1.40`.
 ## 8. Done when (acceptance, short form)
 
 **Demo cases:**
-- [ ] **INC-00156:** the hype chip and the "chose Device & Software, model says Account & Access" chip show, priority is **P2** with its reason, and the outcome is ESCALATE → Service Desk.
+- [ ] **INC-00347 + hype:** the hype chip and the "chose Device & Software, model says Business System" chip show, priority is **P2** with its reason, and the outcome is ESCALATE → Applications.
 - [ ] **Calm vs hype:** same priority both times; the hype chip appears only on the hype version.
 - [ ] **"System not working":** NEED INFO with questions.
 - [ ] **Wrong website prices:** knowledge gap → ESCALATE, and it's listed on the Feedback page.

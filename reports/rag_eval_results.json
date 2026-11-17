@@ -1,0 +1,281 @@
+{
+ "tickets": {
+  "keyword": {
+   "hit@5": 0.9666666666666667,
+   "p@5": 0.645555555555555,
+   "mrr": 0.8619444444444446
+  },
+  "vector": {
+   "hit@5": 1.0,
+   "p@5": 0.8322222222222223,
+   "mrr": 0.9550925925925925
+  },
+  "hybrid": {
+   "hit@5": 0.9833333333333333,
+   "p@5": 0.7644444444444441,
+   "mrr": 0.917037037037037
+  }
+ },
+ "kb": {
+  "keyword": {
+   "hit@1": 0.6444444444444445,
+   "hit@3": 0.7722222222222223
+  },
+  "vector": {
+   "hit@1": 0.7166666666666667,
+   "hit@3": 0.8388888888888889
+  },
+  "hybrid": {
+   "hit@1": 0.7,
+   "hit@3": 0.8166666666666667
+  }
+ },
+ "kb_with_hint": {
+  "keyword": {
+   "hit@1": 0.8444444444444444,
+   "hit@3": 0.8722222222222222
+  },
+  "vector": {
+   "hit@1": 0.8833333333333333,
+   "hit@3": 0.9388888888888889
+  },
+  "hybrid": {
+   "hit@1": 0.8444444444444444,
+   "hit@3": 0.8944444444444445
+  }
+ },
+ "n_test": 180,
+ "two_problem_false_alarms": 0,
+ "llm": {
+  "runs": [
+   {
+    "ticket_id": "INC-00013",
+    "decision": "ESCALATE",
+    "reason": "knowledge gap: no KB article is close to this ticket, handing to Applications",
+    "validity": null,
+    "llm": null,
+    "written": 0,
+    "kept": 0
+   },
+   {
+    "ticket_id": "INC-00022",
+    "decision": "NEED_INFO",
+    "reason": "not enough detail to act on; ask the user the questions below",
+    "validity": 0.0,
+    "llm": "groq:openai/gpt-oss-120b",
+    "written": 0,
+    "kept": 0
+   },
+   {
+    "ticket_id": "INC-00030",
+    "decision": "ESCALATE",
+    "reason": "P2: a Applications engineer owns it; the cited fix is attached",
+    "validity": 1.0,
+    "llm": "groq:openai/gpt-oss-120b",
+    "written": 4,
+    "kept": 4
+   },
+   {
+    "ticket_id": "INC-00036",
+    "decision": "ESCALATE",
+    "reason": "P1: a Applications engineer owns it; the cited fix is attached",
+    "validity": 1.0,
+    "llm": "groq:openai/gpt-oss-120b",
+    "written": 4,
+    "kept": 4
+   },
+   {
+    "ticket_id": "INC-00040",
+    "decision": "REVIEW",
+    "reason": "user chose 'Business System', model says 'Account & Access'",
+    "validity": 1.0,
+    "llm": "groq:openai/gpt-oss-120b",
+    "written": 3,
+    "kept": 3
+   },
+   {
+    "ticket_id": "INC-00061",
+    "decision": "ESCALATE",
+    "reason": "knowledge gap: the LLM found no article that really fits, handing to Desktop Support",
+    "validity": null,
+    "llm": null,
+    "written": 0,
+    "kept": 0
+   },
+   {
+    "ticket_id": "INC-00062",
+    "decision": "ESCALATE",
+    "reason": "knowledge gap: the LLM found no article that really fits, handing to Desktop Support",
+    "validity": null,
+    "llm": null,
+    "written": 0,
+    "kept": 0
+   },
+   {
+    "ticket_id": "INC-00068",
+    "decision": "ESCALATE",
+    "reason": "knowledge gap: no KB article covers 'Need access' on Company Website, handing to Service Desk",
+    "validity": null,
+    "llm": null,
+    "written": 0,
+    "kept": 0
+   },
+   {
+    "ticket_id": "INC-00070",
+    "decision": "ESCALATE",
+    "reason": "P2: a Applications engineer owns it; the cited fix is attached",
+    "validity": 1.0,
+    "llm": "groq:openai/gpt-oss-120b",
+    "written": 4,
+    "kept": 4
+   },
+   {
+    "ticket_id": "INC-00073",
+    "decision": "RECOMMEND",
+    "reason": "classifier, similar tickets and KB agree (confidence 79%)",
+    "validity": 1.0,
+    "llm": "groq:openai/gpt-oss-120b",
+    "written": 4,
+    "kept": 4
+   }
+  ],
+  "probes": [
+   {
+    "kind": "knowledge gap",
+    "description": "Customers see the wrong prices on the company website product pages.",
+    "service": "Company Website",
+    "decision": "ESCALATE",
+    "to_human": true,
+    "reason": "knowledge gap: no KB article covers 'Wrong data' on Company Website, handing to Applications"
+   },
+   {
+    "kind": "knowledge gap",
+    "description": "My salary this month is lower than it should be, one allowance is missing.",
+    "service": "Payroll System",
+    "decision": "ESCALATE",
+    "to_human": true,
+    "reason": "knowledge gap: no KB article covers 'Wrong data' on Payroll System, handing to Applications"
+   },
+   {
+    "kind": "knowledge gap",
+    "description": "Every printer on the third floor prints blank pages since this morning.",
+    "service": "Printer",
+    "decision": "ESCALATE",
+    "to_human": true,
+    "reason": "knowledge gap: the LLM found no article that really fits, handing to Desktop Support"
+   },
+   {
+    "kind": "too vague",
+    "description": "System not working, please help.",
+    "service": "Other / Not sure",
+    "decision": "NEED_INFO",
+    "to_human": true,
+    "reason": "not enough detail to act on; ask the user the questions below"
+   },
+   {
+    "kind": "too vague",
+    "description": "It's broken again.",
+    "service": "Other / Not sure",
+    "decision": "NEED_INFO",
+    "to_human": true,
+    "reason": "not enough detail to act on; ask the user the questions below"
+   },
+   {
+    "kind": "too vague",
+    "description": "Having some issues since yesterday, can someone take a look?",
+    "service": "Other / Not sure",
+    "decision": "NEED_INFO",
+    "to_human": true,
+    "reason": "not enough detail to act on; ask the user the questions below"
+   },
+   {
+    "kind": "off-topic",
+    "description": "The coffee machine in the second floor kitchen is leaking water onto the floor.",
+    "service": "Other / Not sure",
+    "decision": "ESCALATE",
+    "to_human": true,
+    "reason": "knowledge gap: no KB article is close to this ticket, handing to Service Desk"
+   },
+   {
+    "kind": "off-topic",
+    "description": "Can I book the large meeting room for our team lunch on Friday?",
+    "service": "Other / Not sure",
+    "decision": "ESCALATE",
+    "to_human": true,
+    "reason": "knowledge gap: the LLM found no article that really fits, handing to Service Desk"
+   },
+   {
+    "kind": "off-topic",
+    "description": "The air conditioning in our open-plan office has been far too cold all week.",
+    "service": "Other / Not sure",
+    "decision": "ESCALATE",
+    "to_human": true,
+    "reason": "knowledge gap: the LLM found no article that really fits, handing to Service Desk"
+   },
+   {
+    "kind": "contradictory fields",
+    "description": "The office Wi-Fi keeps dropping my laptop every few minutes and I have to reconnect each time.",
+    "service": "Payroll System",
+    "decision": "REVIEW",
+    "to_human": true,
+    "reason": "unsure about category (score 65%); classifier says 'Error or won't open', best article is about 'Wi-Fi problem'"
+   },
+   {
+    "kind": "contradictory fields",
+    "description": "The printer next to my desk jams on every page and shows a paper feed error.",
+    "service": "Email",
+    "decision": "ESCALATE",
+    "to_human": true,
+    "reason": "knowledge gap: the LLM found no article that really fits, handing to Applications"
+   },
+   {
+    "kind": "two problems",
+    "description": "The VPN drops every few minutes and separately my email stopped syncing on my phone since this morning.",
+    "service": "VPN",
+    "decision": "REVIEW",
+    "to_human": true,
+    "reason": "may be two problems in one ticket ('the vpn drops every few minutes' -> VPN problem / 'my email stopped syncing on my phone since this morning.' -> Email problem): one fix may miss the other"
+   },
+   {
+    "kind": "two problems",
+    "description": "My laptop will not charge any more and the printer on my floor prints blank pages.",
+    "service": "Laptop / Desktop",
+    "decision": "ESCALATE",
+    "to_human": true,
+    "reason": "knowledge gap: the LLM found no article that really fits, handing to Desktop Support"
+   },
+   {
+    "kind": "hidden security",
+    "description": "My laptop got very slow after I opened an invoice attachment, and now a window says my files are encrypted and asks for payment.",
+    "service": "Laptop / Desktop",
+    "decision": "ESCALATE",
+    "to_human": true,
+    "reason": "P1: a Security engineer owns it; the cited fix is attached"
+   },
+   {
+    "kind": "hidden security",
+    "description": "I entered my password on a page linked from an email about my mailbox being full, and now I can't sign in to email.",
+    "service": "Email",
+    "decision": "ESCALATE",
+    "to_human": true,
+    "reason": "knowledge gap: the LLM found no article that really fits, handing to Applications"
+   },
+   {
+    "kind": "wrong user category",
+    "description": "I can't print the payroll report: the printer says it is offline although it is switched on.",
+    "service": "Printer",
+    "decision": "ESCALATE",
+    "to_human": true,
+    "reason": "knowledge gap: the LLM found no article that really fits, handing to Desktop Support"
+   },
+   {
+    "kind": "wrong user category",
+    "description": "My work account got locked after too many password attempts this morning.",
+    "service": "Company Login",
+    "decision": "ESCALATE",
+    "to_human": true,
+    "reason": "P2: a Service Desk engineer owns it; the cited fix is attached"
+   }
+  ]
+ }
+}

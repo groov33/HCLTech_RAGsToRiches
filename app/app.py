@@ -45,7 +45,7 @@ nav = st.navigation(PAGES_BY_ROLE[state.role()])
 with st.sidebar:
     st.divider()
     llm, sysst = _status()
-    active = {"groq": "Groq", "ollama": "Ollama (local)"}.get(llm["active"], "none")
+    active = {"groq": "Groq", "gemini": "Gemini", "ollama": "Ollama (local)"}.get(llm["active"], "none")
     st.caption(f"{'🟢' if llm['active'] else '🔴'} LLM: **{active}**")
     st.caption(f"{'🟢' if sysst['model_file'] else '🔴'} Model file {'loaded' if sysst['model_file'] else 'missing'}")
     st.caption(f"{'🟢' if sysst['search_index'] else '🔴'} Search index {'built' if sysst['search_index'] else 'missing'}")

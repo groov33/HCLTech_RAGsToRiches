@@ -28,10 +28,15 @@ RAG_EVAL_PATH = ROOT / "reports" / "rag_eval_results.json"
 MODEL_PATH = ROOT / "data" / "store" / "models" / "classifier.joblib"
 INDEX_PATH = ROOT / "data" / "store" / "chroma"
 ENV_PATH = ROOT / ".env"
+try:                                                   # status badges must see .env keys before the
+    from dotenv import load_dotenv                     # first ticket imports src/llm.py
+    load_dotenv(ENV_PATH)
+except ImportError:
+    pass
 
 # SIMULATED manual-handling minutes per priority (no real history in our data). Shown as "Simulated baseline".
 BASELINE_MIN = {"P1": 240, "P2": 480, "P3": 1440, "P4": 2880}
-GROQ_MODELS = ["llama-3.3-70b-versatile", "llama-3.1-8b-instant"]
+GROQ_MODELS = ["openai/gpt-oss-120b", "openai/gpt-oss-20b"]   # first = default; must match src/llm.py
 
 BUILD_COMMANDS = {
     "model file": "python -m build.train_models",
@@ -298,9 +303,10 @@ def llm_status() -> dict:
         if fp not in _groq_checked:
             _groq_checked[fp] = _test_groq(key)
         groq = _groq_checked[fp]
+    gemini = "ok" if os.getenv("GEMINI_API_KEY") else "no key"
     ollama = "ok" if _ollama_up() else "down"
-    active = "groq" if groq == "ok" else "ollama" if ollama == "ok" else None
-    return {"groq": groq, "ollama": ollama, "active": active}
+    active = "groq" if groq == "ok" else "gemini" if gemini == "ok" else "ollama" if ollama == "ok" else None
+    return {"groq": groq, "gemini": gemini, "ollama": ollama, "active": active}
 
 
 def llm_models() -> dict:

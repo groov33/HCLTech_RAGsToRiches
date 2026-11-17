@@ -24,7 +24,7 @@ KB_PATH = Path(__file__).resolve().parents[1] / "data" / "knowledge_base" / "art
 # ranking, the results or the LLM prompt.
 ROLE_ACCESS = {
     "employee": {"levels": ["public"], "step_types": ["self"]},
-    "analyst": {"levels": ["public", "internal"], "step_types": ["self", "support"]},
+    "support": {"levels": ["public", "internal"], "step_types": ["self", "support"]},
     "admin": {"levels": ["public", "internal"], "step_types": ["self", "support"]},
 }
 
