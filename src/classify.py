@@ -21,8 +21,9 @@ from .taxonomy import CATEGORIES
 from .text import clean_description, find_date, has_hype, has_security_cue
 
 MODEL_PATH = Path(__file__).resolve().parents[1] / "data" / "store" / "models" / "classifier.joblib"
-ACCEPT_THRESHOLD = 0.75     # category score below this -> REVIEW (LLM tiebreak later)
+ACCEPT_THRESHOLD = 0.75     # category score below this -> REVIEW (a human decides; no LLM tiebreak, by choice)
 SECURITY_ALERT_PROB = 0.20  # missing a security incident is costly: flag even when not the top guess
+SYMPTOM_DOUBT_PROB = 0.25   # runner-up symptom this likely AND it would raise priority -> REVIEW
 
 
 def _top(classes, probs, k=3):
@@ -104,6 +105,17 @@ class TicketClassifier:
             security_prob >= SECURITY_ALERT_PROB or has_security_cue(t["description"]) or user_cat == "Security")
         if possible_security:
             reasons.append("possible security issue: check with Security team")
+
+        # Symptom doubt: under-prioritising is the costly mistake, so flag only when the
+        # runner-up symptom is plausible AND would give a higher priority (e.g. slow P4 vs blocked P2).
+        order = np.argsort(sym_p)[::-1]
+        alt_symptom, alt_prob = str(sym_classes[order[1]]), float(sym_p[order[1]])
+        if alt_prob >= SYMPTOM_DOUBT_PROB:
+            alt_pri = rules.priority(rules.impact(t["who_affected"], t["service"], category, alt_symptom),
+                                     rules.urgency(t["environment"], t["service"], category, alt_symptom, when))
+            if alt_pri < pri:                          # "P2" < "P4": a smaller number is more urgent
+                reasons.append(f"unsure if symptom is '{symptom}' or '{alt_symptom}' "
+                               f"({alt_prob:.0%}): priority would be {alt_pri} instead of {pri}")
 
         return {
             "category": category,

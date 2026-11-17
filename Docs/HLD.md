@@ -189,7 +189,7 @@ flowchart TB
 | Combined scorer, review flags, security safety net (+ tiebreak, to add) | `src/classify.py` | Python formula + LLM gateway |
 | Priority rules | `src/rules.py` | Python rules + ITIL matrix |
 | Retriever | `src/retrieve.py` | `all-MiniLM-L6-v2` (same model as the classifier) + ChromaDB + `rank-bm25`, RRF (k = 60) |
-| LLM gateway | `src/llm.py` | Groq (`llama-3.3-70b`) → Ollama (`qwen2.5:7b`), timeouts, one JSON retry |
+| LLM gateway | `src/llm.py` | Groq (`openai/gpt-oss-120b`) → Ollama (`qwen2.5:3b`), timeouts, one JSON retry |
 | Citation checker | `src/resolve.py` | ID check + `rapidfuzz` text match |
 | Decision rules | `src/decide.py` | Python |
 

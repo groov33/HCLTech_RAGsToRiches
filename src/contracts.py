@@ -23,7 +23,7 @@ Role = Literal["employee", "support", "admin"]   # employee → KB Assistant · 
 Outcome = Literal["RECOMMEND", "REVIEW", "ESCALATE", "NEED_INFO"]
 Priority = Literal["P1", "P2", "P3", "P4"]
 Level = Literal["High", "Medium", "Low"]
-LLMName = Literal["groq", "ollama"]
+LLMName = Literal["groq", "gemini", "ollama"]
 Verdict = Literal["useful", "incorrect", "unresolved"]
 PipelinePart = Literal["retrieve", "llm", "resolve", "decide", "store"]
 
@@ -244,6 +244,7 @@ class MTTRReport(TypedDict):
 
 class LLMStatus(TypedDict):
     groq: Literal["ok", "no key", "error"]
+    gemini: Literal["ok", "no key"]   # "ok" = at least one key configured (not tested, to save quota)
     ollama: Literal["ok", "down"]
     active: LLMName | None
 

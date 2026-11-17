@@ -15,12 +15,12 @@ ui.page_header("🎫", "New ticket",
 
 HYPE = "URGENT — I'm the CEO, fix this now! "
 EXAMPLES = {
-    "INC-00156 · hype + wrong guess": dict(
-        description="I'm getting heat from above. Please pick this up immediately. The main account was locked "
-                    "when an old desktop retried a saved password overnight. The desktop is off now but I still "
-                    "can't log in.",
-        service="Company Login", environment="Production", who_affected="Just me",
-        user_category="Device & Software", user_subcategory="Computer problem"),
+    # Held-out test ticket INC-00347 (never trained on or indexed) + one added hype sentence
+    "INC-00347 · hype + wrong guess": dict(
+        description="I'm getting heat from above. Please pick this up immediately. My workng salary application "
+                    "closes just after login. I can see the menu for a moment but can't open a run.",
+        service="Payroll System", environment="Production", who_affected="Just me",
+        user_category="Device & Software", user_subcategory="Install software"),
     "Calm vs hype (printer)": dict(
         description="Printed handover sheets are too faint for my team on the regular printer. We're selecting "
                     "the alternate device and can get the forms out.",

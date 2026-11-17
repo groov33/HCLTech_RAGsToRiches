@@ -10,7 +10,7 @@ ui.page_header("📚", "KB Assistant",
 
 EXAMPLES = ["I forgot my password", "VPN connects but shared drives won't open", "How do I share my calendar?"]
 NO_MATCH = "I couldn't find this in the knowledge base. Please raise a ticket with the Service Desk."
-LLM_NAME = {"groq": "Groq (cloud model)", "ollama": "Ollama (local model)"}
+LLM_NAME = {"groq": "Groq (cloud model)", "gemini": "Gemini (cloud model)", "ollama": "Ollama (local model)"}
 
 chat: list = st.session_state.setdefault("chat", [])
 

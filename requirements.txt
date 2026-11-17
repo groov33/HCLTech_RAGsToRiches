@@ -4,5 +4,11 @@ numpy>=1.26
 joblib>=1.4
 sentence-transformers>=3.0
 matplotlib>=3.8
+# RAG pipeline
+chromadb>=1.0
+rank-bm25>=0.2
+rapidfuzz>=3.0
+requests>=2.31
+python-dotenv>=1.0
 # Dashboard
 streamlit>=1.40

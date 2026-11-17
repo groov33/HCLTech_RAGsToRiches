@@ -52,6 +52,8 @@ flowchart LR
 
 ## 3. Search (`src/retrieve.py`): same recipe for both sources
 
+> **Update after measuring (`reports/RAG_EVALUATION.md`, 180 held-out tickets):** meaning search alone beat hybrid (similar tickets MRR 0.955 vs 0.917 · KB Hit@3 with hint 93.9% vs 89.4%). Our tickets are paraphrased, so exact-word matches mostly added noise. **Default is now `SEARCH_MODE = "vector"`**; keyword + RRF stays in the code for the comparison table and is one constant away.
+
 1. **Filter** (hard): role → allowed `access_level` (KB only) + any filters the user picked (FR-07).
 2. **Meaning search** (vectors, top 20) + **keyword search** (BM25, top 20).
 3. **Merge** with RRF: `score = 1/(60 + rank_vector) + 1/(60 + rank_keyword)`. A result high on both lists wins, and there are no score scales to tune.
@@ -109,7 +111,7 @@ This makes "no unsupported conclusions" (FR-05) a code check, not a hope.
 |---|---|---|
 | 0 | both LLMs (Groq and Ollama) failed | ⬆️ ESCALATE: "LLM unavailable" |
 | 1 | too little detail, or the LLM asked questions | ❓ NEED INFO |
-| 2 | no article above the `kb_best` threshold | ⬆️ ESCALATE: logged as a **knowledge gap** |
+| 2 | `kb_best` < 0.20 (clearly unrelated) **or** the LLM says no article fits (`insufficient_evidence`) | ⬆️ ESCALATE: logged as a **knowledge gap** |
 | 3 | priority P1 / P2 | ⬆️ ESCALATE (fix still shown to help the engineer) |
 | 4 | LLM tiebreak was needed, `conflict`, sources don't `agree`, or confidence < 0.6 | 👀 REVIEW |
 | 5 | otherwise | ✅ RECOMMEND |
@@ -144,18 +146,27 @@ Question → step 4 (public only) → step 5 (self-help only) → step 6 → if 
 
 ---
 
-## 10. Files
+## 10. Files (all built ✅)
 
 | File | Does |
 |---|---|
-| `build/build_index.py` | clean → embed → ChromaDB + BM25 for tickets and KB |
-| `src/retrieve.py` | `search_tickets()`, `search_kb()` → hits + signals |
-| `src/llm.py` | Groq → Ollama (timeouts, one JSON retry) |
+| `build/build_index.py` | clean → embed → ChromaDB (`tickets`, `kb_articles`); BM25 is rebuilt in memory on load |
+| `src/kb.py` | load articles, match cards, step IDs, role → access rules |
+| `src/retrieve.py` | `search_tickets()`, `search_kb()` → hits + vote + signals |
+| `src/llm.py` | Groq → Ollama over plain HTTP (timeouts, one JSON retry) |
 | `src/resolve.py` | prompt, JSON, citation check |
 | `src/decide.py` | confidence + rules |
-| `build/run_eval.py` | metrics in §9 |
+| `src/pipeline.py` | `analyze_ticket()` (all steps + timing trace), `ask_kb()` for the KB Assistant |
+| `build/run_rag_eval.py` | §9 metrics → `reports/RAG_EVALUATION.md` (`--llm N` adds the full pipeline + probes) |
 
----
+**Output shape:** `analyze_ticket()` returns `contracts.AnalysisResult` and `ask_kb()` returns `contracts.KBAnswer` (`src/contracts.py`), so the dashboard reads the same field names the pipeline writes. Run `python -m src.pipeline` to see one full result plus `check_result()`.
+
+**Built-in robustness (each one found while testing):**
+- **PII is hidden first** (`text.mask_pii`: emails, phone numbers, employee IDs), before search, the LLM (Groq is a cloud service) and the UI. It changes none of the 1,200 dataset tickets, so classifier accuracy is unaffected.
+- **Too vague → no LLM call.** A small model invented an irrelevant question ("What type of monitor…?"), so code asks two fixed questions instead.
+- **Malformed LLM JSON** (e.g. `paths` as a list of strings) counts as dropped steps, never a crash.
+
+**Why the knowledge-gap rule uses the LLM:** the best-match score alone can't separate gaps from normal tickets (5% of normal test tickets score below 0.20, while the uncovered "blank prints on one floor" scores 0.47 because it *looks* like a printer article). So code catches the obvious cases and the LLM, which reads the cause and conditions, catches the rest.
 
 ## 11. Trade-offs (for the README)
 
@@ -163,7 +174,7 @@ Question → step 4 (public only) → step 5 (self-help only) → step 6 → if 
 |---|---|---|
 | Fix steps only from KB | ticket resolutions | tickets have none; KB = "approved knowledge" |
 | Index symptoms, not steps | whole article | users describe symptoms |
-| Hybrid search | vectors only | brief penalises keyword look-alikes; the table proves it |
+| Vector search (measured) | hybrid | on our paraphrased tickets hybrid scored lower; the comparison table shows it, and hybrid is one constant away |
 | Labels as boosts | labels as filters | a wrong label can't hide the answer |
 | Simple average confidence | tuned weights | easy to explain and defend |
 | No re-ranker (yet) | cross-encoder | 55 articles; add it only if the eval shows a gap |

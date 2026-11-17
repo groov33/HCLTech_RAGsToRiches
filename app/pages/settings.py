@@ -57,14 +57,16 @@ try:
     models = backend.llm_models()
 except Exception as e:  # noqa: BLE001
     print(f"[settings] llm status failed: {type(e).__name__}")
-    llm, models = {"groq": "error", "ollama": "down", "active": None}, backend.llm_models()
+    llm, models = {"groq": "error", "gemini": "no key", "ollama": "down", "active": None}, backend.llm_models()
 
 # ── Active LLM ──────────────────────────────────────────────────────────────
-active = {"groq": ("🟢", "Groq"), "ollama": ("🟡", "Ollama (Groq unavailable)")}.get(
+active = {"groq": ("🟢", "Groq"), "gemini": ("🟢", "Gemini (Groq unavailable)"),
+          "ollama": ("🟡", "Ollama (Groq and Gemini unavailable)")}.get(
     llm["active"], ("🔴", "None: fixes can't be written; tickets will be escalated"))
 with st.container(border=True):
     st.markdown(f"**Active LLM:** {active[0]} {active[1]}")
-    st.caption("Groq is tried first; if it isn't available the local Ollama model is used.")
+    st.caption("Every Groq key is tried first, then every Gemini key, then the local Ollama model. "
+               "A key or model that just failed is skipped for a while, so failover stays fast.")
 
 c1, c2 = st.columns(2)
 
