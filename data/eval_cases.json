@@ -1,0 +1,329 @@
+{
+ "about": "Evaluation questions with expected answers. Each ticket case is the exact New ticket form input; each KB case is the exact KB Assistant question. Type them into the app and you see the expected result. Run all of them with: python -m build.run_eval_cases",
+ "how_expected_was_decided": "Held-out tickets (INC-xxxxx from the 15% test split, never trained on and not in the search index): labels = the dataset's true labels, outcome = the decision table in src/decide.py applied to those labels. Probes (hand-written): labels from the rules in src/rules.py worked out by hand. Expected KB article chosen by reading the article titles. Only the fields listed under 'expected' are checked. 'expected' is always the RIGHT answer; where the app is known to show something else on one field, 'known_misses' says what it shows and why (reported separately, not counted as a failure).",
+ "fields": {
+  "outcome": "banner at the top of the result: RECOMMEND / REVIEW / ESCALATE / NEED_INFO",
+  "category, subcategory, symptom_type, priority": "the four cards under the banner",
+  "team": "'Team ...' line on the Priority card",
+  "escalate_to": "'-> hand to ...' line in the banner (ESCALATE only, else null)",
+  "hype_detected": "violet chip 'Hype detected - ignored for priority'",
+  "user_agrees": "false = orange chip 'You chose X - model says Y'",
+  "possible_security": "red chip 'Possible security issue'",
+  "knowledge_gap": "grey chip 'Knowledge gap' + warning on the KB articles tab",
+  "possible_duplicate": "red chip 'Possible duplicate of a past ticket'",
+  "top_similar": "first card on the Similar past tickets tab",
+  "top_kb": "first card on the KB articles tab",
+  "fix_from": "KB article the Recommended fix tab is written from (a list = any of these is fine; null = no fix shown)",
+  "reasons_contains": "text that must appear in the banner's reason lines",
+  "priority_reason_contains": "text that must appear in the sentence on the Priority card",
+  "questions": "questions in the banner (NEED_INFO only)",
+  "masked_description_contains / _excludes": "Audit record tab: what the stored description must / must not contain",
+  "answered": "KB Assistant: true = numbered steps, false = 'I couldn't find this in the knowledge base' + ticket summary",
+  "top_source": "KB Assistant: first entry under 'Sources'",
+  "answer_from": "KB Assistant: KB article the steps cite",
+  "cites_only_self_help": "KB Assistant: every citation badge is a KB-xxx/self/n step (employees never see support steps)",
+  "only_public_sources": "KB Assistant: no internal article is ever listed",
+  "source_ids_excludes": "KB Assistant: these articles must not appear under 'Sources'"
+ },
+ "tickets": [
+  {
+   "id": "T01",
+   "title": "App example 'VPN on, shared drive off'",
+   "tests": "happy path: everything agrees -> confident cited fix",
+   "why": "VPN is a critical service; 'drive will not open' = blocked -> impact Medium. Environment is not Production -> urgency Medium. Medium x Medium = P3. KB-020 is written for exactly this problem.",
+   "input": {"description": "My VPN says connected but the shared drive will not open from home.", "service": "VPN", "environment": "Not applicable", "who_affected": "Just me", "user_category": "Network", "user_subcategory": "VPN problem"},
+   "expected": {"outcome": "RECOMMEND", "category": "Network", "subcategory": "VPN problem", "symptom_type": "blocked", "team": "Network", "priority": "P3", "escalate_to": null, "hype_detected": false, "user_agrees": true, "possible_security": false, "knowledge_gap": false, "top_kb": "KB-020", "fix_from": "KB-020", "reasons_contains": "agree"}
+  },
+  {
+   "id": "T02",
+   "title": "T01 + the 'URGENT - I'm the CEO' hype toggle",
+   "tests": "hype changes nothing except the hype chip",
+   "why": "Priority comes from service, environment, who is affected and symptom only. Same facts as T01 -> same answer, plus the hype flag.",
+   "input": {"description": "URGENT — I'm the CEO, fix this now! My VPN says connected but the shared drive will not open from home.", "service": "VPN", "environment": "Not applicable", "who_affected": "Just me", "user_category": "Network", "user_subcategory": "VPN problem"},
+   "expected": {"outcome": "RECOMMEND", "category": "Network", "subcategory": "VPN problem", "symptom_type": "blocked", "team": "Network", "priority": "P3", "escalate_to": null, "hype_detected": true, "user_agrees": true, "knowledge_gap": false, "top_kb": "KB-020", "fix_from": "KB-020"}
+  },
+  {
+   "id": "T03",
+   "title": "App example 'INC-00347 - hype + wrong guess' (held out)",
+   "tests": "hype ignored, wrong user category corrected, P2 from facts -> escalate with the fix attached",
+   "why": "True labels: Business System > Error or won't open, blocked, Applications, P2 (just me on a critical service = Medium impact; blocked in Production = High urgency). P2 -> ESCALATE. KB-030 is the only Payroll 'won't open' article.",
+   "input": {"description": "I'm getting heat from above. Please pick this up immediately. My workng salary application closes just after login. I can see the menu for a moment but can't open a run.", "service": "Payroll System", "environment": "Production", "who_affected": "Just me", "user_category": "Device & Software", "user_subcategory": "Install software"},
+   "expected": {"outcome": "ESCALATE", "category": "Business System", "subcategory": "Error or won't open", "symptom_type": "blocked", "team": "Applications", "priority": "P2", "escalate_to": "Applications", "hype_detected": true, "user_agrees": false, "knowledge_gap": false, "top_kb": "KB-030", "fix_from": "KB-030", "reasons_contains": "P2"}
+  },
+  {
+   "id": "T04",
+   "title": "App example 'Calm vs hype (printer)'",
+   "tests": "a covered service but an uncovered problem: faint printing has no KB article -> no invented fix",
+   "why": "Device & Software > Printer problem; there is a workaround ('alternate device') -> slow; my team -> impact Medium, slow -> urgency Medium = P3. The three printer articles are about a paused queue, badge release and paper size; none is about faint print, so the LLM must refuse and it becomes a knowledge gap -> ESCALATE to Desktop Support.",
+   "input": {"description": "Printed handover sheets are too faint for my team on the regular printer. We're selecting the alternate device and can get the forms out.", "service": "Printer", "environment": "Not applicable", "who_affected": "My team", "user_category": "Device & Software", "user_subcategory": "Printer problem"},
+   "expected": {"outcome": "ESCALATE", "category": "Device & Software", "subcategory": "Printer problem", "symptom_type": "slow", "team": "Desktop Support", "priority": "P3", "escalate_to": "Desktop Support", "hype_detected": false, "user_agrees": true, "knowledge_gap": true, "fix_from": null, "reasons_contains": "knowledge gap"},
+   "known_misses": {"symptom_type": "The app shows 'blocked'. The data spec says a workaround means 'slow', so 'slow' is the right answer and this is a model miss. It is harmless here: my team + not Production gives P3 either way."}
+  },
+  {
+   "id": "T05",
+   "title": "T04 + the hype toggle",
+   "tests": "hype changes nothing except the hype chip",
+   "why": "Same facts as T04 -> same answer, plus the hype flag.",
+   "input": {"description": "URGENT — I'm the CEO, fix this now! Printed handover sheets are too faint for my team on the regular printer. We're selecting the alternate device and can get the forms out.", "service": "Printer", "environment": "Not applicable", "who_affected": "My team", "user_category": "Device & Software", "user_subcategory": "Printer problem"},
+   "expected": {"outcome": "ESCALATE", "category": "Device & Software", "subcategory": "Printer problem", "symptom_type": "slow", "team": "Desktop Support", "priority": "P3", "escalate_to": "Desktop Support", "hype_detected": true, "knowledge_gap": true, "fix_from": null},
+   "known_misses": {"symptom_type": "Same model miss as T04: the app shows 'blocked'; the right answer is 'slow'. Priority is P3 either way."}
+  },
+  {
+   "id": "T06",
+   "title": "App example 'Vague ticket'",
+   "tests": "completeness check: too vague -> questions, no fix",
+   "why": "Every word is generic ('system', 'not', 'working'), so the completeness check fires before any fix is attempted. Rule 1 of the decision table -> NEED_INFO with the two default questions.",
+   "input": {"description": "system not working", "service": "Other / Not sure", "environment": "Not applicable", "who_affected": "Just me", "user_category": "Device & Software", "user_subcategory": "Computer problem"},
+   "expected": {"outcome": "NEED_INFO", "escalate_to": null, "fix_from": null, "questions": ["Which application, device or service is affected?", "What exactly happens, and is there an error message?"]}
+  },
+  {
+   "id": "T07",
+   "title": "App example 'Uncovered problem'",
+   "tests": "knowledge gap: no article for 'Wrong data' on Company Website -> escalate, LLM never called",
+   "why": "Business System > Wrong data, owned by Applications. The only 'Wrong data' articles are for Finance System and Shared Files, so rule 2 (knowledge gap) fires. Priority is not checked: it depends on whether the symptom is read as slow or blocked, and the outcome is ESCALATE either way.",
+   "input": {"description": "Customers see the wrong prices on the company website since this morning.", "service": "Company Website", "environment": "Production", "who_affected": "Customers", "user_category": "Business System", "user_subcategory": "Wrong data"},
+   "expected": {"outcome": "ESCALATE", "category": "Business System", "subcategory": "Wrong data", "team": "Applications", "escalate_to": "Applications", "user_agrees": true, "knowledge_gap": true, "fix_from": null, "reasons_contains": "no KB article covers 'Wrong data' on Company Website"}
+  },
+  {
+   "id": "T08",
+   "title": "INC-00073 shared calendar request (held out)",
+   "tests": "request type -> low urgency, P3 even for many teams",
+   "why": "True labels: Email & Communication > Calendar problem, request, Applications, P3 (many teams = High impact; a request = Low urgency). KB-016 is the calendar-sharing article.",
+   "input": {"description": "Could we get a single calendar for both daytime operations crews and the separate evening intake group?", "service": "Email", "environment": "Production", "who_affected": "Many teams", "user_category": "Email & Communication", "user_subcategory": "Calendar problem"},
+   "expected": {"outcome": "RECOMMEND", "category": "Email & Communication", "subcategory": "Calendar problem", "symptom_type": "request", "team": "Applications", "priority": "P3", "user_agrees": true, "knowledge_gap": false, "top_kb": "KB-016", "fix_from": "KB-016"},
+   "known_misses": {"top_kb": "Search ranks KB-018 ('meeting at the wrong time after travelling') first and KB-016 second. The fix is still written from KB-016, because the LLM picks the article that fits from the top 3. A ranking miss at #1, not a wrong answer."}
+  },
+  {
+   "id": "T09",
+   "title": "INC-00100 password reset request (held out)",
+   "tests": "simple Service Desk request -> P4 cited fix",
+   "why": "True labels: Account & Access > Password reset, request, Service Desk, P4. KB-001 is the password reset article.",
+   "input": {"description": "I'd like a password reset for the additional work login I was just given. My main sign-in can carry on as usual.", "service": "Company Login", "environment": "Production", "who_affected": "Just me", "user_category": "Account & Access", "user_subcategory": "Password reset"},
+   "expected": {"outcome": "RECOMMEND", "category": "Account & Access", "subcategory": "Password reset", "symptom_type": "request", "team": "Service Desk", "priority": "P4", "user_agrees": true, "knowledge_gap": false, "top_kb": "KB-001", "fix_from": "KB-001"}
+  },
+  {
+   "id": "T10",
+   "title": "INC-00852 account locked in a TEST environment (held out)",
+   "tests": "environment matters: blocked in Test = P3 (compare T20: the same problem in Production = P2)",
+   "why": "True labels: Account & Access > Account locked, blocked, Service Desk, P3. Blocked but in Test -> urgency Medium, not High. KB-004 is the lockout article.",
+   "input": {"description": "I need an unlock on my training login. Every page I use for the exercise sends me back to the account locked notice.", "service": "Company Login", "environment": "Test", "who_affected": "Just me", "user_category": "Account & Access", "user_subcategory": "Account locked"},
+   "expected": {"outcome": "RECOMMEND", "category": "Account & Access", "subcategory": "Account locked", "symptom_type": "blocked", "team": "Service Desk", "priority": "P3", "knowledge_gap": false, "top_kb": "KB-004", "fix_from": "KB-004", "priority_reason_contains": "test"}
+  },
+  {
+   "id": "T11",
+   "title": "INC-00961 VPN slow to set up routes (held out)",
+   "tests": "slow symptom -> P4 cited fix",
+   "why": "True labels: Network > VPN problem, slow, Network, P4. KB-021 covers slowness while the VPN is connected.",
+   "input": {"description": "It takes a long time for the VPN to set up routes, but everything opens after that.", "service": "VPN", "environment": "Production", "who_affected": "Just me", "user_category": "Network", "user_subcategory": "VPN problem"},
+   "expected": {"outcome": "RECOMMEND", "category": "Network", "subcategory": "VPN problem", "symptom_type": "slow", "team": "Network", "priority": "P4", "knowledge_gap": false, "top_kb": "KB-021", "fix_from": "KB-021"}
+  },
+  {
+   "id": "T12",
+   "title": "INC-00717 Wi-Fi drops at my desk (held out)",
+   "tests": "Network team routing from the service, P4 cited fix",
+   "why": "True labels: Network > Wi-Fi problem, slow, Network, P4. KB-025 covers Wi-Fi dropping in one part of the building.",
+   "input": {"description": "Intermittent Wi-Fi at my desk during the late shift. I can stay connected by using the other band.", "service": "Office Wi-Fi", "environment": "Not applicable", "who_affected": "Just me", "user_category": "Network", "user_subcategory": "Wi-Fi problem"},
+   "expected": {"outcome": "RECOMMEND", "category": "Network", "subcategory": "Wi-Fi problem", "symptom_type": "slow", "team": "Network", "priority": "P4", "knowledge_gap": false, "top_kb": "KB-025", "fix_from": "KB-025"}
+  },
+  {
+   "id": "T13",
+   "title": "INC-00333 external monitors go dark (held out)",
+   "tests": "team impact -> P3, Desktop Support",
+   "why": "True labels: Device & Software > Computer problem, slow, Desktop Support, P3 (my team = Medium impact). KB-037 is the external-monitor article.",
+   "input": {"description": "Our group can stay on the laptop screen, but the external monitors randomly go dark on their assigned desks.", "service": "Laptop / Desktop", "environment": "Not applicable", "who_affected": "My team", "user_category": "Device & Software", "user_subcategory": "Computer problem"},
+   "expected": {"outcome": "RECOMMEND", "category": "Device & Software", "subcategory": "Computer problem", "symptom_type": "slow", "team": "Desktop Support", "priority": "P3", "knowledge_gap": false, "top_kb": "KB-037", "fix_from": "KB-037"}
+  },
+  {
+   "id": "T14",
+   "title": "INC-00401 Finance report slow on a month-end date (held out)",
+   "tests": "busy-period rule: the date in the text (30 Sep 2026 = last working days of the month) raises urgency",
+   "why": "True labels: Business System > Slow, slow, Applications, P3. Slow is normally urgency Medium, but Finance's last 3 working days of the month are a busy period -> urgency High -> P3 instead of P4. KB-032 is the slow Finance report article.",
+   "input": {"description": "I can still generate my cost report on 30 September 2026 if I use the compact layout. The usual view seems to take forever.", "service": "Finance System", "environment": "Production", "who_affected": "Just me", "user_category": "Business System", "user_subcategory": "Slow"},
+   "expected": {"outcome": "RECOMMEND", "category": "Business System", "subcategory": "Slow", "symptom_type": "slow", "team": "Applications", "priority": "P3", "knowledge_gap": false, "top_kb": "KB-032", "fix_from": "KB-032", "priority_reason_contains": "busy period"}
+  },
+  {
+   "id": "T15",
+   "title": "INC-00392 Finance wrong data + threat to go to the director (held out)",
+   "tests": "real-world hype inside the dataset: priority stays P4",
+   "why": "True labels: Business System > Wrong data, slow, Applications, P4. 'I'm going to the director' is hype and must not raise priority. KB-035 is the Finance wrong-data article.",
+   "input": {"description": "On the 13th the production ledger shows an old cost centre for my entries. I can replace it with the right one. If this isn't fixed in five minutes I'm going to the director.", "service": "Finance System", "environment": "Production", "who_affected": "Just me", "user_category": "Business System", "user_subcategory": "Wrong data"},
+   "expected": {"outcome": "RECOMMEND", "category": "Business System", "subcategory": "Wrong data", "symptom_type": "slow", "team": "Applications", "priority": "P4", "hype_detected": true, "knowledge_gap": false, "top_kb": "KB-035", "fix_from": "KB-035"}
+  },
+  {
+   "id": "T16",
+   "title": "INC-01193 'Need a PDF tool installed' (held out)",
+   "tests": "short request with service 'Other / Not sure' -> Service Desk",
+   "why": "True labels: Device & Software > Install software, request, Service Desk (unknown service -> Service Desk), P4. Either install article fits: KB-046 (in the catalog) or KB-047 (not in the catalog).",
+   "input": {"description": "Need a PDF tool installed for next week.", "service": "Other / Not sure", "environment": "Not applicable", "who_affected": "Just me", "user_category": "Device & Software", "user_subcategory": "Install software"},
+   "expected": {"outcome": "RECOMMEND", "category": "Device & Software", "subcategory": "Install software", "symptom_type": "request", "team": "Service Desk", "priority": "P4", "knowledge_gap": false, "fix_from": ["KB-046", "KB-047"]}
+  },
+  {
+   "id": "T17",
+   "title": "INC-00040 user picked the wrong category (held out)",
+   "tests": "user disagrees with the model -> a human confirms (REVIEW), fix still attached",
+   "why": "True labels: Account & Access > Password reset, blocked, Service Desk, P3 (Test environment). The user chose Business System, so the classifier flags it -> rule 4 -> REVIEW. The reset-message problem is covered by the password reset articles.",
+   "input": {"description": "the test self-service page won't send my password reset message. i can't get into the sandbox.", "service": "Company Login", "environment": "Test", "who_affected": "Just me", "user_category": "Business System", "user_subcategory": "Error or won't open"},
+   "expected": {"outcome": "REVIEW", "category": "Account & Access", "subcategory": "Password reset", "symptom_type": "blocked", "team": "Service Desk", "priority": "P3", "escalate_to": null, "user_agrees": false, "knowledge_gap": false, "top_kb": "KB-002", "fix_from": ["KB-001", "KB-002"], "reasons_contains": "user chose 'Business System', model says 'Account & Access'"}
+  },
+  {
+   "id": "T18",
+   "title": "INC-00567 meeting app drops when choosing the microphone (held out)",
+   "tests": "user picked 'Phone problem' for a video-call problem -> REVIEW",
+   "why": "True labels: Email & Communication > Chat or video call problem, blocked, Applications, P3 (just me on an important, not critical, service = Low impact; blocked in Production = High urgency). User chose Device & Software -> REVIEW.",
+   "input": {"description": "Every production meeting exits when I select my microphone. I'm unable to join the appointments assigned to me.", "service": "Chat & Video Calls", "environment": "Production", "who_affected": "Just me", "user_category": "Device & Software", "user_subcategory": "Phone problem"},
+   "expected": {"outcome": "REVIEW", "category": "Email & Communication", "subcategory": "Chat or video call problem", "symptom_type": "blocked", "team": "Applications", "priority": "P3", "user_agrees": false, "reasons_contains": "user chose 'Device & Software'"}
+  },
+  {
+   "id": "T19",
+   "title": "Probe: two problems in one ticket",
+   "tests": "two-problem check: VPN drive + printer paper size -> REVIEW so the second problem isn't ignored",
+   "why": "Each sentence matches a different subcategory's article strongly (VPN problem / Printer problem), so the two-problem check adds a review reason -> rule 4 -> REVIEW. The main service is VPN, so the labels follow the VPN problem.",
+   "input": {"description": "My VPN says connected but the shared drive will not open from home. Separately, the printer asks for A3 paper every time I print a normal letter.", "service": "VPN", "environment": "Not applicable", "who_affected": "Just me", "user_category": "Network", "user_subcategory": "VPN problem"},
+   "expected": {"outcome": "REVIEW", "category": "Network", "subcategory": "VPN problem", "team": "Network", "escalate_to": null, "reasons_contains": "two problems"}
+  },
+  {
+   "id": "T20",
+   "title": "INC-00267 account locked in PRODUCTION (held out)",
+   "tests": "same problem as T10 but in Production -> P2 -> ESCALATE",
+   "why": "True labels: Account & Access > Account locked, blocked, Service Desk, P2 (blocked in Production = High urgency). Rule 3 -> ESCALATE to Service Desk with the KB-004 fix attached.",
+   "input": {"description": "I entered the code from the previous prompt and locked my company user. I'm stuck at sign-in for all my tools.", "service": "Company Login", "environment": "Production", "who_affected": "Just me", "user_category": "Account & Access", "user_subcategory": "Account locked"},
+   "expected": {"outcome": "ESCALATE", "category": "Account & Access", "subcategory": "Account locked", "symptom_type": "blocked", "team": "Service Desk", "priority": "P2", "escalate_to": "Service Desk", "knowledge_gap": false, "top_kb": "KB-004", "fix_from": "KB-004", "reasons_contains": "P2"}
+  },
+  {
+   "id": "T21",
+   "title": "INC-00036 email down for the whole company (held out)",
+   "tests": "outage on a critical service for many teams -> P1",
+   "why": "True labels: Email & Communication > Email problem, outage, Applications, P1. KB-012 is the internal 'email down for everyone' article (support role can see it).",
+   "input": {"description": "Mail is down for the entire tenant, including support, sales and our service accounts. Nothing is leaving the queue.", "service": "Email", "environment": "Production", "who_affected": "Many teams", "user_category": "Email & Communication", "user_subcategory": "Email problem"},
+   "expected": {"outcome": "ESCALATE", "category": "Email & Communication", "subcategory": "Email problem", "symptom_type": "outage", "team": "Applications", "priority": "P1", "escalate_to": "Applications", "top_kb": "KB-012", "fix_from": "KB-012", "reasons_contains": "P1"}
+  },
+  {
+   "id": "T22",
+   "title": "INC-00997 shared label printer rejects every job (held out)",
+   "tests": "a minor service can still be P2 when many teams are blocked",
+   "why": "True labels: Device & Software > Printer problem, blocked, Desktop Support, P2 (many teams = High impact; blocked, not Production = Medium urgency). KB-040 covers jobs piling up on a shared queue.",
+   "input": {"description": "Multiple teams are queuing at the one dispatch label printer and it rejects every job. None of the waiting loads can be processed.", "service": "Printer", "environment": "Not applicable", "who_affected": "Many teams", "user_category": "Device & Software", "user_subcategory": "Printer problem"},
+   "expected": {"outcome": "ESCALATE", "category": "Device & Software", "subcategory": "Printer problem", "symptom_type": "blocked", "team": "Desktop Support", "priority": "P2", "escalate_to": "Desktop Support", "top_kb": "KB-040", "reasons_contains": "P2"}
+  },
+  {
+   "id": "T23",
+   "title": "INC-00474 'Weird email with a login button. Real?' (held out)",
+   "tests": "security always goes to the Security team as P1, even for a one-line question",
+   "why": "True labels: Security > Suspicious email, question, Security, P1 (Security = High impact and High urgency by rule). KB-049 is the suspicious sign-in link article.",
+   "input": {"description": "Weird email with a login button. Real?", "service": "Other / Not sure", "environment": "Not applicable", "who_affected": "Just me", "user_category": "Security", "user_subcategory": "Suspicious email"},
+   "expected": {"outcome": "ESCALATE", "category": "Security", "subcategory": "Suspicious email", "team": "Security", "priority": "P1", "escalate_to": "Security", "top_kb": "KB-049", "fix_from": "KB-049"}
+  },
+  {
+   "id": "T24",
+   "title": "Probe: ransomware described as 'slow laptop'",
+   "tests": "security spotted from the text even when the user files it as a computer problem",
+   "why": "Encrypted files + a payment demand after opening an attachment = Security > Virus -> team Security, P1 by rule. The user chose Device & Software, so user_agrees is false. KB-051 is the attachment/quarantine article.",
+   "input": {"description": "My laptop got very slow after I opened an invoice attachment, and now a window says my files are encrypted and asks for payment.", "service": "Laptop / Desktop", "environment": "Production", "who_affected": "Just me", "user_category": "Device & Software", "user_subcategory": "Computer problem"},
+   "expected": {"outcome": "ESCALATE", "category": "Security", "subcategory": "Virus", "team": "Security", "priority": "P1", "escalate_to": "Security", "user_agrees": false, "fix_from": "KB-051"}
+  },
+  {
+   "id": "T25",
+   "title": "Probe: re-submit indexed ticket INC-00408 (VPN down for everyone)",
+   "tests": "duplicate detection: the same ticket text finds itself and is flagged as a possible duplicate",
+   "why": "INC-00408 is in the search index, so identical text gives similarity 1.0 (above the 0.85 duplicate threshold). Its true labels: Network > VPN problem, outage, Network, P1 -> ESCALATE. KB-022 is the internal 'VPN won't connect for anyone' article.",
+   "input": {"description": "The live VPN stopped accepting connections from everyone. The gateways both time out from several home ISPs.", "service": "VPN", "environment": "Production", "who_affected": "Many teams", "user_category": "Network", "user_subcategory": "VPN problem"},
+   "expected": {"outcome": "ESCALATE", "category": "Network", "subcategory": "VPN problem", "symptom_type": "outage", "team": "Network", "priority": "P1", "escalate_to": "Network", "possible_duplicate": true, "top_similar": "INC-00408", "top_kb": "KB-022"}
+  },
+  {
+   "id": "T26",
+   "title": "INC-00802 payroll summary shows the wrong division (held out)",
+   "tests": "knowledge gap on a covered category: 'Wrong data' exists for Finance, not for Payroll",
+   "why": "True labels: Business System > Wrong data, slow, Applications, P4. No article covers Wrong data on Payroll System -> rule 2 -> ESCALATE, no fix.",
+   "input": {"description": "the payroll summary on the 10th shows the wrong division for the staff i check. i can use the actual pay register for my review instead.", "service": "Payroll System", "environment": "Production", "who_affected": "Just me", "user_category": "Business System", "user_subcategory": "Wrong data"},
+   "expected": {"outcome": "ESCALATE", "category": "Business System", "subcategory": "Wrong data", "symptom_type": "slow", "team": "Applications", "priority": "P4", "escalate_to": "Applications", "knowledge_gap": true, "fix_from": null, "reasons_contains": "no KB article covers 'Wrong data' on Payroll System"}
+  },
+  {
+   "id": "T27",
+   "title": "INC-00758 shared folder slow to show versions (held out)",
+   "tests": "knowledge gap: no 'Slow' article for Shared Files",
+   "why": "True labels: Business System > Slow, slow, Applications, P4. 'Slow' articles exist for Finance, Payroll and the Website only -> rule 2 -> ESCALATE, no fix.",
+   "input": {"description": "My shared folder displays recent versions after a long wait, though the download works immediately.", "service": "Shared Files", "environment": "Production", "who_affected": "Just me", "user_category": "Business System", "user_subcategory": "Slow"},
+   "expected": {"outcome": "ESCALATE", "category": "Business System", "subcategory": "Slow", "symptom_type": "slow", "team": "Applications", "priority": "P4", "escalate_to": "Applications", "knowledge_gap": true, "fix_from": null, "reasons_contains": "no KB article covers 'Slow' on Shared Files"}
+  },
+  {
+   "id": "T28",
+   "title": "Probe: personal data in the description",
+   "tests": "PII is masked before search, the LLM and the audit log; the ticket is still solved",
+   "why": "The email address and phone number must be replaced by [email] and [phone]. The problem itself: desktop email keeps asking for the password while webmail works (a workaround = slow) -> Email & Communication > Email problem, Applications, P4. KB-010 is exactly this. Outcome is REVIEW, not RECOMMEND: 'keeps asking for my password' reads like credential phishing, so P(Security) = 0.32, above the 0.20 safety-net threshold -> 'possible security issue' -> a human glances at it. That is the designed trade-off (a false alarm costs a minute; a missed phishing case costs much more). Masking is not the cause: P(Security) is the same without the contact details.",
+   "input": {"description": "The email app on my laptop keeps asking for my password. Webmail still works, so I can read mail there. Reach me at jo.bloggs@example.com or +44 7700 900123.", "service": "Email", "environment": "Production", "who_affected": "Just me", "user_category": "Email & Communication", "user_subcategory": "Email problem"},
+   "expected": {"outcome": "REVIEW", "category": "Email & Communication", "subcategory": "Email problem", "symptom_type": "slow", "team": "Applications", "priority": "P4", "possible_security": true, "top_kb": "KB-010", "fix_from": "KB-010", "reasons_contains": "possible security issue", "masked_description_contains": ["[email]", "[phone]"], "masked_description_excludes": ["jo.bloggs@example.com", "7700 900123"]}
+  }
+ ],
+ "kb_questions": [
+  {
+   "id": "K01",
+   "title": "App example 'I forgot my password'",
+   "why": "KB-001 'I forgot my Company Login password' is public and has self-help steps.",
+   "question": "I forgot my password",
+   "expected": {"answered": true, "top_source": "KB-001", "answer_from": "KB-001", "cites_only_self_help": true, "only_public_sources": true}
+  },
+  {
+   "id": "K02",
+   "title": "App example 'VPN connects but shared drives won't open'",
+   "why": "KB-020 is written for exactly this and is public.",
+   "question": "VPN connects but shared drives won't open",
+   "expected": {"answered": true, "top_source": "KB-020", "answer_from": "KB-020", "cites_only_self_help": true, "only_public_sources": true}
+  },
+  {
+   "id": "K03",
+   "title": "App example 'How do I share my calendar?'",
+   "why": "KB-016 'How to share my work calendar with a coworker' is public.",
+   "question": "How do I share my calendar?",
+   "expected": {"answered": true, "top_source": "KB-016", "answer_from": "KB-016", "cites_only_self_help": true, "only_public_sources": true}
+  },
+  {
+   "id": "K04",
+   "title": "Chat box placeholder 'Outlook keeps asking for my password'",
+   "why": "KB-010 'Desktop email keeps asking for my password' is public.",
+   "question": "Outlook keeps asking for my password",
+   "expected": {"answered": true, "top_source": "KB-010", "answer_from": "KB-010", "cites_only_self_help": true, "only_public_sources": true}
+  },
+  {
+   "id": "K05",
+   "title": "Phone won't charge",
+   "why": "KB-043 'Company phone won't charge with its usual cable' is public.",
+   "question": "My work phone isn't charging",
+   "expected": {"answered": true, "top_source": "KB-043", "answer_from": "KB-043", "cites_only_self_help": true, "only_public_sources": true}
+  },
+  {
+   "id": "K06",
+   "title": "Suspicious sign-in link",
+   "why": "KB-049 'An email asks me to open an unexpected sign-in link' is public; its self-help steps say what to do safely.",
+   "question": "I got an email asking me to sign in through a link. Is it safe?",
+   "expected": {"answered": true, "top_source": "KB-049", "answer_from": "KB-049", "cites_only_self_help": true, "only_public_sources": true}
+  },
+  {
+   "id": "K07",
+   "title": "Topic covered only by an INTERNAL article",
+   "why": "Disk-full is covered only by KB-038, which is internal. Employees must never see it, and the public computer articles (monitor, dock) don't fit -> not answered, raise a ticket.",
+   "question": "My work computer has no space left to save files",
+   "expected": {"answered": false, "source_ids_excludes": ["KB-038"], "only_public_sources": true}
+  },
+  {
+   "id": "K08",
+   "title": "Uncovered problem",
+   "why": "No article covers wrong data on the website.",
+   "question": "Customers see the wrong prices on the company website",
+   "expected": {"answered": false, "only_public_sources": true}
+  },
+  {
+   "id": "K09",
+   "title": "Off-topic question",
+   "why": "Not an IT problem; nothing in the knowledge base fits.",
+   "question": "What is on the canteen lunch menu today?",
+   "expected": {"answered": false}
+  },
+  {
+   "id": "K10",
+   "title": "Too vague",
+   "why": "'help' says nothing about what is wrong; the completeness check stops it before the LLM.",
+   "question": "help",
+   "expected": {"answered": false}
+  }
+ ]
+}

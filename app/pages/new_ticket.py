@@ -14,30 +14,45 @@ ui.page_header("🎫", "New ticket",
                "and drafts a cited fix — you review and decide.")
 
 HYPE = "URGENT — I'm the CEO, fix this now! "
+# Test cases, in the order of Docs/DEMO_SCRIPT.md. name -> (expected result shown on hover, form values).
+# Every one was run through the real pipeline; outcomes and priorities were stable across runs.
 EXAMPLES = {
+    # Same text the Employee can't get an answer for: the fix comes from internal KB-022
+    "VPN outage · P1": ("Expect ⬆️ ESCALATE → Network, P1. Fix from internal KB-022, which employees can't see.", dict(
+        description="Nobody in the office can connect to the VPN",
+        service="VPN", environment="Production", who_affected="Many teams",
+        user_category="Network", user_subcategory="VPN problem")),
+    # Happy path: KB-020 covers it, P3 -> RECOMMEND with a cited fix. Also the hype-toggle demo.
+    "VPN on, shared drive off": ("Expect ✅ RECOMMEND, P3, 7 cited steps from KB-020. Then switch on the hype "
+                                 "toggle: same result plus a hype chip.", dict(
+        description="My VPN says connected but the shared drive will not open from home.",
+        service="VPN", environment="Not applicable", who_affected="Just me",
+        user_category="Network", user_subcategory="VPN problem")),
     # Held-out test ticket INC-00347 (never trained on or indexed) + one added hype sentence
-    "INC-00347 · hype + wrong guess": dict(
+    "INC-00347 · wrong guess": ("Expect ⬆️ ESCALATE → Applications, P2, with a hype chip and a "
+                                       "'you chose … model says …' chip.", dict(
         description="I'm getting heat from above. Please pick this up immediately. My workng salary application "
                     "closes just after login. I can see the menu for a moment but can't open a run.",
         service="Payroll System", environment="Production", who_affected="Just me",
-        user_category="Device & Software", user_subcategory="Install software"),
-    "Calm vs hype (printer)": dict(
-        description="Printed handover sheets are too faint for my team on the regular printer. We're selecting "
-                    "the alternate device and can get the forms out.",
-        service="Printer", environment="Not applicable", who_affected="My team",
-        user_category="Device & Software", user_subcategory="Printer problem"),
-    "Vague ticket": dict(
-        description="system not working", service="Other / Not sure", environment="Not applicable",
-        who_affected="Just me", user_category="Device & Software", user_subcategory="Computer problem"),
-    "Uncovered problem": dict(
+        user_category="Device & Software", user_subcategory="Install software")),
+    "Uncovered problem": ("Expect ⬆️ ESCALATE → Applications, knowledge gap. No fix is invented.", dict(
         description="Customers see the wrong prices on the company website since this morning.",
         service="Company Website", environment="Production", who_affected="Customers",
-        user_category="Business System", user_subcategory="Wrong data"),
+        user_category="Business System", user_subcategory="Wrong data")),
+    "Vague ticket": ("Expect ❓ NEED INFO, with 2 questions to send back to the user.", dict(
+        description="system not working", service="Other / Not sure", environment="Not applicable",
+        who_affected="Just me", user_category="Device & Software", user_subcategory="Computer problem")),
+    # "slow" comes first, but the model reads the whole sentence and sends it to Security
+    "Ransomware · security": ("Expect ⬆️ ESCALATE → Security, P1. Fix from KB-051, containment first.", dict(
+        description="My laptop got very slow after I opened an invoice attachment, and now a window says my "
+                    "files are encrypted and asks for payment.",
+        service="Laptop / Desktop", environment="Production", who_affected="Just me",
+        user_category="Device & Software", user_subcategory="Computer problem")),
 }
 
 
 def _load_example(name: str) -> None:
-    for field, value in EXAMPLES[name].items():
+    for field, value in EXAMPLES[name][1].items():
         st.session_state[f"nt_{field}"] = value
     st.session_state["nt_hype"] = False
     st.session_state.pop("result", None)
@@ -52,11 +67,12 @@ def _toggle_hype() -> None:
 # ── Left: the form ──────────────────────────────────────────────────────────
 left, right = st.columns([2, 3], gap="large")
 with left:
-    st.markdown("**Try an example**")
+    st.markdown("**Test cases**")
+    st.caption("Click one to fill in the form, then **Analyse ticket**. Hover over a button to see the expected result.")
     ex_cols = st.columns(2)
-    for i, name in enumerate(EXAMPLES):
+    for i, (name, (expect, _)) in enumerate(EXAMPLES.items()):
         ex_cols[i % 2].button(name, key=f"nt_ex_{i}", on_click=_load_example, args=(name,),
-                              width="stretch")
+                              help=expect, width="stretch")
     st.toggle("Add \"URGENT — I'm the CEO\" (hype test)", key="nt_hype", on_change=_toggle_hype)
 
     with st.container(border=True):
@@ -234,7 +250,7 @@ def _audit_tab(r: dict) -> None:
 r = st.session_state.get("result")
 with right:
     if not r:
-        ui.empty_state("Fill in the form (or pick an example) and click **Analyse ticket**. "
+        ui.empty_state("Fill in the form (or pick a test case) and click **Analyse ticket**. "
                        "The result, its evidence and a step-by-step trace appear here.")
         st.stop()
 

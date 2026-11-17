@@ -7,9 +7,9 @@ Confidence = plain average of three 0-1 numbers (no weights to tune or defend):
 
 | # | If                                                         | Then        |
 |---|------------------------------------------------------------|-------------|
-| 0 | no LLM reachable                                           | ESCALATE    |
 | 1 | ticket too vague (or the LLM only asked questions)         | NEED_INFO   |
 | 2 | no KB article fits -> knowledge gap                        | ESCALATE    |
+| 2b| LLM off or unreachable (no fix could be written)           | ESCALATE    |
 | 3 | priority P1 or P2                                          | ESCALATE    |
 | 4 | classifier flags, articles conflict, sources disagree,     | REVIEW      |
 |   | some steps dropped, or confidence < 0.6                    |             |
@@ -31,12 +31,17 @@ def decide(labels: dict, kb: dict, fix: dict | None, too_vague: bool,
         return {"outcome": outcome, "confidence": confidence, "reasons": list(reasons),
                 "questions": list(questions), "escalate_to": team if escalate else None}
 
-    if llm_error:
-        return out("ESCALATE", [f"LLM unavailable: handing to {team} with the evidence found"], escalate=True)
+    # Vague and knowledge-gap checks come first: neither needs the LLM, so "LLM off" must not hide them.
     if too_vague or (fix and fix["clarifying_questions"] and not fix["paths"]):
         questions = (fix and fix["clarifying_questions"]) or DEFAULT_QUESTIONS
         return out("NEED_INFO", ["not enough detail to act on; ask the user the questions below"], questions)
-    if knowledge_gap or not fix:
+    if knowledge_gap:
+        why = kb.get("gap_reason") or "no KB article fits this ticket"
+        return out("ESCALATE", [f"knowledge gap: {why}, handing to {team}"], escalate=True)
+    if llm_error:
+        return out("ESCALATE", [f"no fix written ({llm_error[:80]}): handing to {team} with the evidence found"],
+                   escalate=True)
+    if not fix:
         why = kb.get("gap_reason") or "no KB article fits this ticket"
         return out("ESCALATE", [f"knowledge gap: {why}, handing to {team}"], escalate=True)
     if labels["priority"] in ("P1", "P2"):

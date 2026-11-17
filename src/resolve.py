@@ -26,6 +26,7 @@ Rules:
 - Every step must cite at least one step ID from the articles, e.g. "KB-020/support/1".
 - Keep each step's wording close to the cited step. You may adapt it to the ticket, but add nothing new.
 - Similar past tickets are context only. Never cite them.
+- An article fits only if it is about the same system or device as the ticket. A similar-sounding problem on a different system does not fit.
 - If no article really fits this ticket, set "insufficient_evidence": true and give no paths.
 - If the ticket is too vague to act on, add 1-2 short questions to "clarifying_questions".
 Answer with JSON only, in this shape:

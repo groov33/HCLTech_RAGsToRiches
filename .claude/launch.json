@@ -1,0 +1,39 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "resolveiq-dashboard",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "streamlit", "run", "app/app.py", "--server.headless", "true", "--server.port", "8501"],
+      "port": 8501
+    },
+    {
+      "name": "resolveiq-dashboard-8502",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "streamlit", "run", "app/app.py", "--server.headless", "true", "--server.port", "8502"],
+      "port": 8502,
+      "autoPort": false
+    },
+    {
+      "name": "resolveiq-dashboard-8505",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "streamlit", "run", "app/app.py", "--server.headless", "true", "--server.port", "8505"],
+      "port": 8505,
+      "autoPort": false
+    },
+    {
+      "name": "resolveiq-dashboard-8503",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "streamlit", "run", "app/app.py", "--server.headless", "true", "--server.port", "8503"],
+      "port": 8503,
+      "autoPort": false
+    },
+    {
+      "name": "resolveiq-dashboard-8511",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "streamlit", "run", "app/app.py", "--server.headless", "true", "--server.port", "8511"],
+      "port": 8511,
+      "autoPort": false
+    }
+  ]
+}

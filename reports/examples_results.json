@@ -1,0 +1,2381 @@
+[
+ {
+  "name": "INC-00073",
+  "input": {
+   "description": "Could we get a single calendar for both daytime operations crews and the separate evening intake group?",
+   "service": "Email",
+   "environment": "Production",
+   "who_affected": "Many teams",
+   "user_category": "Email & Communication",
+   "user_subcategory": "Calendar problem"
+  },
+  "truth": {
+   "category": "Email & Communication",
+   "subcategory": "Calendar problem",
+   "symptom_type": "request",
+   "team": "Applications",
+   "priority": "P3"
+  },
+  "result": {
+   "contract_version": "1.0",
+   "analysis_id": "AN-20261117-3026",
+   "analyst": "examples",
+   "role": "support",
+   "ticket": {
+    "description": "Could we get a single calendar for both daytime operations crews and the separate evening intake group?",
+    "service": "Email",
+    "environment": "Production",
+    "who_affected": "Many teams",
+    "user_category": "Email & Communication",
+    "user_subcategory": "Calendar problem"
+   },
+   "cleaned": {
+    "masked_description": "Could we get a single calendar for both daytime operations crews and the separate evening intake group?",
+    "clean_text": "could we get a single calendar for both daytime operations crews and the separate evening intake group?",
+    "hype_detected": false,
+    "too_vague": false
+   },
+   "similar": {
+    "tickets": [
+     {
+      "ticket_id": "INC-00006",
+      "excerpt": "Please create a shared leave calendar for the crews covering reception and stock. They can schedule their current work as usual.",
+      "score": 0.662,
+      "category": "Email & Communication",
+      "subcategory": "Calendar problem",
+      "priority": "P3",
+      "why_matched": [
+       "similar by meaning (66%)",
+       "same service: Email"
+      ],
+      "is_duplicate": false
+     },
+     {
+      "ticket_id": "INC-00170",
+      "excerpt": "Could you make a calendar just for our group's Tuesday training sessions?",
+      "score": 0.62,
+      "category": "Email & Communication",
+      "subcategory": "Calendar problem",
+      "priority": "P4",
+      "why_matched": [
+       "similar by meaning (62%)",
+       "same service: Email"
+      ],
+      "is_duplicate": false
+     },
+     {
+      "ticket_id": "INC-00111",
+      "excerpt": "Can my team have one shared bookings calendar for the new workroom?",
+      "score": 0.596,
+      "category": "Email & Communication",
+      "subcategory": "Calendar problem",
+      "priority": "P4",
+      "why_matched": [
+       "similar by meaning (60%)",
+       "same service: Email"
+      ],
+      "is_duplicate": false
+     },
+     {
+      "ticket_id": "INC-00706",
+      "excerpt": "Can you set up room reservation calendars for the people using the three new office suites?",
+      "score": 0.579,
+      "category": "Email & Communication",
+      "subcategory": "Calendar problem",
+      "priority": "P3",
+      "why_matched": [
+       "similar by meaning (58%)",
+       "same service: Email"
+      ],
+      "is_duplicate": false
+     },
+     {
+      "ticket_id": "INC-00284",
+      "excerpt": "Please please look at this NOW. Please create a new handover calendar for the evening team, with just our coordinators able to edit it.",
+      "score": 0.574,
+      "category": "Email & Communication",
+      "subcategory": "Calendar problem",
+      "priority": "P4",
+      "why_matched": [
+       "similar by meaning (57%)",
+       "same service: Email"
+      ],
+      "is_duplicate": false
+     }
+    ],
+    "vote": {
+     "category": "Email & Communication",
+     "agree_count": 5,
+     "of": 5
+    }
+   },
+   "classification": {
+    "category": "Email & Communication",
+    "subcategory": "Calendar problem",
+    "symptom_type": "request",
+    "team": "Applications",
+    "impact": "High",
+    "urgency": "Low",
+    "priority": "P3",
+    "priority_reason": "P3: impact High (many teams, critical service) x urgency Low (request, production).",
+    "confidence": {
+     "category": 0.981,
+     "subcategory": 0.907,
+     "symptom_type": 0.96,
+     "category_score": 0.989
+    },
+    "top3": {
+     "category": [
+      {
+       "label": "Email & Communication",
+       "prob": 0.981
+      },
+      {
+       "label": "Device & Software",
+       "prob": 0.009
+      },
+      {
+       "label": "Account & Access",
+       "prob": 0.005
+      }
+     ],
+     "subcategory": [
+      {
+       "label": "Calendar problem",
+       "prob": 0.907
+      },
+      {
+       "label": "Email problem",
+       "prob": 0.081
+      },
+      {
+       "label": "Chat or video call problem",
+       "prob": 0.012
+      }
+     ],
+     "symptom_type": [
+      {
+       "label": "request",
+       "prob": 0.96
+      },
+      {
+       "label": "question",
+       "prob": 0.034
+      },
+      {
+       "label": "outage",
+       "prob": 0.004
+      }
+     ]
+    },
+    "user_category": "Email & Communication",
+    "user_agrees": true,
+    "hype_detected": false,
+    "possible_security": false,
+    "needs_review": false,
+    "review_reasons": []
+   },
+   "tiebreak": null,
+   "kb": {
+    "articles": [
+     {
+      "kb_id": "KB-018",
+      "title": "A meeting appears at the wrong time after travelling",
+      "subcategory": "Calendar problem",
+      "access_level": "public",
+      "score": 0.378,
+      "why_matched": [
+       "symptoms match by meaning (38%)",
+       "predicted subcategory: Calendar problem (91%)",
+       "covers service: Email"
+      ],
+      "steps": [
+       {
+        "step_id": "KB-018/self/1",
+        "text": "Open the same invitation in your work web calendar."
+       },
+       {
+        "step_id": "KB-018/self/2",
+        "text": "Compare the time zone shown in the invitation with the one displayed on the calendar view."
+       },
+       {
+        "step_id": "KB-018/self/3",
+        "text": "Confirm the start time and time zone with the organizer before proposing a new time."
+       },
+       {
+        "step_id": "KB-018/support/1",
+        "text": "Compare the start time and zone in the original invitation with the stored event and its web view. (Expected: The stored start time matches the organizer's invitation.)"
+       },
+       {
+        "step_id": "KB-018/support/2",
+        "text": "Check the time zone label used by the affected calendar client and compare the converted time for that date. (Expected: The apparent difference matches the selected display zone.)"
+       },
+       {
+        "step_id": "KB-018/support/3",
+        "text": "Guide the employee through the supported calendar display preference after confirming the intended zone with them. (Expected: The view displays the stored event at the intended local time without changing the invitation.)"
+       }
+      ],
+      "verify": "The affected calendar and the organizer's invitation agree after converting both times to the same time zone.",
+      "escalate_when": "The same time zone shows different start times, or the stored event differs from the invitation."
+     },
+     {
+      "kb_id": "KB-016",
+      "title": "How to share my work calendar with a coworker",
+      "subcategory": "Calendar problem",
+      "access_level": "public",
+      "score": 0.363,
+      "why_matched": [
+       "symptoms match by meaning (36%)",
+       "predicted subcategory: Calendar problem (91%)",
+       "covers service: Email"
+      ],
+      "steps": [
+       {
+        "step_id": "KB-016/self/1",
+        "text": "Open your work calendar in webmail and select Share on your own calendar."
+       },
+       {
+        "step_id": "KB-016/self/2",
+        "text": "Enter your coworker's company address and confirm the address shown."
+       },
+       {
+        "step_id": "KB-016/self/3",
+        "text": "Select Can view when I'm busy and send the invitation."
+       },
+       {
+        "step_id": "KB-016/self/4",
+        "text": "Ask the coworker to open your calendar and confirm they see your availability."
+       },
+       {
+        "step_id": "KB-016/support/1",
+        "text": "Confirm that the employee owns the selected calendar and the recipient is an eligible company account. (Expected: The share is for the intended calendar and coworker.)"
+       },
+       {
+        "step_id": "KB-016/support/2",
+        "text": "Have the employee review the permission list and select availability only for that recipient. (Expected: The entry grants busy and free visibility only.)"
+       },
+       {
+        "step_id": "KB-016/support/3",
+        "text": "Check the calendar from the recipient's side with a test event that contains no real meeting details. (Expected: The recipient sees the time block and cannot see the test event's details.)"
+       }
+      ],
+      "verify": "The coworker can open the shared calendar and sees availability without event titles.",
+      "escalate_when": "The sharing button is unavailable, sharing fails for an eligible coworker, or the recipient can see more than the selected permission allows."
+     },
+     {
+      "kb_id": "KB-017",
+      "title": "A cancelled repeating meeting still appears for some attendees",
+      "subcategory": "Calendar problem",
+      "access_level": "internal",
+      "score": 0.314,
+      "why_matched": [
+       "symptoms match by meaning (31%)",
+       "predicted subcategory: Calendar problem (91%)",
+       "covers service: Email"
+      ],
+      "steps": [
+       {
+        "step_id": "KB-017/support/1",
+        "text": "Verify the cancellation with the organizer and collect the event identifier, series identifier, affected date and attendee list through restricted diagnostics. (Expected: The cancelled occurrence or series is identified without relying on its title.)"
+       },
+       {
+        "step_id": "KB-017/support/2",
+        "text": "Compare organizer and attendee copies in webmail and check delivery of the cancellation update. (Expected: The affected mailbox has a stale record or missed the update.)"
+       },
+       {
+        "step_id": "KB-017/support/3",
+        "text": "With the organizer's approval, use the supported calendar repair workflow for the affected event ID and scope. (Expected: The stale entry is cleared without altering active occurrences or unrelated events.)"
+       },
+       {
+        "step_id": "KB-017/support/4",
+        "text": "Ask an affected attendee and a control attendee to refresh the calendar and compare the next valid occurrence. (Expected: The cancelled entry is absent and valid meetings are still present.)"
+       }
+      ],
+      "verify": "The cancelled occurrence is gone from affected attendees' web calendars and valid future occurrences still appear.",
+      "escalate_when": "The owner cannot confirm the scope, several unrelated series are affected, or the stale event returns after repair."
+     }
+    ],
+    "best_score": 0.378,
+    "conflict": false,
+    "knowledge_gap": false,
+    "gap_reason": null
+   },
+   "fix": {
+    "paths": [
+     {
+      "kb_id": "KB-016",
+      "title": "How to share my work calendar with a coworker",
+      "why_it_fits": "The request is to create a shared calendar for two groups, which is addressed by the calendar sharing article.",
+      "steps": [
+       {
+        "text": "Open your work calendar in webmail and select Share on your own calendar.",
+        "cites": [
+         "KB-016/self/1"
+        ],
+        "source_quote": "Open your work calendar in webmail and select Share on your own calendar."
+       },
+       {
+        "text": "Enter your coworker's company address and confirm the address shown.",
+        "cites": [
+         "KB-016/self/2"
+        ],
+        "source_quote": "Enter your coworker's company address and confirm the address shown."
+       },
+       {
+        "text": "Select Can view when I'm busy and send the invitation.",
+        "cites": [
+         "KB-016/self/3"
+        ],
+        "source_quote": "Select Can view when I'm busy and send the invitation."
+       },
+       {
+        "text": "Ask the coworker to open your calendar and confirm they see your availability.",
+        "cites": [
+         "KB-016/self/4"
+        ],
+        "source_quote": "Ask the coworker to open your calendar and confirm they see your availability."
+       },
+       {
+        "text": "Confirm that the employee owns the selected calendar and the recipient is an eligible company account.",
+        "cites": [
+         "KB-016/support/1"
+        ],
+        "source_quote": "Confirm that the employee owns the selected calendar and the recipient is an eligible company account. (Expected: The share is for the intended calendar and coworker.)"
+       },
+       {
+        "text": "Have the employee review the permission list and select availability only for that recipient.",
+        "cites": [
+         "KB-016/support/2"
+        ],
+        "source_quote": "Have the employee review the permission list and select availability only for that recipient. (Expected: The entry grants busy and free visibility only.)"
+       },
+       {
+        "text": "Check the calendar from the recipient's side with a test event that contains no real meeting details.",
+        "cites": [
+         "KB-016/support/3"
+        ],
+        "source_quote": "Check the calendar from the recipient's side with a test event that contains no real meeting details. (Expected: The recipient sees the time block and cannot see the test event's details.)"
+       }
+      ]
+     }
+    ],
+    "citation_validity": 1.0,
+    "dropped_steps": 0,
+    "dropped_reasons": [],
+    "llm": "groq",
+    "llm_model": "groq:openai/gpt-oss-120b",
+    "clarifying_questions": []
+   },
+   "decision": {
+    "outcome": "RECOMMEND",
+    "confidence": 0.789,
+    "reasons": [
+     "classifier, similar tickets and KB agree (confidence 79%)"
+    ],
+    "questions": [],
+    "escalate_to": null
+   },
+   "trace": [
+    {
+     "step": "2",
+     "name": "Clean text",
+     "ms": 1.2,
+     "detail": "17 words",
+     "status": "done"
+    },
+    {
+     "step": "4",
+     "name": "Similar tickets",
+     "ms": 8133.5,
+     "detail": "vote Email & Communication (5/5)",
+     "status": "done"
+    },
+    {
+     "step": "3",
+     "name": "Classify + priority",
+     "ms": 831.9,
+     "detail": "Calendar problem 0.99 · P3",
+     "status": "done"
+    },
+    {
+     "step": "7",
+     "name": "Find KB articles",
+     "ms": 31.5,
+     "detail": "best match 38%",
+     "status": "done"
+    },
+    {
+     "step": "7b",
+     "name": "Two-problem check",
+     "ms": 58.3,
+     "detail": "0 distinct problem(s)",
+     "status": "done"
+    },
+    {
+     "step": "8",
+     "name": "Write fix + check citations",
+     "ms": 2528.1,
+     "detail": "groq:openai/gpt-oss-120b: 7 steps kept, 0 dropped",
+     "status": "done"
+    },
+    {
+     "step": "9",
+     "name": "Decide",
+     "ms": 0.0,
+     "detail": "RECOMMEND",
+     "status": "done"
+    }
+   ],
+   "timestamps": {
+    "created_at": "2026-11-17T15:29:02",
+    "recommended_at": "2026-11-17T15:29:14",
+    "resolved_at": null
+   },
+   "missing_parts": [
+    "store"
+   ]
+  }
+ },
+ {
+  "name": "INC-00040",
+  "input": {
+   "description": "the test self-service page won't send my password reset message. i can't get into the sandbox.",
+   "service": "Company Login",
+   "environment": "Test",
+   "who_affected": "Just me",
+   "user_category": "Business System",
+   "user_subcategory": "Error or won't open"
+  },
+  "truth": {
+   "category": "Account & Access",
+   "subcategory": "Password reset",
+   "symptom_type": "blocked",
+   "team": "Service Desk",
+   "priority": "P3"
+  },
+  "result": {
+   "contract_version": "1.0",
+   "analysis_id": "AN-20261117-3827",
+   "analyst": "examples",
+   "role": "support",
+   "ticket": {
+    "description": "the test self-service page won't send my password reset message. i can't get into the sandbox.",
+    "service": "Company Login",
+    "environment": "Test",
+    "who_affected": "Just me",
+    "user_category": "Business System",
+    "user_subcategory": "Error or won't open"
+   },
+   "cleaned": {
+    "masked_description": "the test self-service page won't send my password reset message. i can't get into the sandbox.",
+    "clean_text": "the test self-service page won't send my password reset message. i can't get into the sandbox.",
+    "hype_detected": false,
+    "too_vague": false
+   },
+   "similar": {
+    "tickets": [
+     {
+      "ticket_id": "INC-01070",
+      "excerpt": "The restored login sandbox asks me to choose a password but rejects every reset attempt. I can't start my testing.",
+      "score": 0.751,
+      "category": "Account & Access",
+      "subcategory": "Password reset",
+      "priority": "P3",
+      "why_matched": [
+       "similar by meaning (75%)",
+       "same service: Company Login"
+      ],
+      "is_duplicate": false
+     },
+     {
+      "ticket_id": "INC-01086",
+      "excerpt": "My sandbox password has expired, and there's no reset address on that test account. All my test tasks are blocked. I'm reporting this straight to leadership.",
+      "score": 0.726,
+      "category": "Account & Access",
+      "subcategory": "Password reset",
+      "priority": "P3",
+      "why_matched": [
+       "similar by meaning (73%)",
+       "same service: Company Login"
+      ],
+      "is_duplicate": false
+     },
+     {
+      "ticket_id": "INC-00690",
+      "excerpt": "My sandbox identity has a lockout flag even though I stopped the invalid login requests. Can't do another test.",
+      "score": 0.67,
+      "category": "Account & Access",
+      "subcategory": "Account locked",
+      "priority": "P3",
+      "why_matched": [
+       "similar by meaning (67%)",
+       "same service: Company Login"
+      ],
+      "is_duplicate": false
+     },
+     {
+      "ticket_id": "INC-00837",
+      "excerpt": "My work password expired and the self-service reset tells me I have no recovery methods. I can't sign in anywhere.",
+      "score": 0.616,
+      "category": "Account & Access",
+      "subcategory": "Password reset",
+      "priority": "P2",
+      "why_matched": [
+       "similar by meaning (62%)",
+       "same service: Company Login"
+      ],
+      "is_duplicate": false
+     },
+     {
+      "ticket_id": "INC-00462",
+      "excerpt": "This needs the fastest response you have. The test sign-in was fine until I ran the negative password cases under my own user. Now it's locked and my other cases won't start.",
+      "score": 0.584,
+      "category": "Account & Access",
+      "subcategory": "Account locked",
+      "priority": "P3",
+      "why_matched": [
+       "similar by meaning (58%)",
+       "same service: Company Login"
+      ],
+      "is_duplicate": false
+     }
+    ],
+    "vote": {
+     "category": "Account & Access",
+     "agree_count": 5,
+     "of": 5
+    }
+   },
+   "classification": {
+    "category": "Account & Access",
+    "subcategory": "Password reset",
+    "symptom_type": "blocked",
+    "team": "Service Desk",
+    "impact": "Medium",
+    "urgency": "Medium",
+    "priority": "P3",
+    "priority_reason": "P3: impact Medium (just me, critical service) x urgency Medium (blocked, test).",
+    "confidence": {
+     "category": 0.747,
+     "subcategory": 0.863,
+     "symptom_type": 0.973,
+     "category_score": 0.648
+    },
+    "top3": {
+     "category": [
+      {
+       "label": "Account & Access",
+       "prob": 0.747
+      },
+      {
+       "label": "Business System",
+       "prob": 0.245
+      },
+      {
+       "label": "Network",
+       "prob": 0.004
+      }
+     ],
+     "subcategory": [
+      {
+       "label": "Password reset",
+       "prob": 0.863
+      },
+      {
+       "label": "Account locked",
+       "prob": 0.117
+      },
+      {
+       "label": "Need access",
+       "prob": 0.019
+      }
+     ],
+     "symptom_type": [
+      {
+       "label": "blocked",
+       "prob": 0.973
+      },
+      {
+       "label": "outage",
+       "prob": 0.021
+      },
+      {
+       "label": "question",
+       "prob": 0.004
+      }
+     ]
+    },
+    "user_category": "Business System",
+    "user_agrees": false,
+    "hype_detected": false,
+    "possible_security": false,
+    "needs_review": true,
+    "review_reasons": [
+     "user chose 'Business System', model says 'Account & Access'"
+    ]
+   },
+   "tiebreak": null,
+   "kb": {
+    "articles": [
+     {
+      "kb_id": "KB-002",
+      "title": "Password reset link says it has expired",
+      "subcategory": "Password reset",
+      "access_level": "public",
+      "score": 0.513,
+      "why_matched": [
+       "symptoms match by meaning (51%)",
+       "predicted subcategory: Password reset (86%)",
+       "covers service: Company Login"
+      ],
+      "steps": [
+       {
+        "step_id": "KB-002/self/1",
+        "text": "Start one new reset from the known Company Login page."
+       },
+       {
+        "step_id": "KB-002/self/2",
+        "text": "Open the newest reset message you just requested and use it promptly."
+       },
+       {
+        "step_id": "KB-002/self/3",
+        "text": "Close the older reset messages and return to the normal sign-in page after the reset."
+       },
+       {
+        "step_id": "KB-002/support/1",
+        "text": "Compare reset issuance and redemption timestamps for the employee's account without collecting the reset URL. (Expected: The failed request maps to an expired, superseded or consumed token.)"
+       },
+       {
+        "step_id": "KB-002/support/2",
+        "text": "Initiate one reset through the verified account workflow if the employee cannot issue one. (Expected: A fresh token is associated with the correct account and sent through the approved channel.)"
+       },
+       {
+        "step_id": "KB-002/support/3",
+        "text": "Have the employee open the newest message privately and confirm the completion event. (Expected: One token is redeemed successfully and the newer password is active.)"
+       }
+      ],
+      "verify": "The employee signs in from the usual page with the new password.",
+      "escalate_when": "A freshly issued link fails immediately, the recovery message never arrives, or there are reset requests the employee did not make."
+     },
+     {
+      "kb_id": "KB-001",
+      "title": "I forgot my Company Login password",
+      "subcategory": "Password reset",
+      "access_level": "public",
+      "score": 0.408,
+      "why_matched": [
+       "symptoms match by meaning (41%)",
+       "predicted subcategory: Password reset (86%)",
+       "covers service: Company Login"
+      ],
+      "steps": [
+       {
+        "step_id": "KB-001/self/1",
+        "text": "Open the usual Company Login page from a trusted bookmark and select Forgot password."
+       },
+       {
+        "step_id": "KB-001/self/2",
+        "text": "Use the recovery method the page offers and follow the prompts to choose a new password."
+       },
+       {
+        "step_id": "KB-001/self/3",
+        "text": "Return to the usual sign-in page and make one attempt with the new password."
+       },
+       {
+        "step_id": "KB-001/support/1",
+        "text": "Open the account record and confirm the username, status and availability of a registered recovery method. (Expected: Account is enabled and eligible for self-service recovery.)"
+       },
+       {
+        "step_id": "KB-001/support/2",
+        "text": "Guide the employee to the known Company Login page and have them complete identity verification privately. (Expected: The recovery flow accepts the employee's registered method.)"
+       },
+       {
+        "step_id": "KB-001/support/3",
+        "text": "When self-service is unavailable, verify identity through the approved process and initiate a one-time reset through the approved channel. (Expected: The employee completes the reset privately and the audit event shows success.)"
+       }
+      ],
+      "verify": "The employee signs in to Company Login with the new password and reaches the work home page.",
+      "escalate_when": "The account is locked, no recovery method is available, or the reset succeeds but the sign-in still fails."
+     },
+     {
+      "kb_id": "KB-003",
+      "title": "Password reset offers a recovery phone I can no longer use",
+      "subcategory": "Password reset",
+      "access_level": "internal",
+      "score": 0.404,
+      "why_matched": [
+       "symptoms match by meaning (40%)",
+       "predicted subcategory: Password reset (86%)",
+       "covers service: Company Login"
+      ],
+      "steps": [
+       {
+        "step_id": "KB-003/support/1",
+        "text": "Review the account's registered recovery methods and the latest recovery attempt in the identity admin console. (Expected: Recovery is blocked because no usable registered method is available.)"
+       },
+       {
+        "step_id": "KB-003/support/2",
+        "text": "Complete the approved assisted identity verification workflow and record the outcome in the restricted ticket without storing verification secrets. (Expected: The employee is verified to the required standard or the request is held for review.)"
+       },
+       {
+        "step_id": "KB-003/support/3",
+        "text": "After successful verification, use the authorized recovery enrollment workflow and invalidate the replaced method. (Expected: The account has a usable registered method and the old method is inactive.)"
+       },
+       {
+        "step_id": "KB-003/support/4",
+        "text": "Have the employee run the reset flow privately and review the completion event. (Expected: Recovery and a subsequent Company Login sign-in succeed.)"
+       }
+      ],
+      "verify": "The employee receives the challenge through the newly registered method and successfully signs in.",
+      "escalate_when": "Identity verification fails, the old method was changed unexpectedly, or an approved recovery method cannot be enrolled."
+     }
+    ],
+    "best_score": 0.513,
+    "conflict": false,
+    "knowledge_gap": false,
+    "gap_reason": null
+   },
+   "fix": {
+    "paths": [
+     {
+      "kb_id": "KB-002",
+      "title": "Password reset link says it has expired",
+      "why_it_fits": "The reset message never arrives, which matches the escalation condition of KB-002",
+      "steps": [
+       {
+        "text": "Compare reset issuance and redemption timestamps for the employee's account without collecting the reset URL.",
+        "cites": [
+         "KB-002/support/1"
+        ],
+        "source_quote": "Compare reset issuance and redemption timestamps for the employee's account without collecting the reset URL. (Expected: The failed request maps to an expired, superseded or consumed token.)"
+       },
+       {
+        "text": "Initiate one reset through the verified account workflow if the employee cannot issue one.",
+        "cites": [
+         "KB-002/support/2"
+        ],
+        "source_quote": "Initiate one reset through the verified account workflow if the employee cannot issue one. (Expected: A fresh token is associated with the correct account and sent through the approved channel.)"
+       },
+       {
+        "text": "Have the employee open the newest message privately and confirm the completion event.",
+        "cites": [
+         "KB-002/support/3"
+        ],
+        "source_quote": "Have the employee open the newest message privately and confirm the completion event. (Expected: One token is redeemed successfully and the newer password is active.)"
+       }
+      ]
+     }
+    ],
+    "citation_validity": 1.0,
+    "dropped_steps": 0,
+    "dropped_reasons": [],
+    "llm": "groq",
+    "llm_model": "groq:openai/gpt-oss-120b",
+    "clarifying_questions": []
+   },
+   "decision": {
+    "outcome": "REVIEW",
+    "confidence": 0.72,
+    "reasons": [
+     "user chose 'Business System', model says 'Account & Access'"
+    ],
+    "questions": [],
+    "escalate_to": null
+   },
+   "trace": [
+    {
+     "step": "2",
+     "name": "Clean text",
+     "ms": 0.2,
+     "detail": "16 words",
+     "status": "done"
+    },
+    {
+     "step": "4",
+     "name": "Similar tickets",
+     "ms": 22.8,
+     "detail": "vote Account & Access (5/5)",
+     "status": "done"
+    },
+    {
+     "step": "3",
+     "name": "Classify + priority",
+     "ms": 151.3,
+     "detail": "Password reset 0.65 · P3",
+     "status": "done"
+    },
+    {
+     "step": "7",
+     "name": "Find KB articles",
+     "ms": 26.6,
+     "detail": "best match 51%",
+     "status": "done"
+    },
+    {
+     "step": "7b",
+     "name": "Two-problem check",
+     "ms": 53.4,
+     "detail": "1 distinct problem(s)",
+     "status": "done"
+    },
+    {
+     "step": "8",
+     "name": "Write fix + check citations",
+     "ms": 2253.8,
+     "detail": "groq:openai/gpt-oss-120b: 3 steps kept, 0 dropped",
+     "status": "done"
+    },
+    {
+     "step": "9",
+     "name": "Decide",
+     "ms": 0.0,
+     "detail": "REVIEW",
+     "status": "done"
+    }
+   ],
+   "timestamps": {
+    "created_at": "2026-11-17T15:29:14",
+    "recommended_at": "2026-11-17T15:29:16",
+    "resolved_at": null
+   },
+   "missing_parts": [
+    "store"
+   ]
+  }
+ },
+ {
+  "name": "INC-00347 + hype",
+  "input": {
+   "description": "I'm getting heat from above. Please pick this up immediately. My workng salary application closes just after login. I can see the menu for a moment but can't open a run.",
+   "service": "Payroll System",
+   "environment": "Production",
+   "who_affected": "Just me",
+   "user_category": "Device & Software",
+   "user_subcategory": "Install software"
+  },
+  "truth": {
+   "category": "Business System",
+   "subcategory": "Error or won't open",
+   "symptom_type": "blocked",
+   "team": "Applications",
+   "priority": "P2"
+  },
+  "result": {
+   "contract_version": "1.0",
+   "analysis_id": "AN-20261117-4557",
+   "analyst": "examples",
+   "role": "support",
+   "ticket": {
+    "description": "I'm getting heat from above. Please pick this up immediately. My workng salary application closes just after login. I can see the menu for a moment but can't open a run.",
+    "service": "Payroll System",
+    "environment": "Production",
+    "who_affected": "Just me",
+    "user_category": "Device & Software",
+    "user_subcategory": "Install software"
+   },
+   "cleaned": {
+    "masked_description": "I'm getting heat from above. Please pick this up immediately. My workng salary application closes just after login. I can see the menu for a moment but can't open a run.",
+    "clean_text": "my workng salary application closes just after login. i can see the menu for a moment but can't open a run.",
+    "hype_detected": true,
+    "too_vague": false
+   },
+   "similar": {
+    "tickets": [
+     {
+      "ticket_id": "INC-00552",
+      "excerpt": "The production salary dashboard is frozen at \"restoring prior session\" for my profile and no activity opens for me. Get someone on this right away, pls!",
+      "score": 0.591,
+      "category": "Business System",
+      "subcategory": "Error or won't open",
+      "priority": "P2",
+      "why_matched": [
+       "similar by meaning (59%)",
+       "same service: Payroll System"
+      ],
+      "is_duplicate": false
+     },
+     {
+      "ticket_id": "INC-00251",
+      "excerpt": "Since I imported my batch the live payroll console won't open my workspace at all. I can't move on to any other work.",
+      "score": 0.542,
+      "category": "Business System",
+      "subcategory": "Error or won't open",
+      "priority": "P2",
+      "why_matched": [
+       "similar by meaning (54%)",
+       "same service: Payroll System"
+      ],
+      "is_duplicate": false
+     },
+     {
+      "ticket_id": "INC-00922",
+      "excerpt": "The payroll home page opens to a fatal backend error. Our whole run team has tried and the service is gone for everyone.",
+      "score": 0.528,
+      "category": "Business System",
+      "subcategory": "Error or won't open",
+      "priority": "P1",
+      "why_matched": [
+       "similar by meaning (53%)",
+       "same service: Payroll System"
+      ],
+      "is_duplicate": false
+     },
+     {
+      "ticket_id": "INC-00663",
+      "excerpt": "I get \"workflow halted\" opening any salary run in the practice copy. Another tester loaded theirs from the same host.",
+      "score": 0.524,
+      "category": "Business System",
+      "subcategory": "Error or won't open",
+      "priority": "P3",
+      "why_matched": [
+       "similar by meaning (52%)",
+       "same service: Payroll System"
+      ],
+      "is_duplicate": false
+     },
+     {
+      "ticket_id": "INC-00315",
+      "excerpt": "Our team can't reach the sample salary app at all. Even the same-browser link that ran last rehearsal fails for every user. This has to be done in the next hour, no excuses.",
+      "score": 0.523,
+      "category": "Business System",
+      "subcategory": "Error or won't open",
+      "priority": "P2",
+      "why_matched": [
+       "similar by meaning (52%)",
+       "same service: Payroll System"
+      ],
+      "is_duplicate": false
+     }
+    ],
+    "vote": {
+     "category": "Business System",
+     "agree_count": 5,
+     "of": 5
+    }
+   },
+   "classification": {
+    "category": "Business System",
+    "subcategory": "Error or won't open",
+    "symptom_type": "blocked",
+    "team": "Applications",
+    "impact": "Medium",
+    "urgency": "High",
+    "priority": "P2",
+    "priority_reason": "P2: impact Medium (just me, critical service) x urgency High (blocked, production).",
+    "confidence": {
+     "category": 0.971,
+     "subcategory": 0.968,
+     "symptom_type": 0.603,
+     "category_score": 0.782
+    },
+    "top3": {
+     "category": [
+      {
+       "label": "Business System",
+       "prob": 0.971
+      },
+      {
+       "label": "Account & Access",
+       "prob": 0.021
+      },
+      {
+       "label": "Email & Communication",
+       "prob": 0.003
+      }
+     ],
+     "subcategory": [
+      {
+       "label": "Error or won't open",
+       "prob": 0.968
+      },
+      {
+       "label": "Slow",
+       "prob": 0.022
+      },
+      {
+       "label": "Wrong data",
+       "prob": 0.01
+      }
+     ],
+     "symptom_type": [
+      {
+       "label": "blocked",
+       "prob": 0.603
+      },
+      {
+       "label": "slow",
+       "prob": 0.283
+      },
+      {
+       "label": "outage",
+       "prob": 0.109
+      }
+     ]
+    },
+    "user_category": "Device & Software",
+    "user_agrees": false,
+    "hype_detected": true,
+    "possible_security": false,
+    "needs_review": true,
+    "review_reasons": [
+     "user chose 'Device & Software', model says 'Business System'"
+    ]
+   },
+   "tiebreak": null,
+   "kb": {
+    "articles": [
+     {
+      "kb_id": "KB-030",
+      "title": "Payroll System is down for everyone after sign-in",
+      "subcategory": "Error or won't open",
+      "access_level": "internal",
+      "score": 0.46,
+      "why_matched": [
+       "symptoms match by meaning (46%)",
+       "predicted subcategory: Error or won't open (97%)",
+       "covers service: Payroll System"
+      ],
+      "steps": [
+       {
+        "step_id": "KB-030/support/1",
+        "text": "Compare failure times across independent authorized users and run the non-mutating Payroll System health checks. (Expected: Separate users and the synthetic read probe fail after authentication.)"
+       },
+       {
+        "step_id": "KB-030/support/2",
+        "text": "Review the Payroll System connection-pool health and dependency errors using request IDs. (Expected: Payroll requests are failing while acquiring the shared database connection.)"
+       },
+       {
+        "step_id": "KB-030/support/3",
+        "text": "Page the Payroll System owner with the dependency state and current processing window, and have them follow the approved recovery procedure. (Expected: An owner coordinates recovery and checks the status of queued payroll work.)"
+       },
+       {
+        "step_id": "KB-030/support/4",
+        "text": "Repeat read-only health checks and reconcile pending job identifiers with the owner before any replay. (Expected: Workspaces load and the owner can account for in-flight jobs without duplicating runs.)"
+       }
+      ],
+      "verify": "Authorized users in separate locations open the payroll workspace, and the Payroll System owner confirms pending jobs are accounted for.",
+      "escalate_when": "Escalate immediately with more than one user affected, when the read-only probe fails, or when the payroll processing window is at risk."
+     },
+     {
+      "kb_id": "KB-028",
+      "title": "Finance System fails before I reach the home screen",
+      "subcategory": "Error or won't open",
+      "access_level": "public",
+      "score": 0.516,
+      "why_matched": [
+       "symptoms match by meaning (52%)",
+       "predicted subcategory: Error or won't open (97%)"
+      ],
+      "steps": [
+       {
+        "step_id": "KB-028/self/1",
+        "text": "Open the Finance System from its usual link in the work portal and note the first error shown."
+       },
+       {
+        "step_id": "KB-028/self/2",
+        "text": "If the portal offers a regular link to the work screen you need, use it directly."
+       },
+       {
+        "step_id": "KB-028/self/3",
+        "text": "Tell support whether the direct link works and include the time of the failed launch."
+       },
+       {
+        "step_id": "KB-028/support/1",
+        "text": "Confirm a fresh Company Login succeeds and use application logs to trace the failed workspace launch for the affected account. (Expected: Sign-in succeeds and the launch fails while loading a personal workspace item.)"
+       },
+       {
+        "step_id": "KB-028/support/2",
+        "text": "Compare the saved landing item with the report catalog and test the normal portal link to an authorized work screen. (Expected: The saved item is obsolete and the authorized work screen still opens.)"
+       },
+       {
+        "step_id": "KB-028/support/3",
+        "text": "Record the previous startup selection and use the supported preference workflow to point it to an approved working landing page. (Expected: Only the affected startup preference changes and the home screen loads.)"
+       }
+      ],
+      "verify": "The default Finance System link opens the home screen in a fresh session and the employee's usual work screen is accessible.",
+      "escalate_when": "The default link fails after the workspace preference is repaired, a valid direct link also fails, or several users cannot open the Finance System."
+     },
+     {
+      "kb_id": "KB-029",
+      "title": "Finance System is down for everyone and shows service unavailable",
+      "subcategory": "Error or won't open",
+      "access_level": "internal",
+      "score": 0.4,
+      "why_matched": [
+       "symptoms match by meaning (40%)",
+       "predicted subcategory: Error or won't open (97%)"
+      ],
+      "steps": [
+       {
+        "step_id": "KB-029/support/1",
+        "text": "Run the Finance System home and read-only invoice probes with approved test accounts from two locations. (Expected: Both paths return the same service error for unrelated accounts while other portal apps open.)"
+       },
+       {
+        "step_id": "KB-029/support/2",
+        "text": "Compare gateway logs and backend-node health against the last successful probe. (Expected: The gateway is returning the error because the Finance System pool is unhealthy.)"
+       },
+       {
+        "step_id": "KB-029/support/3",
+        "text": "Open a Finance System incident and send the pool state, onset and request IDs to the service owner for approved recovery. (Expected: The Applications responder owns the incident and a healthy node begins serving traffic.)"
+       },
+       {
+        "step_id": "KB-029/support/4",
+        "text": "Repeat the probes and inspect application error rate across locations. (Expected: The home page and sample invoice load and the service error rate returns to baseline.)"
+       }
+      ],
+      "verify": "Approved finance probes pass and affected users can open the Finance System and view a permitted invoice.",
+      "escalate_when": "Escalate immediately with more than one user affected or when independent tests show the same shared service error."
+     }
+    ],
+    "best_score": 0.46,
+    "conflict": false,
+    "knowledge_gap": false,
+    "gap_reason": null
+   },
+   "fix": {
+    "paths": [
+     {
+      "kb_id": "KB-030",
+      "title": "Payroll System is down for everyone after sign-in",
+      "why_it_fits": "The salary (Payroll) application closes right after login, indicating a possible system‑wide issue after sign‑in, which matches the \"Payroll System is down for everyone after sign‑in\" article.",
+      "steps": [
+       {
+        "text": "Compare failure times across independent authorized users and run the non‑mutating Payroll System health checks.",
+        "cites": [
+         "KB-030/support/1"
+        ],
+        "source_quote": "Compare failure times across independent authorized users and run the non-mutating Payroll System health checks. (Expected: Separate users and the synthetic read probe fail after authentication.)"
+       },
+       {
+        "text": "Review the Payroll System connection‑pool health and dependency errors using request IDs.",
+        "cites": [
+         "KB-030/support/2"
+        ],
+        "source_quote": "Review the Payroll System connection-pool health and dependency errors using request IDs. (Expected: Payroll requests are failing while acquiring the shared database connection.)"
+       },
+       {
+        "text": "Page the Payroll System owner with the dependency state and current processing window, and have them follow the approved recovery procedure.",
+        "cites": [
+         "KB-030/support/3"
+        ],
+        "source_quote": "Page the Payroll System owner with the dependency state and current processing window, and have them follow the approved recovery procedure. (Expected: An owner coordinates recovery and checks the status of queued payroll work.)"
+       },
+       {
+        "text": "Repeat read‑only health checks and reconcile pending job identifiers with the owner before any replay.",
+        "cites": [
+         "KB-030/support/4"
+        ],
+        "source_quote": "Repeat read-only health checks and reconcile pending job identifiers with the owner before any replay. (Expected: Workspaces load and the owner can account for in-flight jobs without duplicating runs.)"
+       }
+      ]
+     }
+    ],
+    "citation_validity": 1.0,
+    "dropped_steps": 0,
+    "dropped_reasons": [],
+    "llm": "groq",
+    "llm_model": "groq:openai/gpt-oss-120b",
+    "clarifying_questions": []
+   },
+   "decision": {
+    "outcome": "ESCALATE",
+    "confidence": 0.747,
+    "reasons": [
+     "P2: a Applications engineer owns it; the cited fix is attached"
+    ],
+    "questions": [],
+    "escalate_to": "Applications"
+   },
+   "trace": [
+    {
+     "step": "2",
+     "name": "Clean text",
+     "ms": 0.2,
+     "detail": "21 words",
+     "status": "done"
+    },
+    {
+     "step": "4",
+     "name": "Similar tickets",
+     "ms": 21.7,
+     "detail": "vote Business System (5/5)",
+     "status": "done"
+    },
+    {
+     "step": "3",
+     "name": "Classify + priority",
+     "ms": 146.1,
+     "detail": "Error or won't open 0.78 · P2",
+     "status": "done"
+    },
+    {
+     "step": "7",
+     "name": "Find KB articles",
+     "ms": 24.7,
+     "detail": "best match 46%",
+     "status": "done"
+    },
+    {
+     "step": "7b",
+     "name": "Two-problem check",
+     "ms": 56.4,
+     "detail": "0 distinct problem(s)",
+     "status": "done"
+    },
+    {
+     "step": "8",
+     "name": "Write fix + check citations",
+     "ms": 1815.6,
+     "detail": "groq:openai/gpt-oss-120b: 4 steps kept, 0 dropped",
+     "status": "done"
+    },
+    {
+     "step": "9",
+     "name": "Decide",
+     "ms": 0.0,
+     "detail": "ESCALATE",
+     "status": "done"
+    }
+   ],
+   "timestamps": {
+    "created_at": "2026-11-17T15:29:16",
+    "recommended_at": "2026-11-17T15:29:18",
+    "resolved_at": null
+   },
+   "missing_parts": [
+    "store"
+   ]
+  }
+ },
+ {
+  "name": "probe: hidden security",
+  "input": {
+   "description": "My laptop got very slow after I opened an invoice attachment, and now a window says my files are encrypted and asks for payment.",
+   "service": "Laptop / Desktop",
+   "environment": "Production",
+   "who_affected": "Just me",
+   "user_category": null,
+   "user_subcategory": null
+  },
+  "truth": null,
+  "result": {
+   "contract_version": "1.0",
+   "analysis_id": "AN-20261117-0002",
+   "analyst": "examples",
+   "role": "support",
+   "ticket": {
+    "description": "My laptop got very slow after I opened an invoice attachment, and now a window says my files are encrypted and asks for payment.",
+    "service": "Laptop / Desktop",
+    "environment": "Production",
+    "who_affected": "Just me",
+    "user_category": null,
+    "user_subcategory": null
+   },
+   "cleaned": {
+    "masked_description": "My laptop got very slow after I opened an invoice attachment, and now a window says my files are encrypted and asks for payment.",
+    "clean_text": "my laptop got very slow after i opened an invoice attachment, and now a window says my files are encrypted and asks for payment.",
+    "hype_detected": false,
+    "too_vague": false
+   },
+   "similar": {
+    "tickets": [
+     {
+      "ticket_id": "INC-00718",
+      "excerpt": "My working files now end in .grindle and there's a ransom note on the desktop. The laptop is unusable for my work.",
+      "score": 0.437,
+      "category": "Security",
+      "subcategory": "Virus",
+      "priority": "P1",
+      "why_matched": [
+       "similar by meaning (44%)",
+       "same service: Laptop / Desktop"
+      ],
+      "is_duplicate": false
+     },
+     {
+      "ticket_id": "INC-00666",
+      "excerpt": "my screen is stuck on a demand to pay for a decryption key. reboot comes straight back to the same page.",
+      "score": 0.42,
+      "category": "Security",
+      "subcategory": "Virus",
+      "priority": "P1",
+      "why_matched": [
+       "similar by meaning (42%)",
+       "same service: Laptop / Desktop"
+      ],
+      "is_duplicate": false
+     },
+     {
+      "ticket_id": "INC-00362",
+      "excerpt": "A file I downloaded started renaming all my project folders. There's a payment note in each and I can't open any of the work.",
+      "score": 0.395,
+      "category": "Security",
+      "subcategory": "Virus",
+      "priority": "P1",
+      "why_matched": [
+       "similar by meaning (40%)",
+       "same service: Laptop / Desktop"
+      ],
+      "is_duplicate": false
+     },
+     {
+      "ticket_id": "INC-01143",
+      "excerpt": "Internet only goes fast early, then slow for our whole team. Office files normal.",
+      "score": 0.461,
+      "category": "Network",
+      "subcategory": "Internet slow or down",
+      "priority": "P3",
+      "why_matched": [
+       "similar by meaning (46%)"
+      ],
+      "is_duplicate": false
+     },
+     {
+      "ticket_id": "INC-00778",
+      "excerpt": "On the 6th our desk saw the invoice queue take much longer to respond. The data still appears after waiting.",
+      "score": 0.459,
+      "category": "Business System",
+      "subcategory": "Slow",
+      "priority": "P3",
+      "why_matched": [
+       "similar by meaning (46%)"
+      ],
+      "is_duplicate": false
+     }
+    ],
+    "vote": {
+     "category": "Security",
+     "agree_count": 3,
+     "of": 5
+    }
+   },
+   "classification": {
+    "category": "Security",
+    "subcategory": "Virus",
+    "symptom_type": "blocked",
+    "team": "Security",
+    "impact": "High",
+    "urgency": "High",
+    "priority": "P1",
+    "priority_reason": "P1: impact High (just me, minor service) x urgency High (blocked, production).",
+    "confidence": {
+     "category": 0.917,
+     "subcategory": 0.85,
+     "symptom_type": 0.497,
+     "category_score": 0.938
+    },
+    "top3": {
+     "category": [
+      {
+       "label": "Security",
+       "prob": 0.917
+      },
+      {
+       "label": "Device & Software",
+       "prob": 0.073
+      },
+      {
+       "label": "Network",
+       "prob": 0.008
+      }
+     ],
+     "subcategory": [
+      {
+       "label": "Virus",
+       "prob": 0.85
+      },
+      {
+       "label": "Suspicious email",
+       "prob": 0.108
+      },
+      {
+       "label": "Lost or stolen device",
+       "prob": 0.042
+      }
+     ],
+     "symptom_type": [
+      {
+       "label": "blocked",
+       "prob": 0.497
+      },
+      {
+       "label": "slow",
+       "prob": 0.493
+      },
+      {
+       "label": "question",
+       "prob": 0.009
+      }
+     ]
+    },
+    "user_category": null,
+    "user_agrees": null,
+    "hype_detected": false,
+    "possible_security": false,
+    "needs_review": false,
+    "review_reasons": []
+   },
+   "tiebreak": null,
+   "kb": {
+    "articles": [
+     {
+      "kb_id": "KB-051",
+      "title": "The work computer quarantined a file opened from an attachment",
+      "subcategory": "Virus",
+      "access_level": "internal",
+      "score": 0.387,
+      "why_matched": [
+       "symptoms match by meaning (39%)",
+       "predicted subcategory: Virus (85%)",
+       "covers service: Laptop / Desktop"
+      ],
+      "steps": [
+       {
+        "step_id": "KB-051/self/1",
+        "text": "Don't click anything else, and disconnect from the network if asked"
+       },
+       {
+        "step_id": "KB-051/self/2",
+        "text": "Contact the help desk from a separate trusted device and report the alert time and computer name."
+       },
+       {
+        "step_id": "KB-051/self/3",
+        "text": "Leave the file quarantined and tell support whether you opened it before the alert appeared."
+       },
+       {
+        "step_id": "KB-051/support/1",
+        "text": "Match the device and timestamp to the endpoint security event and preserve the relevant file identifier, process trail and action status. (Expected: A genuine endpoint alert and the quarantine outcome are confirmed.)"
+       },
+       {
+        "step_id": "KB-051/support/2",
+        "text": "Review execution and connection telemetry for the time around the alert, then have Security isolate the device through the approved workflow if indicated. (Expected: The review determines likely execution and contains confirmed exposure.)"
+       },
+       {
+        "step_id": "KB-051/support/3",
+        "text": "Search approved mail and endpoint telemetry for the same file identifier and sender indicators. (Expected: Related deliveries and endpoints are linked to the incident.)"
+       },
+       {
+        "step_id": "KB-051/support/4",
+        "text": "Have Security direct remediation and check the endpoint again before restoring normal use. (Expected: Required remediation is recorded and no active detection remains.)"
+       }
+      ],
+      "verify": "Security confirms the quarantined file is contained, evaluates any execution and clears the device for normal work.",
+      "escalate_when": "Escalate on receipt. Flag urgently if the attachment ran, quarantine failed, or the same indicator appears on other devices."
+     },
+     {
+      "kb_id": "KB-026",
+      "title": "Internet is slow only when this computer uses a network cable",
+      "subcategory": "Internet slow or down",
+      "access_level": "public",
+      "score": 0.388,
+      "why_matched": [
+       "symptoms match by meaning (39%)",
+       "covers service: Laptop / Desktop"
+      ],
+      "steps": [
+       {
+        "step_id": "KB-026/self/1",
+        "text": "Check that the accessible cable ends are seated firmly if the desk has a directly connected network cable."
+       },
+       {
+        "step_id": "KB-026/self/2",
+        "text": "Use the approved office Wi-Fi for work if it is available."
+       },
+       {
+        "step_id": "KB-026/self/3",
+        "text": "Tell support which desk and cable you were using and whether Wi-Fi worked normally."
+       },
+       {
+        "step_id": "KB-026/support/1",
+        "text": "Check the active link speed and port error counters during a transfer from the affected desk. (Expected: The wired link is below its expected speed or accumulates physical errors.)"
+       },
+       {
+        "step_id": "KB-026/support/2",
+        "text": "Replace the suspect patch cable with a known-good approved cable on the same port and repeat the transfer. (Expected: The link negotiates the expected speed and errors stop increasing.)"
+       },
+       {
+        "step_id": "KB-026/support/3",
+        "text": "Compare the wired transfer with a healthy reference port and record the faulty cable in the ticket. (Expected: Both wired connections perform in the expected range and the faulty cable is removed from use.)"
+       }
+      ],
+      "verify": "With Wi-Fi out of the test path, the desk's wired connection opens approved pages normally and link errors do not increase.",
+      "escalate_when": "The replacement cable shows the same errors, multiple desks are affected, or the switch port cannot establish a stable link."
+     },
+     {
+      "kb_id": "KB-024",
+      "title": "Office Wi-Fi rejects a laptop after its network certificate expired",
+      "subcategory": "Wi-Fi problem",
+      "access_level": "internal",
+      "score": 0.305,
+      "why_matched": [
+       "symptoms match by meaning (30%)",
+       "covers service: Laptop / Desktop"
+      ],
+      "steps": [
+       {
+        "step_id": "KB-024/support/1",
+        "text": "Locate the affected device's wireless authentication attempts and verify the failure reason and certificate validity. (Expected: The device is rejected for an expired client certificate.)"
+       },
+       {
+        "step_id": "KB-024/support/2",
+        "text": "Attach the device to an approved managed wired connection and check its enrollment and certificate renewal status. (Expected: Endpoint management can reach the device and identifies any pending renewal failure.)"
+       },
+       {
+        "step_id": "KB-024/support/3",
+        "text": "Use the managed certificate renewal workflow and verify it issued a valid credential for that device. (Expected: The office Wi-Fi profile can select the new certificate.)"
+       },
+       {
+        "step_id": "KB-024/support/4",
+        "text": "Reconnect to the approved office network and check authentication and address assignment. (Expected: The renewed certificate is accepted and the device receives a valid network address.)"
+       }
+      ],
+      "verify": "The laptop reconnects to office Wi-Fi and opens an authorized work page after the cable is disconnected.",
+      "escalate_when": "Renewal fails, the new certificate is rejected, or certificates expire on multiple managed devices."
+     }
+    ],
+    "best_score": 0.387,
+    "conflict": false,
+    "knowledge_gap": false,
+    "gap_reason": null
+   },
+   "fix": {
+    "paths": [
+     {
+      "kb_id": "KB-051",
+      "title": "The work computer quarantined a file opened from an attachment",
+      "why_it_fits": "The laptop shows ransomware after opening an attachment, matching the quarantine alert scenario",
+      "steps": [
+       {
+        "text": "Don't click anything else, and disconnect from the network if asked",
+        "cites": [
+         "KB-051/self/1"
+        ],
+        "source_quote": "Don't click anything else, and disconnect from the network if asked"
+       },
+       {
+        "text": "Contact the help desk from a separate trusted device and report the alert time and computer name.",
+        "cites": [
+         "KB-051/self/2"
+        ],
+        "source_quote": "Contact the help desk from a separate trusted device and report the alert time and computer name."
+       },
+       {
+        "text": "Leave the file quarantined and tell support whether you opened it before the alert appeared.",
+        "cites": [
+         "KB-051/self/3"
+        ],
+        "source_quote": "Leave the file quarantined and tell support whether you opened it before the alert appeared."
+       },
+       {
+        "text": "Match the device and timestamp to the endpoint security event and preserve the relevant file identifier, process trail and action status.",
+        "cites": [
+         "KB-051/support/1"
+        ],
+        "source_quote": "Match the device and timestamp to the endpoint security event and preserve the relevant file identifier, process trail and action status. (Expected: A genuine endpoint alert and the quarantine outcome are confirmed.)"
+       },
+       {
+        "text": "Review execution and connection telemetry for the time around the alert, then have Security isolate the device through the approved workflow if indicated.",
+        "cites": [
+         "KB-051/support/2"
+        ],
+        "source_quote": "Review execution and connection telemetry for the time around the alert, then have Security isolate the device through the approved workflow if indicated. (Expected: The review determines likely execution and contains confirmed exposure.)"
+       },
+       {
+        "text": "Search approved mail and endpoint telemetry for the same file identifier and sender indicators.",
+        "cites": [
+         "KB-051/support/3"
+        ],
+        "source_quote": "Search approved mail and endpoint telemetry for the same file identifier and sender indicators. (Expected: Related deliveries and endpoints are linked to the incident.)"
+       },
+       {
+        "text": "Have Security direct remediation and check the endpoint again before restoring normal use.",
+        "cites": [
+         "KB-051/support/4"
+        ],
+        "source_quote": "Have Security direct remediation and check the endpoint again before restoring normal use. (Expected: Required remediation is recorded and no active detection remains.)"
+       }
+      ]
+     }
+    ],
+    "citation_validity": 1.0,
+    "dropped_steps": 0,
+    "dropped_reasons": [],
+    "llm": "groq",
+    "llm_model": "groq:openai/gpt-oss-120b",
+    "clarifying_questions": []
+   },
+   "decision": {
+    "outcome": "ESCALATE",
+    "confidence": 0.775,
+    "reasons": [
+     "P1: a Security engineer owns it; the cited fix is attached"
+    ],
+    "questions": [],
+    "escalate_to": "Security"
+   },
+   "trace": [
+    {
+     "step": "2",
+     "name": "Clean text",
+     "ms": 0.3,
+     "detail": "24 words",
+     "status": "done"
+    },
+    {
+     "step": "4",
+     "name": "Similar tickets",
+     "ms": 54.4,
+     "detail": "vote Security (3/5)",
+     "status": "done"
+    },
+    {
+     "step": "3",
+     "name": "Classify + priority",
+     "ms": 427.2,
+     "detail": "Virus 0.94 · P1",
+     "status": "done"
+    },
+    {
+     "step": "7",
+     "name": "Find KB articles",
+     "ms": 106.0,
+     "detail": "best match 39%",
+     "status": "done"
+    },
+    {
+     "step": "7b",
+     "name": "Two-problem check",
+     "ms": 159.9,
+     "detail": "1 distinct problem(s)",
+     "status": "done"
+    },
+    {
+     "step": "8",
+     "name": "Write fix + check citations",
+     "ms": 2432.3,
+     "detail": "groq:openai/gpt-oss-120b: 7 steps kept, 0 dropped",
+     "status": "done"
+    },
+    {
+     "step": "9",
+     "name": "Decide",
+     "ms": 0.0,
+     "detail": "ESCALATE",
+     "status": "done"
+    }
+   ],
+   "timestamps": {
+    "created_at": "2026-11-17T15:29:18",
+    "recommended_at": "2026-11-17T15:29:21",
+    "resolved_at": null
+   },
+   "missing_parts": [
+    "store"
+   ]
+  }
+ },
+ {
+  "name": "probe: knowledge gap",
+  "input": {
+   "description": "Customers see the wrong prices on the company website product pages.",
+   "service": "Company Website",
+   "environment": "Production",
+   "who_affected": "Customers",
+   "user_category": null,
+   "user_subcategory": null
+  },
+  "truth": null,
+  "result": {
+   "contract_version": "1.0",
+   "analysis_id": "AN-20261117-2477",
+   "analyst": "examples",
+   "role": "support",
+   "ticket": {
+    "description": "Customers see the wrong prices on the company website product pages.",
+    "service": "Company Website",
+    "environment": "Production",
+    "who_affected": "Customers",
+    "user_category": null,
+    "user_subcategory": null
+   },
+   "cleaned": {
+    "masked_description": "Customers see the wrong prices on the company website product pages.",
+    "clean_text": "customers see the wrong prices on the company website product pages.",
+    "hype_detected": false,
+    "too_vague": false
+   },
+   "similar": {
+    "tickets": [
+     {
+      "ticket_id": "INC-00801",
+      "excerpt": "All customer testers see incorrect quantities in their preview baskets. None of them can submit a checkout scenario.",
+      "score": 0.458,
+      "category": "Business System",
+      "subcategory": "Wrong data",
+      "priority": "P2",
+      "why_matched": [
+       "similar by meaning (46%)",
+       "same service: Company Website"
+      ],
+      "is_duplicate": false
+     },
+     {
+      "ticket_id": "INC-00371",
+      "excerpt": "every customer on the preview site is shown the wrong site code and denied entry to the test booking flow.",
+      "score": 0.411,
+      "category": "Business System",
+      "subcategory": "Wrong data",
+      "priority": "P2",
+      "why_matched": [
+       "similar by meaning (41%)",
+       "same service: Company Website"
+      ],
+      "is_duplicate": false
+     },
+     {
+      "ticket_id": "INC-00606",
+      "excerpt": "Outside testers are blocked on quote approval because the site pulls the wrong prices from the sample catalogue. The rejection happens on every test quote.",
+      "score": 0.393,
+      "category": "Business System",
+      "subcategory": "Wrong data",
+      "priority": "P2",
+      "why_matched": [
+       "similar by meaning (39%)",
+       "same service: Company Website"
+      ],
+      "is_duplicate": false
+     },
+     {
+      "ticket_id": "INC-00150",
+      "excerpt": "PLEASE TAKE ASAP The website's booking widget displays the wrong location beside my account, but the confirmation page has the correct one.",
+      "score": 0.376,
+      "category": "Business System",
+      "subcategory": "Wrong data",
+      "priority": "P4",
+      "why_matched": [
+       "similar by meaning (38%)",
+       "same service: Company Website"
+      ],
+      "is_duplicate": false
+     },
+     {
+      "ticket_id": "INC-01051",
+      "excerpt": "Our public site is serving the same 503 on every address. Customers can't load even the home page.",
+      "score": 0.347,
+      "category": "Business System",
+      "subcategory": "Error or won't open",
+      "priority": "P1",
+      "why_matched": [
+       "similar by meaning (35%)",
+       "same service: Company Website"
+      ],
+      "is_duplicate": false
+     }
+    ],
+    "vote": {
+     "category": "Business System",
+     "agree_count": 5,
+     "of": 5
+    }
+   },
+   "classification": {
+    "category": "Business System",
+    "subcategory": "Wrong data",
+    "symptom_type": "slow",
+    "team": "Applications",
+    "impact": "High",
+    "urgency": "Medium",
+    "priority": "P2",
+    "priority_reason": "P2: impact High (customers, critical service) x urgency Medium (slow, production).",
+    "confidence": {
+     "category": 0.98,
+     "subcategory": 0.886,
+     "symptom_type": 0.794,
+     "category_score": 0.985
+    },
+    "top3": {
+     "category": [
+      {
+       "label": "Business System",
+       "prob": 0.98
+      },
+      {
+       "label": "Network",
+       "prob": 0.008
+      },
+      {
+       "label": "Account & Access",
+       "prob": 0.004
+      }
+     ],
+     "subcategory": [
+      {
+       "label": "Wrong data",
+       "prob": 0.886
+      },
+      {
+       "label": "Slow",
+       "prob": 0.079
+      },
+      {
+       "label": "Error or won't open",
+       "prob": 0.036
+      }
+     ],
+     "symptom_type": [
+      {
+       "label": "slow",
+       "prob": 0.794
+      },
+      {
+       "label": "outage",
+       "prob": 0.154
+      },
+      {
+       "label": "blocked",
+       "prob": 0.033
+      }
+     ]
+    },
+    "user_category": null,
+    "user_agrees": null,
+    "hype_detected": false,
+    "possible_security": false,
+    "needs_review": false,
+    "review_reasons": []
+   },
+   "tiebreak": null,
+   "kb": {
+    "articles": [
+     {
+      "kb_id": "KB-035",
+      "title": "Finance System dashboard is still showing yesterday's figures",
+      "subcategory": "Wrong data",
+      "access_level": "public",
+      "score": 0.281,
+      "why_matched": [
+       "symptoms match by meaning (28%)",
+       "predicted subcategory: Wrong data (89%)"
+      ],
+      "steps": [
+       {
+        "step_id": "KB-035/self/1",
+        "text": "Read the dashboard's Last updated time and note which summary you were viewing."
+       },
+       {
+        "step_id": "KB-035/self/2",
+        "text": "If your normal access allows it, open the current record you expected to see and compare the dates."
+       },
+       {
+        "step_id": "KB-035/self/3",
+        "text": "Send support the summary name and refresh time, leaving sensitive amounts and record details out of the ticket."
+       },
+       {
+        "step_id": "KB-035/support/1",
+        "text": "Compare the dashboard snapshot timestamp with the source feed's latest completed period. (Expected: Current source entries exist and the dashboard snapshot is behind them.)"
+       },
+       {
+        "step_id": "KB-035/support/2",
+        "text": "Check the latest dashboard refresh job and confirm whether the input snapshot for that period has arrived and validated. (Expected: The delayed job or missing snapshot is identified.)"
+       },
+       {
+        "step_id": "KB-035/support/3",
+        "text": "Once the input validates, use the authorized refresh workflow for the relevant period and check the published version. (Expected: The dashboard advances to the expected period and the refresh log shows one publish for that version.)"
+       }
+      ],
+      "verify": "The dashboard shows the expected refresh time and agrees with a permitted sample of current source entries.",
+      "escalate_when": "A refresh misses its agreed window, the input has not validated, or totals still disagree after the dashboard shows a current snapshot."
+     },
+     {
+      "kb_id": "KB-034",
+      "title": "Company Website opens but images load slowly for first-time visitors",
+      "subcategory": "Slow",
+      "access_level": "internal",
+      "score": 0.313,
+      "why_matched": [
+       "symptoms match by meaning (31%)",
+       "covers service: Company Website"
+      ],
+      "steps": [
+       {
+        "step_id": "KB-034/support/1",
+        "text": "Capture cold and repeat load timings for a representative public page using approved external probes. (Expected: Delay is concentrated in image requests during cold loads while the page itself responds promptly.)"
+       },
+       {
+        "step_id": "KB-034/support/2",
+        "text": "Inspect response headers and edge metrics for the slow image paths and compare them with an unaffected image. (Expected: Slow paths miss or bypass the shared cache and show longer upstream response times.)"
+       },
+       {
+        "step_id": "KB-034/support/3",
+        "text": "Have the site owner review the affected image paths for public eligibility and deploy the approved cache configuration for those assets only. (Expected: Eligible public images are served by the cache after the first fill.)"
+       },
+       {
+        "step_id": "KB-034/support/4",
+        "text": "Test from clean browser sessions and separate locations and compare image timings with baseline. (Expected: Cold page loads meet the expected timing and image content is correct.)"
+       }
+      ],
+      "verify": "A first-time visit from multiple external test locations loads the affected images within the site's expected time.",
+      "escalate_when": "Cold loads remain slow, cache rules appear to include private assets, or the homepage starts failing outright."
+     },
+     {
+      "kb_id": "KB-031",
+      "title": "Company Website is down for customers with a certificate warning",
+      "subcategory": "Error or won't open",
+      "access_level": "internal",
+      "score": 0.298,
+      "why_matched": [
+       "symptoms match by meaning (30%)",
+       "covers service: Company Website"
+      ],
+      "steps": [
+       {
+        "step_id": "KB-031/support/1",
+        "text": "Use approved independent external probes to check the certificate served for the production hostname at multiple edge locations. (Expected: The probes see the expired certificate and identify which endpoints serve it.)"
+       },
+       {
+        "step_id": "KB-031/support/2",
+        "text": "Compare the deployed certificate fingerprint, hostname and expiration with the managed certificate inventory. (Expected: The failed production certificate and intended valid replacement are identified.)"
+       },
+       {
+        "step_id": "KB-031/support/3",
+        "text": "Have the Company Website owner deploy the approved replacement certificate and chain through the standard edge workflow. (Expected: The edge locations begin presenting the correct valid certificate for the hostname.)"
+       },
+       {
+        "step_id": "KB-031/support/4",
+        "text": "Repeat HTTPS checks from independent networks and open representative public pages through a normal browser. (Expected: Trust verification passes and pages open without a certificate warning.)"
+       }
+      ],
+      "verify": "The public homepage and a representative secondary page open over HTTPS from separate external networks without a warning.",
+      "escalate_when": "Escalate immediately with more than one user affected or when independent external probes confirm an invalid production certificate."
+     }
+    ],
+    "best_score": 0.281,
+    "conflict": true,
+    "knowledge_gap": true,
+    "gap_reason": "no KB article covers 'Wrong data' on Company Website"
+   },
+   "fix": null,
+   "decision": {
+    "outcome": "ESCALATE",
+    "confidence": 0.422,
+    "reasons": [
+     "knowledge gap: no KB article covers 'Wrong data' on Company Website, handing to Applications"
+    ],
+    "questions": [],
+    "escalate_to": "Applications"
+   },
+   "trace": [
+    {
+     "step": "2",
+     "name": "Clean text",
+     "ms": 0.1,
+     "detail": "11 words",
+     "status": "done"
+    },
+    {
+     "step": "4",
+     "name": "Similar tickets",
+     "ms": 36.9,
+     "detail": "vote Business System (5/5)",
+     "status": "done"
+    },
+    {
+     "step": "3",
+     "name": "Classify + priority",
+     "ms": 148.7,
+     "detail": "Wrong data 0.98 · P2",
+     "status": "done"
+    },
+    {
+     "step": "7",
+     "name": "Find KB articles",
+     "ms": 17.0,
+     "detail": "best match 28%",
+     "status": "done"
+    },
+    {
+     "step": "7b",
+     "name": "Two-problem check",
+     "ms": 21.4,
+     "detail": "0 distinct problem(s)",
+     "status": "done"
+    },
+    {
+     "step": "8",
+     "name": "Write fix + check citations",
+     "ms": 0.0,
+     "detail": "skipped: knowledge gap",
+     "status": "skipped"
+    },
+    {
+     "step": "9",
+     "name": "Decide",
+     "ms": 0.0,
+     "detail": "ESCALATE",
+     "status": "done"
+    }
+   ],
+   "timestamps": {
+    "created_at": "2026-11-17T15:29:21",
+    "recommended_at": "2026-11-17T15:29:22",
+    "resolved_at": null
+   },
+   "missing_parts": [
+    "store"
+   ]
+  }
+ },
+ {
+  "name": "probe: too vague",
+  "input": {
+   "description": "System not working, please help.",
+   "service": "Other / Not sure",
+   "environment": "Production",
+   "who_affected": "Just me",
+   "user_category": null,
+   "user_subcategory": null
+  },
+  "truth": null,
+  "result": {
+   "contract_version": "1.0",
+   "analysis_id": "AN-20261117-0900",
+   "analyst": "examples",
+   "role": "support",
+   "ticket": {
+    "description": "System not working, please help.",
+    "service": "Other / Not sure",
+    "environment": "Production",
+    "who_affected": "Just me",
+    "user_category": null,
+    "user_subcategory": null
+   },
+   "cleaned": {
+    "masked_description": "System not working, please help.",
+    "clean_text": "system not working, please help.",
+    "hype_detected": false,
+    "too_vague": true
+   },
+   "similar": {
+    "tickets": [
+     {
+      "ticket_id": "INC-00103",
+      "excerpt": "Computer starts but the monitor never comes on. Can't do my jobs.",
+      "score": 0.407,
+      "category": "Device & Software",
+      "subcategory": "Computer problem",
+      "priority": "P4",
+      "why_matched": [
+       "similar by meaning (41%)",
+       "same service: Other / Not sure"
+      ],
+      "is_duplicate": false
+     },
+     {
+      "ticket_id": "INC-00605",
+      "excerpt": "Can't get past startup on my only work computer.",
+      "score": 0.376,
+      "category": "Device & Software",
+      "subcategory": "Computer problem",
+      "priority": "P4",
+      "why_matched": [
+       "similar by meaning (38%)",
+       "same service: Other / Not sure"
+      ],
+      "is_duplicate": false
+     },
+     {
+      "ticket_id": "INC-00201",
+      "excerpt": "Our PCs are laggy for a while after boot. They do start working.",
+      "score": 0.355,
+      "category": "Device & Software",
+      "subcategory": "Computer problem",
+      "priority": "P3",
+      "why_matched": [
+       "similar by meaning (36%)",
+       "same service: Other / Not sure"
+      ],
+      "is_duplicate": false
+     },
+     {
+      "ticket_id": "INC-00627",
+      "excerpt": "Site errors as soon as it loads for me. Work stuck.",
+      "score": 0.341,
+      "category": "Business System",
+      "subcategory": "Error or won't open",
+      "priority": "P3",
+      "why_matched": [
+       "similar by meaning (34%)",
+       "same service: Other / Not sure"
+      ],
+      "is_duplicate": false
+     },
+     {
+      "ticket_id": "INC-00489",
+      "excerpt": "Multiple offices have PCs stuck on boot. Desks can't do anything.",
+      "score": 0.327,
+      "category": "Device & Software",
+      "subcategory": "Computer problem",
+      "priority": "P2",
+      "why_matched": [
+       "similar by meaning (33%)",
+       "same service: Other / Not sure"
+      ],
+      "is_duplicate": false
+     }
+    ],
+    "vote": {
+     "category": "Device & Software",
+     "agree_count": 4,
+     "of": 5
+    }
+   },
+   "classification": {
+    "category": "Device & Software",
+    "subcategory": "Computer problem",
+    "symptom_type": "blocked",
+    "team": "Service Desk",
+    "impact": "Low",
+    "urgency": "High",
+    "priority": "P3",
+    "priority_reason": "P3: impact Low (just me, minor service) x urgency High (blocked, production).",
+    "confidence": {
+     "category": 0.939,
+     "subcategory": 0.51,
+     "symptom_type": 0.768,
+     "category_score": 0.954
+    },
+    "top3": {
+     "category": [
+      {
+       "label": "Device & Software",
+       "prob": 0.939
+      },
+      {
+       "label": "Network",
+       "prob": 0.036
+      },
+      {
+       "label": "Security",
+       "prob": 0.019
+      }
+     ],
+     "subcategory": [
+      {
+       "label": "Computer problem",
+       "prob": 0.51
+      },
+      {
+       "label": "Printer problem",
+       "prob": 0.236
+      },
+      {
+       "label": "Install software",
+       "prob": 0.229
+      }
+     ],
+     "symptom_type": [
+      {
+       "label": "blocked",
+       "prob": 0.768
+      },
+      {
+       "label": "request",
+       "prob": 0.147
+      },
+      {
+       "label": "slow",
+       "prob": 0.065
+      }
+     ]
+    },
+    "user_category": null,
+    "user_agrees": null,
+    "hype_detected": false,
+    "possible_security": false,
+    "needs_review": false,
+    "review_reasons": []
+   },
+   "tiebreak": null,
+   "kb": {
+    "articles": [
+     {
+      "kb_id": "KB-037",
+      "title": "External monitor says no signal while the laptop screen works",
+      "subcategory": "Computer problem",
+      "access_level": "public",
+      "score": 0.231,
+      "why_matched": [
+       "symptoms match by meaning (23%)",
+       "predicted subcategory: Computer problem (51%)"
+      ],
+      "steps": [
+       {
+        "step_id": "KB-037/self/1",
+        "text": "Make sure the monitor is on and leave your work open on the laptop screen."
+       },
+       {
+        "step_id": "KB-037/self/2",
+        "text": "If the monitor cable is easy to reach and connects directly to the laptop, gently reseat it at both ends."
+       },
+       {
+        "step_id": "KB-037/self/3",
+        "text": "Tell support whether the monitor picture returned or still flickers."
+       },
+       {
+        "step_id": "KB-037/support/1",
+        "text": "Confirm that the monitor's own display menu opens and that the laptop screen remains usable. (Expected: The symptom is limited to the external video path.)"
+       },
+       {
+        "step_id": "KB-037/support/2",
+        "text": "Reseat the display cable, then swap in a known-good cable on the same ports if the link still drops. (Expected: The external monitor detects a stable signal on the original ports.)"
+       },
+       {
+        "step_id": "KB-037/support/3",
+        "text": "Test the external monitor at the expected resolution and reconnect the cable once. (Expected: A normal picture returns promptly and stays stable.)"
+       }
+      ],
+      "verify": "The external screen displays a stable image while the laptop screen stays usable.",
+      "escalate_when": "A known-good cable does not restore the picture, a port is damaged, or another monitor also fails on the same laptop."
+     },
+     {
+      "kb_id": "KB-038",
+      "title": "Work computer has no space left to save files",
+      "subcategory": "Computer problem",
+      "access_level": "internal",
+      "score": 0.212,
+      "why_matched": [
+       "symptoms match by meaning (21%)",
+       "predicted subcategory: Computer problem (51%)"
+      ],
+      "steps": [
+       {
+        "step_id": "KB-038/support/1",
+        "text": "Check free space on the affected volume and compare it with the storage requirement for the failing app. (Expected: Local free space is below the level needed to save the file.)"
+       },
+       {
+        "step_id": "KB-038/support/2",
+        "text": "Use the approved storage inventory to identify the largest folders and why they grew without opening employee files. (Expected: The growth is attributed to managed application data or employee-owned content.)"
+       },
+       {
+        "step_id": "KB-038/support/3",
+        "text": "With the required approval, use the managed cleanup for eligible application caches or move verified employee files using the approved storage transfer process. (Expected: Required free space is available and the disposition of any moved files is recorded.)"
+       },
+       {
+        "step_id": "KB-038/support/4",
+        "text": "Ask the employee to save and reopen an approved test file, then recheck free space. (Expected: The save succeeds and the volume stays above the support threshold.)"
+       }
+      ],
+      "verify": "The employee saves and reopens a test file in the affected app and local storage remains above the approved free-space threshold.",
+      "escalate_when": "Storage refills quickly, eligible managed space cannot be reclaimed, or the disk reports hardware or file system errors."
+     },
+     {
+      "kb_id": "KB-029",
+      "title": "Finance System is down for everyone and shows service unavailable",
+      "subcategory": "Error or won't open",
+      "access_level": "internal",
+      "score": 0.331,
+      "why_matched": [
+       "symptoms match by meaning (33%)"
+      ],
+      "steps": [
+       {
+        "step_id": "KB-029/support/1",
+        "text": "Run the Finance System home and read-only invoice probes with approved test accounts from two locations. (Expected: Both paths return the same service error for unrelated accounts while other portal apps open.)"
+       },
+       {
+        "step_id": "KB-029/support/2",
+        "text": "Compare gateway logs and backend-node health against the last successful probe. (Expected: The gateway is returning the error because the Finance System pool is unhealthy.)"
+       },
+       {
+        "step_id": "KB-029/support/3",
+        "text": "Open a Finance System incident and send the pool state, onset and request IDs to the service owner for approved recovery. (Expected: The Applications responder owns the incident and a healthy node begins serving traffic.)"
+       },
+       {
+        "step_id": "KB-029/support/4",
+        "text": "Repeat the probes and inspect application error rate across locations. (Expected: The home page and sample invoice load and the service error rate returns to baseline.)"
+       }
+      ],
+      "verify": "Approved finance probes pass and affected users can open the Finance System and view a permitted invoice.",
+      "escalate_when": "Escalate immediately with more than one user affected or when independent tests show the same shared service error."
+     }
+    ],
+    "best_score": 0.231,
+    "conflict": false,
+    "knowledge_gap": false,
+    "gap_reason": null
+   },
+   "fix": null,
+   "decision": {
+    "outcome": "NEED_INFO",
+    "confidence": 0.395,
+    "reasons": [
+     "not enough detail to act on; ask the user the questions below"
+    ],
+    "questions": [
+     "Which application, device or service is affected?",
+     "What exactly happens, and is there an error message?"
+    ],
+    "escalate_to": null
+   },
+   "trace": [
+    {
+     "step": "2",
+     "name": "Clean text",
+     "ms": 0.1,
+     "detail": "too vague",
+     "status": "done"
+    },
+    {
+     "step": "4",
+     "name": "Similar tickets",
+     "ms": 25.5,
+     "detail": "vote Device & Software (4/5)",
+     "status": "done"
+    },
+    {
+     "step": "3",
+     "name": "Classify + priority",
+     "ms": 218.5,
+     "detail": "Computer problem 0.95 · P3",
+     "status": "done"
+    },
+    {
+     "step": "7",
+     "name": "Find KB articles",
+     "ms": 24.0,
+     "detail": "best match 23%",
+     "status": "done"
+    },
+    {
+     "step": "7b",
+     "name": "Two-problem check",
+     "ms": 27.2,
+     "detail": "0 distinct problem(s)",
+     "status": "done"
+    },
+    {
+     "step": "8",
+     "name": "Write fix + check citations",
+     "ms": 0.0,
+     "detail": "skipped: too vague",
+     "status": "skipped"
+    },
+    {
+     "step": "9",
+     "name": "Decide",
+     "ms": 0.0,
+     "detail": "NEED_INFO",
+     "status": "done"
+    }
+   ],
+   "timestamps": {
+    "created_at": "2026-11-17T15:29:22",
+    "recommended_at": "2026-11-17T15:29:22",
+    "resolved_at": null
+   },
+   "missing_parts": [
+    "store"
+   ]
+  }
+ }
+]
