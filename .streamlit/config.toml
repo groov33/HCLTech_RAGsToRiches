@@ -1,0 +1,10 @@
+[theme]
+primaryColor = "#2563EB"
+font = "sans serif"
+baseFontSize = 15
+
+[server]
+runOnSave = true
+
+[client]
+toolbarMode = "minimal"

@@ -4,3 +4,5 @@ numpy>=1.26
 joblib>=1.4
 sentence-transformers>=3.0
 matplotlib>=3.8
+# Dashboard
+streamlit>=1.40
