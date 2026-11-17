@@ -45,6 +45,7 @@
   }
  },
  "n_test": 180,
+ "two_problem_false_alarms": 0,
  "llm": {
   "runs": [
    {
@@ -58,10 +59,10 @@
    },
    {
     "ticket_id": "INC-00022",
-    "decision": "ESCALATE",
-    "reason": "knowledge gap: the LLM found no article that really fits, handing to Applications",
-    "validity": null,
-    "llm": null,
+    "decision": "NEED_INFO",
+    "reason": "not enough detail to act on; ask the user the questions below",
+    "validity": 0.0,
+    "llm": "groq:openai/gpt-oss-120b",
     "written": 0,
     "kept": 0
    },
@@ -122,11 +123,11 @@
    {
     "ticket_id": "INC-00070",
     "decision": "ESCALATE",
-    "reason": "LLM unavailable: handing to Applications with the evidence found",
-    "validity": null,
-    "llm": null,
-    "written": 0,
-    "kept": 0
+    "reason": "P2: a Applications engineer owns it; the cited fix is attached",
+    "validity": 1.0,
+    "llm": "groq:openai/gpt-oss-120b",
+    "written": 4,
+    "kept": 4
    },
    {
     "ticket_id": "INC-00073",
@@ -159,9 +160,9 @@
     "kind": "knowledge gap",
     "description": "Every printer on the third floor prints blank pages since this morning.",
     "service": "Printer",
-    "decision": "NEED_INFO",
+    "decision": "ESCALATE",
     "to_human": true,
-    "reason": "not enough detail to act on; ask the user the questions below"
+    "reason": "knowledge gap: the LLM found no article that really fits, handing to Desktop Support"
    },
    {
     "kind": "too vague",
@@ -225,15 +226,15 @@
     "service": "Email",
     "decision": "ESCALATE",
     "to_human": true,
-    "reason": "LLM unavailable: handing to Applications with the evidence found"
+    "reason": "knowledge gap: the LLM found no article that really fits, handing to Applications"
    },
    {
     "kind": "two problems",
     "description": "The VPN drops every few minutes and separately my email stopped syncing on my phone since this morning.",
     "service": "VPN",
-    "decision": "RECOMMEND",
-    "to_human": false,
-    "reason": "classifier, similar tickets and KB agree (confidence 81%)"
+    "decision": "REVIEW",
+    "to_human": true,
+    "reason": "may be two problems in one ticket ('the vpn drops every few minutes' -> VPN problem / 'my email stopped syncing on my phone since this morning.' -> Email problem): one fix may miss the other"
    },
    {
     "kind": "two problems",
@@ -241,7 +242,7 @@
     "service": "Laptop / Desktop",
     "decision": "ESCALATE",
     "to_human": true,
-    "reason": "LLM unavailable: handing to Desktop Support with the evidence found"
+    "reason": "knowledge gap: the LLM found no article that really fits, handing to Desktop Support"
    },
    {
     "kind": "hidden security",
@@ -257,7 +258,7 @@
     "service": "Email",
     "decision": "ESCALATE",
     "to_human": true,
-    "reason": "LLM unavailable: handing to Applications with the evidence found"
+    "reason": "knowledge gap: the LLM found no article that really fits, handing to Applications"
    },
    {
     "kind": "wrong user category",
