@@ -213,6 +213,10 @@ Groq / Gemini / Ollama over HTTP · SQLite · Streamlit.
   not that the article fits the ticket. See examples #1 and #3 in [`reports/EXAMPLES.md`](reports/EXAMPLES.md).
   Analyst feedback (Useful / Incorrect / Unresolved) and the REVIEW / ESCALATE gates are the safeguard.
 - **2 of 16 P1s were predicted lower**. Both were security tickets, and both were still flagged for human review.
+- **Sign-in problems on a laptop are misread as Security.** In the data, every password and lockout ticket uses
+  the "Company Login" service. So "I can't sign in to my laptop" filed under "Laptop / Desktop" is classed as
+  Security (P1) and escalated. That is safe (a human reviews it) but wrong. The fix is more varied training data.
+  Dropping the service feature fixed only part of it and cost about 1% test accuracy.
 - **Fixes need an LLM route.** Offline with no Ollama, every ticket that would get a fix is escalated (by design).
 - **Small probe sets**: 17 hand-written fallback tickets and 6 two-problem tickets. These are indicative, not
   statistically strong.

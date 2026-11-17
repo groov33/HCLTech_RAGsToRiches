@@ -15,6 +15,11 @@ ui.page_header("🎫", "New ticket",
 
 HYPE = "URGENT — I'm the CEO, fix this now! "
 EXAMPLES = {
+    # Happy path: KB-020 covers it, P3 -> RECOMMEND with a cited fix
+    "VPN on, shared drive off": dict(
+        description="My VPN says connected but the shared drive will not open from home.",
+        service="VPN", environment="Not applicable", who_affected="Just me",
+        user_category="Network", user_subcategory="VPN problem"),
     # Held-out test ticket INC-00347 (never trained on or indexed) + one added hype sentence
     "INC-00347 · hype + wrong guess": dict(
         description="I'm getting heat from above. Please pick this up immediately. My workng salary application "
